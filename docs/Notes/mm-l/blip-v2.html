@@ -1,0 +1,578 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models &#8212; 论文阅读笔记</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="shortcut icon" href="../../_static/panda.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="大语言模型(Large Language Models)" href="../llm/index.html" />
+    <link rel="prev" title="BLIP: Bootstrapping Language-Image Pre-training" href="blip-v1.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">论文阅读笔记</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  目录
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Method/index.html">
+   论文阅读指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Method/efficent_read_paper.html">
+     高效阅读方法及流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Method/how_to_read_paper.html">
+     如何阅读论文
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Method/paper_10_question.html">
+     论文速读十问
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Method/read_important_tips.html">
+     读论文与口头报告的几项重点
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Method/reference.html">
+     参考材料
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../List/index.html">
+   论文阅读清单
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/basis.html">
+     神经网络基础(basis)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/attention.html">
+     注意力部分(attention)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/batch_normalization.html">
+     批量&amp;正则化(batch&amp;normalization)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/classification.html">
+     图像分类(CLAS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/convolutional.html">
+     高级卷积网络知识(Convolutional)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/gan.html">
+     AI合成部分(GAN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/nlp.html">
+     自然语言处理(NLP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/objectdetection.html">
+     目标检测(OBJ)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/rnn.html">
+     循环神经网络(RNN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/segementation.html">
+     目标分割(SEG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/multimodal.html">
+     多模态(MultiModal Learning)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/llm.html">
+     大语言模型(Large Language Models)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   论文阅读笔记
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="index.html">
+     多模态(MultiModal Machine Learning)
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="blip-v1.html">
+       BLIP: Bootstrapping Language-Image Pre-training
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../llm/index.html">
+     大语言模型(Large Language Models)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../llm/opt.html">
+       OPT: OPT : Open Pre-trained Transformer Language Models
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../llm/gpt-v1.html">
+       GPT-v1:Improving Language Understanding by Generative Pre-Training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../llm/gpt-v2.html">
+       GPT-v2:Language Models are Unsupervised Multitask Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../llm/gpt-v3.html">
+       GPT-v3:Language Models are Few-Shot Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../llm/gpt-v4.html">
+       GPT-v4:GPT-4 Technical Report
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Read/index.html">
+   论文阅读记录
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Summary/index.html">
+   论文阅读总结
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes//issues/new?title=Issue%20on%20page%20%2FNotes/mm-l/blip-v2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/edit/master/Notes/mm-l/blip-v2.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/Notes/mm-l/blip-v2.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="blip-2-bootstrapping-language-image-pre-training-with-frozen-image-encoders-and-large-language-models">
+<h1>BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models<a class="headerlink" href="#blip-2-bootstrapping-language-image-pre-training-with-frozen-image-encoders-and-large-language-models" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<p>大家好，今天我们将结合我们对视觉Transformer和LLM（大型语言模型）的了解，展示视觉和语言的结合。今天我要向大家展示美妙的技术，使我们能够使用Transformer架构来预训练视觉语言模型，这就是我们想要的。这个美妙的技术叫做blip2，是基于冰冻图像编码器和LLM的语言图像无监督训练的自举技术。有趣的是，这篇来自Salesforce研究的技术是在2023年1月30日发表的。接下来我们将深入了解这个技术，你可能会问这项技术的用例是什么。如果我上传了我上一个视频的缩略图，我们看一下，我们的聊天输入问题是”你能在这张图片里区分哪些元素”，答案是处理过的直升机、绿幕和词汇Transformer，如此可见，视觉语言模型可以处理图像到文本的任务，识别不适宜的内容除了文本之外，还可以应用于图像文本检索，用于多模态搜索，以及自动驾驶等领域，当然还包括我们感兴趣的可视化问题回答。这将使我们的多模态聊天机器人成为可能。在开始之前，我们必须确保我们应用的是同样的Transformers体系结构，同时展示在我们所述的所有Transformer体系结构，如T5 Flan T5 Bloom，都可以在Encoder或Decoder端使用。当然，现在我们的视觉Transformer和语言模型也采用了相同的体系结构。这是最重要的要点，两者都是Transformer架构，这使我们比较得更准确。为了填补所谓的视觉和语言之间的模态差距，他们添加了另一个Transformer连接到另一个Transformer，你可能不会相信，我们的技术完全兼容跨越的方式。</p>
+<p><img alt="" src="Notes/mm-l/figures/blipv2_1.png" /></p>
+<p><img alt="" src="Notes/mm-l/figures/blipv2_2.png" /></p>
+<p><img alt="" src="Notes/mm-l/figures/blipv2_3.png" /></p>
+<p><img alt="" src="Notes/mm-l/figures/blipv2_4.png" /></p>
+<p><img alt="" src="Notes/mm-l/figures/blipv2_5.png" /></p>
+<p><img alt="" src="Notes/mm-l/figures/blipv2_6.png" /></p>
+<p><img alt="" src="Notes/mm-l/figures/blipv2_7.png" /></p>
+<p><img alt="" src="Notes/mm-l/figures/blipv2_8.png" /></p>
+<p><img alt="" src="Notes/mm-l/figures/blipv2_9.png" /></p>
+<p><img alt="" src="Notes/mm-l/figures/blipv2_10.png" /></p>
+<p>这段呈现了一种称之为”非常的变形金刚”的新型Transform器。它是一种Q格式的Transform器，如果你看到了有关于Q格式的相关文章，现在你应该知道它究竟是什么了。这个视频还讲了如何在视觉变换器和语言变换器之间实现接口。如果你想了解更多关于LLM的信息，视频中也提到了一些介绍。同时，在视频中还提到了一些如何使用飞行T5 x6l或Bloom 1760亿参数模型在AWS基础设施上运行的技巧。如果你想了解更多有关Transformers的信息，视频中也提供了一些有用的内容。 其次，视频还探讨了一个新问题。LLM已经是一个异常庞大的模型了，而Vision Transformer也接近22亿参数，如果要将它们组合在一起，问题在于如何进行训练。取而代之的是，视频提出了通过冻结Vision Transformer和LLM的全部权重和层，并在它们之间建立一个接口。最后，视频还提出了一个新的Transform器，称之为Hue Transformer，它是我们需要训练的唯一对象，训练方式为查询式Transformers，以此来缓解一个热门话题。</p>
+<p>现在，您将不会相信，因为在左边我们有一个视觉对象，而在右边我们有一个语言对象。Q格式本身有两个模块，它有一个图像对象，与已冻结的图像编码器进行视觉特征提取的交互。而在另一侧，它还有一个文本变换器，可以作为语言编码器或解码器进行操作。因此，我们可以说，在我们的Q变换器中，我们复制了外部的输入和输出结构，并为其添加了一些子模块。是的，您猜对了，我们将会在我们的Q格式中拥有共同的自注意层。</p>
+<p>因此，如果您想更详细地了解，这里有一些关于查询的信息。为了初始化我们的Q格式，在这里我们使用了一个基于Bird的模型的权重。您可能会说，“哇，这个简单的基于鸟的模型吗？” 是的，完全正确。现在，所有的内容都汇集在一起了。我们将视觉技术和语言技术相结合。这就是Bird专家句子变换器。您能描述一下图像中的元素吗？</p>
+<p>现在这会很有趣，让我们来看看。我们可以看到有一架战斗机在天空中飞行，上面写着q a on jet GPT。您说得完全正确，您识别出了这架战斗机。好的，现在是哪一架战斗机呢？是F-35。那么，预训练是如何进行的呢？有两个阶段，请听我仔细讲解。在第一阶段，我们将Q格式与Frozen图像编码器连接起来，并使用一些特定的图像文本对进行自由训练。对于每个图像，都有一个文本描述其内容，您会得到一个图像，以及另一个文本描述其内容，您可以得到一个损失函数。他们发现在这里进行训练时最好使用三个不同的损失函数，其中一个是图像文本对比损失。</p>
+<p>我们有正常的出生系统，并在其上进行了起重。然后，您会看到一个图像周围的文本生成，以及一个图像文本匹配的损失。有关所有细节，您可以在其原始研究论文中找到。只是为了让您有个概念，我们在这里以黄色标示出一个东西发生了，我们将我们的Q格式在第一个预训练步骤中连接到我们的图像编码器，它是被冻结的。</p>
+<p>我们有一个图像编码器，并且现在我们在Q格式中有两个模块——图像变换器和语言转换器。现在在自我关注层上，我们实现了共享，这是主要想法。</p>
+<p>如果您想进行文本图像转换，可以从图像编码器中提取固定数量的输出特征（无论图像分辨率如何），然后将可学习的查询嵌入作为输入。然后，我们进行自我关注掩码，计算三种不同的损失方法，并将根据自我关注机制工作的情况在模块间进行描述。</p>
+<p>第二步是连接Q格式到VisionLanguage生成学习的另一部分中，并将其连接到Frozen NL lIm。在我们的情况下，这将是flan T5XXL模型。现在，我们得到的Queries具有了与文本相关的视觉信息，因为它通过信息瓶颈传递。这些Embedding不被用作视觉前缀，而是添加到输入的大型语言模型中。这个预训练阶段将有效地涉及使用因果语言模型损失的图像文本生成任务。</p>
+<p>现在，让我们来可视化一下这个过程。这篇研究论文中的作者决定采用两种不同的llm模型。例如，如果您只想要一个基于解码器的llm，但是如果我们使用flan T5，我们会有一个完整的变换器堆栈，因此我们必须使用第二个选项。我们的输入图像通过图像编码器进入，在这里它被冻结。第一步现在完成了，我们现在有了我们的Q格式的输出。现在，将其传递到一个全连接层中，以线性投影输出查询嵌入Z到与llm的文本嵌入相同的维度中。当然，您也可以使用只有解码器的模型，但如果需要馈送编码器和解码器堆栈，您必须注意这一点。</p>
+<p>这里有一个函数作为软视觉提示，并将其基于由Q格式提取的展示条件。是的，细节在论文中可以找到。我只是希望你能理解这个过程，它有两个步骤：第一个进入Q格式，然后通过全连接层输入到llm中。现在，我们开始生成下一个词。这个方法的绝对美妙之处在于，当他们发布blip 2时，他们使用了Vision Transformer作为大型语言模型。正如我所展示的，您可以使用flan T5模型，但您并不受此预训练方法的限制，因为您可以同时冻结Vision模型和语言模型，并且可以将任何视觉骨干与任何大型语言模型结合起来进行特定的Vision语言模型开发，您可以在其中训练Q格式。因此，我们现在可以从流程线得到完整的预训练视觉语言模型。</p>
+<p>您可能会说，这难道不美妙吗？我同意。但是，这只是理论部分，因为您需要了解下一次我们将编码每个步骤的代码，构建我们自己的应用程序，甚至可以使用agrado，最终将获得可操作的Vision语言Transformer模型。这个模型能够理解图像的内容，当您将图像用作输入时，它将自动做出相应的响应，以您的聊天方式与您进行互动。</p>
+<p>我再次感谢您，希望您喜欢这个过程。我们下次再见。</p>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="blip-v1.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">BLIP: Bootstrapping Language-Image Pre-training</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../llm/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">大语言模型(Large Language Models)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By isLinXu<br/>
+  
+      &copy; Copyright 2022, isLinXu.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

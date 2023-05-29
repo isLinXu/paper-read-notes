@@ -1,0 +1,882 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>大语言模型(Large Language Models) &#8212; 论文阅读笔记</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="shortcut icon" href="../_static/panda.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="论文阅读笔记" href="../Notes/index.html" />
+    <link rel="prev" title="多模态(MultiModal Learning)" href="multimodal.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">论文阅读笔记</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  目录
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Method/index.html">
+   论文阅读指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/efficent_read_paper.html">
+     高效阅读方法及流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/how_to_read_paper.html">
+     如何阅读论文
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/paper_10_question.html">
+     论文速读十问
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/read_important_tips.html">
+     读论文与口头报告的几项重点
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/reference.html">
+     参考材料
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   论文阅读清单
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="basis.html">
+     神经网络基础(basis)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="attention.html">
+     注意力部分(attention)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="batch_normalization.html">
+     批量&amp;正则化(batch&amp;normalization)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="classification.html">
+     图像分类(CLAS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="convolutional.html">
+     高级卷积网络知识(Convolutional)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gan.html">
+     AI合成部分(GAN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nlp.html">
+     自然语言处理(NLP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="objectdetection.html">
+     目标检测(OBJ)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="rnn.html">
+     循环神经网络(RNN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="segementation.html">
+     目标分割(SEG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="multimodal.html">
+     多模态(MultiModal Learning)
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     大语言模型(Large Language Models)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Notes/index.html">
+   论文阅读笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Notes/mm-l/index.html">
+     多模态(MultiModal Machine Learning)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/mm-l/blip-v1.html">
+       BLIP: Bootstrapping Language-Image Pre-training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/mm-l/blip-v2.html">
+       BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Notes/llm/index.html">
+     大语言模型(Large Language Models)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/opt.html">
+       OPT: OPT : Open Pre-trained Transformer Language Models
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v1.html">
+       GPT-v1:Improving Language Understanding by Generative Pre-Training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v2.html">
+       GPT-v2:Language Models are Unsupervised Multitask Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v3.html">
+       GPT-v3:Language Models are Few-Shot Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v4.html">
+       GPT-v4:GPT-4 Technical Report
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Read/index.html">
+   论文阅读记录
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Summary/index.html">
+   论文阅读总结
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes//issues/new?title=Issue%20on%20page%20%2FList/llm.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/edit/master/List/llm.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/List/llm.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>大语言模型(Large Language Models)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="large-language-models">
+<h1>大语言模型(Large Language Models)<a class="headerlink" href="#large-language-models" title="Permalink to this headline">#</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Num</p></th>
+<th class="head"><p>Title</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Desc</p></th>
+<th class="head"><p>Author</p></th>
+<th class="head"><p>Time</p></th>
+<th class="head"><p>read</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p></p></td>
+<td><p>OPT: OPT : Open Pre-trained Transformer Language Models</p></td>
+<td><p></p></td>
+<td><p>开放预训练的 Transformer 语言模型</p></td>
+<td><p><a class="reference external" href="https://paperswithcode.com/author/susan-zhang">Susan Zhang</a>, <a class="reference external" href="https://paperswithcode.com/author/stephen-roller">Stephen Roller</a>, <a class="reference external" href="https://paperswithcode.com/author/naman-goyal">Naman Goyal</a>, <a class="reference external" href="https://paperswithcode.com/author/mikel-artetxe">Mikel Artetxe</a>, <a class="reference external" href="https://paperswithcode.com/author/moya-chen">Moya Chen</a>, <a class="reference external" href="https://paperswithcode.com/author/shuohui-chen">Shuohui Chen</a>, <a class="reference external" href="https://paperswithcode.com/author/christopher-dewan">Christopher Dewan</a>, <a class="reference external" href="https://paperswithcode.com/author/mona-diab">Mona Diab</a>, <a class="reference external" href="https://paperswithcode.com/author/xian-li">Xian Li</a>, <a class="reference external" href="https://paperswithcode.com/author/xi-victoria-lin">Xi Victoria Lin</a>, <a class="reference external" href="https://paperswithcode.com/author/todor-mihaylov">Todor Mihaylov</a>, <a class="reference external" href="https://paperswithcode.com/author/myle-ott">Myle Ott</a>, <a class="reference external" href="https://paperswithcode.com/author/sam-shleifer">Sam Shleifer</a>, <a class="reference external" href="https://paperswithcode.com/author/kurt-shuster">Kurt Shuster</a>, <a class="reference external" href="https://paperswithcode.com/author/daniel-simig">Daniel Simig</a>, <a class="reference external" href="https://paperswithcode.com/author/punit-singh-koura">Punit Singh Koura</a>, <a class="reference external" href="https://paperswithcode.com/author/anjali-sridhar">Anjali Sridhar</a>, <a class="reference external" href="https://paperswithcode.com/author/tianlu-wang">Tianlu Wang</a>, <a class="reference external" href="https://paperswithcode.com/author/luke-zettlemoyer">Luke Zettlemoyer</a></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>GPT-v1:Improving Language Understanding by Generative Pre-Training</p></td>
+<td><p>GPT&amp;LLM</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>GPT-v2:Language Models are Unsupervised Multitask Learners</p></td>
+<td><p>GPT&amp;LLM</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>GPT-v3:Language Models are Few-Shot Learners</p></td>
+<td><p>GPT&amp;LLM</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>GPT-v4:GPT-4 Technical Report</p></td>
+<td><p>GPT&amp;LLM</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Date</p></th>
+<th class="head"><p>keywords</p></th>
+<th class="head"><p>Institute</p></th>
+<th class="head"><p>Paper</p></th>
+<th class="head"><p>Publication</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2017-06</p></td>
+<td><p>Transformers</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/1706.03762.pdf">Attention Is All You Need</a></p></td>
+<td><p>NeurIPS</p></td>
+</tr>
+<tr class="row-odd"><td><p>2018-06</p></td>
+<td><p>GPT 1.0</p></td>
+<td><p>OpenAI</p></td>
+<td><p><a class="reference external" href="https://www.cs.ubc.ca/~amuham01/LING530/papers/radford2018improving.pdf">Improving Language Understanding by Generative Pre-Training</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2018-10</p></td>
+<td><p>BERT</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://aclanthology.org/N19-1423.pdf">BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding</a></p></td>
+<td><p>NAACL</p></td>
+</tr>
+<tr class="row-odd"><td><p>2019-02</p></td>
+<td><p>GPT 2.0</p></td>
+<td><p>OpenAI</p></td>
+<td><p><a class="reference external" href="https://d4mucfpksywv.cloudfront.net/better-language-models/language_models_are_unsupervised_multitask_learners.pdf">Language Models are Unsupervised Multitask Learners</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2019-09</p></td>
+<td><p>Megatron-LM</p></td>
+<td><p>NVIDIA</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/1909.08053.pdf">Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2019-10</p></td>
+<td><p>T5</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://jmlr.org/papers/v21/20-074.html">Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer</a></p></td>
+<td><p>JMLR</p></td>
+</tr>
+<tr class="row-even"><td><p>2019-10</p></td>
+<td><p>ZeRO</p></td>
+<td><p>Microsoft</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/1910.02054.pdf">ZeRO: Memory Optimizations Toward Training Trillion Parameter Models</a></p></td>
+<td><p>SC</p></td>
+</tr>
+<tr class="row-odd"><td><p>2020-01</p></td>
+<td><p>Scaling Law</p></td>
+<td><p>OpenAI</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2001.08361.pdf">Scaling Laws for Neural Language Models</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2020-05</p></td>
+<td><p>GPT 3.0</p></td>
+<td><p>OpenAI</p></td>
+<td><p><a class="reference external" href="https://papers.nips.cc/paper/2020/file/1457c0d6bfcb4967418bfb8ac142f64a-Paper.pdf">Language models are few-shot learners</a></p></td>
+<td><p>NeurIPS</p></td>
+</tr>
+<tr class="row-odd"><td><p>2021-01</p></td>
+<td><p>Switch Transformers</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2101.03961.pdf">Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity</a></p></td>
+<td><p>JMLR</p></td>
+</tr>
+<tr class="row-even"><td><p>2021-08</p></td>
+<td><p>Codex</p></td>
+<td><p>OpenAI</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2107.03374.pdf">Evaluating Large Language Models Trained on Code</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2021-08</p></td>
+<td><p>Foundation Models</p></td>
+<td><p>Stanford</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2108.07258.pdf">On the Opportunities and Risks of Foundation Models</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2021-09</p></td>
+<td><p>FLAN</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://openreview.net/forum?id=gEZrGCozdqR">Finetuned Language Models are Zero-Shot Learners</a></p></td>
+<td><p>ICLR</p></td>
+</tr>
+<tr class="row-odd"><td><p>2021-10</p></td>
+<td><p>T0</p></td>
+<td><p>HuggingFace et al.</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/abs/2110.08207">Multitask Prompted Training Enables Zero-Shot Task Generalization</a></p></td>
+<td><p>ICLR</p></td>
+</tr>
+<tr class="row-even"><td><p>2021-12</p></td>
+<td><p>GLaM</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2112.06905.pdf">GLaM: Efficient Scaling of Language Models with Mixture-of-Experts</a></p></td>
+<td><p>ICML</p></td>
+</tr>
+<tr class="row-odd"><td><p>2021-12</p></td>
+<td><p>WebGPT</p></td>
+<td><p>OpenAI</p></td>
+<td><p><a class="reference external" href="https://openai.com/blog/webgpt/">WebGPT: Improving the Factual Accuracy of Language Models through Web Browsing</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2021-12</p></td>
+<td><p>Retro</p></td>
+<td><p>DeepMind</p></td>
+<td><p><a class="reference external" href="https://www.deepmind.com/publications/improving-language-models-by-retrieving-from-trillions-of-tokens">Improving language models by retrieving from trillions of tokens</a></p></td>
+<td><p>ICML</p></td>
+</tr>
+<tr class="row-odd"><td><p>2021-12</p></td>
+<td><p>Gopher</p></td>
+<td><p>DeepMind</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2112.11446.pdf">Scaling Language Models: Methods, Analysis &amp; Insights from Training Gopher</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2022-01</p></td>
+<td><p>COT</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2201.11903.pdf">Chain-of-Thought Prompting Elicits Reasoning in Large Language Models</a></p></td>
+<td><p>NeurIPS</p></td>
+</tr>
+<tr class="row-odd"><td><p>2022-01</p></td>
+<td><p>LaMDA</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2201.08239.pdf">LaMDA: Language Models for Dialog Applications</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2022-01</p></td>
+<td><p>Minerva</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/abs/2206.14858">Solving Quantitative Reasoning Problems with Language Models</a></p></td>
+<td><p>NeurIPS</p></td>
+</tr>
+<tr class="row-odd"><td><p>2022-01</p></td>
+<td><p>Megatron-Turing NLG</p></td>
+<td><p>Microsoft&amp;NVIDIA</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2201.11990.pdf">Using DeepSpeed and Megatron to Train Megatron-Turing NLG 530B, A Large-Scale Generative Language Model</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2022-03</p></td>
+<td><p>InstructGPT</p></td>
+<td><p>OpenAI</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2203.02155.pdf">Training language models to follow instructions with human feedback</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2022-04</p></td>
+<td><p>PaLM</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2204.02311.pdf">PaLM: Scaling Language Modeling with Pathways</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2022-04</p></td>
+<td><p>Chinchilla</p></td>
+<td><p>DeepMind</p></td>
+<td><p><a class="reference external" href="https://www.deepmind.com/publications/an-empirical-analysis-of-compute-optimal-large-language-model-training">An empirical analysis of compute-optimal large language model training</a></p></td>
+<td><p>NeurIPS</p></td>
+</tr>
+<tr class="row-odd"><td><p>2022-05</p></td>
+<td><p>OPT</p></td>
+<td><p>Meta</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2205.01068.pdf">OPT: Open Pre-trained Transformer Language Models</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2022-06</p></td>
+<td><p>Emergent Abilities</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://openreview.net/pdf?id=yzkSU5zdwD">Emergent Abilities of Large Language Models</a></p></td>
+<td><p>TMLR</p></td>
+</tr>
+<tr class="row-odd"><td><p>2022-06</p></td>
+<td><p>BIG-bench</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://github.com/google/BIG-bench">Beyond the Imitation Game: Quantifying and extrapolating the capabilities of language models</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2022-06</p></td>
+<td><p>METALM</p></td>
+<td><p>Microsoft</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2206.06336.pdf">Language Models are General-Purpose Interfaces</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2022-09</p></td>
+<td><p>Sparrow</p></td>
+<td><p>DeepMind</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2209.14375.pdf">Improving alignment of dialogue agents via targeted human judgements</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2022-10</p></td>
+<td><p>Flan-T5/PaLM</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2210.11416.pdf">Scaling Instruction-Finetuned Language Models</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2022-10</p></td>
+<td><p>GLM-130B</p></td>
+<td><p>Tsinghua</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2210.02414.pdf">GLM-130B: An Open Bilingual Pre-trained Model</a></p></td>
+<td><p>ICLR</p></td>
+</tr>
+<tr class="row-even"><td><p>2022-11</p></td>
+<td><p>HELM</p></td>
+<td><p>Stanford</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2211.09110.pdf">Holistic Evaluation of Language Models</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2022-11</p></td>
+<td><p>BLOOM</p></td>
+<td><p>BigScience</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2211.05100.pdf">BLOOM: A 176B-Parameter Open-Access Multilingual Language Model</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2022-11</p></td>
+<td><p>Galactica</p></td>
+<td><p>Meta</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2211.09085.pdf">Galactica: A Large Language Model for Science</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2022-12</p></td>
+<td><p>OPT-IML</p></td>
+<td><p>Meta</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2212.12017">OPT-IML: Scaling Language Model Instruction Meta Learning through the Lens of Generalization</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2023-01</p></td>
+<td><p>Flan 2022 Collection</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/pdf/2301.13688.pdf">The Flan Collection: Designing Data and Methods for Effective Instruction Tuning</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2023-02</p></td>
+<td><p>LLaMA</p></td>
+<td><p>Meta</p></td>
+<td><p><a class="reference external" href="https://research.facebook.com/publications/llama-open-and-efficient-foundation-language-models/">LLaMA: Open and Efficient Foundation Language Models</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2023-02</p></td>
+<td><p>Kosmos-1</p></td>
+<td><p>Microsoft</p></td>
+<td><p><a class="reference external" href="https://arxiv.org/abs/2302.14045">Language Is Not All You Need: Aligning Perception with Language Models</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2023-03</p></td>
+<td><p>PaLM-E</p></td>
+<td><p>Google</p></td>
+<td><p><a class="reference external" href="https://palm-e.github.io/">PaLM-E: An Embodied Multimodal Language Model</a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2023-03</p></td>
+<td><p>GPT 4</p></td>
+<td><p>OpenAI</p></td>
+<td><p><a class="reference external" href="https://openai.com/research/gpt-4">GPT-4 Technical Report</a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="multimodal.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">多模态(MultiModal Learning)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../Notes/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">论文阅读笔记</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By isLinXu<br/>
+  
+      &copy; Copyright 2022, isLinXu.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

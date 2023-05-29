@@ -1,0 +1,788 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>论文复现赛指南-推荐方向 &#8212; 论文阅读笔记</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="shortcut icon" href="../_static/panda.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">论文阅读笔记</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  目录
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Method/index.html">
+   论文阅读指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/efficent_read_paper.html">
+     高效阅读方法及流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/how_to_read_paper.html">
+     如何阅读论文
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/paper_10_question.html">
+     论文速读十问
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/read_important_tips.html">
+     读论文与口头报告的几项重点
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/reference.html">
+     参考材料
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../List/index.html">
+   论文阅读清单
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/basis.html">
+     神经网络基础(basis)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/attention.html">
+     注意力部分(attention)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/batch_normalization.html">
+     批量&amp;正则化(batch&amp;normalization)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/classification.html">
+     图像分类(CLAS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/convolutional.html">
+     高级卷积网络知识(Convolutional)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/gan.html">
+     AI合成部分(GAN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/nlp.html">
+     自然语言处理(NLP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/objectdetection.html">
+     目标检测(OBJ)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/rnn.html">
+     循环神经网络(RNN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/segementation.html">
+     目标分割(SEG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/multimodal.html">
+     多模态(MultiModal Learning)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/llm.html">
+     大语言模型(Large Language Models)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Notes/index.html">
+   论文阅读笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Notes/mm-l/index.html">
+     多模态(MultiModal Machine Learning)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/mm-l/blip-v1.html">
+       BLIP: Bootstrapping Language-Image Pre-training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/mm-l/blip-v2.html">
+       BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Notes/llm/index.html">
+     大语言模型(Large Language Models)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/opt.html">
+       OPT: OPT : Open Pre-trained Transformer Language Models
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v1.html">
+       GPT-v1:Improving Language Understanding by Generative Pre-Training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v2.html">
+       GPT-v2:Language Models are Unsupervised Multitask Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v3.html">
+       GPT-v3:Language Models are Few-Shot Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v4.html">
+       GPT-v4:GPT-4 Technical Report
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Read/index.html">
+   论文阅读记录
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Summary/index.html">
+   论文阅读总结
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes//issues/new?title=Issue%20on%20page%20%2FImplementation/articlereproduction_rec.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/edit/master/Implementation/articlereproduction_rec.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Implementation/articlereproduction_rec.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   目录
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1. 总览
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     1.1 背景
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     1.2 前序工作
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   2. 整体框图
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   3. 论文复现理论知识
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#faq">
+   4. 论文复现注意事项与FAQ
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     4.1 通用注意事项
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tipc">
+     4.2 TIPC基础链条接入
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>论文复现赛指南-推荐方向</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   目录
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1. 总览
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     1.1 背景
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     1.2 前序工作
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   2. 整体框图
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   3. 论文复现理论知识
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#faq">
+   4. 论文复现注意事项与FAQ
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     4.1 通用注意事项
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tipc">
+     4.2 TIPC基础链条接入
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1>论文复现赛指南-推荐方向<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div><p>本文为针对 <code class="docutils literal notranslate"><span class="pre">推荐</span></code> 方向的复现赛指南</p>
+<p>如果希望查阅 <code class="docutils literal notranslate"><span class="pre">CV</span></code> 方向的复现赛指南，可以参考：<a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md">CV方向论文复现赛指南</a></p>
+<p>如果希望查阅 <code class="docutils literal notranslate"><span class="pre">NLP</span></code> 方向的复现赛指南，可以参考：<a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_NLP.md">NLP方向论文复现赛指南</a></p>
+</div></blockquote>
+<section id="id2">
+<h2>目录<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>\1. 总览</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_REC.md#1.1">1.1 背景</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_REC.md#1.2">1.2 前序工作</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_REC.md#2">2. 整体框图</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_REC.md#3">3. 论文复现理论知识</a></p></li>
+<li><p>\4. 论文复现注意事项与FAQ</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_REC.md#4.0">4.1 通用注意事项</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_REC.md#4.1">4.2 TIPC基础链条测试接入</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2>1. 总览<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<section id="id4">
+<h3>1.1 背景<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>以深度学习为核心的人工智能技术仍在高速发展，通过论文复现，开发者可以获得</p>
+<ul>
+<li><p>学习成长：自我能力提升</p></li>
+<li><p>技术积累：对科研或工作有所帮助和启发</p></li>
+<li><p>社区荣誉：成果被开发者广泛使用</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id5">
+<h3>1.2 前序工作<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<p>基于本指南复现论文过程中，建议开发者准备以下内容。</p>
+<ul class="simple">
+<li><p>熟悉paddle</p>
+<ul>
+<li><p>文档和API</p>
+<ul>
+<li><p>80%以上的API在功能上与pytorch相同</p></li>
+<li><p><a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/index_cn.html">PaddlePaddle文档链接</a></p></li>
+<li><p><a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/08_api_mapping/pytorch_api_mapping_cn.html">Pytorch-Paddlepaddle API映射表</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/02_paddle2.0_develop/01_quick_start_cn.html">10分钟快速上手飞浆</a></p></li>
+<li><p>数据处理<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/api/paddle/io/DataLoader_cn.html">DataLoader</a></p></li>
+</ul>
+</li>
+<li><p>了解该数据格式。以Criteo数据集为例，该数据包含了13个连续特征和26个离散特征；还有一个标签，点击用1表示，未点击用0表示。</p></li>
+<li><p>准备好训练/验证数据集，用于模型训练与评估</p></li>
+<li><p>准备好fake input data以及label，与模型输入shape、type等保持一致，用于后续模型前向对齐。</p>
+<ul>
+<li><p>在对齐模型前向过程中，我们不需要考虑数据集模块等其他模块，此时使用fake data是将模型结构和数据部分解耦非常合适的一种方式。</p></li>
+<li><p>将fake data以文件的形式存储下来，也可以保证PaddlePaddle与参考代码的模型结构输入是完全一致的，更便于排查问题。</p></li>
+<li><p>在该步骤中，以AlexNet为例，生成fake data的脚本可以参考：<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/fake_data/gen_fake_data.py">gen_fake_data.py</a>。</p></li>
+</ul>
+</li>
+<li><p>在特定设备(CPU/GPU)上，跑通参考代码的预测过程(前向)以及至少2轮(iteration)迭代过程，保证后续基于PaddlePaddle复现论文过程中可对比。</p></li>
+<li><p>在复现的过程中，只需要将PaddlePaddle的复现代码以及打卡日志上传至github，不能在其中添加参考代码的实现，在验收通过之后，需要删除打卡日志。建议在初期复现的时候，就将复现代码与参考代码分成2个文件夹进行管理。</p></li>
+<li><p>飞桨训推一体认证 (Training and Inference Pipeline Certification, TIPC) 是一个针对飞桨模型的测试工具，方便用户查阅每种模型的训练推理部署打通情况，并可以进行一键测试。论文训练对齐之后，需要为代码接入TIPC基础链条测试文档与代码，关于TIPC基础链条测试接入规范的文档可以参考：<a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/tipc_test/development_specification_docs/train_infer_python.md">链接</a>。更多内容在<code class="docutils literal notranslate"><span class="pre">4.2</span></code>章节部分也会详细说明。</p></li>
+</ul>
+</section>
+</section>
+<section id="id6">
+<h2>2. 整体框图<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<p>可参考<a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/lwfx/ThesisReproduction_CV.md">cv部分</a></p>
+</section>
+<section id="id7">
+<h2>3. 论文复现理论知识<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<p>可参考<a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/lwfx/ThesisReproduction_CV.md">cv部分</a></p>
+</section>
+<section id="faq">
+<h2>4. 论文复现注意事项与FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">#</a></h2>
+<p>本部分主要总结大家在论文复现赛过程中遇到的问题，如果本章内容没有能够解决你的问题，欢迎给该文档提出优化建议或者给Paddle提<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/new/choose">ISSUE</a>。</p>
+<section id="id8">
+<h3>4.1 通用注意事项<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>常见问题和误区</p>
+<ul>
+<li><p>不要主动调参，目的是复现而不是提升精度</p></li>
+<li><p>不要加论文中没提到的模型结构</p></li>
+<li><p>数据和指标先行对齐</p></li>
+</ul>
+</li>
+<li><p>数据集获取</p>
+<ul>
+<li><p>PaddleRec提供了大量推荐数据集，可优先从<a class="reference external" href="https://github.com/PaddlePaddle/PaddleRec/tree/master/datasets">这里查找</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tipc">
+<h3>4.2 TIPC基础链条接入<a class="headerlink" href="#tipc" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<ul class="simple">
+<li><p>完成模型的训练、导出inference、基于PaddleInference的推理过程的文档与代码。参考链接：</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/deepinsight/insightface/blob/master/recognition/arcface_paddle/README_cn.md">insightface训练预测使用文档</a></p></li>
+<li><p><a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/05_inference_deployment/inference/inference_cn.html">PaddleInference使用文档</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleRec/blob/master/doc/inference.md">PaddleRecInference使用文档</a></p></li>
+</ul>
+</li>
+<li><p>基于<a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/tipc_test/development_specification_docs/train_infer_python.md">TIPC基础链条测试接入规范</a>，完成该模型的TIPC基础链条开发以及测试文档/脚本，目录为<code class="docutils literal notranslate"><span class="pre">test_tipc</span></code>，测试脚本名称为<code class="docutils literal notranslate"><span class="pre">test_train_inference_python.sh</span></code>，该任务中只需要完成<code class="docutils literal notranslate"><span class="pre">少量数据训练模型，少量数据预测</span></code>的模式即可，用于测试TIPC流程的模型和少量数据需要放在当前repo中。</p></li>
+</ul>
+<p><strong>【注意事项】</strong></p>
+<ul class="simple">
+<li><p>基础链条测试接入时，只需要验证<code class="docutils literal notranslate"><span class="pre">少量数据训练模型，少量数据预测</span></code>的模式，只需要在Linux下验证通过即可。</p></li>
+<li><p>在文档中需要给出一键测试的脚本与使用说明。</p></li>
+<li><p>接入TIPC功能是需安装<a class="reference external" href="https://paddleinference.paddlepaddle.org.cn/master/user_guides/download_lib.html#python">特定版本paddle</a>。</p></li>
+</ul>
+<p><strong>【实战】</strong></p>
+<p>TIPC基础链条测试接入用例可以参考：<a class="reference external" href="https://github.com/PaddlePaddle/PaddleRec/tree/master/test_tipc">PaddlRec TIPC基础链条测试开发文档</a>, <a class="reference external" href="https://github.com/deepinsight/insightface/blob/master/recognition/arcface_paddle/test_tipc/readme.md">InsightFace-paddle TIPC基础链条测试开发文档</a>。</p>
+<p><strong>【验收】</strong></p>
+<ul class="simple">
+<li><p>TIPC基础链条测试文档清晰，<code class="docutils literal notranslate"><span class="pre">test_train_inference_python.sh</span></code>脚本可以成功执行并返回正确结果。</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By isLinXu<br/>
+  
+      &copy; Copyright 2022, isLinXu.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

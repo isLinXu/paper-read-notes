@@ -1,0 +1,956 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>BLIP: Bootstrapping Language-Image Pre-training &#8212; 论文阅读笔记</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="shortcut icon" href="../../_static/panda.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models" href="blip-v2.html" />
+    <link rel="prev" title="多模态(MultiModal Machine Learning)" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">论文阅读笔记</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  目录
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Method/index.html">
+   论文阅读指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Method/efficent_read_paper.html">
+     高效阅读方法及流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Method/how_to_read_paper.html">
+     如何阅读论文
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Method/paper_10_question.html">
+     论文速读十问
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Method/read_important_tips.html">
+     读论文与口头报告的几项重点
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Method/reference.html">
+     参考材料
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../List/index.html">
+   论文阅读清单
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/basis.html">
+     神经网络基础(basis)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/attention.html">
+     注意力部分(attention)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/batch_normalization.html">
+     批量&amp;正则化(batch&amp;normalization)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/classification.html">
+     图像分类(CLAS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/convolutional.html">
+     高级卷积网络知识(Convolutional)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/gan.html">
+     AI合成部分(GAN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/nlp.html">
+     自然语言处理(NLP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/objectdetection.html">
+     目标检测(OBJ)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/rnn.html">
+     循环神经网络(RNN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/segementation.html">
+     目标分割(SEG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/multimodal.html">
+     多模态(MultiModal Learning)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../List/llm.html">
+     大语言模型(Large Language Models)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../index.html">
+   论文阅读笔记
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="index.html">
+     多模态(MultiModal Machine Learning)
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       BLIP: Bootstrapping Language-Image Pre-training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="blip-v2.html">
+       BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../llm/index.html">
+     大语言模型(Large Language Models)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../llm/opt.html">
+       OPT: OPT : Open Pre-trained Transformer Language Models
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../llm/gpt-v1.html">
+       GPT-v1:Improving Language Understanding by Generative Pre-Training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../llm/gpt-v2.html">
+       GPT-v2:Language Models are Unsupervised Multitask Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../llm/gpt-v3.html">
+       GPT-v3:Language Models are Few-Shot Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../llm/gpt-v4.html">
+       GPT-v4:GPT-4 Technical Report
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Read/index.html">
+   论文阅读记录
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Summary/index.html">
+   论文阅读总结
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes//issues/new?title=Issue%20on%20page%20%2FNotes/mm-l/blip-v1.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/edit/master/Notes/mm-l/blip-v1.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/Notes/mm-l/blip-v1.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   简述
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#web">
+   局限性：大多数模型缺乏灵活性，Web 数据嘈杂
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   解决方案
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#blip">
+   BLIP的工作原理
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   <strong>
+    模型架构
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#capfilt">
+   CapFilt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   <strong>
+    展望发展
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   <strong>
+    总结
+   </strong>
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>BLIP: Bootstrapping Language-Image Pre-training</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   简述
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#web">
+   局限性：大多数模型缺乏灵活性，Web 数据嘈杂
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   解决方案
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#blip">
+   BLIP的工作原理
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   <strong>
+    模型架构
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#capfilt">
+   CapFilt
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   <strong>
+    展望发展
+   </strong>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   <strong>
+    总结
+   </strong>
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="blip-bootstrapping-language-image-pre-training">
+<h1>BLIP: Bootstrapping Language-Image Pre-training<a class="headerlink" href="#blip-bootstrapping-language-image-pre-training" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<section id="id1">
+<h2>简述<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>​	视觉和语言是人类感知世界的两种最基本的方式，也是人工智能的两大基石。人工智能的一个长期目标是构建能够通过视觉和语言输入理解世界，并通过自然语言与人类交流的智能体。</p>
+<p>​	为了实现这一目标，<em><strong>视觉语言预训练</strong></em> 已成为一种有效的方法，其中深度神经网络模型在大规模图像文本数据集上进行预训练，以提高下游视觉语言任务的性能，例如 image-文本检索、图像字幕和视觉问答。</p>
+<p>​	简而言之，视觉语言预训练旨在利用图像文本数据教会模型共同理解视觉和文本信息的能力。<em>通过</em>预训练，模型在微调之前已经过<em>训练（微调⁄涉及使用来自下游任务的数据对预训练模型进行额外训练。）。<strong>如果没有预训练，模型需要在</strong>每个</em>下游任务上从头开始训练，这会导致性能下降。</p>
+<p>​	视觉语言预训练 (VLP, Vision-Language Pre-training) 提高了许多视觉语言任务的性能。然而，大多数现有的预训练模型仅在基于理解的任务或基于生成的任务中表现出色。此外，通过使用从网络收集的嘈杂图像文本对扩展数据集，性能的提高在很大程度上已经实现，这是次优的监督来源。</p>
+<p>​	在本文中，salesforce团队提出了<strong>BLIP</strong>，这是一种新的 VLP 框架，可以灵活地迁移到视觉语言理解和生成任务。BLIP 通过引导字幕有效地利用了嘈杂的网络数据，字幕生成器生成合成字幕，过滤器去除嘈杂的字幕。
+这项工作在广泛的视觉语言任务上取得了最先进的结果，例如<strong>图像文本检索(text retrieval)</strong>（+2.7% 的平均召回&#64;1）、<strong>图像字幕(image captioning)</strong>（+2. CIDEr 为 8%）和 <strong>VQA</strong>（VQA 分数为 +1.6%）。当以零样本的方式直接转移到视频语言任务时，BLIP 也表现出强大的泛化能力。</p>
+<ul class="simple">
+<li><p>代码、模型和数据集在 https://github.com/salesforce/BLIP 上发布。</p></li>
+</ul>
+</section>
+<section id="web">
+<h2>局限性：大多数模型缺乏灵活性，Web 数据嘈杂<a class="headerlink" href="#web" title="Permalink to this headline">#</a></h2>
+<p>尽管视觉语言预训练取得了巨大成功，但现有方法有两个主要<em>局限性</em>：</p>
+<ul class="simple">
+<li><p>从<em><strong>模型的</strong></em>角度来看，<em>大多数现有的预训练模型都不够灵活，无法适应广泛的视觉语言任务</em>。基于编码器的模型不太容易直接转移到文本生成任务，而编码器-解码器模型尚未成功用于图像-文本检索任务。</p></li>
+<li><p>从<em><strong>数据的</strong></em>角度来看，大多数模型都对从网络自动收集的图像和替代文本对进行预训练。然而，<em>网络文本往往不能准确描述图像的视觉内容</em>，使它们成为监督的<em>嘈杂</em>源。</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>解决方案<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>为了解决这些限制，我们提出了<strong>BLIP：Bootstrapping Language-Image Pre-training</strong> for unified vision-language understanding and generation。BLIP创新地引入了下面两项工作：</p>
+<ul class="simple">
+<li><p>一种<em>新的模型架构</em>，可以比现有方法实现<em>更广泛的下游任务，以及</em></p></li>
+<li><p>一种<em>新的数据集引导</em>方法，用于<em>从嘈杂的网络数据中学习</em>。</p></li>
+</ul>
+<p>BLIP在<strong>七项视觉语言任务</strong>上实现了最先进的性能，包括：</p>
+<ul class="simple">
+<li><p>图文检索</p></li>
+<li><p>图像说明</p></li>
+<li><p>视觉问答</p></li>
+<li><p>视觉推理</p></li>
+<li><p>视觉对话</p></li>
+<li><p>零样本文本视频检索</p></li>
+<li><p>零样本视频问答。</p></li>
+</ul>
+<p>首先，通过字幕生成任务中的一些示例来看一下BLIP是如何生成比以前最先进的模型更准确的字幕的：</p>
+<p><img alt="" src="Notes/mm-l/figures/blipv1_1.png" /></p>
+<blockquote>
+<div><p>图 1. 来自 COCO-Caption 的第一张图片（Karpathy 测试集）。(COCO_val2014_000000000042.jpg)</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Transformer</span> <span class="p">(</span><span class="n">Vaswani</span> <span class="n">et</span> <span class="n">al</span><span class="o">.</span><span class="p">,</span> <span class="mi">2017</span><span class="p">):</span> <span class="p">(</span><span class="n">B4</span><span class="p">:</span> <span class="mf">38.7</span><span class="p">)</span>
+<span class="n">caption</span><span class="p">:</span> <span class="n">a</span> <span class="n">dog</span> <span class="n">sitting</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">basket</span> <span class="k">with</span> <span class="n">shoes</span>
+<span class="n">AoANet</span> <span class="p">(</span><span class="n">Huang</span> <span class="n">et</span> <span class="n">al</span><span class="o">.</span><span class="p">,</span> <span class="mi">2019</span><span class="p">):</span> <span class="p">(</span><span class="n">B4</span><span class="p">:</span> <span class="mf">38.9</span><span class="p">)</span>
+<span class="n">caption</span><span class="p">:</span> <span class="n">a</span> <span class="n">stuffed</span> <span class="n">dog</span> <span class="n">laying</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">pile</span> <span class="n">of</span> <span class="n">shoes</span>
+<span class="n">OSCAR_Large</span> <span class="p">(</span><span class="n">Li</span> <span class="n">et</span> <span class="n">al</span><span class="o">.</span><span class="p">,</span> <span class="mi">2020</span><span class="p">):(</span><span class="n">B4</span><span class="p">:</span> <span class="mf">37.4</span><span class="p">)</span>
+<span class="n">caption</span><span class="p">:</span> <span class="n">a</span> <span class="n">close</span> <span class="n">up</span> <span class="n">of</span> <span class="n">a</span> <span class="n">dog</span> <span class="n">laying</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">basket</span>
+<span class="o">------</span> <span class="n">This</span> <span class="n">work</span> 
+<span class="n">BLIP_Large</span> <span class="p">(</span><span class="n">Li</span> <span class="n">et</span> <span class="n">al</span><span class="o">.</span><span class="p">,</span> <span class="mi">2022</span><span class="p">):</span> <span class="p">(</span><span class="n">B</span><span class="o">@</span><span class="mi">4</span><span class="p">:</span> <span class="mf">39.7</span><span class="p">)</span>
+<span class="n">caption</span> <span class="n">Beam</span> <span class="n">search</span><span class="p">:</span> <span class="n">a</span> <span class="n">dog</span> <span class="n">laying</span> <span class="n">on</span> <span class="n">top</span> <span class="n">of</span> <span class="n">a</span> <span class="n">pile</span> <span class="n">of</span> <span class="n">shoes</span>
+<span class="n">caption</span> <span class="n">Nucleus</span> <span class="n">Sampling</span><span class="p">:</span> <span class="n">a</span> <span class="n">dog</span> <span class="n">sleeping</span> <span class="n">inside</span> <span class="n">of</span> <span class="n">a</span> <span class="n">wire</span> <span class="n">basket</span>
+<span class="n">Human</span> <span class="n">annotation</span><span class="p">:</span> <span class="n">a</span> <span class="n">small</span> <span class="n">dog</span> <span class="ow">is</span> <span class="n">curled</span> <span class="n">up</span> <span class="n">on</span> <span class="n">top</span> <span class="n">of</span> <span class="n">the</span> <span class="n">shoes</span>
+</pre></div>
+</div>
+<p>相关材料：</p>
+<ul class="simple">
+<li><p>Web demo <a class="reference external" href="https://huggingface.co/spaces/Salesforce/BLIP">BLIP</a> (official)</p></li>
+<li><p>Colab demo <a class="reference external" href="https://colab.research.google.com/github/salesforce/BLIP/blob/main/demo.ipynb">demo</a>, (official)</p></li>
+<li><p>Colab <a class="reference external" href="https://colab.research.google.com/drive/1RNE_nxNrcDcSHSEiBLmMBmC40w9w_yE4?usp=sharing">colab</a> for multiple images with BLIP_Large, with Beam Search and Nucleus Sampling.</p></li>
+<li><p>Github Modified demo <a class="reference external" href="https://github.com/sabirdvd/BLIP_image_caption_demo">BLIP_image_caption_demo</a> that run locally in your machine.</p></li>
+<li><p>Youtube review — Yannic Kilcher <a class="reference external" href="https://www.youtube.com/watch?v=X2k7n4FuI7c">youtube</a>.</p></li>
+</ul>
+</section>
+<section id="blip">
+<h2>BLIP的工作原理<a class="headerlink" href="#blip" title="Permalink to this headline">#</a></h2>
+<p><em><strong>视觉语言理解和生成的统一模型</strong></em></p>
+<p>为了预训练具有理解和生成能力的统一视觉语言模型*，* BLIP 引入了<strong>编码器-解码器的多模式混合</strong>，这是一种可以在以下三种功能*之一中运行的多任务模型：</p>
+<ol class="arabic simple">
+<li><p><em><strong>Unimodal 编码器</strong></em>，分别对图像和文本进行编码。图像编码器是一个视觉转换器。文本编码器与 BERT 相同。[CLS] 标记附加到文本输入的开头以总结句子。</p></li>
+<li><p><em><strong>Image-grounded text encoder</strong></em>，它通过在自注意力层和文本编码器的每个转换器块的前馈网络之间插入一个交叉注意力层来注入视觉信息。特定于任务的 [Encode] 标记附加到文本，[Encode] 的输出嵌入用作图像-文本对的多模式表示。</p></li>
+<li><p><em><strong>Image-grounded text decoder</strong></em>，用因果自注意层替换文本编码器中的双向自注意层。特殊的 [Decode] 标记用于表示序列的开始。</p></li>
+</ol>
+<p>BLIP<em><strong>在预训练时联合优化了三个目标</strong></em>，有两个基于理解的目标（ITC，ITM）和一个基于生成的目标（LM）：</p>
+<ul class="simple">
+<li><p>**Image-Text Contrastive Loss (ITC)**激活单峰编码器。它旨在<em>通过鼓励正图像文本对与负图像文本对具有相似的表示来对齐视觉转换器和文本转换器的特征空间</em>。</p></li>
+<li><p>**Image-Text Matching Loss (ITM)**激活基于图像的文本编码器。ITM 是一项二元分类任务，要求<em>模型在</em>给定多模态特征的情况下预测图像-文本对是正（匹配）还是负（不匹配）。</p></li>
+<li><p>**语言建模损失 (LM)**激活基于图像的文本解码器，旨在<em>生成以图像为条件的文本描述</em>。</p></li>
+</ul>
+<p>在不同的下游任务上，我们微调预训练模型的不同路径以实现不同的目标，如下面的动画所示。</p>
+<p><em><strong>从嘈杂的图像文本对中引导字幕</strong></em></p>
+<p>视觉语言预训练依赖于从网络自动收集的大规模图像文本对。然而，文本往往不能准确描述图像的视觉内容，使其成为嘈杂的监督。</p>
+<p>为了解决这个问题，<em>我们通过引入两个模块来引导字幕</em>：一个<em><strong>字幕器</strong></em>和一个<em><strong>过滤器</strong></em>。</p>
+<ul class="simple">
+<li><p>字幕器是一个基于图像的文本解码器。给定网络图像，我们使用字幕生成合成字幕作为额外的训练样本。</p></li>
+<li><p>该过滤器是一个基于图像的文本<em>编码器</em>。它删除了与其相应图像不匹配的嘈杂字幕。</p></li>
+</ul>
+<p>接着看下模型架构：</p>
+</section>
+<section id="id3">
+<h2><strong>模型架构</strong><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>该模型使用 Vision Transformer ViT（<a class="reference external" href="https://arxiv.org/pdf/2010.11929.pdf">Dosovitskiy 等人，2021 年</a>）将输入图像分成多个块，并将它们编码为嵌入序列，并添加 [CLS] 令牌来表示地球图像特征。正如作者所提到的，ViT 使用较少的计算成本并且是一种直接的方法，并且正在被最近的方法采用。</p>
+<blockquote>
+<div><p>请注意，如图 2（下图）所示，大多数基于 Transformer 字幕生成和预训练语言和视觉的方法都使用预计算的特征边界框，这使得这些模型对任何域适应都不友好并且计算量大。例如，对于每张新图像，模型都需要预先计算这个外部特征。</p>
+<p>Caption Transformer（<a class="reference external" href="https://arxiv.org/pdf/1908.06954.pdf">Huang 等人，2019 年</a>；<a class="reference external" href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Cornia_Meshed-Memory_Transformer_for_Image_Captioning_CVPR_2020_paper.pdf">Cornia 等人，2020 年）</a>和预训练语言和视觉模型（OSCAR（<a class="reference external" href="https://arxiv.org/pdf/2004.06165.pdf">Li 等人，2020 年</a>）、UNITER（<a class="reference external" href="https://arxiv.org/pdf/1909.11740.pdf">Chen 等人，2020b</a>））。预计算功能，例如 Faster R-CNN（<a class="reference external" href="https://arxiv.org/pdf/1506.01497.pdf">Ren 等人，2016 年</a>）和 Buttom-up（安德森<a class="reference external" href="https://arxiv.org/pdf/1707.07998.pdf">等人，2018 年</a>）。</p>
+</div></blockquote>
+<p><img alt="" src="Notes/mm-l/figures/blipv1_2.png" /></p>
+<blockquote>
+<div><p>图 2. 当前预训练语言和视觉模型的局限性之一是该模型依赖于：</p>
+<ul class="simple">
+<li><p>(1) 在高质量人类注释字幕上进行训练的对象检测器。</p></li>
+<li><p>(2) 计算量大。</p></li>
+<li><p>(3) 需要预先计算这些特征，以便为任何新图像进行推理。</p></li>
+</ul>
+</div></blockquote>
+<p>为了能够训练/预训练这种用于理解和生成任务的模型，作者提出了一种<strong>编码</strong>器(<strong>E</strong>ncoder)和<strong>解码器</strong>(<strong>D</strong>ecoder)的多模型混合，它可以集成三个功能，如图 3（下图）所示：</p>
+<p><img alt="" src="Notes/mm-l/figures/blipv1_3.png" /></p>
+<blockquote>
+<div><p>图 3. BLIP 的预训练模型架构和目标（相同的参数具有相同的颜色）。所提出的编码器-解码器的多模式混合具有三个功能：</p>
+<ul class="simple">
+<li><p>(1)文本编码器（单模式编码器）使用图像文本对比（ITC）进行训练;</p></li>
+<li><p>(2)基于图像的文本编码器使用额外的交叉注意层来建模视觉-语言交互并使用图像-文本匹配 (ITM) 损失进行训练;</p></li>
+<li><p>(3) Image-grounded text decoder 用因果自注意层替换双向自注意层，并共享相同的交叉注意层和前馈网络作为编码器。</p></li>
+</ul>
+</div></blockquote>
+<p>下面针对上图，分别更详细地讨论每个部分：</p>
+<p><strong>(1) 单峰编码器。</strong></p>
+<p>该模型对文本和图像进行编码，如图 4（下图）所示。文本编码器与 BERT 相同，即 Mask Language Model (Devlin et al., 2019)，带有 [CLS] 标记以附加文本输入的开头以总结句子。</p>
+<p><img alt="" src="Notes/mm-l/figures/blipv1_4.png" /></p>
+<blockquote>
+<div><p>图 4.单峰编码器。编码器 使用图像-文本对比 (ITC) 损失进行训练，以对齐视觉和语言表示。</p>
+</div></blockquote>
+<p>Unimodal 编码器使用Image-Text Contrastive Loss (ITC)。这个想法是 在语义空间中对齐两个特征文本和图像。特别是，由于这项工作依赖于收缩学习，ITC 损失鼓励正图像文本对与负图像文本对具有相似的表示。这一观察是提高视觉和语言理解的有效目标，已在最近的工作 CLIP 中使用（<a class="reference external" href="https://arxiv.org/pdf/2103.00020.pdf">Radford 等人，2021 年</a>；<a class="reference external" href="https://arxiv.org/pdf/2201.12086.pdf">Li 等人，2021a</a>）。ITC 损失 ( <a class="reference external" href="https://arxiv.org/pdf/2201.12086.pdf">Li et al., 2021a</a> ) <a class="reference external" href="https://nips.cc/virtual/2021/poster/28238">฿</a>使用软标签作为训练目标来解释负对中的潜在正样本。</p>
+<blockquote>
+<div><p>ITC 损失是由同一作者提出的。正如作者在他们之前的工作中提到的，ITC 损失有三个目的：</p>
+<ul class="simple">
+<li><p>(1)它对齐图像特征和文本特征，使多模态编码器更容易执行跨模态学习；</p></li>
+<li><p>(2)它改进了单峰编码器以更好地理解图像和文本的语义；</p></li>
+<li><p>(3) 它学习一个共同的低维空间来嵌入图像和文本，这使得图像-文本匹配目标能够通过对比硬负挖掘找到更多信息样本。</p></li>
+</ul>
+<p>一般而言，所提出的称为<strong>AL</strong> ing <strong>BE</strong> for <strong>F</strong> use ALBEF 的模型使用三种损失</p>
+<ul class="simple">
+<li><p>（1）图像-文本对比损失（ITC），</p></li>
+<li><p>（2）掩码语言建模损失（MLM），以及</p></li>
+<li><p>（3）图像-文本匹配损失（ ITM）与动量蒸馏来学习 SOTA 表示，
+我们将在下面更详细地讨论。</p></li>
+</ul>
+</div></blockquote>
+<p>(2) 基于图像的文本编码器。</p>
+<p>编码器依赖于一个额外的交叉注意 (CA) 层（在文本编码器的每个转换器块的自注意 (SA) 层和前馈网络 (FFN) 之间），如下图 6 中的橙色所示. 编码器是特定于任务的，用于编码图像-文本对的多模式表示。</p>
+<p><img alt="" src="Notes/mm-l/figures/blipv1_6.png" /></p>
+<blockquote>
+<div><p>图 6.基于图像的文本编码器。编码器使用额外的交叉注意层来模拟视觉-语言交互，并使用图像-文本匹配 (ITM) 损失进行训练以区分正负图像-文本对。</p>
+</div></blockquote>
+<p>Image-grounded 文本编码器 使用Image-Text Matching Loss (ITM)。 ITM 旨在捕捉视觉和语言之间的细粒度对齐。ITM 是二元分类任务，其中模型预测匹配的正例和不匹配的负例对（即，模型充当过滤器）。请注意，为了增加负对，通过对比相似性使用硬负挖掘策略来匹配最相似的负对（Li 等人，2021a）。</p>
+<p>(3) 基于图像的文本解码器。</p>
+<p>该解码器使用因果自注意（如图 7 中绿色所示）层，这些层由双向自注意设置。因果自注意力用于预测生成任务中的下一个标记。</p>
+<p><img alt="" src="Notes/mm-l/figures/blipv1_7.png" /></p>
+<p>如上所述，为了在利用多任务学习的同时执行高效的预训练：</p>
+<ul class="simple">
+<li><p>文本编码器和文本解码器共享除自注意力层之外的所有参数（图 3 相同颜色表示共享参数）。原因是编码和解码任务之间的差异最好由自注意力层捕获。</p></li>
+<li><p>编码器采用双向自注意力来构建当前输入标记的表示，</p></li>
+<li><p>而解码器使用因果自注意力来预测下一个标记。</p></li>
+</ul>
+<p>因此，共享这些层可以提高训练效率，同时受益于多任务学习。</p>
+</section>
+<section id="capfilt">
+<h2>CapFilt<a class="headerlink" href="#capfilt" title="Permalink to this headline">#</a></h2>
+<p>由于人工注释的成本很高，只有有限的高质量人工注释图像对，如 COCO 标题，例如 COCO（Lin 等人，2014）。最近的工作（Li 等人，2021a）在很大程度上依赖于从网络中提取的噪声数据——网络抓取 (WS)。WS 过程是收集大量图像文本对的最快方式，无需人工参与。然而，由于数据是嘈杂的，例如，如下图 8（图像）所示的图像的错误描述，它会影响学习视觉语言对齐信号。</p>
+<p><img alt="" src="Notes/mm-l/figures/blipv1_8.png" /></p>
+<blockquote>
+<div><p>图 8. 来自网络的错误图像对（人工编写）。
+文字说明：从我家附近的桥上。（来自图 4 的图像）。</p>
+</div></blockquote>
+<p>为了解决这个问题，作者提出了字幕和过滤（CapFilt），这是一种提高文本语料库质量的新方法。图 9 给出了 CapFilt 的图示。它引入了两个模块：</p>
+<ul class="simple">
+<li><p>给定网络图像生成合成字幕的字幕<em>器。</em></p></li>
+<li><p>用于去除噪声图像-文本对的过滤<em>器</em>。</p></li>
+</ul>
+<p>字幕<strong>器</strong>和<strong>过滤器</strong>都是从相同的预训练 MED 模型（如上所述）初始化的，并在高质量人工注释的 COCO 数据集（人类数据将用作参考）上分别进行微调。</p>
+<p><img alt="" src="Notes/mm-l/figures/blipv1_9.png" /></p>
+<p>具体来说，如上图 9 所示，字幕器是一个<em>基于图像的文本解码器</em>（参见图 7）。它使用 LM 目标进行微调以解码给定图像的文本。</p>
+<p>(1) 给定网络图像$I_w$，字幕生成器生成合成字幕$T_s$，每个图像一个字幕。</p>
+<p>(2)<em>过滤器</em>是一个基于图像的文本编码器。它与 ITC 和 ITM 目标进行了微调，以了解文本是否与图像匹配。该过滤器去除了原始网络文本$T_w$和合成文本$T_s$中的噪声文本，如果 ITM 头预测文本与图像不匹配，则该文本被认为是噪声文本。</p>
+<p>(3) 最后，将上述所有内容组合起来（即过滤后的图像文本对与人工注释对）形成一个新的数据集，用于预训练新模型。</p>
+<p>预训练模型细节：</p>
+<ul class="simple">
+<li><p>图像转换器从 ImageNet 上预训练的 ViT 初始化（Touvron 等人，2020 年；Dosovitskiy 等人，2021 年），</p></li>
+<li><p>文本转换器从 BERT_base 初始化（Devlin 等人，2019）。</p></li>
+</ul>
+<p>ViT 有两种变体：ViT-B/16 和 ViT-L/16。</p>
+<ul class="simple">
+<li><p>AdamW (Loshchilov &amp; Hutter, 2017) 用作优化器，权重衰减为 0.05。学习率预热至 3e-4 (ViT-B) / 2e-4 (ViT-L) 并以 0.85 的速率线性衰减。</p></li>
+<li><p>在预训练期间使用分辨率为 224 × 224 的随机图像裁剪。但是，在微调期间使用了更高的图像分辨率 384 × 384。</p></li>
+</ul>
+<p>他们使用与 (Li et al. 2021a) 相同的预训练数据集：</p>
+<ul class="simple">
+<li><p>两个人类注释数据集 COCO 和 Visual Genome（Krishna 等人，2017）</p></li>
+<li><p>三个网络数据集 Conceptual Captions (Changpinyo et al., 2021)、Conceptual 12M (Changpinyo et al., 2021)、SBU captions (Ordonez et al., 2011)。</p></li>
+</ul>
+<p>CapFilt 的影响。</p>
+<p>CapFilt 字幕和从网络过滤噪声数据的想法可以打开大门以更高的精度缩放模型（图像-文本对之间的噪声信号更少）。使用 CapFilt 过滤掉嘈杂的网络数据可以更好地提高不同下游任务的性能，包括图像文本检索和具有微调和零镜头设置的图像字幕。此外，根据作者的说法，当仅将字幕或过滤器应用于具有 14M 图像的数据集时，可以观察到性能改进。</p>
+<p>多样性是合成字幕的关键。</p>
+<p>在 CapFilt 中，作者使用<strong>Nucleus 采样</strong>（<a class="reference external" href="https://arxiv.org/pdf/1904.09751.pdf">Holtzman 等人，2020 年</a>）<a class="reference external" href="https://iclr.cc/virtual_2020/poster_rygGQyrFvH.html">฿</a>生成合成字幕。Nucleus sampling 是一种随机解码方法，其中每个 token 是从一组累积概率质量超过阈值<em>p</em>（<em>p</em> = 0.9）的 token 中采样的。</p>
+<p>作者将其与波束搜索进行了比较，波束搜索是一种旨在以最高概率生成字幕的确定性解码方法。尽管核采样比束搜索更嘈杂，但它会生成更多样化的说明。集束搜索生成更安全的字幕，这些字幕在重复时很常见（集束搜索的缺点），因此提供的知识较少。简而言之，Nucleus 采样带来了明显更好的性能，尽管如图 10（图像）所示滤波器的更高噪声比表明噪声更大，但 Nucleus 采样生成了更多样化的说明：</p>
+<p><img alt="" src="Notes/mm-l/figures/blipv1_10.png" /></p>
+<blockquote>
+<div><p>图 10. Beam Search 和 Nucleus 采样之间的比较。
+Beam Search K=3：一个婴儿坐在高脚椅上吃蛋糕。
+Nucleus sampling：一个婴儿吃着他的生日蛋糕，和他妈妈坐在一起。</p>
+</div></blockquote>
+<p>核采样导致明显更好的性能，尽管滤波器的噪声比更高表明噪声更大，但结果与最终波束搜索相当
+作者假设原因是细胞核采样产生了更多样化和令人惊讶的说明，其中包含更多模型可以从中受益的新信息。另一方面，集束搜索倾向于生成数据集中常见的安全说明，因此提供的额外知识较少。</p>
+<p>预训练期间的参数共享和解耦。
+文本编码器和解码器共享除自注意力层之外的所有参数。
+对具有不同参数共享策略的预训练模型的评估，其中对 1400 万张带有网络文本的图像进行了预训练。结果表明，与不共享相比，共享除 Self Attention 之外的所有层会带来更好的性能，同时还可以减小模型大小，从而提高训练效率。如果共享自注意力层，由于编码任务和解码任务之间的冲突，模型的性能会下降。</p>
+</section>
+<hr class="docutils" />
+<section id="id4">
+<h2><strong>展望发展</strong><a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<p>BLIP 研究对 AI 及其他领域都有好处：</p>
+<ul class="simple">
+<li><p>人工智能的好处：BLIP 对人工智能的贡献包括：</p>
+<ul>
+<li><p>为统一的基于图像的文本理解和生成任务生成最先进的视觉语言预训练模型</p></li>
+<li><p>引入了一个从嘈杂的网络数据中学习的新框架</p>
+<ul>
+<li><p>通过以下方式处理噪音：</p>
+<ul>
+<li><p>生成合成字幕作为额外的训练样本</p></li>
+<li><p>去除嘈杂的字幕</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><em>更广泛的（一般）影响</em>：BLIP 可以使广泛的下游应用程序具有更好的视觉语言智能，例如电子商务平台中的产品推荐和分类。</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2><strong>总结</strong><a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>视觉语言研究是：</p>
+<ul>
+<li><p>一个核心人工智能问题，因为视觉和语言是世界上两种基本的信息形式</p></li>
+<li><p>一个重要的应用领域，因为许多工业 AI 应用程序都由视觉语言智能提供支持。</p></li>
+</ul>
+</li>
+<li><p>本文使用框架称为 BLIP，介绍了：</p>
+<ul>
+<li><p>一种新的模型架构，可实现比现有方法更广泛的下游任务</p></li>
+<li><p>一种新的数据集引导方法，用于从嘈杂的网络数据中学习。</p></li>
+</ul>
+</li>
+<li><p>BLIP 框架为深度学习和 AI 做出了宝贵贡献：</p>
+<ul>
+<li><p>为统一的基于图像的文本理解和生成任务生成最先进的视觉语言预训练模型</p></li>
+<li><p>BLIP 从嘈杂的网络数据中学习的新框架很有价值，因为网络收集的图像描述通常不准确 - 即嘈杂。</p></li>
+<li><p>提供简单、灵活且功能强大的视觉语言模型，可以端到端地进行微调</p>
+<ul>
+<li><p>我们对预训练模型的不同路径进行微调，以在不同的下游任务上实现不同的目标</p></li>
+</ul>
+</li>
+<li><p>在图像文本检索、图像字幕、视觉问答、视觉推理和视觉对话方面实现了最先进的性能。</p></li>
+<li><p>当以零样本的方式直接转移到视频语言任务时，表现出很强的泛化能力。</p></li>
+</ul>
+</li>
+<li><p>BLIP 还提供更广泛的好处：</p>
+<ul>
+<li><p>使广泛的下游应用具有更好的视觉语言智能，例如电子商务平台中的产品推荐和分类。</p></li>
+</ul>
+</li>
+<li><p>演示示例显示 BLIP 可以：</p>
+<ul>
+<li><p>生成准确详细的图像说明</p></li>
+<li><p>为各种问题生成准确的答案。</p></li>
+</ul>
+</li>
+</ul>
+<p>这项工作提出了一种视觉和语言预训练框架（VLP）（训练技术和预训练模型），它在广泛的下游视觉语言任务上实现了最先进的性能，包括理解和基于生成的任务。此外，他们克服了当前最先进技术所面临的三个限制：</p>
+<ul class="simple">
+<li><p>(1) 视觉块依赖于（见图 2）预先训练的对象检测器来提取预先计算的特征。此外，目标检测器需要边界框人工标注，这是昂贵的。此外，提取的特征在计算上是昂贵的，并且在推理过程中任何新图像都需要它。</p></li>
+<li><p>(2) 从不同的语义空间中提取词嵌入和标题特征。</p></li>
+<li><p>(3) 目前的对比学习方法使用从网络收集的非常嘈杂的数据，这会影响 (1) 准确性和 (2) 增加模型参数/图像，性能略好（如表 2 Lemon 所示，只有 71M 额外图像B&#64;4) 的 0.6 改进)。</p></li>
+</ul>
+<p>通过解决这些限制，所提出的模型可以:</p>
+<ul class="simple">
+<li><p>(1) 易于适应任何下游任务；</p></li>
+<li><p>(2) 需要更少的训练示例，图像噪声更少，精度更高。</p></li>
+</ul>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">多模态(MultiModal Machine Learning)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="blip-v2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By isLinXu<br/>
+  
+      &copy; Copyright 2022, isLinXu.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

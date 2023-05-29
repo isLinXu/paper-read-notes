@@ -1,0 +1,1209 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>模型工程落地赛指南 &#8212; 论文阅读笔记</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="shortcut icon" href="../_static/panda.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">论文阅读笔记</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  目录
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Method/index.html">
+   论文阅读指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/efficent_read_paper.html">
+     高效阅读方法及流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/how_to_read_paper.html">
+     如何阅读论文
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/paper_10_question.html">
+     论文速读十问
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/read_important_tips.html">
+     读论文与口头报告的几项重点
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/reference.html">
+     参考材料
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../List/index.html">
+   论文阅读清单
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/basis.html">
+     神经网络基础(basis)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/attention.html">
+     注意力部分(attention)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/batch_normalization.html">
+     批量&amp;正则化(batch&amp;normalization)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/classification.html">
+     图像分类(CLAS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/convolutional.html">
+     高级卷积网络知识(Convolutional)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/gan.html">
+     AI合成部分(GAN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/nlp.html">
+     自然语言处理(NLP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/objectdetection.html">
+     目标检测(OBJ)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/rnn.html">
+     循环神经网络(RNN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/segementation.html">
+     目标分割(SEG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/multimodal.html">
+     多模态(MultiModal Learning)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/llm.html">
+     大语言模型(Large Language Models)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Notes/index.html">
+   论文阅读笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Notes/mm-l/index.html">
+     多模态(MultiModal Machine Learning)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/mm-l/blip-v1.html">
+       BLIP: Bootstrapping Language-Image Pre-training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/mm-l/blip-v2.html">
+       BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Notes/llm/index.html">
+     大语言模型(Large Language Models)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/opt.html">
+       OPT: OPT : Open Pre-trained Transformer Language Models
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v1.html">
+       GPT-v1:Improving Language Understanding by Generative Pre-Training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v2.html">
+       GPT-v2:Language Models are Unsupervised Multitask Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v3.html">
+       GPT-v3:Language Models are Few-Shot Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v4.html">
+       GPT-v4:GPT-4 Technical Report
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Read/index.html">
+   论文阅读记录
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Summary/index.html">
+   论文阅读总结
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes//issues/new?title=Issue%20on%20page%20%2FImplementation/engineeringlandingcomp.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/edit/master/Implementation/engineeringlandingcomp.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Implementation/engineeringlandingcomp.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1. 背景
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2. 系统框图
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.1 任务概览
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   3. 模型合入官方套件
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     3.1 简介
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     3.2 具体内容
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     3.3 验收方法
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   4. 模型工程落地赛
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tipc">
+     4.1 增加TIPC基础链条支持
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       4.1.1 简介
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       4.1.2 具体内容
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id12">
+       4.1.3 验收方法
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paddle-serving">
+     4.2 Paddle Serving服务化部署
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id13">
+       4.2.1 简介
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id14">
+       4.2.2 具体内容
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id15">
+       4.2.3 验收方法
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     4.3 模型轻量化骨干网络验证
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id17">
+       4.3.1 简介
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id18">
+       4.3.2 具体内容
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id19">
+       4.3.3 轻量化网络选型和特征抽取选型
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id20">
+       4.3.4 验收方法
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#faq">
+   5. 模型工程落地赛注意事项与FAQ
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     5.1 通用问题
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     5.2 模型合入官方套件
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     5.3 TIPC基础链条预测
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id24">
+     5.4 Paddle Serving服务化部署
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id25">
+     5.5 轻量化骨干网络验证
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>模型工程落地赛指南</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1. 背景
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2. 系统框图
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     2.1 任务概览
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   3. 模型合入官方套件
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     3.1 简介
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     3.2 具体内容
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     3.3 验收方法
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id9">
+   4. 模型工程落地赛
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tipc">
+     4.1 增加TIPC基础链条支持
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       4.1.1 简介
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       4.1.2 具体内容
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id12">
+       4.1.3 验收方法
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paddle-serving">
+     4.2 Paddle Serving服务化部署
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id13">
+       4.2.1 简介
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id14">
+       4.2.2 具体内容
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id15">
+       4.2.3 验收方法
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     4.3 模型轻量化骨干网络验证
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id17">
+       4.3.1 简介
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id18">
+       4.3.2 具体内容
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id19">
+       4.3.3 轻量化网络选型和特征抽取选型
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id20">
+       4.3.4 验收方法
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#faq">
+   5. 模型工程落地赛注意事项与FAQ
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     5.1 通用问题
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     5.2 模型合入官方套件
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     5.3 TIPC基础链条预测
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id24">
+     5.4 Paddle Serving服务化部署
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id25">
+     5.5 轻量化骨干网络验证
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1>模型工程落地赛指南<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#1">1. 背景</a></p></li>
+<li><p>\2. 系统框图</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#2.1">2.1 任务概览</a></p></li>
+</ul>
+</li>
+<li><p>\3. 模型合入官方套件</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#3.1">3.1 简介</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#3.2">3.2 具体内容</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#3.3">3.3 验收方法</a></p></li>
+</ul>
+</li>
+<li><p>\4. 模型工程落地赛</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#4.1">4.1 增加TIPC基础链条支持</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#4.2">4.2 Paddle Serving服务化部署</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#4.3">4.3 模型轻量化骨干网络验证</a></p></li>
+</ul>
+</li>
+<li><p>\5. 模型工程落地赛FAQ</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#5.1">5.1 通用问题</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#5.2">5.2 模型合入官方套件</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/5.3">5.3 TIPC基础链条预测</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#5.4">5.4 Paddle Serving服务化部署</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/5.5">5.5 轻量化骨干网络验证</a></p></li>
+</ul>
+</li>
+</ul>
+<section id="id2">
+<h2>1. 背景<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>飞桨除了基本的模型训练和预测，还提供了支持多端多平台的高性能推理部署工具。希望通过模型工程落地赛指南，完成以下2个目标。</p>
+<ul class="simple">
+<li><p>保证飞桨训推一体这样一个复杂系统工程的可靠性：软件环境、硬件版本复杂多变，通过训推一体链条基础链条，保证模型基础训练预测功能的可靠性。</p></li>
+<li><p>保证飞桨训推一体功能完备性：作为产业级深度学习平台，PaddlePaddle希望模型可以被更多的开发者在实际的使用场景中使用。提供了训推一体的pipeline，方便用户查询部署支持情况：python、C++、lite、serving、各种硬件，进而可以选择合适的部署方案。</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/images/framework_tipc.png"><img alt="img" src="https://github.com/PaddlePaddle/models/raw/release/2.2/docs/lwfx/images/framework_tipc.png" /></a></p>
+<p>官网链接：<a class="reference external" href="https://www.paddlepaddle.org.cn/wholechain">飞桨训练推理部署导航</a></p>
+</section>
+<section id="id3">
+<h2>2. 系统框图<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<section id="id4">
+<h3>2.1 任务概览<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p>工程落地赛包含以下2种方式。</p>
+<ol class="arabic simple">
+<li><p>合入官方套件：按照规范，将模型合入官方套件。</p></li>
+<li><p>模型工程落地赛：需要完成下面3个任务中的若干项。</p>
+<ul class="simple">
+<li><p>增加TIPC基础链条支持。</p></li>
+<li><p>PaddleServing服务化部署。</p></li>
+<li><p>轻量化骨干网络验证。</p></li>
+</ul>
+</li>
+</ol>
+<p>对于每篇论文，需要根据特定要求的步骤完成要求的过程。</p>
+</section>
+</section>
+<section id="id5">
+<h2>3. 模型合入官方套件<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<section id="id6">
+<h3>3.1 简介<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<p>将开发者经过整理且符合规范的代码合入到官方套件，可以进一步提升个人影响力以及代码文档的规范性，同时也可以增加官方套件的丰富性。</p>
+</section>
+<section id="id7">
+<h3>3.2 具体内容<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<p>按照官方套件的代码规范，将复现的论文适配到对应的套件中。各个repo的代码贡献指南以及参考PR如下所示。</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>官方套件</p></th>
+<th class="head"><p>贡献代码指南</p></th>
+<th class="head"><p>示例代码链接</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleClas">PaddleClas</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleClas/blob/develop/docs/zh_CN/advanced_tutorials/how_to_contribute.md">贡献指南</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleClas/pull/685">Swin Transformer PR</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleDetection">PaddleDetection</a></p></td>
+<td><p>PaddleDetection源码解析<a class="reference external" href="https://aistudio.baidu.com/aistudio/projectdetail/1327454">1</a>, <a class="reference external" href="https://aistudio.baidu.com/aistudio/projectdetail/1422393">2</a>, <a class="reference external" href="https://aistudio.baidu.com/aistudio/projectdetail/1422430">3</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleDetection/pull/4098">CenterNet PR</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleSeg">PaddleSeg</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleSeg/blob/release/2.3/docs/pr/pr/style_cn.md">PaddleSeg模型开发文档</a>，<a class="reference external" href="https://github.com/PaddlePaddle/PaddleSeg/blob/release/2.3/docs/pr/pr/pr.md">PaddleSeg代码提交流程与规范</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleSeg/pull/1416">SegNet PR</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleOCR">PaddleOCR</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleOCR/blob/dygraph/doc/doc_ch/add_new_algorithm.md">如何新增算法</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleOCR/pull/3376/files">PseNet PR</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleVideo">PaddleVideo</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleVideo/blob/develop/docs/zh-CN/contribute/add_new_algorithm.md">新增算法指南</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleVideo/pull/257">示例PR链接</a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleGAN">PaddleGAN</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleGAN/blob/develop/docs/en_US/contribute.md">贡献指南</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleGAN/pull/426">PAN PR</a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleRec">PaddleRec</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleRec/blob/master/doc/contribute.md">贡献指南</a></p></td>
+<td><p><a class="reference external" href="https://github.com/PaddlePaddle/PaddleRec/pull/321">DeepFM PR</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="id8">
+<h3>3.3 验收方法<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<p>按照官方套件的代码贡献指南，提交代码，提供PR链接，由Paddle官方同学review，选手根据review意见进行修改与完善。代码合入后即认为验收通过。</p>
+</section>
+</section>
+<section id="id9">
+<h2>4. 模型工程落地赛<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<section id="tipc">
+<h3>4.1 增加TIPC基础链条支持<a class="headerlink" href="#tipc" title="Permalink to this headline">#</a></h3>
+<section id="id10">
+<h4>4.1.1 简介<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h4>
+<p>飞桨除了基本的模型训练和预测，还提供了支持多端多平台的高性能推理部署工具。本文档以Arcface为例，展示了 PaddlePaddle 模型的飞桨训推一体认证 (Training and Inference Pipeline Certification(TIPC)) 信息和测试工具，方便用户查阅每种模型的训练推理部署打通情况，并可以进行一键测试。</p>
+</section>
+<section id="id11">
+<h4>4.1.2 具体内容<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>完成模型的模型动转静、Inference推理过程的文档与代码。参考链接：</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/tipc/train_infer_python/README.md">Linux GPU/CPU 推理功能开发文档</a></p></li>
+</ul>
+</li>
+<li><p>完成模型的训练推理测试开发过程，参考链接：</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/tipc/train_infer_python/test_train_infer_python.md">Linux GPU/CPU 基础训练推理测试开发文档</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id12">
+<h4>4.1.3 验收方法<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h4>
+<p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/tipc/train_infer_python/README.md">Linux GPU/CPU 基础训练推理开发文档</a>中<code class="docutils literal notranslate"><span class="pre">第3章</span></code>和<code class="docutils literal notranslate"><span class="pre">第4章</span></code>的所有核验点满足要求。</p>
+</section>
+</section>
+<section id="paddle-serving">
+<h3>4.2 Paddle Serving服务化部署<a class="headerlink" href="#paddle-serving" title="Permalink to this headline">#</a></h3>
+<section id="id13">
+<h4>4.2.1 简介<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h4>
+<p>Paddle Serving 旨在帮助深度学习开发者轻易部署在线预测服务。目标是：当用户使用 Paddle 训练了一个深度神经网络，就同时拥有了该模型的预测服务。</p>
+</section>
+<section id="id14">
+<h4>4.2.2 具体内容<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>完成基于该模型的Serving服务化部署，提供相应的说明文档。参考链接：</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/tipc/serving/serving.md">Linux GPU/CPU 服务化部署功能开发文档</a></p></li>
+</ul>
+</li>
+<li><p>完成基于该模型的Serving服务化部署测试开发，并提供相应的文档。参考链接：</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/tipc/serving/test_serving.md">Linux GPU/CPU 服务化部署测试开发文档</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id15">
+<h4>4.2.3 验收方法<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h4>
+<p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/tipc/serving/README.md">Linux GPU/CPU 服务化部署开发文档</a>中<code class="docutils literal notranslate"><span class="pre">第2章</span></code>和<code class="docutils literal notranslate"><span class="pre">第3章</span></code>的所有核验点满足要求。</p>
+</section>
+</section>
+<section id="id16">
+<h3>4.3 模型轻量化骨干网络验证<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<section id="id17">
+<h4>4.3.1 简介<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h4>
+<p>作为产业结合的深度学习框架，PaddlePaddle希望被更多用户在实际的场景中应用，但是大部分论文都是基于相对较大的骨干网络进行实验，如VGG、ResNet等，本部分希望通过更换骨干网络，让模型轻量化，方便实际部署过程。</p>
+</section>
+<section id="id18">
+<h4>4.3.2 具体内容<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>分别更换模型的骨干网络为MobileNetV1_x1_0，MobileNetV3_large_x1_0，MobileNetV3_small_x1_0，ShuffleNetV2_x1_0并进行训练，记录精度、训练结果模型，保存日志文件。</p></li>
+<li><p>将更换骨干网络产出的4个模型接入<code class="docutils literal notranslate"><span class="pre">TIPC基础训练推理测试链条</span></code>，并将测试文档和测试脚本放置在<code class="docutils literal notranslate"><span class="pre">test_tipc</span></code>目录中。</p></li>
+</ul>
+</section>
+<section id="id19">
+<h4>4.3.3 轻量化网络选型和特征抽取选型<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>网络选型：本期工程落地赛中，选取的轻量化骨干网络在ImageNet1k验证集上的精度以及模型大小如下所示。</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>网络</p></th>
+<th class="head"><p>ImageNet TOP1 ACC</p></th>
+<th class="head"><p>模型大小</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>MobileNetV1_x1_0</p></td>
+<td><p>0.7099</p></td>
+<td><p>24MB</p></td>
+</tr>
+<tr class="row-odd"><td><p>MobileNetV3_large_x1_0</p></td>
+<td><p>0.7530</p></td>
+<td><p>32MB</p></td>
+</tr>
+<tr class="row-even"><td><p>MobileNetV3_small_x1_0</p></td>
+<td><p>0.6820</p></td>
+<td><p>17MB</p></td>
+</tr>
+<tr class="row-odd"><td><p>ShuffleNetV2_x1_0</p></td>
+<td><p>0.6880</p></td>
+<td><p>12MB</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>特征图抽取</p></li>
+</ul>
+<p>对于检测，分割等CV任务，在backbone阶段一般输出<code class="docutils literal notranslate"><span class="pre">3~4</span></code>个特征图，分别在backbone输出shape为输入shape的<code class="docutils literal notranslate"><span class="pre">1/4</span></code>, <code class="docutils literal notranslate"><span class="pre">1/8</span></code>, <code class="docutils literal notranslate"><span class="pre">1/16</span></code> 和 <code class="docutils literal notranslate"><span class="pre">1/32</span></code> 处，在进行接入时，可以逐层打印网络的输出shape。 如PaddleDetection里MobileNetV3_large_x1_0，当输入为 <code class="docutils literal notranslate"><span class="pre">[1,3,640,640]</span></code> 时，输出的shape如下。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span><span class="p">:</span> <span class="mi">2</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span> <span class="mi">320</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">3</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">160</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">4</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">160</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">5</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">6</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">7</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">8</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">9</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">10</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">11</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">12</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">13</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">112</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">14</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">15</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">idx</span><span class="p">:</span> <span class="mi">16</span> <span class="n">shape</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>各个阶段特征图和idx对应关系如下，各个特征图大小对应的idx分别有很多个，通常取最后一个idx即为传入网络的idx，这里为[4, 7, 13, 16]。</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>特征图大小</p></th>
+<th class="head"><p>对应的idx</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1/4</p></td>
+<td><p>[3,4]</p></td>
+</tr>
+<tr class="row-odd"><td><p>1/8</p></td>
+<td><p>[5,6,7]</p></td>
+</tr>
+<tr class="row-even"><td><p>1/16</p></td>
+<td><p>[8,9,10,11,12,13]</p></td>
+</tr>
+<tr class="row-odd"><td><p>1/32</p></td>
+<td><p>[14,15,16]</p></td>
+</tr>
+</tbody>
+</table>
+<p>示例代码：<a class="reference external" href="https://github.com/PaddlePaddle/PaddleDetection/blob/develop/configs/centernet/README_cn.md">PaddleDetection CenterNet文档和配置</a></p>
+</section>
+<section id="id20">
+<h4>4.3.4 验收方法<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>更换骨干网络，填写上表中详细内容，提交训练代码、不同骨干网络下的训练日志以及结果表格。</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>骨干网络</p></th>
+<th class="head"><p>模型指标</p></th>
+<th class="head"><p>模型训练超参(有变化时需要说明)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>原始论文</p></td>
+<td><p>37.4</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>MobileNetV1_x1_0</p></td>
+<td><p>28.2</p></td>
+<td><p>batchsize=32</p></td>
+</tr>
+<tr class="row-even"><td><p>MobileNetV3_large_x1_0</p></td>
+<td><p>27.1</p></td>
+<td><p>batchsize=32</p></td>
+</tr>
+<tr class="row-odd"><td><p>MobileNetV3_small_x1_0</p></td>
+<td><p>17.0</p></td>
+<td><p>batchsize=32</p></td>
+</tr>
+<tr class="row-even"><td><p>ShuffleNetV2_x1_0</p></td>
+<td><p>23.8</p></td>
+<td><p>batchsize=32</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>文件夹<code class="docutils literal notranslate"><span class="pre">test_tipc</span></code>目录中，参考<a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/tipc/train_infer_python/test_train_infer_python.md">基础训练推理测试开发文文档</a>，为不同骨干网络对应的模型添加全流程测试代码与文档。</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="faq">
+<h2>5. 模型工程落地赛注意事项与FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">#</a></h2>
+<section id="id21">
+<h3>5.1 通用问题<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>如果在任何阶段，报错信息提示为Paddle导致，可以给Paddle提<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/new/choose">ISSUE</a>，获得研发同学高优支持。</p></li>
+</ul>
+</section>
+<section id="id22">
+<h3>5.2 模型合入官方套件<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>合入的过程中，如果有代码方面的问题，可以在对应模型套件的repo下面新建ISSUE，注明目前的具体问题，标题中补充<code class="docutils literal notranslate"><span class="pre">【工程落地赛】</span></code>。</p></li>
+</ul>
+</section>
+<section id="id23">
+<h3>5.3 TIPC基础链条预测<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>动转静遇到问题时的调试方法：<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/guides/04_dygraph_to_static/debugging_cn.html">动态图转静态图调试方法教程</a></p></li>
+</ul>
+</section>
+<section id="id24">
+<h3>5.4 Paddle Serving服务化部署<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>如果发送请求后没有结果返回或者提示输出解码报错，可能是因为：</p>
+<ul class="simple">
+<li><p>启动服务和发送请求时不能设置代理，可以在启动服务前和发送请求前关闭代理，关闭代理的命令是：</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unset</span> <span class="n">https_proxy</span>
+<span class="n">unset</span> <span class="n">http_proxy</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id25">
+<h3>5.5 轻量化骨干网络验证<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>该工程落地项主要是为验证CV任务中的骨干网络，下面一些任务不需要验证该项。</p>
+<ul>
+<li><p>NLP任务</p></li>
+<li><p>图像分类任务</p></li>
+<li><p>非模型训练任务（模型可视化等）</p></li>
+<li><p>对抗攻击网络</p></li>
+<li><p>更多…</p></li>
+</ul>
+</li>
+<li><p>骨干网络的实现与预训练模型可以从<a class="reference external" href="https://github.com/PaddlePaddle/PaddleClas">PaddleClas</a>中获得，预训练模型的下载地址在骨干网络实现的文件中可以获得，以<code class="docutils literal notranslate"><span class="pre">MobileNetV3_large_x1_0</span></code>为例，预训练模型下载地址对应的内容为：<a class="reference external" href="https://github.com/PaddlePaddle/PaddleClas/blob/323e1bf929397be30171ee00d2b2dd19d86d20c4/ppcls/arch/backbone/legendary_models/mobilenet_v3.py#L25">链接</a>，定义的时候，指定<code class="docutils literal notranslate"><span class="pre">pretrained</span></code>参数为<code class="docutils literal notranslate"><span class="pre">True</span></code>即可加载预训练模型。</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By isLinXu<br/>
+  
+      &copy; Copyright 2022, isLinXu.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

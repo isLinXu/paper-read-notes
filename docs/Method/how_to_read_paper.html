@@ -1,0 +1,730 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>如何阅读论文 &#8212; 论文阅读笔记</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="shortcut icon" href="../_static/panda.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="论文速读十问" href="paper_10_question.html" />
+    <link rel="prev" title="高效阅读方法及流程" href="efficent_read_paper.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">论文阅读笔记</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  目录
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   论文阅读指南
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="efficent_read_paper.html">
+     高效阅读方法及流程
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     如何阅读论文
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="paper_10_question.html">
+     论文速读十问
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="read_important_tips.html">
+     读论文与口头报告的几项重点
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="reference.html">
+     参考材料
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../List/index.html">
+   论文阅读清单
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/basis.html">
+     神经网络基础(basis)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/attention.html">
+     注意力部分(attention)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/batch_normalization.html">
+     批量&amp;正则化(batch&amp;normalization)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/classification.html">
+     图像分类(CLAS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/convolutional.html">
+     高级卷积网络知识(Convolutional)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/gan.html">
+     AI合成部分(GAN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/nlp.html">
+     自然语言处理(NLP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/objectdetection.html">
+     目标检测(OBJ)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/rnn.html">
+     循环神经网络(RNN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/segementation.html">
+     目标分割(SEG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/multimodal.html">
+     多模态(MultiModal Learning)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/llm.html">
+     大语言模型(Large Language Models)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Notes/index.html">
+   论文阅读笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Notes/mm-l/index.html">
+     多模态(MultiModal Machine Learning)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/mm-l/blip-v1.html">
+       BLIP: Bootstrapping Language-Image Pre-training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/mm-l/blip-v2.html">
+       BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Notes/llm/index.html">
+     大语言模型(Large Language Models)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/opt.html">
+       OPT: OPT : Open Pre-trained Transformer Language Models
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v1.html">
+       GPT-v1:Improving Language Understanding by Generative Pre-Training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v2.html">
+       GPT-v2:Language Models are Unsupervised Multitask Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v3.html">
+       GPT-v3:Language Models are Few-Shot Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v4.html">
+       GPT-v4:GPT-4 Technical Report
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Read/index.html">
+   论文阅读记录
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Summary/index.html">
+   论文阅读总结
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes//issues/new?title=Issue%20on%20page%20%2FMethod/how_to_read_paper.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/edit/master/Method/how_to_read_paper.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Method/how_to_read_paper.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1、三步法
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step1">
+     Step1第一步
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step2">
+     Step2第二步
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step3">
+     Step3 第三步
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2、进行文献调查
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>如何阅读论文</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1、三步法
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step1">
+     Step1第一步
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step2">
+     Step2第二步
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step3">
+     Step3 第三步
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2、进行文献调查
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1>如何阅读论文<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>下面介绍了<strong>三步阅读法</strong>及其在⽂献综述中的应⽤。</p>
+<section id="id2">
+<h2>1、三步法<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>关键思想是你应该阅读这篇论⽂最多三遍，⽽不是从头开始读
+到最后。每次通过都实现特定⽬标并建⽴在前⼀次通过的基础
+上：</p>
+<ul class="simple">
+<li><p>第⼀步：对这篇论⽂有⼀个⼤概的了解。</p></li>
+<li><p>第二步：掌握论⽂的内容，但不是它的细节。</p></li>
+<li><p>第三步：深⼊理解论⽂。</p></li>
+</ul>
+<section id="step1">
+<h3>Step1第一步<a class="headerlink" href="#step1" title="Permalink to this headline">#</a></h3>
+<p>第一步是快速扫描以获得论文的鸟瞰图或概览。你可以绝对是否需要进行更多遍，如果有遇到理解难点的话。这个过程大约需要用到五到十分钟，包括以下步骤：</p>
+<ul class="simple">
+<li><p>1.仔细阅读题目、摘要、引言。</p></li>
+<li><p>2.阅读章节和子章节的标题，但忽略其他的一切细节。</p></li>
+<li><p>3.阅读结论。</p></li>
+<li><p>4.浏览参考文献，勾选你已经读过的。</p></li>
+</ul>
+<p>在第一遍结束时，你应该能够回答：</p>
+<ul class="simple">
+<li><p>1.类别：这是什么论文？对现有系统的分析？是否有研究原型的描述？</p></li>
+<li><p>2.语境：它与哪些论文有关？使用了哪些理论基础来分析问题？</p></li>
+<li><p>3.正确性：这些假设看起来是否有效？</p></li>
+<li><p>4.投稿：这篇论文的摘要贡献是什么？</p></li>
+<li><p>5.判断：论文写的好吗？</p></li>
+</ul>
+<p>使用这些信息，你可以选择不再继续阅读。这可能是因为你对这篇论文不感兴趣，或者你对该领域的了解不足以理解这篇论文，或者是作者做出了无效的假设。对于不属于你研究领域的论文，第一篇阅读就足够了，但有朝一日可能会证明这篇工作是相关的。</p>
+<blockquote>
+<div><p>顺便说⼀下，当你写⼀篇论⽂时，你可以期望⼤多数审稿⼈（和读者）只通过⼀次交流。注意选择连贯的章节和⼦章节标题，并撰写简洁⽽全⾯的摘要。如果审稿⼈在通过⼀次后仍⽆法理解要点，则该论⽂很可能会被拒绝；如果读者在五分钟后仍⽆法理解论⽂的要点，那么这篇论⽂很可能永远不会被阅读。</p>
+</div></blockquote>
+</section>
+<section id="step2">
+<h3>Step2第二步<a class="headerlink" href="#step2" title="Permalink to this headline">#</a></h3>
+<p>在第⼆遍中，更仔细地阅读论⽂，但忽略证据等细节。
+在阅读时，记下关键点或在空⽩处发表评论会有所帮助。</p>
+<ul class="simple">
+<li><p>1.仔细阅读论⽂中的图形、图表和其他插图。特别注意图表。
+轴是否正确标记？
+显⽰的结果是否带有误差条，以便结论具有统计意义？
+像这样的常⻅错误会使匆忙、粗制滥造的⼯作与真正优秀的⼯作区分开来。</p></li>
+<li><p>2.记得标记相关的未读参考⽂献以供进⼀步阅读（这是了解更
+多论⽂背景的好⽅法）。</p></li>
+</ul>
+<p>第⼆遍最多需要⼀个⼩时。完成了这⼀步，你应该就能掌握论⽂
+的内容了。你应该能够向其他⼈总结论⽂的主旨和⽀持证据。这
+种详细程度适合你感兴趣的论⽂，但不属于你的研究专⻓。
+有时即使在第⼆遍结束时你也不会理解⼀篇论⽂。
+这可能是因为主题对您来说是新的，有不熟悉的术语和⾸字⺟缩略词。或者作者可能使⽤了你不理解的证明或实验技术，以⾄于论⽂的⼤部
+分内容难以理解。这篇论⽂可能写得不好，有未经证实的断⾔和
+⼤量的前向参考。或者可能只是因为现在是深夜，你累了。
+你现在可以选择：</p>
+<ul class="simple">
+<li><p>(a) 把这篇论⽂放在⼀边，希望你不需要理解这些材料就能在你的职业⽣涯中取得成功，</p></li>
+<li><p>(b) 稍后再看这篇论⽂，也许是在阅读背景材料之后，或者</p></li>
+<li><p>(c) 坚持下去继续第三遍。</p></li>
+</ul>
+</section>
+<section id="step3">
+<h3>Step3 第三步<a class="headerlink" href="#step3" title="Permalink to this headline">#</a></h3>
+<p>要完全理解⼀篇论⽂，特别是如果你是审稿⼈，需要阅读第三遍。
+第三遍的关键是尝试⼏乎重新实施论⽂：即做出与作者相同的假设，重新创作作品。
+通过将这种重新创作与实际论⽂进⾏⽐较，您不仅可以轻松识别论⽂的创新之处，还可以轻松识别其隐藏的失败和假设。</p>
+<p>这一步需要⾮常注意细节。你应该确定并挑战每⼀个陈述中的每⼀个假设。此外，你应该考虑你⾃⼰将如何提出⼀个特定的想法。这种实际与虚拟的⽐较有助于深⼊了解本⽂中的证明和演⽰技术，你很可能会将其添加到你的⼯具库中。在此过程中，你还应该记下未来⼯作的想法。</p>
+<p>对于初学者来说，这⼀关⼤约需要四五个⼩时，对于有经验的读者来说，⼤约需要⼀个⼩时。在这⼀遍结束时，你应该能够根据记忆重建论⽂的整个结构，并能够识别其强项和弱项。特别是，你应该能够查明隐含的假设、对相关⼯作的遗漏引⽤以及实验或分析技术的潜在问题。</p>
+</section>
+</section>
+<section id="id3">
+<h2>2、进行文献调查<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>在进⾏⽂献调查时，将对论⽂阅读技巧进⾏测试。这将需要您
+阅读数⼗篇论⽂，也许是在⼀个不熟悉的领域。你应该阅读哪些
+论⽂？</p>
+<p>以下是如何使⽤三步法来提供帮助。</p>
+<ul>
+<li><p>⾸先，使⽤<a class="reference external" href="https://scholar.google.com/">Google Scholar</a>或<a class="reference external" href="https://citeseerx.ist.psu.edu/">CiteSeer</a>等学术搜索引擎和⼀些
+精⼼挑选的关键词，找到三到五个最近的该领域的论⽂。
+在每篇论⽂上做⼀遍以了解⼯作，然后阅读相关的⼯作部分。
+你会找到最近⼯作的缩略摘要，如果幸运的话，也许还会找到最近调查论⽂的指针。
+如果你能找到这样的文献，你就完成了。
+阅读文献，祝贺⾃⼰的好运。</p></li>
+<li><p>否则，在第⼆步中，在参考书⽬中查找共享引⽤和重复作者姓
+名。这些是该领域的关键论⽂和研究⼈员。下载关键⽂件并将它
+们放在⼀边。然后访问主要研究⼈员的⽹站，查看他们最近发表
+的⽂章。</p>
+<p>这将帮助你确定该领域的顶级会议，因为最好的研究⼈员通常会
+在顶级会议上发表⽂章。</p>
+</li>
+<li><p>第三步是访问这些顶级会议的⽹站，浏览他们最近的论⽂集。
+快速扫描通常会识别出最近的⾼质量相关⼯作。这些⽂件连同您
+之前搁置的那些⽂件构成了你调查的第⼀个版本。对这些⽂件进
+⾏两次遍历。如果他们都引⽤了⼀篇你之前没有找到的关键论
+⽂，获取并阅读它，必要时重复。</p></li>
+</ul>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="efficent_read_paper.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">高效阅读方法及流程</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="paper_10_question.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">论文速读十问</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By isLinXu<br/>
+  
+      &copy; Copyright 2022, isLinXu.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

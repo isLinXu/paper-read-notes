@@ -1,0 +1,2309 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>论文复现指南-CV方向 &#8212; 论文阅读笔记</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="shortcut icon" href="../_static/panda.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">论文阅读笔记</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  目录
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Method/index.html">
+   论文阅读指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/efficent_read_paper.html">
+     高效阅读方法及流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/how_to_read_paper.html">
+     如何阅读论文
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/paper_10_question.html">
+     论文速读十问
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/read_important_tips.html">
+     读论文与口头报告的几项重点
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/reference.html">
+     参考材料
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../List/index.html">
+   论文阅读清单
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/basis.html">
+     神经网络基础(basis)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/attention.html">
+     注意力部分(attention)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/batch_normalization.html">
+     批量&amp;正则化(batch&amp;normalization)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/classification.html">
+     图像分类(CLAS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/convolutional.html">
+     高级卷积网络知识(Convolutional)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/gan.html">
+     AI合成部分(GAN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/nlp.html">
+     自然语言处理(NLP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/objectdetection.html">
+     目标检测(OBJ)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/rnn.html">
+     循环神经网络(RNN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/segementation.html">
+     目标分割(SEG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/multimodal.html">
+     多模态(MultiModal Learning)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/llm.html">
+     大语言模型(Large Language Models)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Notes/index.html">
+   论文阅读笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Notes/mm-l/index.html">
+     多模态(MultiModal Machine Learning)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/mm-l/blip-v1.html">
+       BLIP: Bootstrapping Language-Image Pre-training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/mm-l/blip-v2.html">
+       BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Notes/llm/index.html">
+     大语言模型(Large Language Models)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/opt.html">
+       OPT: OPT : Open Pre-trained Transformer Language Models
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v1.html">
+       GPT-v1:Improving Language Understanding by Generative Pre-Training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v2.html">
+       GPT-v2:Language Models are Unsupervised Multitask Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v3.html">
+       GPT-v3:Language Models are Few-Shot Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../Notes/llm/gpt-v4.html">
+       GPT-v4:GPT-4 Technical Report
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Read/index.html">
+   论文阅读记录
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Summary/index.html">
+   论文阅读总结
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes//issues/new?title=Issue%20on%20page%20%2FImplementation/articlereproduction_cv.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/edit/master/Implementation/articlereproduction_cv.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Implementation/articlereproduction_cv.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   目录
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1. 总览
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     1.1 背景
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     1.2 前序工作
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   2. 整体框图
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.1 流程概览
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reprod-log-whl">
+     2.2 reprod_log whl包
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reprod-log">
+       2.2.1 reprod_log工具简介
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reprod-logdemo">
+       2.2.2 reprod_log使用demo
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       2.2.3 reprod_log在论文复现中应用
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   3. 论文复现理论知识及实战
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     3.1 模型结构对齐
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       3.1.1 网络结构代码转换
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       3.1.2 权重转换
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id12">
+       3.1.3 模型组网正确性验证
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     3.2 准备小数据集，验证集数据读取对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     3.3 评估指标对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     3.4 损失函数对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     3.5 优化器对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     3.6 学习率对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     3.7 正则化策略对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     3.8 反向对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     3.9 训练集数据读取对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     3.10 网络初始化对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     3.11 模型训练对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     3.12 规范训练日志
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id24">
+     3.13 预测程序开发
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id25">
+     3.14 单机多卡训练
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id26">
+       3.14.1 数据读取
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id27">
+       3.14.2 多卡模型初始化
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id28">
+       3.14.3 模型保存、日志保存等其他模块
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id29">
+       3.14.4 程序启动方式
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#faq">
+   4. 论文复现注意事项与FAQ
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id30">
+     4.1 通用注意事项
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id31">
+     4.2 模型结构对齐
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#api">
+       4.2.1 API
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id32">
+       4.2.2 权重转换
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id33">
+       4.2.3 模型组网正确性验证
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id34">
+     4.3 验证/测试集数据读取对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id35">
+     4.4 评估指标对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id36">
+     4.5 损失函数对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id37">
+     4.6 优化器对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id38">
+     4.7 学习率对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id39">
+     4.8 正则化策略对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id40">
+     4.9 反向对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id41">
+     4.10 训练集数据读取对齐
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id42">
+       4.10.1 API
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id43">
+       4.10.2 数据预处理
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id44">
+     4.11 网络初始化对齐
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id45">
+       4.11.1 网络初始化通用问题
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id46">
+       4.11.2 细分场景特定问题
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id47">
+     4.12 模型训练对齐
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id48">
+       4.12.1 训练对齐通用问题
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id49">
+       4.12.2 细分场景特定问题
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id50">
+     4.13 规范训练日志
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id51">
+     4.14 预测程序开发
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bug">
+     4.15 常见bug汇总
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id52">
+       4.15.1 显存泄露
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id53">
+       4.15.2 内存泄露
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dataloader">
+       4.15.3 dataloader 加载数据时间长
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id54">
+       4.15.4 单机多卡报错信息不明确
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>论文复现指南-CV方向</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   目录
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1. 总览
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     1.1 背景
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     1.2 前序工作
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   2. 整体框图
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     2.1 流程概览
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reprod-log-whl">
+     2.2 reprod_log whl包
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reprod-log">
+       2.2.1 reprod_log工具简介
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#reprod-logdemo">
+       2.2.2 reprod_log使用demo
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       2.2.3 reprod_log在论文复现中应用
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   3. 论文复现理论知识及实战
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     3.1 模型结构对齐
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       3.1.1 网络结构代码转换
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       3.1.2 权重转换
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id12">
+       3.1.3 模型组网正确性验证
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     3.2 准备小数据集，验证集数据读取对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     3.3 评估指标对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     3.4 损失函数对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     3.5 优化器对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     3.6 学习率对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     3.7 正则化策略对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     3.8 反向对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     3.9 训练集数据读取对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id21">
+     3.10 网络初始化对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id22">
+     3.11 模型训练对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id23">
+     3.12 规范训练日志
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id24">
+     3.13 预测程序开发
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id25">
+     3.14 单机多卡训练
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id26">
+       3.14.1 数据读取
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id27">
+       3.14.2 多卡模型初始化
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id28">
+       3.14.3 模型保存、日志保存等其他模块
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id29">
+       3.14.4 程序启动方式
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#faq">
+   4. 论文复现注意事项与FAQ
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id30">
+     4.1 通用注意事项
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id31">
+     4.2 模型结构对齐
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#api">
+       4.2.1 API
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id32">
+       4.2.2 权重转换
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id33">
+       4.2.3 模型组网正确性验证
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id34">
+     4.3 验证/测试集数据读取对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id35">
+     4.4 评估指标对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id36">
+     4.5 损失函数对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id37">
+     4.6 优化器对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id38">
+     4.7 学习率对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id39">
+     4.8 正则化策略对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id40">
+     4.9 反向对齐
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id41">
+     4.10 训练集数据读取对齐
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id42">
+       4.10.1 API
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id43">
+       4.10.2 数据预处理
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id44">
+     4.11 网络初始化对齐
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id45">
+       4.11.1 网络初始化通用问题
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id46">
+       4.11.2 细分场景特定问题
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id47">
+     4.12 模型训练对齐
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id48">
+       4.12.1 训练对齐通用问题
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id49">
+       4.12.2 细分场景特定问题
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id50">
+     4.13 规范训练日志
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id51">
+     4.14 预测程序开发
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bug">
+     4.15 常见bug汇总
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id52">
+       4.15.1 显存泄露
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id53">
+       4.15.2 内存泄露
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dataloader">
+       4.15.3 dataloader 加载数据时间长
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id54">
+       4.15.4 单机多卡报错信息不明确
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="cv">
+<h1>论文复现指南-CV方向<a class="headerlink" href="#cv" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div><p>本文为针对 <code class="docutils literal notranslate"><span class="pre">CV</span></code> 方向的复现指南</p>
+<p>如果希望查阅 <code class="docutils literal notranslate"><span class="pre">NLP</span></code> 方向的复现指南，可以参考：<a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_NLP.md">NLP方向论文复现指南</a></p>
+<p>如果希望查阅 <code class="docutils literal notranslate"><span class="pre">推荐</span></code> 方向的复现指南，可以参考：<a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_REC.md">推荐方向论文复现指南</a></p>
+</div></blockquote>
+<section id="id1">
+<h2>目录<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#1">1. 总览</a></p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#1.1">1.1 背景</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#1.2">1.2 前序工作</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#2">2. 整体框图</a></p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#2.1">2.1 流程概览</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#2.2">2.2 reprod_log whl包</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3">3. 论文复现理论知识及实战</a></p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.1">3.1 模型结构对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.2">3.2 准备小数据集，验证集数据读取对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.3">3.3 评估指标对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.4">3.4 损失函数对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.5">3.5 优化器对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.6">3.6 学习率对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.7">3.7 正则化策略对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.8">3.8 反向对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.9">3.9 训练集数据读取对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.10">3.10 网络初始化对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.11">3.11 模型训练对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.12">3.12 规范训练日志</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.13">3.13 预测程序开发</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#3.14">3.14 单机多卡训练</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4">4. 论文复现注意事项与FAQ</a></p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.0">4.1 通用注意事项</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.1">4.2 模型结构对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.2">4.3 验证/测试集数据读取对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.3">4.4 评估指标对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.4">4.5 损失函数对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.5">4.6 优化器对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.6">4.6 学习率对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.7">4.8 正则化策略对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.8">4.9 反向对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.9">4.10 训练集数据读取对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.10">4.11 网络初始化对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.11">4.12 模型训练对齐</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.13">4.13 规范训练日志</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.14">4.14 预测程序开发</a></p></li>
+<li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md#4.15">4.15 常见bug汇总</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id2">
+<h2>1. 总览<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<section id="id3">
+<h3>1.1 背景<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>以深度学习为核心的人工智能技术仍在高速发展，通过论文复现，开发者可以获得</p>
+<ul>
+<li><p>学习成长：自我能力提升</p></li>
+<li><p>技术积累：对科研或工作有所帮助和启发</p></li>
+<li><p>社区荣誉：成果被开发者广泛使用</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id4">
+<h3>1.2 前序工作<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p>基于本指南复现论文过程中，建议开发者准备以下内容。</p>
+<ul class="simple">
+<li><p>了解该模型输入输出格式。以AlexNet图像分类任务为例，通过阅读论文与参考代码，了解到模型输入为<code class="docutils literal notranslate"><span class="pre">[batch_size,</span> <span class="pre">3,</span> <span class="pre">224,</span> <span class="pre">244]</span></code>的tensor，类型为<code class="docutils literal notranslate"><span class="pre">float32</span></code>或者<code class="docutils literal notranslate"><span class="pre">float16</span></code>，label为<code class="docutils literal notranslate"><span class="pre">[batch,</span> <span class="pre">]</span></code>的label，类型为<code class="docutils literal notranslate"><span class="pre">int64</span></code>。</p></li>
+<li><p>准备好训练/验证数据集，用于模型训练与评估</p></li>
+<li><p>准备好fake input data以及label，与模型输入shape、type等保持一致，用于后续模型前向对齐。</p>
+<ul>
+<li><p>在对齐模型前向过程中，我们不需要考虑数据集模块等其他模块，此时使用fake data是将模型结构和数据部分解耦非常合适的一种方式。</p></li>
+<li><p>将fake data以文件的形式存储下来，也可以保证PaddlePaddle与参考代码的模型结构输入是完全一致的，更便于排查问题。</p></li>
+<li><p>在该步骤中，以AlexNet为例，生成fake data的脚本可以参考：<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/fake_data/gen_fake_data.py">gen_fake_data.py</a>。</p></li>
+</ul>
+</li>
+<li><p>在特定设备(CPU/GPU)上，跑通参考代码的预测过程(前向)以及至少2轮(iteration)迭代过程，保证后续基于PaddlePaddle复现论文过程中可对比。</p></li>
+<li><p>本文档基于 <code class="docutils literal notranslate"><span class="pre">AlexNet-Prod</span></code> 代码以及<code class="docutils literal notranslate"><span class="pre">reprod_log</span></code> whl包进行说明与测试。如果希望体验，建议参考<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/README.md">AlexNet-Reprod文档</a>进行安装与测试。</p></li>
+<li><p>在复现的过程中，只需要将PaddlePaddle的复现代码以及打卡日志上传至github，不能在其中添加<code class="docutils literal notranslate"><span class="pre">参考代码的实现</span></code>，在核验通过之后，需要删除打卡日志。建议在初期复现的时候，就将<strong>复现代码与参考代码分成2个文件夹进行管理</strong>。</p></li>
+</ul>
+</section>
+</section>
+<section id="id5">
+<h2>2. 整体框图<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<section id="id6">
+<h3>2.1 流程概览<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<p>面对一篇计算机视觉论文，复现该论文的整体流程如下图所示。</p>
+<p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/images/framework_reprodcv.png"><img alt="img" src="https://github.com/PaddlePaddle/models/raw/release/2.2/docs/lwfx/images/framework_reprodcv.png" /></a></p>
+<p>总共包含13个步骤。为了高效复现论文，设置了6个核验点。如上图中黄色框所示。后续章节会详细介绍上述步骤和核验点，具体内容安排如下：</p>
+<ul class="simple">
+<li><p>第3章：介绍13个复现步骤的理论知识、实战以及核验流程。</p></li>
+<li><p>第4章：针对复现流程过程中每个步骤可能出现的问题，本章会进行详细介绍。如果还是不能解决问题，可以提ISSUE进行讨论，提ISSUE地址：https://github.com/PaddlePaddle/Paddle/issues/new/choose</p></li>
+</ul>
+</section>
+<section id="reprod-log-whl">
+<h3>2.2 reprod_log whl包<a class="headerlink" href="#reprod-log-whl" title="Permalink to this headline">#</a></h3>
+<section id="reprod-log">
+<h4>2.2.1 reprod_log工具简介<a class="headerlink" href="#reprod-log" title="Permalink to this headline">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">reprod_log</span></code>是用于论文复现赛中辅助自查和核验工具。该工具源代码地址在：https://github.com/WenmuZhou/reprod_log。主要功能如下：</p>
+<ul class="simple">
+<li><p>存取指定节点的输入输出tensor</p></li>
+<li><p>基于文件的tensor读写</p></li>
+<li><p>2个字典的对比验证</p></li>
+<li><p>对比结果的输出与记录</p></li>
+</ul>
+<p>更多API与使用方法可以参考：<a class="reference external" href="https://github.com/WenmuZhou/reprod_log/blob/master/README.md">reprod_log API使用说明</a>。</p>
+</section>
+<section id="reprod-logdemo">
+<h4>2.2.2 reprod_log使用demo<a class="headerlink" href="#reprod-logdemo" title="Permalink to this headline">#</a></h4>
+<p>下面基于代码：https://github.com/littletomatodonkey/AlexNet-Prod/tree/master/pipeline/reprod_log_demo，给出如何使用该工具。</p>
+<p>文件夹中包含<code class="docutils literal notranslate"><span class="pre">write_log.py</span></code>和<code class="docutils literal notranslate"><span class="pre">check_log_diff.py</span></code>文件，其中<code class="docutils literal notranslate"><span class="pre">write_log.py</span></code>中给出了<code class="docutils literal notranslate"><span class="pre">ReprodLogger</span></code>类的使用方法，<code class="docutils literal notranslate"><span class="pre">check_log_diff.py</span></code>给出了<code class="docutils literal notranslate"><span class="pre">ReprodDiffHelper</span></code>类的使用方法，依次运行两个python文件，使用下面的方式运行代码。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入文件夹</span>
+<span class="n">cd</span> <span class="n">pipeline</span><span class="o">/</span><span class="n">reprod_log_demo</span>
+<span class="c1"># 随机生成矩阵，写入文件中</span>
+<span class="n">python3</span><span class="mf">.7</span> <span class="n">write_log</span><span class="o">.</span><span class="n">py</span>
+<span class="c1"># 进行文件对比，输出日志</span>
+<span class="n">python3</span><span class="mf">.7</span> <span class="n">check_log_diff</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>最终会输出以下内容</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">28</span> <span class="mi">01</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="mi">832</span> <span class="o">-</span> <span class="n">reprod_log</span><span class="o">.</span><span class="n">utils</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">demo_test_1</span><span class="p">:</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">28</span> <span class="mi">01</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="mi">832</span> <span class="o">-</span> <span class="n">reprod_log</span><span class="o">.</span><span class="n">utils</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span>     <span class="n">mean</span> <span class="n">diff</span><span class="p">:</span> <span class="n">check</span> <span class="n">passed</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="mf">0.0</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">28</span> <span class="mi">01</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="mi">832</span> <span class="o">-</span> <span class="n">reprod_log</span><span class="o">.</span><span class="n">utils</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">demo_test_2</span><span class="p">:</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">28</span> <span class="mi">01</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="mi">832</span> <span class="o">-</span> <span class="n">reprod_log</span><span class="o">.</span><span class="n">utils</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span>     <span class="n">mean</span> <span class="n">diff</span><span class="p">:</span> <span class="n">check</span> <span class="n">passed</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="mf">0.3336232304573059</span>
+<span class="mi">2021</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">28</span> <span class="mi">01</span><span class="p">:</span><span class="mi">07</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="mi">832</span> <span class="o">-</span> <span class="n">reprod_log</span><span class="o">.</span><span class="n">utils</span> <span class="o">-</span> <span class="n">INFO</span> <span class="o">-</span> <span class="n">diff</span> <span class="n">check</span> <span class="n">failed</span>
+</pre></div>
+</div>
+<p>可以看出：对于key为<code class="docutils literal notranslate"><span class="pre">demo_test_1</span></code>的矩阵，由于diff为0，小于设置的阈值<code class="docutils literal notranslate"><span class="pre">1e-6</span></code>，核验成功；对于key为<code class="docutils literal notranslate"><span class="pre">demo_test_2</span></code>的矩阵，由于diff为0.33，大于设置的阈值<code class="docutils literal notranslate"><span class="pre">1e-6</span></code>，核验失败。</p>
+</section>
+<section id="id7">
+<h4>2.2.3 reprod_log在论文复现中应用<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h4>
+<p>在论文复现中，基于reprod_log的结果记录模块，产出下面若干文件</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>log_reprod
+├── forward_paddle.npy
+├── forward_torch.npy    # 与forward_paddle.npy作为一并核查的文件对
+├── metric_paddle.npy
+├── metric_torch.npy     # 与metric_paddle.npy作为一并核查的文件对
+├── loss_paddle.npy
+├── loss_torch.npy       # 与loss_paddle.npy作为一并核查的文件对
+├── bp_align_paddle.npy
+├── bp_align_torch.npy   # 与bp_align_paddle.npy作为一并核查的文件对
+├── train_align_paddle.npy
+├── train_align_benchmark.npy # PaddlePaddle提供的参考评估指标
+</pre></div>
+</div>
+<p>基于reprod_log的<code class="docutils literal notranslate"><span class="pre">ReprodDiffHelper</span></code>模块，产出下面5个日志文件。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>├── forward_diff.log     # forward_paddle.npy与forward_torch.npy生成的diff结果文件
+├── metric_diff.log      # metric_paddle.npy与metric_torch.npy生成的diff结果文件
+├── loss_diff.log          # loss_paddle.npy与loss_torch.npy生成的diff结果文件
+├── bp_align_diff.log    # bp_align_paddle.npy与bp_align_torch.npy生成的diff结果文件
+├── train_align_diff.log # train_align_paddle.npy与train_align_benchmark.npy生成的diff结果文件
+</pre></div>
+</div>
+<p>上述文件的生成代码都需要开发者进行开发，核验时需要提供上面罗列的所有文件（不需要提供产生这些文件的可运行程序）以及完整的模型训练评估程序和日志。</p>
+<p>AlexNet-Prod项目提供了基于reprod_log的前5个核验点对齐核验示例，参考代码地址为：https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/，每个文件夹中的README.md文档提供了使用说明。</p>
+</section>
+</section>
+</section>
+<section id="id8">
+<h2>3. 论文复现理论知识及实战<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<section id="id9">
+<h3>3.1 模型结构对齐<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<p>对齐模型结构时，一般有3个主要步骤：</p>
+<ul class="simple">
+<li><p>网络结构代码转换</p></li>
+<li><p>权重转换</p></li>
+<li><p>模型组网正确性验证</p></li>
+</ul>
+<p>下面详细介绍这3个部分。</p>
+<section id="id10">
+<h4>3.1.1 网络结构代码转换<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h4>
+<p><strong>【基本流程】</strong></p>
+<p>由于PyTorch的API和PaddlePaddle的API非常相似，可以参考<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/08_api_mapping/pytorch_api_mapping_cn.html">PyTorch-PaddlePaddle API映射表</a> ，组网部分代码直接进行手动转换即可。</p>
+<p><strong>【注意事项】</strong></p>
+<p>如果遇到PaddlePaddle没有的API，可以尝试用多种API来组合，也可以给PaddlePaddle团队提<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues">ISSUE</a>，获得支持。</p>
+<p><strong>【实战】</strong></p>
+<p>AlexNet网络结构的PyTorch实现: <a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/Step1/AlexNet_torch/torchvision/models/alexnet.py">alexnet-pytorch</a></p>
+<p>对应转换后的PaddlePaddle实现: <a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/Step1/AlexNet_paddle/paddlevision/models/alexnet.py">alexnet-paddle</a></p>
+</section>
+<section id="id11">
+<h4>3.1.2 权重转换<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h4>
+<p><strong>【基本流程】</strong></p>
+<p>组网代码转换完成之后，需要对模型权重进行转换，如果PyTorch repo中已经提供权重，那么可以直接下载并进行后续的转换；如果没有提供，则可以基于PyTorch代码，随机生成一个初始化权重(定义完model以后，使用<code class="docutils literal notranslate"><span class="pre">torch.save()</span></code> API保存模型权重)，然后进行权重转换。</p>
+<p><strong>【注意事项】</strong></p>
+<p>在权重转换的时候，需要注意<code class="docutils literal notranslate"><span class="pre">paddle.nn.Linear</span></code>以及<code class="docutils literal notranslate"><span class="pre">paddle.nn.BatchNorm2D</span></code>等API的权重保存格式和名称等与PyTorch稍有diff，具体内容可以参考<code class="docutils literal notranslate"><span class="pre">4.1章节</span></code>。</p>
+<p><strong>【实战】</strong></p>
+<p>AlexNet的代码转换脚本可以在这里查看：https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/weights/torch2paddle.py，</p>
+<p>注意：运行该代码需要首先下载PyTorch的AlexNet预训练模型到该目录下，下载地址为：https://download.pytorch.org/models/alexnet-owt-7be5be79.pth</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/weights/torch2paddle.py</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">paddle</span>
+
+<span class="k">def</span> <span class="nf">transfer</span><span class="p">():</span>
+    <span class="n">input_fp</span> <span class="o">=</span> <span class="s2">&quot;alexnet-owt-7be5be79.pth&quot;</span>
+    <span class="n">output_fp</span> <span class="o">=</span> <span class="s2">&quot;alexnet_paddle.pdparams&quot;</span>
+    <span class="n">torch_dict</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">input_fp</span><span class="p">)</span>
+    <span class="n">paddle_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">fc_names</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;classifier.1.weight&quot;</span><span class="p">,</span> <span class="s2">&quot;classifier.4.weight&quot;</span><span class="p">,</span> <span class="s2">&quot;classifier.6.weight&quot;</span>
+    <span class="p">]</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">torch_dict</span><span class="p">:</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">torch_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="ow">in</span> <span class="n">key</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">fc_names</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">flag</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;weight </span><span class="si">{}</span><span class="s2"> need to be trans&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+            <span class="n">weight</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+        <span class="n">paddle_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span>
+    <span class="n">paddle</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">paddle_dict</span><span class="p">,</span> <span class="n">output_fp</span><span class="p">)</span>
+
+<span class="n">transfer</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>运行完成之后，会在当前目录生成<code class="docutils literal notranslate"><span class="pre">alexnet_paddle.pdparams</span></code>文件，即为转换后的PaddlePaddle预训练模型。</p>
+</section>
+<section id="id12">
+<h4>3.1.3 模型组网正确性验证<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h4>
+<p><strong>【基本流程】</strong></p>
+<ol class="arabic simple">
+<li><p>定义PyTorch模型，加载权重，固定seed，基于numpy生成随机数，转换为PyTorch可以处理的tensor，送入网络，获取输出，使用reprod_log保存结果。</p></li>
+<li><p>定义PaddlePaddle模型，加载权重，固定seed，基于numpy生成随机数，转换为PaddlePaddle可以处理的tensor，送入网络，获取输出，使用reprod_log保存结果。</p></li>
+<li><p>使用reprod_log排查diff，小于阈值，即可完成自测。</p></li>
+</ol>
+<p><strong>【注意事项】</strong></p>
+<ul class="simple">
+<li><p>模型在前向对齐验证时，需要调用<code class="docutils literal notranslate"><span class="pre">model.eval()</span></code>方法，保证组网中的随机量被关闭，比如BatchNorm、Dropout等。</p></li>
+<li><p>给定相同的输入数据，为保证可复现性，如果有随机数生成，固定相关的随机种子。</p></li>
+<li><p>输出diff可以使用<code class="docutils literal notranslate"><span class="pre">np.mean(np.abs(o1</span> <span class="pre">-</span> <span class="pre">o2))</span></code>进行计算，一般小于1e-6的话，可以认为前向没有问题。如果最终输出结果diff较大，可以使用二分的方法进行排查，比如说ResNet50，包含1个stem、4个res-stage、global avg-pooling以及最后的fc层，那么完成模型组网和权重转换之后，如果模型输出没有对齐，可以尝试输出中间某一个res-stage的tensor进行对比，如果相同，则向后进行排查；如果不同，则继续向前进行排查，以此类推，直到找到导致没有对齐的操作。</p></li>
+</ul>
+<p><strong>【实战】</strong></p>
+<p>AlexNet模型组网正确性验证可以参考如下示例代码： https://github.com/littletomatodonkey/AlexNet-Prod/tree/master/pipeline/Step1</p>
+<p><strong>【核验】</strong></p>
+<p>对于待复现的项目，前向对齐核验流程如下。</p>
+<ol class="arabic simple">
+<li><p>准备输入：fake data</p>
+<ul class="simple">
+<li><p>使用参考代码的dataloader，生成一个batch的数据，保存下来，在前向对齐时，直接从文件中读入。</p></li>
+<li><p>固定随机数种子，生成numpy随机矩阵，转化tensor</p></li>
+</ul>
+</li>
+<li><p>保存输出：</p>
+<ul class="simple">
+<li><p>PaddlePaddle/PyTorch：dict，key为tensor的name（自定义），value为tensor的值。最后将dict保存到文件中。建议命名为<code class="docutils literal notranslate"><span class="pre">forward_paddle.npy</span></code>和<code class="docutils literal notranslate"><span class="pre">forward_pytorch.npy</span></code>。</p></li>
+</ul>
+</li>
+<li><p>自测：使用reprod_log加载2个文件，使用report功能，记录结果到日志文件中，建议命名为<code class="docutils literal notranslate"><span class="pre">forward_diff_log.txt</span></code>，观察diff，二者diff小于特定的阈值即可。</p></li>
+<li><p>提交内容：新建文件夹，将<code class="docutils literal notranslate"><span class="pre">forward_paddle.npy</span></code>、<code class="docutils literal notranslate"><span class="pre">forward_pytorch.npy</span></code>与<code class="docutils literal notranslate"><span class="pre">forward_diff_log.txt</span></code>文件放在文件夹中，后续的输出结果和自查日志也放在该文件夹中，一并打包上传即可。</p></li>
+<li><p>注意：</p>
+<ul class="simple">
+<li><p>PaddlePaddle与PyTorch保存的dict的key需要保持相同，否则report过程可能会提示key无法对应，从而导致report失败，之后的<code class="docutils literal notranslate"><span class="pre">【核验】</span></code>环节也是如此。</p></li>
+<li><p>如果是固定随机数种子，建议将fake data保存到dict中，方便check参考代码和PaddlePaddle的输入是否一致。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+<section id="id13">
+<h3>3.2 准备小数据集，验证集数据读取对齐<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<p>PaddlePaddle中数据集相关的API为<code class="docutils literal notranslate"><span class="pre">paddle.io.Dataset</span></code>，使用该接口可以完成数据集的单个样本读取。</p>
+<p>复现完Dataset之后，可以使用<code class="docutils literal notranslate"><span class="pre">paddle.io.DataLoader</span></code>，构建Dataloader，对数据进行组batch、批处理，送进网络进行计算。</p>
+<p>为后续的快速验证(训练/评估/预测)，建议准备一个小数据集（训练集和验证集各8~16张图像即可，压缩后数据大小建议在<code class="docutils literal notranslate"><span class="pre">20M</span></code>以内），放在<code class="docutils literal notranslate"><span class="pre">lite_data</span></code>文件夹下。</p>
+<p><strong>【注意事项】</strong></p>
+<p>对于一个数据集，一般有以下一些信息需要重点关注</p>
+<ul class="simple">
+<li><p>数据集名称、下载地址</p></li>
+<li><p>训练集/验证集/测试集图像数量、类别数量、分辨率等</p></li>
+<li><p>数据集标注格式、标注信息</p></li>
+<li><p>数据集通用的预处理方法</p></li>
+</ul>
+<p>论文中一般会提供数据集的名称以及基本信息。复现过程中，我们在下载完数据之后，建议先检查下是否和论文中描述一致，否则可能存在的问题有：</p>
+<ul class="simple">
+<li><p>数据集年份不同，比如论文中使用了MS-COCO2014数据集，但是我们下载的是MS-COCO2017数据集，如果不对其进行检查，可能会导致我们最终训练的数据量等与论文中有diff</p></li>
+<li><p>数据集使用方式不同，有些论文中，可能只是抽取了该数据集的子集进行方法验证，此时需要注意抽取方法，需要保证抽取出的子集完全相同。</p></li>
+<li><p>在评估指标对齐时，我们可以固定batch size，关闭Dataloader的shuffle操作。</p></li>
+</ul>
+<p>构建数据集时，也会涉及到一些预处理方法，以CV领域为例，PaddlePaddle提供了一些现成的视觉类操作api，具体可以参考：<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/vision/Overview_cn.html">paddle.vision类API</a>。对应地，PyTorch中的数据处理api可以参考：<a class="reference external" href="https://pytorch.org/vision/stable/transforms.html">torchvision.transforms类API</a>。对于其中之一，可以找到另一个平台的实现。</p>
+<p>此外，</p>
+<ul class="simple">
+<li><p>有些自定义的数据处理方法，如果不涉及到深度学习框架的部分，可以直接复用。</p></li>
+<li><p>对于特定任务中的数据预处理方法，比如说图像分类、检测、分割等，如果没有现成的API可以调用，可以参考官方模型套件中的一些实现方法，比如PaddleClas、PaddleDetection、PaddleSeg等。</p></li>
+</ul>
+<p><strong>【实战】</strong></p>
+<p>AlexNet复现过程中，准备<code class="docutils literal notranslate"><span class="pre">ImageNet小数据集</span></code>的脚本可以参考<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/tipc/pipeline/Step2/prepare.py">prepare.py</a>。</p>
+<p>AlexNet模型复现过程中，数据预处理和Dataset、Dataloader的检查可以参考该文件： https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/Step2/test_data.py。</p>
+<p>使用方法可以参考<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/Step2/README.md">数据检查文档</a>。</p>
+</section>
+<section id="id14">
+<h3>3.3 评估指标对齐<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<p>PaddlePaddle提供了一系列Metric计算类，比如说<code class="docutils literal notranslate"><span class="pre">Accuracy</span></code>, <code class="docutils literal notranslate"><span class="pre">Auc</span></code>, <code class="docutils literal notranslate"><span class="pre">Precision</span></code>, <code class="docutils literal notranslate"><span class="pre">Recall</span></code>等，而PyTorch中，目前可以通过组合的方式实现metric计算，或者调用<a class="reference external" href="https://torchmetrics.readthedocs.io/en/latest/">torchmetrics</a>，在论文复现的过程中，需要注意保证对于该模块，给定相同的输入，二者输出完全一致。具体流程如下。</p>
+<ol class="arabic simple">
+<li><p>定义PyTorch模型，加载训练好的权重（需要是官网repo提供好的），获取评估结果，使用reprod_log保存结果。</p></li>
+<li><p>定义PaddlePaddle模型，加载训练好的权重（需要是从PyTorch转换得到），获取评估结果，使用reprod_log保存结果。</p></li>
+<li><p>使用reprod_log排查diff，小于阈值，即可完成自测。</p></li>
+</ol>
+<p><strong>【注意事项】</strong></p>
+<p>在评估指标对齐之前，需要注意保证对于该模块，给定相同的输入，二者输出完全一致。</p>
+<p><strong>【实战】</strong></p>
+<p>评估指标对齐检查方法可以参考文档：<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/Step2/README.md#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4">评估指标对齐检查方法文档</a></p>
+<p><strong>【核验】</strong></p>
+<p>对于待复现的项目，评估指标对齐核验流程如下。</p>
+<ol class="arabic simple">
+<li><p>输入：dataloader, model</p></li>
+<li><p>输出：</p>
+<ul class="simple">
+<li><p>PaddlePaddle/PyTorch：dict，key为tensor的name（自定义），value为具体评估指标的值。最后将dict使用reprod_log保存到各自的文件中，建议命名为<code class="docutils literal notranslate"><span class="pre">metric_paddle.npy</span></code>和<code class="docutils literal notranslate"><span class="pre">metric_pytorch.npy</span></code>。</p></li>
+<li><p>自测：使用reprod_log加载2个文件，使用report功能，记录结果到日志文件中，建议命名为<code class="docutils literal notranslate"><span class="pre">metric_diff_log.txt</span></code>，观察diff，二者diff小于特定的阈值即可。</p></li>
+</ul>
+</li>
+<li><p>提交内容：将<code class="docutils literal notranslate"><span class="pre">metric_paddle.npy</span></code>、<code class="docutils literal notranslate"><span class="pre">metric_pytorch.npy</span></code>与<code class="docutils literal notranslate"><span class="pre">metric_diff_log.txt</span></code>文件备份到<code class="docutils literal notranslate"><span class="pre">3.1节核验环节</span></code>新建的文件夹中，后续的输出结果和自查日志也放在该文件夹中，一并打包上传即可。</p></li>
+<li><p>注意：</p>
+<ul class="simple">
+<li><p>数据需要是真实数据</p></li>
+<li><p>需要检查论文是否只是抽取了验证集/测试集中的部分文件，如果是的话，则需要保证PaddlePaddle和参考代码中dataset使用的数据集一致。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id15">
+<h3>3.4 损失函数对齐<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<p>PaddlePaddle与PyTorch均提供了很多loss function，用于模型训练，具体的API映射表可以参考：<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/08_api_mapping/pytorch_api_mapping_cn.html#lossapi">Loss类API映射列表</a>。以CrossEntropyLoss为例，主要区别为：</p>
+<ul class="simple">
+<li><p>PaddlePaddle提供了对软标签、指定softmax计算纬度的支持。</p></li>
+</ul>
+<p>如果论文中使用的loss function没有指定的API，则可以尝试通过组合API的方式，实现自定义的loss function。</p>
+<p>具体流程如下。</p>
+<ol class="arabic simple">
+<li><p>定义PyTorch模型，加载权重，加载fake data 和 fake label（或者固定seed，基于numpy生成随机数），转换为PyTorch可以处理的tensor，送入网络，获取loss结果，使用reprod_log保存结果。</p></li>
+<li><p>定义PaddlePaddle模型，加载fake data 和 fake label（或者固定seed，基于numpy生成随机数），转换为PaddlePaddle可以处理的tensor，送入网络，获取loss结果，使用reprod_log保存结果。</p></li>
+<li><p>使用reprod_log排查diff，小于阈值，即可完成自测。</p></li>
+</ol>
+<p><strong>【注意事项】</strong></p>
+<ul class="simple">
+<li><p>计算loss的时候，建议设置<code class="docutils literal notranslate"><span class="pre">model.eval()</span></code>，避免模型中随机量的问题。</p></li>
+</ul>
+<p><strong>【实战】</strong></p>
+<p>本部分可以参考文档：https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/Step3/README.md。</p>
+<p><strong>【核验】</strong></p>
+<p>对于待复现的项目，损失函数对齐核验流程如下。</p>
+<ol class="arabic simple">
+<li><p>输入：fake data &amp; label</p></li>
+<li><p>输出：</p>
+<ul class="simple">
+<li><p>PaddlePaddle/PyTorch：dict，key为tensor的name（自定义），value为具体评估指标的值。最后将dict使用reprod_log保存到各自的文件中，建议命名为<code class="docutils literal notranslate"><span class="pre">loss_paddle.npy</span></code>和<code class="docutils literal notranslate"><span class="pre">loss_pytorch.npy</span></code>。</p></li>
+</ul>
+</li>
+<li><p>自测：使用reprod_log加载2个文件，使用report功能，记录结果到日志文件中，建议命名为<code class="docutils literal notranslate"><span class="pre">loss_diff_log.txt</span></code>，观察diff，二者diff小于特定的阈值即可。</p></li>
+<li><p>提交内容：将<code class="docutils literal notranslate"><span class="pre">loss_paddle.npy</span></code>、<code class="docutils literal notranslate"><span class="pre">loss_pytorch.npy</span></code>与<code class="docutils literal notranslate"><span class="pre">loss_diff_log.txt</span></code>文件备份到<code class="docutils literal notranslate"><span class="pre">3.1节核验环节</span></code>新建的文件夹中，后续的输出结果和自查日志也放在该文件夹中，一并打包上传即可。</p></li>
+</ol>
+</section>
+<section id="id16">
+<h3>3.5 优化器对齐<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<p>PaddlePaddle中的optimizer有<code class="docutils literal notranslate"><span class="pre">paddle.optimizer</span></code>等一系列实现，PyTorch中则有<code class="docutils literal notranslate"><span class="pre">torch.Optim</span></code>等一系列实现。</p>
+<p><strong>【注意事项】</strong></p>
+<p>以SGD等优化器为例，PaddlePaddle与Pytorch的优化器区别主要如下。</p>
+<ul class="simple">
+<li><p>PaddlePaddle在优化器中增加了对梯度裁剪的支持，在训练GAN或者一些NLP、多模态任务中，这个用到的比较多。</p></li>
+<li><p>PaddlePaddle的SGD不支持动量更新、动量衰减和Nesterov动量，这里需要使用<code class="docutils literal notranslate"><span class="pre">paddle.optimizer.Momentum</span></code> API实现这些功能。</p></li>
+</ul>
+<p><strong>【实战】</strong></p>
+<p>本部分对齐建议对照<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/optimizer/Overview_cn.html">PaddlePaddle优化器API文档</a>与参考代码的优化器实现进行对齐，用之后的反向对齐统一验证该模块的正确性。</p>
+</section>
+<section id="id17">
+<h3>3.6 学习率对齐<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<ul class="simple">
+<li><p>学习率策略主要用于指定训练过程中的学习率变化曲线，这里可以将定义好的学习率策略，不断step，即可得到对应的学习率值，可以将学习率值保存在列表或者矩阵中，使用<code class="docutils literal notranslate"><span class="pre">reprod_log</span></code>工具判断二者是否对齐。</p></li>
+</ul>
+<p><strong>【注意事项】</strong></p>
+<p>PaddlePaddle中，需要首先构建学习率策略，再传入优化器对象中；对于PyTorch，如果希望使用更丰富的学习率策略，需要先构建优化器，再传入学习率策略类API。</p>
+<p><strong>【实战】</strong></p>
+<p>学习率复现对齐，可以参考代码：<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/Step4/README.md#%E5%AD%A6%E4%B9%A0%E7%8E%87%E5%AF%B9%E9%BD%90%E9%AA%8C%E8%AF%81">学习率对齐验证文档</a>。</p>
+</section>
+<section id="id18">
+<h3>3.7 正则化策略对齐<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<p>L2正则化策略用于模型训练，可以防止模型对训练数据过拟合，L1正则化可以用于得到稀疏化的权重矩阵，PaddlePaddle中有<code class="docutils literal notranslate"><span class="pre">paddle.regularizer.L1Decay</span></code>与<code class="docutils literal notranslate"><span class="pre">paddle.regularizer.L2Decay</span></code> API。PyTorch中，torch.optim集成的优化器只有L2正则化方法，直接在构建optimizer的时候，传入<code class="docutils literal notranslate"><span class="pre">weight_decay</span></code>参数即可。</p>
+<p><strong>【注意事项】</strong></p>
+<ul class="simple">
+<li><p>PaddlePaddle的optimizer中支持L1Decay/L2Decay。</p></li>
+</ul>
+<p><strong>【实战】</strong></p>
+<p>本部分对齐建议对照<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/regularizer/L2Decay_cn.html">PaddlePaddle正则化API文档</a>与参考代码的优化器实现进行对齐，用之后的反向对齐统一验证该模块的正确性。</p>
+</section>
+<section id="id19">
+<h3>3.8 反向对齐<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<p>此处可以通过numpy生成假的数据和label（推荐），也可以准备固定的真实数据。具体流程如下。</p>
+<ol class="arabic simple">
+<li><p>检查两个代码的训练超参数全部一致，如优化器及其超参数、学习率、BatchNorm/LayerNorm中的eps等。</p></li>
+<li><p>将PaddlePaddle与PyTorch网络中涉及的所有随机操作全部关闭，如dropout、drop_path等，推荐将模型设置为eval模式（<code class="docutils literal notranslate"><span class="pre">model.eval()</span></code>）</p></li>
+<li><p>加载相同的weight dict（可以通过PyTorch来存储随机的权重），将准备好的数据分别传入网络并迭代，观察二者loss是否一致（此处batch-size要一致，如果使用多个真实数据，要保证传入网络的顺序一致）</p></li>
+<li><p>如果经过2轮以上，loss均可以对齐，则基本可以认为反向对齐。</p></li>
+</ol>
+<p><strong>【注意事项】</strong></p>
+<ul class="simple">
+<li><p>如果第一轮loss就没有对齐，则需要仔细排查一下模型前向部分。</p></li>
+<li><p>如果第二轮开始，loss开始无法对齐，则首先需要排查下超参数的差异，没问题的话，在<code class="docutils literal notranslate"><span class="pre">loss.backward()</span></code>方法之后，使用<code class="docutils literal notranslate"><span class="pre">tensor.grad</span></code>获取梯度值，二分的方法查找diff，定位出PaddlePaddle与PyTorch梯度无法对齐的API或者操作，然后进一步验证并反馈。</p></li>
+</ul>
+<p>梯度的打印方法示例代码如下所示，注释掉的内容即为打印网络中所有参数的梯度shape。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># 代码地址：https://github.com/littletomatodonkey/AlexNet-Prod/blob/63184b258eda650e7a8b7f2610b55f4337246630/pipeline/Step4/AlexNet_paddle/train.py#L93</span>
+    <span class="n">loss_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_iter</span><span class="p">):</span>
+        <span class="n">image</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">fake_data</span><span class="p">)</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">(</span><span class="n">fake_label</span><span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="c1"># for name, tensor in model.named_parameters():</span>
+        <span class="c1">#     grad = tensor.grad</span>
+        <span class="c1">#     print(name, tensor.grad.shape)</span>
+        <span class="c1">#     break</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">clear_grad</span><span class="p">()</span>
+        <span class="n">loss_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>【实战】</strong></p>
+<p>本部分可以参考文档：<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/Step4/README.md#%E5%8F%8D%E5%90%91%E5%AF%B9%E9%BD%90%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95">反向对齐操作文档</a>。</p>
+<p><strong>【核验】</strong></p>
+<p>对于待复现的项目，反向对齐核验流程如下。</p>
+<ol class="arabic simple">
+<li><p>输入：fake data &amp; label</p></li>
+<li><p>输出：</p>
+<ul class="simple">
+<li><p>PaddlePaddle/PyTorch：dict，key为tensor的name（自定义），value为具体loss的值。最后将dict使用reprod_log保存到各自的文件中，建议命名为<code class="docutils literal notranslate"><span class="pre">bp_align_paddle.npy</span></code>和<code class="docutils literal notranslate"><span class="pre">bp_align_pytorch.npy</span></code>。</p></li>
+</ul>
+</li>
+<li><p>自测：使用reprod_log加载2个文件，使用report功能，记录结果到日志文件中，建议命名为<code class="docutils literal notranslate"><span class="pre">bp_align_diff_log.txt</span></code>，观察diff，二者diff小于特定的阈值即可。</p></li>
+<li><p>提交内容：将<code class="docutils literal notranslate"><span class="pre">bp_align_paddle.npy</span></code>、<code class="docutils literal notranslate"><span class="pre">bp_align_pytorch.npy</span></code>与<code class="docutils literal notranslate"><span class="pre">bp_align_diff_log.txt</span></code>文件备份到<code class="docutils literal notranslate"><span class="pre">3.1节核验环节</span></code>新建的文件夹中，后续的输出结果和自查日志也放在该文件夹中，一并打包上传即可。</p></li>
+<li><p>注意：</p>
+<ul class="simple">
+<li><p>loss需要保存至少2轮以上。</p></li>
+<li><p>在迭代的过程中，需要保证模型的batch size等超参数完全相同</p></li>
+<li><p>在迭代的过程中，需要设置<code class="docutils literal notranslate"><span class="pre">model.eval()</span></code>，使用固定的假数据，同时加载相同权重的预训练模型。</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="id20">
+<h3>3.9 训练集数据读取对齐<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<p>该部分内容与3.2节内容基本一致，参考PyTorch的代码，实现训练集数据读取与预处理模块即可。</p>
+<p><strong>【注意事项】</strong></p>
+<p>该部分内容，可以参考3.8节的自测方法，将输入的<code class="docutils literal notranslate"><span class="pre">fake</span> <span class="pre">data</span> <span class="pre">&amp;</span> <span class="pre">label</span></code>替换为训练的dataloader，但是需要注意的是：</p>
+<ul class="simple">
+<li><p>在使用train dataloader的时候，建议设置random seed，对于PyTorch来说</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#initialize random seed</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SEED</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>对于PaddlePaddle来说</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paddle</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SEED</span><span class="p">)</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">SEED</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>【实战】</strong></p>
+<p>本部分对齐建议对照<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/vision/Overview_cn.html">PaddlePaddle vision高层API文档</a>与参考代码的数据预处理实现进行对齐，用之后的训练对齐统一验证该模块的正确性。</p>
+</section>
+<section id="id21">
+<h3>3.10 网络初始化对齐<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<ul class="simple">
+<li><p>下面给出了部分初始化API的映射表。</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>PaddlePaddle API</p></th>
+<th class="head"><p>PyTorch API</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>paddle.nn.initializer.KaimingNormal</p></td>
+<td><p>torch.nn.init.kaiming_normal_</p></td>
+</tr>
+<tr class="row-odd"><td><p>paddle.nn.initializer.KaimingUniform</p></td>
+<td><p>torch.nn.init.kaiming_uniform_</p></td>
+</tr>
+<tr class="row-even"><td><p>paddle.nn.initializer.XavierNormal</p></td>
+<td><p>torch.nn.init.xavier_normal_</p></td>
+</tr>
+<tr class="row-odd"><td><p>paddle.nn.initializer.XavierUniform</p></td>
+<td><p>torch.nn.init.xavier_uniform_</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>【注意事项】</strong></p>
+<ul class="simple">
+<li><p>更多初始化API可以参考<a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">PyTorch初始化API文档</a>以及<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/Overview_cn.html#chushihuaxiangguan">PaddlePaddle初始化API文档</a>。</p></li>
+</ul>
+<p><strong>【实战】</strong></p>
+<p>本部分对齐建议对照<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/Overview_cn.html#chushihuaxiangguan">PaddlePaddle 初始化API文档</a>与参考代码的初始化实现对齐。</p>
+</section>
+<section id="id22">
+<h3>3.11 模型训练对齐<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<p>完成前面的步骤之后，就可以开始全量数据的训练对齐任务了。按照下面的步骤进行训练对齐。</p>
+<ol class="arabic simple">
+<li><p>准备train/eval data, loader, model</p></li>
+<li><p>对model按照论文所述进行初始化(如果论文中提到加载pretrain，则按需加载pretrained model)</p></li>
+<li><p>加载配置，开始训练，迭代得到最终模型与评估指标，将评估指标使用reprod_log保存到文件中。</p></li>
+<li><p>将PaddlePaddle提供的参考指标使用reprod_log提交到另一个文件中。</p></li>
+<li><p>使用reprod_log排查diff，小于阈值，即可完成自测。</p></li>
+</ol>
+<p><strong>【注意事项】</strong></p>
+<ul class="simple">
+<li><p>【强烈】建议先做完反向对齐之后再进行模型训练对齐，二者之间的不确定量包括：数据集、PaddlePaddle与参考代码在模型training mode下的区别，初始化参数。</p></li>
+<li><p>在训练对齐过程中，受到较多随机量的影响，精度有少量diff是正常的，以ImageNet1k数据集的分类为例，diff在0.15%以内可以认为是正常的，这里可以根据不同的任务，适当调整对齐检查的阈值(<code class="docutils literal notranslate"><span class="pre">ReprodDiffHelper.report</span></code>函数中的<code class="docutils literal notranslate"><span class="pre">diff_threshold</span></code>参数)。</p></li>
+<li><p>训练过程中的波动是正常的，如果最终收敛结果不一致，可以</p>
+<ul>
+<li><p>仔细排查Dropout、BatchNorm以及其他组网模块及超参是否无误。</p></li>
+<li><p>基于参考代码随机生成一份预训练模型，转化为PaddlePaddle的模型，并使用PaddlePaddle加载训练，对比二者的收敛曲线与最终结果，排查初始化影响。</p></li>
+<li><p>使用参考代码的Dataloader生成的数据，进行模型训练，排查train dataloader的影响。</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>【实战】</strong></p>
+<p>本部分可以参考文档：<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/Step5/README.md">训练对齐操作文档</a>。</p>
+<p><strong>【核验】</strong></p>
+<p>对于待复现的项目，训练对齐核验流程如下。</p>
+<ol class="arabic simple">
+<li><p>输入：train/eval dataloader, model</p></li>
+<li><p>输出：</p>
+<ul class="simple">
+<li><p>PaddlePaddle：dict，key为保存值的name（自定义），value为具体评估指标的值。最后将dict使用reprod_log保存到文件中，建议命名为<code class="docutils literal notranslate"><span class="pre">train_align_paddle.npy</span></code>。</p></li>
+<li><p>benchmark：dict，key为保存值的name（自定义），value为论文复现赛的评估指标要求的值。最后将dict使用reprod_log保存到文件中，建议命名为<code class="docutils literal notranslate"><span class="pre">train_align_benchmark.npy</span></code>。</p></li>
+</ul>
+</li>
+<li><p>自测：使用reprod_log加载2个文件，使用report功能，记录结果到日志文件中，建议命名为<code class="docutils literal notranslate"><span class="pre">train_align_diff_log.txt</span></code>，观察diff，二者diff小于特定的阈值即可。</p></li>
+<li><p>提交内容：将<code class="docutils literal notranslate"><span class="pre">train_align_paddle.npy</span></code>、<code class="docutils literal notranslate"><span class="pre">train_align_benchmark.npy</span></code>与<code class="docutils literal notranslate"><span class="pre">train_align_diff_log.txt</span></code>文件备份到<code class="docutils literal notranslate"><span class="pre">3.1节核验环节</span></code>新建的文件夹中，最终一并打包上传即可。</p></li>
+</ol>
+</section>
+<section id="id23">
+<h3>3.12 规范训练日志<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
+<p><strong>【背景】</strong></p>
+<p>训练过程中，损失函数(<code class="docutils literal notranslate"><span class="pre">loss</span></code>)可以直接反映目前网络的收敛情况，数据耗时(<code class="docutils literal notranslate"><span class="pre">reader_cost</span></code>)对于分析GPU利用率非常重要，一个batch训练耗时(<code class="docutils literal notranslate"><span class="pre">batch_cost</span></code>)对于我们判断模型的整体训练时间非常重要，因此希望在训练中添加这些统计信息，便于分析模型的收敛和资源利用情况。</p>
+<p><strong>【基本流程】</strong></p>
+<ol class="arabic simple">
+<li><p>在训练代码中添加日志统计信息，对训练中的信息进行统计。</p></li>
+</ol>
+<ul class="simple">
+<li><p>必选项：损失值<code class="docutils literal notranslate"><span class="pre">loss</span></code>, 训练耗时<code class="docutils literal notranslate"><span class="pre">batch_cost</span></code>, 数据读取耗时<code class="docutils literal notranslate"><span class="pre">reader_cost</span></code>。</p></li>
+<li><p>建议项：当前<code class="docutils literal notranslate"><span class="pre">epoch</span></code>, 当前迭代次数<code class="docutils literal notranslate"><span class="pre">iter</span></code>，学习率(<code class="docutils literal notranslate"><span class="pre">lr</span></code>), 准确率(<code class="docutils literal notranslate"><span class="pre">acc</span></code>)等。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">04</span> <span class="mi">05</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span> <span class="n">root</span> <span class="n">INFO</span><span class="p">:</span> <span class="p">[</span><span class="n">epoch</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">iter</span> <span class="mi">0</span><span class="p">][</span><span class="n">TRAIN</span><span class="p">]</span><span class="n">avg_samples</span><span class="p">:</span> <span class="mf">32.0</span> <span class="p">,</span> <span class="n">avg_reader_cost</span><span class="p">:</span> <span class="mf">0.0010543</span> <span class="n">sec</span><span class="p">,</span> <span class="n">avg_batch_cost</span><span class="p">:</span> <span class="mf">0.0111100</span> <span class="n">sec</span><span class="p">,</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">0.3450000</span> <span class="p">,</span> <span class="n">avg_ips</span><span class="p">:</span> <span class="mf">2880.2952878</span> <span class="n">images</span><span class="o">/</span><span class="n">sec</span>
+<span class="p">[</span><span class="mi">2021</span><span class="o">/</span><span class="mi">12</span><span class="o">/</span><span class="mi">04</span> <span class="mi">05</span><span class="p">:</span><span class="mi">16</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span> <span class="n">root</span> <span class="n">INFO</span><span class="p">:</span> <span class="p">[</span><span class="n">epoch</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">iter</span> <span class="mi">0</span><span class="p">][</span><span class="n">TRAIN</span><span class="p">]</span><span class="n">avg_samples</span><span class="p">:</span> <span class="mf">32.0</span> <span class="p">,</span> <span class="n">avg_reader_cost</span><span class="p">:</span> <span class="mf">0.0010542</span> <span class="n">sec</span><span class="p">,</span> <span class="n">avg_batch_cost</span><span class="p">:</span> <span class="mf">0.0111101</span> <span class="n">sec</span><span class="p">,</span> <span class="n">loss</span><span class="p">:</span> <span class="mf">0.2450000</span> <span class="p">,</span> <span class="n">avg_ips</span><span class="p">:</span> <span class="mf">2880.2582019</span> <span class="n">images</span><span class="o">/</span><span class="n">sec</span>
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li><p>如果训练中同时包含评估过程，则也需要在日志里添加模型的<code class="docutils literal notranslate"><span class="pre">评估结果</span></code>信息。</p></li>
+</ol>
+<p><strong>【注意事项】</strong></p>
+<ul class="simple">
+<li><p>日志打印也比较耗时，这里不建议统计其耗时，防止对统计结果造成影响。</p></li>
+</ul>
+<p><strong>【实战】</strong></p>
+<p>参考代码：<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/d0eab851603a8d9097b1b8d6089f26d96c6707b0/pipeline/Step5/AlexNet_paddle/train.py#L204">train.py</a>。</p>
+<p>具体地，规范化的训练日志可以按照如下所示的方式实现。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_one_epoch</span><span class="p">(</span><span class="n">model</span><span class="p">,</span>
+                    <span class="n">criterion</span><span class="p">,</span>
+                    <span class="n">optimizer</span><span class="p">,</span>
+                    <span class="n">data_loader</span><span class="p">,</span>
+                    <span class="n">epoch</span><span class="p">,</span>
+                    <span class="n">print_freq</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="c1"># training log</span>
+    <span class="n">train_reader_cost</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">train_run_cost</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">total_samples</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">reader_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">batch_past</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data_loader</span><span class="p">):</span>
+        <span class="n">train_reader_cost</span> <span class="o">+=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">reader_start</span>
+        <span class="n">train_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">clear_grad</span><span class="p">()</span>
+        <span class="n">train_run_cost</span> <span class="o">+=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">train_start</span>
+        <span class="n">acc</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">accuracy</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">total_samples</span> <span class="o">+=</span> <span class="n">image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">batch_past</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">batch_idx</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">batch_idx</span> <span class="o">%</span> <span class="n">print_freq</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;[Epoch </span><span class="si">{}</span><span class="s2">, iter: </span><span class="si">{}</span><span class="s2">] acc: </span><span class="si">{:.5f}</span><span class="s2">, lr: </span><span class="si">{:.5f}</span><span class="s2">, loss: </span><span class="si">{:.5f}</span><span class="s2">, avg_reader_cost: </span><span class="si">{:.5f}</span><span class="s2"> sec, avg_batch_cost: </span><span class="si">{:.5f}</span><span class="s2"> sec, avg_samples: </span><span class="si">{}</span><span class="s2">, avg_ips: </span><span class="si">{:.5f}</span><span class="s2"> images/sec.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">epoch</span><span class="p">,</span> <span class="n">batch_idx</span><span class="p">,</span> <span class="n">acc</span> <span class="o">/</span> <span class="n">batch_past</span><span class="p">,</span>
+                <span class="n">optimizer</span><span class="o">.</span><span class="n">get_lr</span><span class="p">(),</span>
+                <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">(),</span> <span class="n">train_reader_cost</span> <span class="o">/</span> <span class="n">batch_past</span><span class="p">,</span>
+                <span class="p">(</span><span class="n">train_reader_cost</span> <span class="o">+</span> <span class="n">train_run_cost</span><span class="p">)</span> <span class="o">/</span> <span class="n">batch_past</span><span class="p">,</span>
+                <span class="n">total_samples</span> <span class="o">/</span> <span class="n">batch_past</span><span class="p">,</span>
+                <span class="n">total_samples</span> <span class="o">/</span> <span class="p">(</span><span class="n">train_reader_cost</span> <span class="o">+</span> <span class="n">train_run_cost</span><span class="p">))</span>
+            <span class="c1"># just log on 1st device</span>
+            <span class="k">if</span> <span class="n">paddle</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">get_rank</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+            <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+            <span class="n">train_reader_cost</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">train_run_cost</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">total_samples</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">acc</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">batch_past</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="n">reader_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id24">
+<h3>3.13 预测程序开发<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h3>
+<p><strong>【基本流程】</strong></p>
+<p>模型训练完成之后，对图像使用该模型基于训练引擎进行预测，主要包含</p>
+<ol class="arabic simple">
+<li><p>定义模型结构，加载模型权重；</p></li>
+<li><p>加载图像，对其进行数据预处理；</p></li>
+<li><p>模型预测；</p></li>
+<li><p>对模型输出进行后处理，获取最终输出结果。</p></li>
+</ol>
+<p><strong>【注意事项】</strong></p>
+<ul class="simple">
+<li><p>在模型评估过程中，为了保证数据可以组batch，我们一般会使用resize/crop/padding等方法去保持尺度的一致性，在预测推理过程中，需要注意crop是否合适，比如OCR识别任务中，crop的操作会导致识别结果不全。</p></li>
+</ul>
+<p><strong>【实战】</strong></p>
+<p>AlexNet的预测程序：<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/tipc/pipeline/Step5/AlexNet_paddle/tools/predict.py">predict.py</a>。</p>
+<p><strong>【核验】</strong></p>
+<p>预测程序按照文档中的命令操作可以正常跑通，文档中给出预测结果可视化结果或者终端输出结果。</p>
+</section>
+<section id="id25">
+<h3>3.14 单机多卡训练<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h3>
+<p>如果希望使用单机多卡提升训练效率，可以从以下几个过程对代码进行修改。</p>
+<section id="id26">
+<h4>3.14.1 数据读取<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h4>
+<p>对于PaddlePaddle来说，多卡数据读取这块主要的变化在sampler</p>
+<p>对于单机单卡，sampler实现方式如下所示。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_sampler</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">RandomSampler</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="n">train_batch_sampler</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">BatchSampler</span><span class="p">(</span>
+    <span class="n">sampler</span><span class="o">=</span><span class="n">train_sampler</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>对于单机多卡任务，sampler实现方式如下所示。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_batch_sampler</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">DistributedBatchSampler</span><span class="p">(</span>
+        <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+        <span class="n">batch_size</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span>
+        <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">drop_last</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p>注意：在这种情况下，单机多卡的代码仍然能够以单机单卡的方式运行，因此建议以这种sampler方式进行论文复现。</p>
+</section>
+<section id="id27">
+<h4>3.14.2 多卡模型初始化<a class="headerlink" href="#id27" title="Permalink to this headline">#</a></h4>
+<p>如果以多卡的方式运行，需要初始化并行训练环境，代码如下所示。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">paddle</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">get_world_size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">paddle</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">init_parallel_env</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>在模型组网并初始化参数之后，需要使用<code class="docutils literal notranslate"><span class="pre">paddle.DataParallel()</span></code>对模型进行封装，使得模型可以通过数据并行的模式被执行。代码如下所示。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">paddle</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">get_world_size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">DataParallel</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id28">
+<h4>3.14.3 模型保存、日志保存等其他模块<a class="headerlink" href="#id28" title="Permalink to this headline">#</a></h4>
+<p>以模型保存为例，我们只需要在0号卡上保存即可，否则多个trainer同时保存的话，可能会造成写冲突，导致最终保存的模型不可用。</p>
+</section>
+<section id="id29">
+<h4>3.14.4 程序启动方式<a class="headerlink" href="#id29" title="Permalink to this headline">#</a></h4>
+<p>对于单机单卡，启动脚本如下所示。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">python3</span><span class="mf">.7</span> <span class="n">train</span><span class="o">.</span><span class="n">py</span> \
+    <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">path</span> <span class="o">/</span><span class="n">paddle</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">ILSVRC2012_torch</span> \
+    <span class="o">--</span><span class="n">lr</span> <span class="mf">0.00125</span> \
+    <span class="o">--</span><span class="n">batch</span><span class="o">-</span><span class="n">size</span> <span class="mi">32</span> \
+    <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="nb">dir</span> <span class="s2">&quot;./output/&quot;</span>
+</pre></div>
+</div>
+<p>对于单机多卡（示例中为8卡训练），启动脚本如下所示。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span>
+
+<span class="n">python3</span><span class="mf">.7</span> <span class="o">-</span><span class="n">m</span> <span class="n">paddle</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">launch</span> \
+    <span class="o">--</span><span class="n">gpus</span><span class="o">=</span><span class="s2">&quot;0,1,2,3,4,5,6,7&quot;</span> \
+    <span class="n">train</span><span class="o">.</span><span class="n">py</span> \
+    <span class="o">--</span><span class="n">data</span><span class="o">-</span><span class="n">path</span> <span class="o">/</span><span class="n">paddle</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">ILSVRC2012_torch</span> \
+    <span class="o">--</span><span class="n">lr</span> <span class="mf">0.01</span> \
+    <span class="o">--</span><span class="n">batch</span><span class="o">-</span><span class="n">size</span> <span class="mi">32</span> \
+    <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="nb">dir</span> <span class="s2">&quot;./output/&quot;</span>
+</pre></div>
+</div>
+<p>注意：这里8卡训练时，虽然单卡的batch size没有变化(32)，但是总卡的batch size相当于是单卡的8倍，因此学习率也设置为了单卡时的8倍。</p>
+<p><strong>【实战】</strong></p>
+<p>本部分可以参考文档：<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/master/pipeline/Step5/AlexNet_paddle/shell/train_dist.sh">单机多卡训练脚本</a>。</p>
+</section>
+</section>
+</section>
+<section id="faq">
+<h2>4. 论文复现注意事项与FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">#</a></h2>
+<p>本部分主要总结大家在论文复现赛过程中遇到的问题，如果本章内容没有能够解决你的问题，欢迎给该文档提出优化建议或者给Paddle提<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/new/choose">ISSUE</a>。</p>
+<section id="id30">
+<h3>4.1 通用注意事项<a class="headerlink" href="#id30" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>需要仔细对照PaddlePaddle与参考代码的优化器参数实现，确保优化器参数严格对齐。</p></li>
+<li><p>如果遇到一些Paddle不支持的API操作，可以尝试使用替代实现进行复现。如下面的PyTorch代码，PaddlePaddle中可以通过slice + concat API的组合形式进行功能实现。同时，对于这个问题，建议优先给Paddle提<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/new/choose">ISSUE</a>，列出Paddle不支持的实现，开发人员会根据优先级进行开发。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span>
+    <span class="n">per_locations</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">per_box_regression</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="n">per_locations</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">per_box_regression</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="n">per_locations</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">per_box_regression</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="n">per_locations</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">per_box_regression</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="p">],</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>如果遇到Paddle不包含的OP或者API，比如(1) 如果是某些算法实现存在调用了外部OP，而且Paddle也不包含该OP实现；(2) 其他框架存在的API或者OP，但是Paddle中没有这些OP。此时：</p>
+<ul class="simple">
+<li><p>对于Paddle资深用户来说，可以尝试使用Paddle的自定义算子功能，存在一定的代码开发量。</p></li>
+<li><p>对于初学者来说，可以给Paddle提<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/new/choose">ISSUE</a>，列出Paddle不支持的实现，Paddle开发人员会根据优先级进行实现。</p></li>
+</ul>
+</li>
+<li><p>PaddlePaddle与PyTorch对于不同名称的API，实现的功能可能是相同的，复现的时候注意，比如<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/optimizer/lr/StepDecay_cn.html#stepdecay">paddle.optimizer.lr.StepDecay</a>与<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.StepLR.html#torch.optim.lr_scheduler.StepLR">torch.optim.lr_scheduler.StepLR</a> ，关于PaddlePaddle与PyTorch更多API的映射关系可以参考：<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/08_api_mapping/pytorch_api_mapping_cn.html">API映射表</a>。</p></li>
+<li><p>对于PaddlePaddle来说，通过<code class="docutils literal notranslate"><span class="pre">paddle.set_device</span></code>函数（全局）来确定模型结构是运行在什么设备上，对于torch来说，是通过<code class="docutils literal notranslate"><span class="pre">model.to(&quot;device&quot;)</span></code> （局部）来确定模型结构的运行设备，这块在复现的时候需要注意。</p></li>
+<li><p>安装paddle的develop版本：在 Paddle 修复了框架的问题或者新增了API和功能之后，如果需要马上使用，可以采用以下方式安装最新的 develop 版本：</p>
+<ul>
+<li><p>进入 <a class="reference external" href="https://www.paddlepaddle.org.cn/install/quick?docurl=/documentation/docs/zh/develop/install/pip/linux-pip.html">Paddle 官网</a>，选择develop版本，并根据自己的情况选择其他字段，根据生成的安装信息安装，当选择 Linux-pip-CUDA10.2字段后，就可以按照下面的信息安装。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">paddlepaddle</span><span class="o">-</span><span class="n">gpu</span><span class="o">==</span><span class="mf">0.0.0</span><span class="o">.</span><span class="n">post102</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">paddlepaddle</span><span class="o">.</span><span class="n">org</span><span class="o">.</span><span class="n">cn</span><span class="o">/</span><span class="n">whl</span><span class="o">/</span><span class="n">linux</span><span class="o">/</span><span class="n">gpu</span><span class="o">/</span><span class="n">develop</span><span class="o">.</span><span class="n">html</span>
+</pre></div>
+</div>
+</li>
+<li><p>如果不确定自己安装的是否是最新版本，可以进入<a class="reference external" href="https://www.paddlepaddle.org.cn/whl/linux/gpu/develop.html">网站</a>下载对应的包并查看时间戳。</p></li>
+</ul>
+</li>
+<li><p>如果遇到复现时间较长的论文，我们建议：</p>
+<ul class="simple">
+<li><p>根据自己的时间、资源、战略部署评估是否复现这个论文复现；</p></li>
+<li><p>在决定复现的情况下，参照本复现指南中的对齐操作对模型、数据、优化方式等对齐，以最快的时间排除问题。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id31">
+<h3>4.2 模型结构对齐<a class="headerlink" href="#id31" title="Permalink to this headline">#</a></h3>
+<section id="api">
+<h4>4.2.1 API<a class="headerlink" href="#api" title="Permalink to this headline">#</a></h4>
+<ul>
+<li><p>对于 <code class="docutils literal notranslate"><span class="pre">paddle.nn.Linear</span></code> 层的weight参数，PaddlePaddle与PyTorch的保存方式不同，在转换时需要进行转置，示例代码可以参考<a class="reference external" href="https://github.com/littletomatodonkey/AlexNet-Prod/blob/e3855e0b1992332c2765ccf627d0c5f5f68232fe/pipeline/weights/torch2paddle.py#L19">AlexNet权重转换脚本</a>。</p></li>
+<li><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2D</span>
+</pre></div>
+</div>
+<p>包含4个参数</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span>
+</pre></div>
+</div>
+<p>,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bias</span>
+</pre></div>
+</div>
+<p>,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_mean</span>
+</pre></div>
+</div>
+<p>,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_variance</span>
+</pre></div>
+</div>
+<p>，torch.nn.BatchNorm2d包含4个参数</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span>
+</pre></div>
+</div>
+<p>,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bias</span>
+</pre></div>
+</div>
+<p>,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">running_mean</span>
+</pre></div>
+</div>
+<p>,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">running_var</span>
+</pre></div>
+</div>
+<p>,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num_batches_tracked</span>
+</pre></div>
+</div>
+<p>。 其中，</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num_batches_tracked</span>
+</pre></div>
+</div>
+<p>在PaddlePaddle中没有用到，剩下4个的对应关系为</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">weight</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">weight</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bias</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">bias</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_variance</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">running_var</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_mean</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">running_mean</span></code></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/AvgPool2D_cn.html#avgpool2d"><code class="docutils literal notranslate"><span class="pre">paddle.nn.AvgPool2D</span></code></a>需要将 <code class="docutils literal notranslate"><span class="pre">exclusive</span></code> 参数设为 <code class="docutils literal notranslate"><span class="pre">False</span></code> ，结果才能 PyTorch 的默认行为一致。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.masked_fill</span></code>函数的功能目前可以使用<code class="docutils literal notranslate"><span class="pre">paddle.where</span></code>进行实现，可以参考：<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/faq/train_cn.html#paddletorch-masked-fillapi">链接</a>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pack_padded_sequence</span></code>和<code class="docutils literal notranslate"><span class="pre">pad_packed_sequence</span></code>这两个API目前PaddlePaddle中没有实现，可以直接在RNN或者LSTM的输入中传入<code class="docutils literal notranslate"><span class="pre">sequence_length</span></code>来实现等价的功能。</p></li>
+</ul>
+</section>
+<section id="id32">
+<h4>4.2.2 权重转换<a class="headerlink" href="#id32" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>在权重转换的时候，不能只关注参数的名称，比如说有些<code class="docutils literal notranslate"><span class="pre">paddle.nn.Linear</span></code>层，但是定义的变量名称为<code class="docutils literal notranslate"><span class="pre">conv</span></code>，这种也是需要进行权重转置的。</p></li>
+<li><p>权重转换时，建议同时打印 Paddle 和 PyTorch 对应权重的shape，以防止名称相似但是shape不同的参数权重转换报错。</p></li>
+</ul>
+</section>
+<section id="id33">
+<h4>4.2.3 模型组网正确性验证<a class="headerlink" href="#id33" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>在论文复现的过程中，可能会遇到一些经典的模型结构，比如ResNet等，Paddle官方也提供了ResNet的实现，但是这里建议自己根据PyTorch代码重新实现一遍，一方面是对整体的模型结构更加熟悉，另一方面也保证模型结构和权重完全对齐。</p></li>
+<li><p>在复杂的网络结构中，如果前向结果对不齐，可以按照模块排查问题，比如依次获取backbone、neck、head输出等，看下问题具体出现在哪个子模块，再进到子模块详细排查。</p></li>
+<li><p>网络结构对齐后，尽量使用训练好的预训练模型和真实的图片进行前向diff计算，这样更准确。</p></li>
+</ul>
+</section>
+</section>
+<section id="id34">
+<h3>4.3 验证/测试集数据读取对齐<a class="headerlink" href="#id34" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>如果使用 PaddlePaddle 提供的数据集API，比如 <code class="docutils literal notranslate"><span class="pre">paddle.vision.datasets.Cifar10</span></code>等，可能无法完全与参考代码在数据顺序上保持一致，但是这些数据集的实现都是经过广泛验证的，可以使用。此时对数据预处理和后处理进行排查就好。<code class="docutils literal notranslate"><span class="pre">数据集+数据处理</span></code>的部分可以通过评估指标对齐完成自查。</p></li>
+<li><p>需要仔细排查数据预处理，不仅包含的预处理方法相同，也需要保证预处理的流程相同，比如先padding再做归一化与先做归一化再padding，得到的结果是不同的。</p></li>
+</ul>
+</section>
+<section id="id35">
+<h3>4.4 评估指标对齐<a class="headerlink" href="#id35" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>真实数据评估时，需要注意评估时 <code class="docutils literal notranslate"><span class="pre">paddle.io.DataLoader</span></code> 的 <code class="docutils literal notranslate"><span class="pre">drop_last</span></code> 参数是否打开(文档<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/io/DataLoader_cn.html#dataloader">链接</a>)，复现代码需要与参考代码保持一致，否则最后不够batch-size的数据的评估会有diff。</p></li>
+<li><p>在识别或者检索过程中，为了加速评估过程，往往会将评估函数由CPU实现改为GPU实现，由此会带来评估函数输出的不一致。这是由于sort函数对于相同值的排序结果不同带来的。在复现的过程中，如果可以接受轻微的指标不稳定，可以使用PaddlePaddle的sort函数，如果对于指标非常敏感，同时对速度性能要求很高，可以给PaddlePaddle提<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/new/choose">ISSUE</a>，由研发人员高优开发。</p></li>
+<li><p>在检测任务中，评估流程往往和训练流程有一定差异，例如RPN阶段NMS的参数等，这里需要仔细检查评估时的超参数，不要将训练超参和评估超参弄混淆。</p></li>
+<li><p>在OCR等任务中，需要注意评估过程也会对gt信息进行修正，比如大小写等，也会过滤掉一些样本，这里需要注意过滤规则，确保有效评估数据集一致。</p></li>
+</ul>
+</section>
+<section id="id36">
+<h3>4.5 损失函数对齐<a class="headerlink" href="#id36" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>部分算法的损失函数中会用到 bool 索引，这时候可以使用<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/where_cn.html#where">paddle.where</a> 代替。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">paddle.nn.CrossEntropyLoss</span></code> 默认是在最后一维(axis=-1)计算损失函数，而 <code class="docutils literal notranslate"><span class="pre">torch.nn.CrossEntropyLoss</span></code> 是在axis=1的地方计算损失函数，因此如果输入的维度大于2，这里需要保证计算的维(axis)相同，否则可能会出错。</p></li>
+<li><p>在生成模型中会遇到梯度损失，需要对模型中的算子求二次梯度，目前<code class="docutils literal notranslate"><span class="pre">MaxPooling</span></code>暂时不支持二次梯度，如果复现的过程中遇到了需要对<code class="docutils literal notranslate"><span class="pre">MaxPooling</span></code>求二次梯度的情况，可以和Paddle官方开发同学反馈，进一步确认解决方案。</p></li>
+<li><p>在保存损失函数值的时候，注意要使用<code class="docutils literal notranslate"><span class="pre">paddle.no_grad</span></code>，或者仅仅保存转换成 numpy 的数组，避免损失没有析构导致内存泄漏问题。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 错误示范</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">celoss</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+<span class="n">avg_loss</span> <span class="o">+=</span> <span class="n">loss</span>
+<span class="c1"># 正确示范1</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">celoss</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+<span class="n">avg_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="c1"># 正确示范2</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">celoss</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">paddle</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="n">avg_loss</span> <span class="o">+=</span> <span class="n">loss</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>目前PaddlePaddle中没有HingeEmbeddingLoss API，可以使用组合的方式进行实现，参考实现：<a class="reference external" href="https://github.com/ImportPaddle/DiscoGAN-Paddle/blob/main/discogan/loss_fn.py">链接</a>。</p></li>
+</ul>
+</section>
+<section id="id37">
+<h3>4.6 优化器对齐<a class="headerlink" href="#id37" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Paddle目前支持在 <code class="docutils literal notranslate"><span class="pre">optimizer</span></code> 中通过设置 <code class="docutils literal notranslate"><span class="pre">params_groups</span></code> 的方式设置不同参数的更新方式，可以参考<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/blob/develop/python/paddle/optimizer/optimizer.py#L107">代码示例</a> 。</p></li>
+<li><p>有些模型训练时，会使用梯度累加策略，即累加到一定step数量之后才进行参数更新，这时在实现上需要注意对齐。</p></li>
+<li><p>在某些任务中，比如说深度学习可视化、可解释性等任务中，一般只要求模型前向过程，不需要训练，此时优化器、学习率等用于模型训练的模块对于该类论文复现是不需要的。</p></li>
+<li><p>在图像分类领域，大多数Vision Transformer模型都采用了AdamW优化器，并且会设置weigh decay，同时部分参数设置为no weight decay，例如位置编码的参数通常设置为no weight decay，no weight decay参数设置不正确，最终会有明显的精度损失，需要特别注意。一般可以通过分析模型权重来发现该问题，分别计算官方模型和复现模型每层参数权重的平均值、方差，对每一层依次对比，有显著差异的层可能存在问题，因为在weight decay的作用下，参数权重数值会相对较小，而未正确设置no weight decay，则会造成该层参数权重数值异常偏小。</p></li>
+<li><p>在OCR识别等任务中，<code class="docutils literal notranslate"><span class="pre">Adadelta</span></code>优化器常常被使用，该优化器与PyTorch实现目前稍有不同，但是不影响模型训练精度对齐，在做前反向对齐时，需要注意可以将该优化器替换为Adam等优化器（PaddlePaddle与参考代码均需要替换）；对齐完成之后，再使用<code class="docutils literal notranslate"><span class="pre">Adadelta</span></code>优化器进行训练对齐。</p></li>
+</ul>
+</section>
+<section id="id38">
+<h3>4.7 学习率对齐<a class="headerlink" href="#id38" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>PaddlePaddle 中参数的学习率受到优化器学习率和<code class="docutils literal notranslate"><span class="pre">ParamAttr</span></code>中设置的学习率影响，因此跟踪学习率需要将二者结合进行跟踪。</p></li>
+<li><p>对于复现代码和参考代码，学习率在整个训练过程中在相同的轮数相同的iter下应该保持一致，可以通过<code class="docutils literal notranslate"><span class="pre">reprod_log</span></code>工具、打印学习率值或者可视化二者学习率的log来查看diff。</p></li>
+<li><p>有些网络的学习率策略比较细致，比如带warmup的学习率策略，这里需要保证起始学习率等参数都完全一致。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">torch.optim.lr_scheduler.MultiplicativeLR</span></code> API目前PaddlePaddle中没有实现，可以使用<code class="docutils literal notranslate"><span class="pre">paddle.optimizer.lr.LambdaDecay</span></code>替换实现，参考代码：<a class="reference external" href="https://github.com/Paddle-Team-7/PixelCNN-Paddle/blob/607ef1d1ca6a489cecdcd2182d3acc5b2df7c779/src/pixel_cnn.py#L161">链接</a>。</p></li>
+</ul>
+</section>
+<section id="id39">
+<h3>4.8 正则化策略对齐<a class="headerlink" href="#id39" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>在如Transformer或者少部分CNN模型中，存在一些参数不做正则化(正则化系数为0)的情况。这里需要找到这些参数并对齐取消实施正则化策略，可以参考<a class="reference external" href="https://github.com/PaddlePaddle/PaddleClas/blob/release%2F2.3/ppcls/arch/backbone/model_zoo/resnest.py#L72">这里</a>，对特定参数进行修改。</p></li>
+</ul>
+</section>
+<section id="id40">
+<h3>4.9 反向对齐<a class="headerlink" href="#id40" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Paddle打印反向和参数更新，可以参考<a class="reference external" href="https://github.com/jerrywgz/PaddleDetection/blob/debug_gfl/ppdet/modeling/backbones/resnet.py#L581">代码实例</a>；PyTorch打印反向和参数更新，可以参考<a class="reference external" href="https://github.com/jerrywgz/mmdetection/blob/debug_gfl/mmdet/models/backbones/resnet.py#L630">代码实例</a>。</p></li>
+<li><p>反向对齐时，如果第二轮开始，loss开始无法对齐，则首先需要排查下超参数的差异，没问题的话，在<code class="docutils literal notranslate"><span class="pre">loss.backward()</span></code>方法之后，使用<code class="docutils literal notranslate"><span class="pre">tensor.grad</span></code>获取梯度值，二分的方法查找diff，定位出PaddlePaddle与PyTorch梯度无法对齐的API或者操作，然后进一步验证。第3章中给出了获取所有参数的梯度方法，如果只希望打印特定参数的梯度，可以用下面的方式。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">paddle</span>
+
+<span class="k">def</span> <span class="nf">print_hook_fn</span><span class="p">(</span><span class="n">grad</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">grad</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">to_tensor</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">],</span> <span class="n">stop_gradient</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">register_hook</span><span class="p">(</span><span class="n">print_hook_fn</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="n">w</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="c1"># backward之后会输出下面的内容</span>
+<span class="c1">#     Tensor(shape=[4], dtype=float32, place=CPUPlace, stop_gradient=False,</span>
+<span class="c1">#            [4., 4., 4., 4.])</span>
+</pre></div>
+</div>
+</section>
+<section id="id41">
+<h3>4.10 训练集数据读取对齐<a class="headerlink" href="#id41" title="Permalink to this headline">#</a></h3>
+<section id="id42">
+<h4>4.10.1 API<a class="headerlink" href="#id42" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>在前向过程中，如果数据预处理过程运行出错，请先将 <code class="docutils literal notranslate"><span class="pre">paddle.io.DataLoader</span></code> 的 <code class="docutils literal notranslate"><span class="pre">num_workers</span></code> 参数设为0，然后根据单个进程下的报错日志定位出具体的bug。</p></li>
+<li><p>如果使用PaddlePaddle提供的数据集API，比如<code class="docutils literal notranslate"><span class="pre">paddle.vision.datasets.Cifar10</span></code>等，可能无法完全与参考代码在数据顺序上保持一致，如果是全量数据使用，对结果不会有影响，如果是按照比例选取子集进行训练，则建议重新根据参考代码实现数据读取部分，保证子集完全一致。</p></li>
+</ul>
+</section>
+<section id="id43">
+<h4>4.10.2 数据预处理<a class="headerlink" href="#id43" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>数据读取需要注意图片读取方式是opencv还是PIL.Image，图片格式是RGB还是BGR，复现时，需要保证复现代码和参考代码完全一致。</p></li>
+<li><p>如果数据处理过程中涉及到随机数生成，建议固定seed (<code class="docutils literal notranslate"><span class="pre">np.random.seed(0)</span></code>, <code class="docutils literal notranslate"><span class="pre">random.seed(0)</span></code>)，查看复现代码和参考代码处理后的数据是否有diff。</p></li>
+<li><p>不同的图像预处理库，使用相同的插值方式可能会有diff，建议使用相同的库对图像进行resize。</p></li>
+<li><p>视频解码时，不同库解码出来的图像数据会有diff，注意区分解码库是opencv、decord还是pyAV，需要保证复现代码和参考代码完全一致。</p></li>
+</ul>
+</section>
+</section>
+<section id="id44">
+<h3>4.11 网络初始化对齐<a class="headerlink" href="#id44" title="Permalink to this headline">#</a></h3>
+<section id="id45">
+<h4>4.11.1 网络初始化通用问题<a class="headerlink" href="#id45" title="Permalink to this headline">#</a></h4>
+<ul>
+<li><p>对于不同的深度学习框架，网络初始化在大多情况下，即使值的分布完全一致，也无法保证值完全一致，这里也是论文复现中不确定性比较大的地方。如果十分怀疑初始化导致的问题，建议将参考的初始化权重转成paddle模型，加载该初始化模型训练，看下收敛精度。</p></li>
+<li><p>Paddle中目前没有<code class="docutils literal notranslate"><span class="pre">torch.nn.init.constant_()</span></code>的方法，如果希望对参数赋值为常数，可以使用<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/initializer/Constant_cn.html#constant">paddle.nn.initializer.Constant</a>API；或者可以参考下面的实现。更加具体的解释可以参考：<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/37578">链接</a>。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">paddle</span>
+<span class="kn">import</span> <span class="nn">paddle.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Define the linear layer.</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">nn</span><span class="o">.</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;set m.bias&quot;</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">set_value</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float32&quot;</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">bias</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id46">
+<h4>4.11.2 细分场景特定问题<a class="headerlink" href="#id46" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>CNN对于模型初始化相对来说没有那么敏感，在迭代轮数与数据集足够的情况下，最终精度指标基本接近；而transformer系列模型对于初始化比较敏感，在transformer系列模型训练对齐过程中，建议对这一块进行重点检查。</p></li>
+<li><p>生成模型尤其是超分模型，对初始化比较敏感，建议对初始化重点检查。</p></li>
+<li><p>领域自适应算法由于需要基于初始模型生成伪标签，因此对初始网络敏感，建议加载预训练的模型进行训练。</p></li>
+</ul>
+</section>
+</section>
+<section id="id47">
+<h3>4.12 模型训练对齐<a class="headerlink" href="#id47" title="Permalink to this headline">#</a></h3>
+<section id="id48">
+<h4>4.12.1 训练对齐通用问题<a class="headerlink" href="#id48" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>有条件的话，复现工作之前最好先基于官方代码完成训练，保证与官方指标能够对齐，并且将训练策略和训练过程中的关键指标记录保存下来，比如每个epoch的学习率、Train Loss、Eval Loss、Eval Acc等，在复现网络的训练过程中，将关键指标保存下来，这样可以将两次训练中关键指标的变化曲线绘制出来，能够很方便的进行对比。</p></li>
+<li><p>训练过程中可以对loss或者acc进行可视化，和竞品loss或者acc进行直观的对比；如果训练较大的数据集，1次完整训练的成本比较高，此时可以隔一段时间查看一下，如果精度差异比较大，建议先停掉实验，排查原因。</p></li>
+<li><p>如果训练的过程中出nan，一般是因为除0或者log0的情况， 可以着重看下几个部分：</p>
+<ul>
+<li><p>如果有预训练模型的话，可以确认下是否加载正确</p></li>
+<li><p>确认下reader的预处理中是否会出现box（或mask）为空的情况</p></li>
+<li><p>模型结构中计算loss的部分是否有考虑到正样本为0的情况</p></li>
+<li><p>也可能是某个API的数值越界导致的，可以测试较小的输入是否还会出现nan。</p></li>
+</ul>
+</li>
+<li><p>如果训练过程中出现不收敛的情况，可以</p>
+<ul>
+<li><p>简化网络和数据，实验是否收敛；</p></li>
+<li><p>如果是基于原有实现进行改动，可以尝试控制变量法，每次做一个改动，逐个排查；</p></li>
+<li><p>检查学习率是否过大、优化器设置是否合理，排查下weight decay是否设置正确；</p></li>
+<li><p>保存不同step之间的模型参数，观察模型参数是否更新。</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id49">
+<h4>4.12.2 细分场景特定问题<a class="headerlink" href="#id49" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>小数据上指标波动可能比较大，时间允许的话，可以跑多次实验，取平均值。</p></li>
+<li><p>transformer 系列模型对于数据增广与模型初始化非常敏感，因此在保证前反向对齐后，如果训练仍无法对齐，可以考虑使用官方的PyTorch模型训练代码，结合复现的Paddle组网代码进行训练，这样可以验证是否是数据预处理/数据增强策略存在问题。</p></li>
+<li><p>检测、分割等任务中，训练通常需要加载backbone的权重作为预训练模型，注意在完成模型对齐后，将转换的权重修改为backbone权重。</p></li>
+<li><p>生成任务中，训练时经常需要固定一部分网络参数。对于一个参数<code class="docutils literal notranslate"><span class="pre">param</span></code>，可以通过<code class="docutils literal notranslate"><span class="pre">param.trainable</span> <span class="pre">=</span> <span class="pre">False</span></code>来固定。</p></li>
+<li><p>在训练GAN时，通常通过GAN的loss较难判断出训练是否收敛，建议每训练几次迭代保存一下训练生成的图像，通过可视化判断训练是否收敛。</p></li>
+<li><p>在训练GAN时，如果PaddlePaddle实现的代码已经可以与参考代码完全一致，参考代码和PaddlePaddle代码均难以收敛，则可以在训练的时候，可以判断一下loss，如果loss大于一个阈值或者直接为NAN，说明训崩了，就终止训练，使用最新存的参数重新继续训练。可以参考该链接的实现：<a class="reference external" href="https://github.com/JennyVanessa/Paddle-GI">链接</a>。</p></li>
+</ul>
+</section>
+</section>
+<section id="id50">
+<h3>4.13 规范训练日志<a class="headerlink" href="#id50" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">autolog</span></code>支持训练和预测的日志规范化，更多关于<code class="docutils literal notranslate"><span class="pre">autolog</span></code>的使用可以参考：https://github.com/LDOUBLEV/AutoLog。</p></li>
+</ul>
+</section>
+<section id="id51">
+<h3>4.14 预测程序开发<a class="headerlink" href="#id51" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="bug">
+<h3>4.15 常见bug汇总<a class="headerlink" href="#bug" title="Permalink to this headline">#</a></h3>
+<p>在论文复现中，可能因为各种原因出现报错，下面我们列举了常见的问题和解决方法，从而提供debug的方向：</p>
+<section id="id52">
+<h4>4.15.1 显存泄露<a class="headerlink" href="#id52" title="Permalink to this headline">#</a></h4>
+<p>显存泄露会在 <code class="docutils literal notranslate"><span class="pre">nvidia-smi</span></code> 等命令下，明显地观察到显存的增加，最后会因为 <code class="docutils literal notranslate"><span class="pre">out</span> <span class="pre">of</span> <span class="pre">memory</span></code> 的错误而程序终止。</p>
+<ul class="simple">
+<li><p>可能原因：</p></li>
+</ul>
+<ol class="arabic">
+<li><p>Tensor 切片的时候增加变量引用，导致显存增加。解决方法如下：</p>
+<p>使用 where, gather 函数替代原有的 slice 方式：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">&gt;</span><span class="mi">1</span>
+<span class="c1"># 会增加引用的一种写法</span>
+<span class="n">c</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1"># 修改后</span>
+<span class="n">paddle</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">paddle</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span> <span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="id53">
+<h4>4.15.2 内存泄露<a class="headerlink" href="#id53" title="Permalink to this headline">#</a></h4>
+<p>内存泄露和显存泄露相似，并不能立即察觉，而是在使用 <code class="docutils literal notranslate"><span class="pre">top</span></code> 命令时，观察到内存显著增加，最后会因为 <code class="docutils literal notranslate"><span class="pre">can't</span> <span class="pre">allocate</span> <span class="pre">memory</span></code> 的错误而程序终止，如图所示是 <code class="docutils literal notranslate"><span class="pre">top</span></code> 命令下观察内存变化需要检查的字段。</p>
+<p><a class="reference external" href="https://raw.githubusercontent.com/shiyutang/files/main/top.png"><img alt="img" src="https://raw.githubusercontent.com/shiyutang/files/main/top.png" /></a></p>
+<p>可能原因：</p>
+<ol class="arabic">
+<li><p>对在计算图中的 tensor 进行了不需要的累加、保存等操作，导致反向传播中计算图没有析构，解决方法如下：</p>
+<p><strong>预测阶段</strong>：在predict函数上增加装饰器&#64;paddle.no_grad()；在预测部分的代码前加上 with paddle.no_grad()</p>
+<p><strong>训练阶段</strong>：对于不需要进行加入计算图的计算，将tensor detach出来；对于不需要使用tensor的情形，将 tensor 转换为numpy进行操作，例如下面的代码：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cross_entropy_loss</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">loss</span> <span class="o">=</span> <span class="n">cross_entropy_loss</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">gt</span><span class="p">)</span>
+<span class="c1"># 会导致内存泄露的操作</span>
+<span class="n">loss_total</span> <span class="o">+=</span> <span class="n">loss</span>
+<span class="c1"># 修改后</span>
+<span class="n">loss_total</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span> <span class="c1"># 如果可以转化为numpy</span>
+<span class="n">loss_total</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> <span class="c1"># 如果需要持续使用tensor</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>排查方法：</p>
+<ol class="arabic simple">
+<li><p>在没有使用 paddle.no_grad 的代码中，寻找对模型参数和中间计算结果的操作；</p></li>
+<li><p>考虑这些操作是否应当加入计算图中（即对最后损失产生影响）；</p></li>
+<li><p>如果不需要，则需要对操作中的参数或中间计算结果进行<code class="docutils literal notranslate"><span class="pre">.detach().clone()</span></code>或者<code class="docutils literal notranslate"><span class="pre">.numpy</span></code> 后操作。</p></li>
+</ol>
+</section>
+<section id="dataloader">
+<h4>4.15.3 dataloader 加载数据时间长<a class="headerlink" href="#dataloader" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p><strong>解决方式</strong>：增大 num_worker 的值，提升io速度，一般建议设置 4 或者 8。</p></li>
+</ul>
+</section>
+<section id="id54">
+<h4>4.15.4 单机多卡报错信息不明确<a class="headerlink" href="#id54" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p><strong>解决方式</strong>：前往 log 下寻找 worklog.x 进行查看，其中 worklog.x 代表第 x 卡的报错信息。</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By isLinXu<br/>
+  
+      &copy; Copyright 2022, isLinXu.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

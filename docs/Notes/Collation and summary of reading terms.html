@@ -1,0 +1,1374 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>论文阅读术语整理总结 &#8212; 论文阅读笔记</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <link rel="shortcut icon" href="../_static/panda.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">论文阅读笔记</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  目录
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Method/index.html">
+   论文阅读指南
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/efficent_read_paper.html">
+     高效阅读方法及流程
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/how_to_read_paper.html">
+     如何阅读论文
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/paper_10_question.html">
+     论文速读十问
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/read_important_tips.html">
+     读论文与口头报告的几项重点
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Method/reference.html">
+     参考材料
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../List/index.html">
+   论文阅读清单
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/basis.html">
+     神经网络基础(basis)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/attention.html">
+     注意力部分(attention)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/batch_normalization.html">
+     批量&amp;正则化(batch&amp;normalization)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/classification.html">
+     图像分类(CLAS)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/convolutional.html">
+     高级卷积网络知识(Convolutional)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/gan.html">
+     AI合成部分(GAN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/nlp.html">
+     自然语言处理(NLP)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/objectdetection.html">
+     目标检测(OBJ)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/rnn.html">
+     循环神经网络(RNN)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/segementation.html">
+     目标分割(SEG)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/transformer.html">
+     Transformer
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/multimodal.html">
+     多模态(MultiModal Learning)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../List/llm.html">
+     大语言模型(Large Language Models)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="index.html">
+   论文阅读笔记
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="mm-l/index.html">
+     多模态(MultiModal Machine Learning)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="mm-l/blip-v1.html">
+       BLIP: Bootstrapping Language-Image Pre-training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="mm-l/blip-v2.html">
+       BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="llm/index.html">
+     大语言模型(Large Language Models)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="llm/opt.html">
+       OPT: OPT : Open Pre-trained Transformer Language Models
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="llm/gpt-v1.html">
+       GPT-v1:Improving Language Understanding by Generative Pre-Training
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="llm/gpt-v2.html">
+       GPT-v2:Language Models are Unsupervised Multitask Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="llm/gpt-v3.html">
+       GPT-v3:Language Models are Few-Shot Learners
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="llm/gpt-v4.html">
+       GPT-v4:GPT-4 Technical Report
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Read/index.html">
+   论文阅读记录
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Summary/index.html">
+   论文阅读总结
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes//issues/new?title=Issue%20on%20page%20%2FNotes/Collation and summary of reading terms.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/isLinXu/paper-read-notes/edit/master/Notes/Collation and summary of reading terms.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Notes/Collation and summary of reading terms.md.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>论文阅读术语整理总结</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="id1">
+<h1>论文阅读术语整理总结<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>绝对值整流 absolute value rectification </p>
+<p>准确率 accuracy </p>
+<p>声学 acoustic </p>
+<p>激活函数 activation function </p>
+<p>AdaGrad AdaGrad </p>
+<p>对抗 adversarial </p>
+<p>对抗样本 adversarial example </p>
+<p>对抗训练 adversarial training </p>
+<p>几乎处处 almost everywhere </p>
+<p>几乎必然 almost sure </p>
+<p>几乎必然收敛 almost sure convergence </p>
+<p>选择性剪接数据集 alternative splicing dataset </p>
+<p>原始采样 Ancestral Sampling </p>
+<p>退火重要采样 annealed importance sampling </p>
+<p>专用集成电路 application-specific integrated circuit </p>
+<p>近似贝叶斯计算 approximate Bayesian computation </p>
+<p>近似推断 approximate inference </p>
+<p>架构 architecture </p>
+<p>人工智能 artificial intelligence </p>
+<p>人工神经网络 artificial neural network </p>
+<p>渐近无偏 asymptotically unbiased </p>
+<p>异步随机梯度下降 Asynchoronous Stochastic Gradient Descent </p>
+<p>异步 asynchronous </p>
+<p>注意力机制 attention mechanism </p>
+<p>属性 attribute </p>
+<p>自编码器 autoencoder </p>
+<p>自动微分 automatic differentiation </p>
+<p>自动语音识别 Automatic Speech Recognition </p>
+<p>自回归网络 auto-regressive network </p>
+<p>反向传播 back propagate </p>
+<p>反向传播 back propagation </p>
+<p>回退 back-off </p>
+<p>反向传播 backprop </p>
+<p>通过时间反向传播 back-propagation through time </p>
+<p>反向传播 backward propagation </p>
+<p>词袋 bag of words </p>
+<p>Bagging bootstrap aggregating bandit bandit </p>
+<p>批量 batch</p>
+<p>批标准化 batch normalization </p>
+<p>贝叶斯误差 Bayes error </p>
+<p>贝叶斯规则 Bayes’ rule </p>
+<p>贝叶斯推断 Bayesian inference </p>
+<p>贝叶斯网络 Bayesian network </p>
+<p>贝叶斯概率 Bayesian probability </p>
+<p>贝叶斯统计 Bayesian statistics </p>
+<p>基准 bechmark </p>
+<p>信念网络 belief network Bernoulli </p>
+<p>分布 Bernoulli distribution </p>
+<p>基准 baseline </p>
+<p>BFGS BFGS </p>
+<p>偏置 bias in affine function </p>
+<p>偏差 bias in statistics </p>
+<p>有偏 biased </p>
+<p>有偏重要采样 biased importance sampling 偏差 biass </p>
+<p>二元语法 bigram </p>
+<p>二元关系 binary relation </p>
+<p>二值稀疏编码 binary sparse coding </p>
+<p>比特 bit </p>
+<p>块坐标下降 block coordinate descent </p>
+<p>块吉布斯采样 block Gibbs Sampling </p>
+<p>玻尔兹曼分布 Boltzmann distribution </p>
+<p>玻尔兹曼机 Boltzmann Machine Boosting Boosting </p>
+<p>桥式采样 bridge sampling </p>
+<p>广播 broadcasting </p>
+<p>磨合 Burning-in </p>
+<p>变分法 calculus of variations </p>
+<p>容量 capacity </p>
+<p>级联 cascade </p>
+<p>灾难遗忘 catastrophic forgetting </p>
+<p>范畴分布 categorical distribution </p>
+<p>因果因子 causal factor </p>
+<p>因果模型 causal modeling </p>
+<p>中心差分 centered difference </p>
+<p>中心极限定理 central limit theorem </p>
+<p>链式法则 chain rule </p>
+<p>混沌 chaos </p>
+<p>弦 chord </p>
+<p>弦图 chordal graph </p>
+<p>梯度截断 clip gradient </p>
+<p>截断梯度 clipping the gradient </p>
+<p>团 clique </p>
+<p>团势能 clique potential </p>
+<p>闭式解 closed form solution </p>
+<p>级联 coalesced </p>
+<p>编码 code </p>
+<p>协同过滤 collaborative filtering </p>
+<p>列 column </p>
+<p>列空间 column space </p>
+<p>共因 common cause </p>
+<p>完全图 complete graph </p>
+<p>复杂细胞 complex cell </p>
+<p>计算图 computational graph </p>
+<p>计算机视觉 Computer Vision </p>
+<p>概念漂移 concept drift </p>
+<p>条件计算 conditional computation </p>
+<p>条件概率 conditional probability </p>
+<p>条件独立的 conditionally independent </p>
+<p>共轭 conjugate </p>
+<p>共轭方向 conjugate directions </p>
+<p>共轭梯度 conjugate gradient </p>
+<p>联结主义 connectionism </p>
+<p>一致性 consistency </p>
+<p>约束优化 constrained optimization </p>
+<p>特定环境下的独立 contextual bandit contextual bandit </p>
+<p>延拓法 continuation method </p>
+<p>收缩 contractive </p>
+<p>收缩自编码器 contractive autoencoder </p>
+<p>对比散度 contrastive divergence </p>
+<p>凸优化 Convex optimization </p>
+<p>卷积 convolution </p>
+<p>卷积玻尔兹曼机 Convolutional Boltzmann Machine </p>
+<p>卷积玻尔兹曼机 convolutional Boltzmann machine </p>
+<p>卷积网络 convolutional net </p>
+<p>卷积网络 convolutional network </p>
+<p>卷积神经网络 convolutional neural network </p>
+<p>坐标上升 coordinate ascent </p>
+<p>坐标下降 coordinate descent </p>
+<p>共父 coparent </p>
+<p>相关系数 correlation </p>
+<p>代价 cost </p>
+<p>代价函数 cost function </p>
+<p>协方差 covariance </p>
+<p>协方差矩阵 covariance matrix </p>
+<p>协方差 RBM covariance RBM </p>
+<p>覆盖 coverage </p>
+<p>准则 criterion </p>
+<p>临界点 critical point </p>
+<p>临界温度 critical temperatures </p>
+<p>互相关函数 cross-correlation </p>
+<p>交叉熵 cross-entropy </p>
+<p>累积函数 cumulative function </p>
+<p>课程学习 curriculum learning </p>
+<p>维数灾难 curse of dimensionality </p>
+<p>控制论 cybernetics </p>
+<p>衰减 damping </p>
+<p>数据生成分布 data generating distribution </p>
+<p>数据生成过程 data generating process </p>
+<p>数据并行 data parallelism </p>
+<p>数据点 data point </p>
+<p>数据集 dataset </p>
+<p>数据集增强 dataset augmentation </p>
+<p>决策树 decision tree </p>
+<p>解码器 decoder </p>
+<p>分解 decompose </p>
+<p>深度信念网络 deep belief network </p>
+<p>深度玻尔兹曼机 Deep Boltzmann Machine </p>
+<p>深度回路 deep circuit </p>
+<p>深度前馈网络 deep feedforward network </p>
+<p>深度生成模型 deep generative model </p>
+<p>深度学习 deep learning </p>
+<p>深度模型 deep model </p>
+<p>深度网络 deep network </p>
+<p>信任度 degree of belief </p>
+<p>去噪 denoising </p>
+<p>去噪自编码器 denoising autoencoder </p>
+<p>去噪得分匹配 denoising score matching </p>
+<p>依赖 dependency </p>
+<p>深度 depth </p>
+<p>导数 derivative </p>
+<p>描述 description </p>
+<p>设计矩阵 design matrix </p>
+<p>细致平衡 detailed balance </p>
+<p>探测级 detector stage </p>
+<p>确定性 deterministic </p>
+<p>对角矩阵 diagonal matrix </p>
+<p>微分熵 differential entropy </p>
+<p>微分方程 differential equation </p>
+<p>降维 dimensionality reduction </p>
+<p>Dirac delta 函数 Dirac delta function </p>
+<p>Dirac 分布 dirac distribution </p>
+<p>有向 directed</p>
+<p>有向图模型 directed graphical model </p>
+<p>有向模型 Directed Model </p>
+<p>方向导数 directional derivative </p>
+<p>判别 RBM discriminative RBM </p>
+<p>判别器网络 discriminator network </p>
+<p>分布式表示 distributed representation </p>
+<p>深度神经网络 DNN </p>
+<p>领域自适应 domain adaption </p>
+<p>点积 dot product </p>
+<p>双反向传播 double backprop </p>
+<p>双重分块循环矩阵 doubly block circulant matrix </p>
+<p>降采样 downsampling </p>
+<p>Dropout Dropout Dropout Boosting Dropout Boosting </p>
+<p>d-分离 d-separation </p>
+<p>动态规划 dynamic programming </p>
+<p>动态结构 dynamic structure </p>
+<p>提前终止 early stopping </p>
+<p>回声状态网络 echo state network </p>
+<p>有效容量 effective capacity </p>
+<p>特征分解 eigendecomposition </p>
+<p>特征值 eigenvalue </p>
+<p>特征向量 eigenvector </p>
+<p>基本单位向量 elementary basis vectors </p>
+<p>元素对应乘积 element-wise product </p>
+<p>嵌入 embedding </p>
+<p>经验分布 empirical distribution </p>
+<p>经验频率 empirical frequency </p>
+<p>经验风险 empirical risk </p>
+<p>经验风险最小化 empirical risk minimization </p>
+<p>编码器 encoder </p>
+<p>端到端的 end-to-end </p>
+<p>能量函数 energy function </p>
+<p>基于能量的模型 Energy-based model </p>
+<p>集成 ensemble </p>
+<p>集成学习 ensemble learning </p>
+<p>epoch 轮数 </p>
+<p>epochs 等式约束 </p>
+<p>equality constraint</p>
+<p> 均衡分布 Equilibrium Distribution </p>
+<p>等变 equivariance </p>
+<p>等变表示 equivariant representations </p>
+<p>误差条 error bar </p>
+<p>误差函数 error function </p>
+<p>误差度量 error metric </p>
+<p>错误率 error rate </p>
+<p>估计量 estimator </p>
+<p>欧几里得范数 Euclidean norm </p>
+<p>欧拉-拉格朗日方程 Euler-Lagrange Equation </p>
+<p>证据下界 evidence lower bound </p>
+<p>样本 example </p>
+<p>额外误差 excess error </p>
+<p>期望 expectation </p>
+<p>期望最大化 expectation maximization </p>
+<p>E 步 expectation step </p>
+<p>期望值 expected value </p>
+<p>经验 experience </p>
+<p>专家网络 expert network </p>
+<p>相消解释 explaining away </p>
+<p>相消解释作用 explaining away effect </p>
+<p>解释因子 explanatory factort </p>
+<p>梯度爆炸 exploding gradient </p>
+<p>利用 exploitation </p>
+<p>探索 exploration </p>
+<p>指数分布 exponential distribution </p>
+<p>因子 factor </p>
+<p>因子分析 factor analysis </p>
+<p>因子图 factor graph </p>
+<p>因子 factorial </p>
+<p>分解 factorization </p>
+<p>分解的 factorized </p>
+<p>变差因素 factors of variation </p>
+<p>快速 Dropout fast dropout </p>
+<p>快速持续性对比散度 fast persistent contrastive divergence </p>
+<p>可行 feasible </p>
+<p>特征 feature </p>
+<p>特征提取器 feature extractor </p>
+<p>特征映射 feature map </p>
+<p>特征选择 feature selection </p>
+<p>反馈 feedback </p>
+<p>前向 feedforward </p>
+<p>前馈分类器 feedforward classifier </p>
+<p>前馈网络 feedforward network </p>
+<p>前馈神经网络 feedforward neural network </p>
+<p>现场可编程门阵列 </p>
+<p>精调 fine-tune </p>
+<p>精调 fine-tuning </p>
+<p>有限差分 finite difference </p>
+<p>第一层 first layer</p>
+<p>不动点方程 fixed point equation </p>
+<p>定点运算 fixed-point arithmetic </p>
+<p>翻转 flip </p>
+<p>浮点运算 float-point arithmetic </p>
+<p>遗忘门 forget gate </p>
+<p>前向模式累加 forward mode accumulation </p>
+<p>前向传播 forward propagation </p>
+<p>傅立叶变换 Fourier transform </p>
+<p>中央凹 fovea </p>
+<p>自由能 free energy </p>
+<p>频率派概率 frequentist probability </p>
+<p>频率派统计 frequentist statistics Frobenius </p>
+<p>范数 Frobenius norm </p>
+<p>F 分数 F-score </p>
+<p>全 full</p>
+<p>泛函 functional </p>
+<p>泛函导数 functional derivative </p>
+<p>Gabor 函数 Gabor function </p>
+<p>Gamma 分布 Gamma distribution </p>
+<p>门控 gated </p>
+<p>门控循环网络 gated recurrent net </p>
+<p>门控循环单元 gated recurrent unit </p>
+<p>门控 RNN gated </p>
+<p>RNN 选通器 </p>
+<p>gater 高斯分布 </p>
+<p>Gaussian distribution </p>
+<p>高斯核 Gaussian kernel </p>
+<p>高斯混合模型 Gaussian Mixture Model </p>
+<p>高斯混合体 Gaussian mixtures </p>
+<p>高斯输出分布 Gaussian output distribution </p>
+<p>高斯 RBM Gaussian </p>
+<p>RBM Gaussian-Bernoulli </p>
+<p>RBM Gaussian-Bernoulli </p>
+<p>RBM 通用 GPU general purpose </p>
+<p>GPU 泛化 generalization </p>
+<p>泛化误差 generalization error </p>
+<p>泛化 generalize </p>
+<p>广义函数 generalized function </p>
+<p>广义 Lagrange 函数 generalized Lagrange function </p>
+<p>广义 Lagrangian generalized Lagrangian </p>
+<p>广义伪似然 generalized pseudolikelihood </p>
+<p>广义伪似然估计 generalized pseudolikelihood estimator </p>
+<p>广义得分匹配 generalized score matching </p>
+<p>生成式对抗框架 generative adversarial framework </p>
+<p>生成式对抗网络 generative adversarial network </p>
+<p>生成模型 generative model </p>
+<p>生成式建模 generative modeling </p>
+<p>生成矩匹配网络 generative moment matching network </p>
+<p>生成随机网络 generative stochastic network </p>
+<p>生成器网络 generator network </p>
+<p>吉布斯分布 Gibbs distribution Gibbs </p>
+<p>采样 Gibbs Sampling </p>
+<p>吉布斯步数 Gibbs steps </p>
+<p>全局对比度归一化 Global contrast normalization </p>
+<p>全局极小值 global minima </p>
+<p>全局最小点 global minimum </p>
+<p>梯度 gradient </p>
+<p>梯度上升 gradient ascent </p>
+<p>梯度截断 gradient clipping </p>
+<p>梯度下降 gradient descent </p>
+<p>图模型 graphical model </p>
+<p>图形处理器 Graphics Processing Unit </p>
+<p>贪心 greedy 贪心算法 greedy algorithm </p>
+<p>贪心逐层预训练 greedy layer-wise pretraining </p>
+<p>贪心逐层训练 greedy layer-wise training </p>
+<p>贪心逐层无监督预训练 greedy layer-wise unsupervised pretraining </p>
+<p>贪心监督预训练 greedy supervised pretraining </p>
+<p>贪心无监督预训练 greedy unsupervised pretraining </p>
+<p>网格搜索 grid search Hadamard </p>
+<p>乘积 Hadamard product </p>
+<p>汉明距离 Hamming distance </p>
+<p>硬专家混合体 hard mixture of experts </p>
+<p>硬双曲正切函数 hard tanh </p>
+<p>簧风琴 harmonium </p>
+<p>哈里斯链 Harris Chain Helmholtz </p>
+<p>机 Helmholtz machine Hessian Hessian </p>
+<p>异方差 heteroscedastic </p>
+<p>隐藏层 hidden layer </p>
+<p>隐马尔可夫模型 Hidden Markov Model </p>
+<p>隐藏单元 hidden unit </p>
+<p>隐藏变量 hidden variable </p>
+<p>爬山 hill climbing</p>
+<p>超参数 hyperparameter </p>
+<p>超参数优化 hyperparameter optimization </p>
+<p>假设空间 hypothesis space </p>
+<p>同分布的 identically distributed </p>
+<p>可辨认的 identifiable </p>
+<p>单位矩阵 identity matrix </p>
+<p>独立同分布假设 i.i.d. assumption </p>
+<p>病态 ill conditioning </p>
+<p>不道德 immorality </p>
+<p>重要采样 Importance Sampling </p>
+<p>相互独立的 independent </p>
+<p>独立成分分析 independent component analysis </p>
+<p>独立同分布 independent identically distributed </p>
+<p>独立子空间分析 independent subspace analysis </p>
+<p>索引 index of matrix </p>
+<p>指示函数 indicator function </p>
+<p>不等式约束 inequality constraint </p>
+<p>推断 inference </p>
+<p>无限 infinite </p>
+<p>信息检索 information retrieval </p>
+<p>内积 inner product </p>
+<p>输入 input </p>
+<p>输入分布 input distribution </p>
+<p>干预查询 intervention query </p>
+<p>不变 invariant </p>
+<p>求逆 invert Isomap Isomap </p>
+<p>各向同性 isotropic Jacobian Jacobian Jacobian </p>
+<p>矩阵 Jacobian matrix </p>
+<p>联合概率分布 joint probability distribution Karush–Kuhn–Tucker Karush–Kuhn–Tucker </p>
+<p>核函数 kernel function </p>
+<p>核机器 kernel machine </p>
+<p>核方法 kernel method </p>
+<p>核技巧 kernel trick KL </p>
+<p>散度 KL divergence </p>
+<p>知识库 knowledge base </p>
+<p>知识图谱 knowledge graph Krylov </p>
+<p>方法 Krylov method KL </p>
+<p>散度 Kullback-Leibler (KL) divergence </p>
+<p>标签 label </p>
+<p>标注 labeled </p>
+<p>拉格朗日乘子 Lagrange multiplier </p>
+<p>语言模型 language model Laplace </p>
+<p>分布 Laplace distribution </p>
+<p>大学习步骤 large learning step </p>
+<p>潜在 latent </p>
+<p>潜层 latent layer </p>
+<p>潜变量 latent variable </p>
+<p>大数定理 Law of large number </p>
+<p>逐层的 layer-wise </p>
+<p>渗漏整流线性单元 Leaky ReLU </p>
+<p>渗漏单元 leaky unit </p>
+<p>学成 learned </p>
+<p>学习近似推断 learned approximate inference </p>
+<p>学习器 learner </p>
+<p>学习率 learning rate </p>
+<p>勒贝格可积 Lebesgue-integrable </p>
+<p>左特征向量 left eigenvector </p>
+<p>左奇异向量 left singular vector </p>
+<p>莱布尼兹法则 Leibniz’s rule </p>
+<p>似然 likelihood </p>
+<p>线搜索 line search </p>
+<p>线性自回归网络 linear auto-regressive network </p>
+<p>线性分类器 linear classifier </p>
+<p>线性组合 linear combination </p>
+<p>线性相关 linear dependence </p>
+<p>线性因子模型 linear factor model </p>
+<p>线性模型 linear model </p>
+<p>线性回归 linear regression </p>
+<p>线性阀值单元 linear threshold units </p>
+<p>线性无关 linearly independent </p>
+<p>链接预测 link prediction </p>
+<p>链接重要采样 linked importance sampling Lipschitz Lipschitz Lipschitz </p>
+<p>常数 Lipschitz constant Lipschitz </p>
+<p>连续 Lipschitz continuous </p>
+<p>流体状态机 liquid state machine </p>
+<p>局部条件概率分布 local conditional probability distribution </p>
+<p>局部不变性先验 local constancy prior </p>
+<p>局部对比度归一化 local contrast normalization </p>
+<p>局部下降 local descent </p>
+<p>局部核 local kernel </p>
+<p>局部极大值 local maxima </p>
+<p>局部极大点 local maximum </p>
+<p>局部极小值 local minima </p>
+<p>局部极小点 local minimum </p>
+<p>对数尺度 logarithmic scale </p>
+<p>逻辑回归 logistic regression logistic sigmoid logistic sigmoid </p>
+<p>分对数 logit </p>
+<p>对数线性模型 log-linear model </p>
+<p>长短期记忆 long short-term memory </p>
+<p>长期依赖 long-term dependency </p>
+<p>环 loop </p>
+<p>环状信念传播 loopy belief propagation </p>
+<p>损失 loss </p>
+<p>损失函数 loss function </p>
+<p>机器学习 machine learning </p>
+<p>机器学习模型 machine learning model </p>
+<p>机器翻译 machine translation </p>
+<p>主对角线 main diagonal </p>
+<p>流形 manifold </p>
+<p>流形假设 manifold hypothesis </p>
+<p>流形学习 manifold learning </p>
+<p>边缘概率分布 marginal probability distribution </p>
+<p>马尔可夫链 Markov Chain </p>
+<p>马尔可夫链蒙特卡罗 Markov Chain Monte Carlo </p>
+<p>马尔可夫网络 Markov network </p>
+<p>马尔可夫随机场 Markov random field </p>
+<p>掩码 mask </p>
+<p>矩阵 matrix </p>
+<p>矩阵逆 matrix inversion </p>
+<p>矩阵乘积 matrix product </p>
+<p>最大范数 max norm </p>
+<p>池 pool </p>
+<p>最大池化 max pooling </p>
+<p>极大值 maxima M </p>
+<p>步 maximization step </p>
+<p>最大后验 Maximum A Posteriori </p>
+<p>最大似然 maximum likelihood </p>
+<p>最大似然估计 maximum likelihood estimation </p>
+<p>最大平均偏差 maximum mean discrepancy maxout maxout maxout </p>
+<p>单元 maxout unit </p>
+<p>平均绝对误差 mean absolute error </p>
+<p>均值和协方差 RBM mean and covariance </p>
+<p>RBM 学生 t </p>
+<p>分布均值乘积 mean product of Student t-distribution </p>
+<p>均方误差 mean squared error </p>
+<p>均值-协方差 RBM mean-covariance restricted</p>
+<p>Boltzmann machine </p>
+<p>均匀场 meanfield </p>
+<p>均值场 mean-field </p>
+<p>测度论 measure theory </p>
+<p>零测度 measure zero </p>
+<p>记忆网络 memory network </p>
+<p>信息传输 message passing </p>
+<p>小批量 minibatch </p>
+<p>小批量随机 minibatch stochastic </p>
+<p>极小值 minima </p>
+<p>极小点 minimum </p>
+<p>混合 Mixing </p>
+<p>混合时间 Mixing Time </p>
+<p>混合密度网络 mixture density network </p>
+<p>混合分布 mixture distribution </p>
+<p>专家混合体 mixture of experts </p>
+<p>模态 modality </p>
+<p>峰值 mode </p>
+<p>模型 model </p>
+<p>模型平均 model averaging </p>
+<p>模型压缩 model compression </p>
+<p>模型可辨识性 model identifiability </p>
+<p>模型并行 model parallelism </p>
+<p>矩 moment </p>
+<p>矩匹配 moment matching </p>
+<p>动量 momentum </p>
+<p>蒙特卡罗 Monte Carlo Moore-Penrose </p>
+<p>伪逆道德化 moralization </p>
+<p>道德图 moralized graph </p>
+<p>多层感知机 multilayer perceptron </p>
+<p>多峰值 multimodal </p>
+<p>多模态学习 multimodal learning </p>
+<p>多项式分布 multinomial distribution Multinoulli </p>
+<p>分布 multinoulli distribution </p>
+<p>多预测深度玻尔兹曼机 multi-prediction deep Boltzmann machine </p>
+<p>多任务学习 multitask learning</p>
+<p> 多维正态分布 multivariate normal distribution </p>
+<p>朴素贝叶斯 naive </p>
+<p>Bayes 奈特 nats </p>
+<p>自然语言处理 Natural Language Processing </p>
+<p>最近邻 nearest neighbor </p>
+<p>最近邻图 nearest neighbor graph </p>
+<p>最近邻回归 nearest neighbor regression </p>
+<p>负定 negative definite </p>
+<p>负部函数 negative part function </p>
+<p>负相 negative phase </p>
+<p>半负定 negative semidefinite Nesterov </p>
+<p>动量 Nesterov momentum </p>
+<p>网络 network </p>
+<p>神经自回归密度估计器 neural auto-regressive density estimator </p>
+<p>神经自回归网络 neural auto-regressive network </p>
+<p>神经语言模型 Neural Language Model </p>
+<p>神经机器翻译 Neural Machine Translation </p>
+<p>神经网络 neural network </p>
+<p>神经网络图灵机 neural Turing machine </p>
+<p>牛顿法 Newton’s method n-gram n-gram </p>
+<p>没有免费午餐定理 no free lunch theorem </p>
+<p>噪声 noise </p>
+<p>噪声分布 noise distribution </p>
+<p>噪声对比估计 noise-contrastive estimation </p>
+<p>非凸 nonconvex 非分布式 nondistributed </p>
+<p>非分布式表示 nondistributed representation </p>
+<p>非线性共轭梯度 nonlinear conjugate gradients </p>
+<p>非线性独立成分估计 nonlinear independent components estimation </p>
+<p>非参数 non-parametric </p>
+<p>范数 norm </p>
+<p>正态分布 normal distribution </p>
+<p>正规方程 normal equation </p>
+<p>归一化的 normalized </p>
+<p>标准初始化 normalized initialization </p>
+<p>数值 numeric value </p>
+<p>数值优化 numerical optimization </p>
+<p>对象识别 object recognition </p>
+<p>目标 objective </p>
+<p>目标函数 objective function </p>
+<p>奥卡姆剃刀 Occam’s razor one-hot one-hot </p>
+<p>一次学习 one-shot learning </p>
+<p>在线 online </p>
+<p>在线学习 online learning </p>
+<p>操作 operation </p>
+<p>最佳容量 optimal capacity </p>
+<p>原点 origin </p>
+<p>正交 orthogonal </p>
+<p>正交矩阵 orthogonal matrix </p>
+<p>标准正交 orthonormal </p>
+<p>输出 output </p>
+<p>输出层 output layer </p>
+<p>过完备 overcomplete </p>
+<p>过估计 overestimation </p>
+<p>过拟合 overfitting </p>
+<p>过拟合机制 overfitting regime </p>
+<p>上溢 overflow </p>
+<p>并行分布式处理 Parallel Distributed Processing </p>
+<p>并行回火 parallel tempering </p>
+<p>参数 parameter</p>
+<p>参数服务器 parameter server </p>
+<p>参数共享 parameter sharing </p>
+<p>有参情况 parametric case </p>
+<p>参数化整流线性单元 parametric ReLU </p>
+<p>偏导数 partial derivative </p>
+<p>配分函数 Partition Function </p>
+<p>性能度量 performance measures </p>
+<p>性能度量 performance metrics </p>
+<p>置换不变性 permutation invariant </p>
+<p>持续性对比散度 persistent contrastive divergence </p>
+<p>音素 phoneme </p>
+<p>语音 phonetic </p>
+<p>分段 piecewise </p>
+<p>点估计 point estimator </p>
+<p>策略 policy </p>
+<p>策略梯度 policy gradient </p>
+<p>池化 pooling </p>
+<p>池化函数 pooling function </p>
+<p>病态条件 poor conditioning </p>
+<p>正定 positive definite </p>
+<p>正部函数 positive part function </p>
+<p>正相 positive phase </p>
+<p>半正定 positive semidefinite </p>
+<p>后验概率 posterior probability </p>
+<p>幂方法 power method </p>
+<p>PR 曲线 PR curve </p>
+<p>精度 precision </p>
+<p>精度矩阵 precision matrix </p>
+<p>预测稀疏分解 predictive sparse decomposition </p>
+<p>预训练 pretraining </p>
+<p>初级视觉皮层 primary visual cortex </p>
+<p>主成分分析 principal components analysis </p>
+<p>先验概率 prior probability </p>
+<p>先验概率分布 prior probability distribution </p>
+<p>概率 PCA probabilistic PCA </p>
+<p>概率密度函数 probability density function </p>
+<p>概率分布 probability distribution </p>
+<p>概率质量函数 probability mass function </p>
+<p>专家之积 product of expert </p>
+<p>乘法法则 product rule </p>
+<p>成比例 proportional </p>
+<p>提议分布 proposal distribution </p>
+<p>伪似然 pseudolikelihood </p>
+<p>象限对 quadrature pair </p>
+<p>量子力学 quantum mechanics </p>
+<p>径向基函数 radial basis function </p>
+<p>随机搜索 random search </p>
+<p>随机变量 random variable </p>
+<p>值域 range</p>
+<p>比率匹配 ratio matching </p>
+<p>召回率 recall </p>
+<p>接受域 receptive field </p>
+<p>再循环 recirculation </p>
+<p>推荐系统 recommender system </p>
+<p>重构 reconstruction </p>
+<p>重构误差 reconstruction </p>
+<p>整流线性 rectified linear </p>
+<p>整流线性变换 rectified linear transformation </p>
+<p>整流线性单元 rectified linear unit </p>
+<p>整流网络 rectifier network </p>
+<p>循环 recurrence</p>
+<p>循环卷积网络 recurrent convolutional network</p>
+<p>循环网络 recurrent network </p>
+<p>循环神经网络 recurrent neural network </p>
+<p>回归 regression </p>
+<p>正则化 regularization </p>
+<p>正则化 regularize </p>
+<p>正则化项 regularizer </p>
+<p>强化学习 reinforcement learning </p>
+<p>关系 relation </p>
+<p>关系型数据库 relational database </p>
+<p>重参数化 reparametrization </p>
+<p>重参数化技巧 reparametrization trick 表</p>
+<p>示 representation </p>
+<p>表示学习 representation learning </p>
+<p>表示容量 representational capacity </p>
+<p>储层计算 reservoir computing </p>
+<p>受限玻尔兹曼机 Restricted Boltzmann Machine </p>
+<p>反向相关 reverse correlation </p>
+<p>反向模式累加 reverse mode accumulation </p>
+<p>岭回归 ridge regression </p>
+<p>右特征向量 right eigenvector </p>
+<p>右奇异向量 right singular vector </p>
+<p>风险 risk </p>
+<p>行 row </p>
+<p>扫视 saccade </p>
+<p>鞍点 saddle point </p>
+<p>无鞍牛顿法 saddle-free Newton method </p>
+<p>相同 same </p>
+<p>样本均值 sample mean </p>
+<p>样本方差 sample variance </p>
+<p>饱和 saturate </p>
+<p>标量 scalar </p>
+<p>得分 score </p>
+<p>得分匹配 score matching </p>
+<p>二阶导数 second derivative </p>
+<p>二阶导数测试 second derivative test </p>
+<p>第二层 second layer </p>
+<p>二阶方法 second-order method </p>
+<p>自对比估计 self-contrastive estimation </p>
+<p>自信息 self-information </p>
+<p>语义哈希 semantic hashing </p>
+<p>半受限玻尔兹曼机 semi-restricted Boltzmann Machine </p>
+<p>半监督 semi-supervised </p>
+<p>半监督学习 semi-supervised learning </p>
+<p>可分离的 separable</p>
+<p>分离的 separate</p>
+<p>分离 separation  </p>
+<p>情景 setting</p>
+<p>浅度回路 shadow circuit</p>
+<p>香农熵 Shannon entropy </p>
+<p>香农 shannons </p>
+<p>塑造 shaping </p>
+<p>短列表 shortlist sigmoid sigmoid sigmoid </p>
+<p>信念网络 sigmoid Belief Network </p>
+<p>简单细胞 simple cell </p>
+<p>奇异的 singular </p>
+<p>奇异值 singular value </p>
+<p>奇异值分解 singular value decomposition </p>
+<p>奇异向量 singular vector </p>
+<p>跳跃连接 skip connection </p>
+<p>慢特征分析 slow feature analysis </p>
+<p>慢性原则 slowness principle </p>
+<p>平滑 smoothing </p>
+<p>平滑先验 smoothness prior softmax </p>
+<p>softmax softmax 函数 softmax function </p>
+<p>softmax 单元 softmax unit </p>
+<p>softplus softplus </p>
+<p>softplus 函数 softplus function </p>
+<p>生成子空间 span </p>
+<p>稀疏 sparse </p>
+<p>稀疏激活 sparse activation </p>
+<p>稀疏编码 sparse coding </p>
+<p>稀疏连接 sparse connectivity </p>
+<p>稀疏初始化 sparse initialization </p>
+<p>稀疏交互 sparse interactions 稀疏权重 sparse weights </p>
+<p>谱半径 spectral radius </p>
+<p>语音识别 Speech Recognition sphering sphering </p>
+<p>尖峰和平板 spike and slab </p>
+<p>尖峰和平板 RBM spike and slab RBM </p>
+<p>虚假模态 spurious modes </p>
+<p>方阵 square </p>
+<p>标准差 standard deviation </p>
+<p>标准差 standard error </p>
+<p>标准正态分布 standard normal distribution </p>
+<p>声明 statement </p>
+<p>平稳的 stationary </p>
+<p>平稳分布 Stationary Distribution </p>
+<p>驻点 stationary point </p>
+<p>统计效率 statistic efficiency </p>
+<p>统计学习理论 statistical learning theory </p>
+<p>统计量 statistics </p>
+<p>最陡下降 steepest descent </p>
+<p>随机 stochastic </p>
+<p>随机课程 stochastic curriculum </p>
+<p>随机梯度上升 Stochastic Gradient Ascent </p>
+<p>随机梯度下降 stochastic gradient descent </p>
+<p>随机矩阵 Stochastic </p>
+<p>Matrix 随机最大似然估计 stochastic maximum likelihood </p>
+<p>流 stream </p>
+<p>步幅 stride </p>
+<p>结构学习 structure learning </p>
+<p>结构化概率模型 structured probabilistic model </p>
+<p>结构化变分推断 structured variational inference </p>
+<p>亚原子 subatomic </p>
+<p>子采样 subsample </p>
+<p>求和法则 sum rule </p>
+<p>和-积网络 sum-product network </p>
+<p>监督 supervised </p>
+<p>监督学习 supervised learning </p>
+<p>监督学习算法 supervised learning algorithm </p>
+<p>监督模型 supervised model </p>
+<p>监督预训练 supervised pretraining </p>
+<p>支持向量 support vector </p>
+<p>代理损失函数 surrogate loss function </p>
+<p>符号 symbol </p>
+<p>符号表示 symbolic representation </p>
+<p>对称 symmetric </p>
+<p>切面距离 tangent distance 切平面 tangent plane </p>
+<p>正切传播 tangent prop </p>
+<p>目标 target </p>
+<p>泰勒 taylor </p>
+<p>导师驱动过程 teacher forcing </p>
+<p>温度 temperature </p>
+<p>回火转移 tempered transition </p>
+<p>回火 tempering </p>
+<p>张量 tensor </p>
+<p>测试误差 test error </p>
+<p>测试集 test set </p>
+<p>碰撞情况 the collider case </p>
+<p>绑定的权重 tied weights Tikhonov </p>
+<p>正则 Tikhonov regularization </p>
+<p>平铺卷积 tiled convolution </p>
+<p>时延神经网络 time delay neural network </p>
+<p>时间步进 time step Toeplitz </p>
+<p>矩阵 Toeplitz matrix </p>
+<p>标记 token </p>
+<p>容差 tolerance </p>
+<p>地质 ICA topographic ICA </p>
+<p>训练误差 training error </p>
+<p>训练集 training set </p>
+<p>转录 transcribe </p>
+<p>转录系统 transcription system </p>
+<p>迁移学习 transfer learning </p>
+<p>转移 transition </p>
+<p>转置 transpose </p>
+<p>三角不等式 triangle inequality </p>
+<p>三角形化 triangulate </p>
+<p>三角形化图 triangulated graph </p>
+<p>三元语法 trigram </p>
+<p>无偏 unbiased </p>
+<p>无偏样本方差 unbiased sample variance </p>
+<p>欠完备 undercomplete </p>
+<p>欠定的 underdetermined </p>
+<p>欠估计 underestimation </p>
+<p>欠拟合 underfitting </p>
+<p>欠拟合机制 underfitting regime </p>
+<p>下溢 underflow </p>
+<p>潜在 underlying </p>
+<p>潜在成因 underlying cause </p>
+<p>无向 undirected </p>
+<p>无向模型 undirected Model </p>
+<p>展开图 unfolded graph </p>
+<p>展开 unfolding </p>
+<p>均匀分布 uniform distribution </p>
+<p>一元语法 unigram </p>
+<p>单峰值 unimodal </p>
+<p>单元 unit </p>
+<p>单位范数 unit norm 单位向量 unit vector </p>
+<p>万能近似定理 universal approximation theorem </p>
+<p>万能近似器 universal approximator </p>
+<p>万能函数近似器 universal function approximator </p>
+<p>未标注 unlabeled </p>
+<p>未归一化概率函数 unnormalized probability function </p>
+<p>非共享卷积 unshared convolution </p>
+<p>无监督 unsupervised </p>
+<p>无监督学习 unsupervised learning </p>
+<p>无监督学习算法 unsupervised learning algorithm </p>
+<p>无监督预训练 unsupervised pretraining </p>
+<p>有效 valid </p>
+<p>验证集 validation set </p>
+<p>梯度消失与爆炸问题 vanishing and exploding gradient problem </p>
+<p>梯度消失 vanishing gradient Vapnik-Chervonenkis </p>
+<p>维度 Vapnik-Chervonenkis dimension </p>
+<p>变量消去 variable elimination </p>
+<p>方差 variance </p>
+<p>方差减小 variance reduction </p>
+<p>变分自编码器 variational auto-encoder </p>
+<p>变分导数 variational derivative </p>
+<p>变分自由能 variational free energy </p>
+<p>变分推断 variational inference </p>
+<p>去噪 denoise </p>
+<p>向量 vector </p>
+<p>虚拟对抗样本 virtual adversarial example </p>
+<p>虚拟对抗训练 virtual adversarial training </p>
+<p>可见层 visible layer </p>
+<p>V-结构 V-structure </p>
+<p>醒眠 wake sleep warp warp </p>
+<p>支持向量机 support vector machine </p>
+<p>无向图模型 undirected graphical model </p>
+<p>权重 weight </p>
+<p>权重衰减 weight decay </p>
+<p>权重比例推断规则 weight scaling inference rule </p>
+<p>权重空间对称性 weight space symmetry </p>
+<p>条件概率分布 conditional probability distribution </p>
+<p>白化 whitening </p>
+<p>宽度 width </p>
+<p>赢者通吃 winner-take-all </p>
+<p>正切传播 tangent propagation </p>
+<p>流形正切分类器 manifold tangent classifier </p>
+<p>词嵌入 word embedding </p>
+<p>词义消歧 word-sense disambiguation </p>
+<p>零数据学习 zero-data learning </p>
+<p>零次学习 zero-shot learning</p>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By isLinXu<br/>
+  
+      &copy; Copyright 2022, isLinXu.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

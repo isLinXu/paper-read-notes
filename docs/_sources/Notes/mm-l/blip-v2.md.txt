@@ -2,49 +2,33 @@
 
 ---
 
+![](https://user-images.githubusercontent.com/59380685/241779758-59f7cecd-f4e1-43c6-8abb-5644dbd46bc5.png)
+
+![](https://user-images.githubusercontent.com/59380685/241779802-b8dcf17a-8b1f-4996-bd82-4ddb98770f0a.png)
+
+![](https://user-images.githubusercontent.com/59380685/241780566-d4e72c5a-b879-4512-955f-45e149f1d16e.png)
+
+![](https://user-images.githubusercontent.com/59380685/241780596-ee92deec-daa6-4b4a-b65f-eabc366fb1c3.png)
+
+![](https://user-images.githubusercontent.com/59380685/241780622-af977b1f-913e-4191-804c-bf62b44c0146.png)
+
+![](https://user-images.githubusercontent.com/59380685/241780707-e5d8ba5b-06d5-490e-93c7-107160dca889.png)
+
+![](https://user-images.githubusercontent.com/59380685/241780816-29bc24c9-4977-4501-8912-dd4edb264fb0.png)
+
+![](https://user-images.githubusercontent.com/59380685/241780893-8efea3c9-be9c-45d8-be16-f3ae342360f0.png)
+
+![](https://user-images.githubusercontent.com/59380685/241780972-ebf393fe-f5a2-4615-9c28-4abc9e7f5cfa.png)
+
+![](https://user-images.githubusercontent.com/59380685/241781174-b048a682-791d-4c2b-9b9e-bc5a9ae2ad0f.png)
+
+![](https://user-images.githubusercontent.com/59380685/241781200-5016e97d-109d-495e-ac67-8eed83cd39d8.png)
+
+![](https://user-images.githubusercontent.com/59380685/241781388-e853f8c3-9921-474d-bb2c-8494c0114736.png)
+
+![](https://user-images.githubusercontent.com/59380685/241781411-01d3288e-7603-46c7-94e4-fda77efb4721.png)
+
 大家好，今天我们将结合我们对视觉Transformer和LLM（大型语言模型）的了解，展示视觉和语言的结合。今天我要向大家展示美妙的技术，使我们能够使用Transformer架构来预训练视觉语言模型，这就是我们想要的。这个美妙的技术叫做blip2，是基于冰冻图像编码器和LLM的语言图像无监督训练的自举技术。有趣的是，这篇来自Salesforce研究的技术是在2023年1月30日发表的。接下来我们将深入了解这个技术，你可能会问这项技术的用例是什么。如果我上传了我上一个视频的缩略图，我们看一下，我们的聊天输入问题是"你能在这张图片里区分哪些元素"，答案是处理过的直升机、绿幕和词汇Transformer，如此可见，视觉语言模型可以处理图像到文本的任务，识别不适宜的内容除了文本之外，还可以应用于图像文本检索，用于多模态搜索，以及自动驾驶等领域，当然还包括我们感兴趣的可视化问题回答。这将使我们的多模态聊天机器人成为可能。在开始之前，我们必须确保我们应用的是同样的Transformers体系结构，同时展示在我们所述的所有Transformer体系结构，如T5 Flan T5 Bloom，都可以在Encoder或Decoder端使用。当然，现在我们的视觉Transformer和语言模型也采用了相同的体系结构。这是最重要的要点，两者都是Transformer架构，这使我们比较得更准确。为了填补所谓的视觉和语言之间的模态差距，他们添加了另一个Transformer连接到另一个Transformer，你可能不会相信，我们的技术完全兼容跨越的方式。
-
-![](./figures/blipv2_1.png)
-
-
-
-![](./figures/blipv2_2.png)
-
-
-
-
-
-![](./figures/blipv2_3.png)
-
-
-
-![](./figures/blipv2_4.png)
-
-
-
-![](./figures/blipv2_5.png)
-
-
-
-![](./figures/blipv2_6.png)
-
-
-
-![](./figures/blipv2_7.png)
-
-
-
-
-
-![](./figures/blipv2_8.png)
-
-
-
-![](./figures/blipv2_9.png)
-
-
-
-![](./figures/blipv2_10.png)
 
 这段呈现了一种称之为"非常的变形金刚"的新型Transform器。它是一种Q格式的Transform器，如果你看到了有关于Q格式的相关文章，现在你应该知道它究竟是什么了。这个视频还讲了如何在视觉变换器和语言变换器之间实现接口。如果你想了解更多关于LLM的信息，视频中也提到了一些介绍。同时，在视频中还提到了一些如何使用飞行T5 x6l或Bloom 1760亿参数模型在AWS基础设施上运行的技巧。如果你想了解更多有关Transformers的信息，视频中也提供了一些有用的内容。 其次，视频还探讨了一个新问题。LLM已经是一个异常庞大的模型了，而Vision Transformer也接近22亿参数，如果要将它们组合在一起，问题在于如何进行训练。取而代之的是，视频提出了通过冻结Vision Transformer和LLM的全部权重和层，并在它们之间建立一个接口。最后，视频还提出了一个新的Transform器，称之为Hue Transformer，它是我们需要训练的唯一对象，训练方式为查询式Transformers，以此来缓解一个热门话题。
 

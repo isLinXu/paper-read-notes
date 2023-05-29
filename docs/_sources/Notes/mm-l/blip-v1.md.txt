@@ -49,7 +49,7 @@ BLIP在**七项视觉语言任务**上实现了最先进的性能，包括：
 
 首先，通过字幕生成任务中的一些示例来看一下BLIP是如何生成比以前最先进的模型更准确的字幕的：
 
-![](figures/blipv1_1.png)
+![](https://user-images.githubusercontent.com/59380685/241774610-8e6c71d7-fecd-48aa-a397-c868d55717aa.png)
 > 图 1. 来自 COCO-Caption 的第一张图片（Karpathy 测试集）。(COCO_val2014_000000000042.jpg)
 
 ```
@@ -111,7 +111,7 @@ BLIP***在预训练时联合优化了三个目标***，有两个基于理解的�
 >
 > Caption Transformer（[Huang 等人，2019 年](https://arxiv.org/pdf/1908.06954.pdf)；[Cornia 等人，2020 年）](https://openaccess.thecvf.com/content_CVPR_2020/papers/Cornia_Meshed-Memory_Transformer_for_Image_Captioning_CVPR_2020_paper.pdf)和预训练语言和视觉模型（OSCAR（[Li 等人，2020 年](https://arxiv.org/pdf/2004.06165.pdf)）、UNITER（[Chen 等人，2020b](https://arxiv.org/pdf/1909.11740.pdf)））。预计算功能，例如 Faster R-CNN（[Ren 等人，2016 年](https://arxiv.org/pdf/1506.01497.pdf)）和 Buttom-up（安德森[等人，2018 年](https://arxiv.org/pdf/1707.07998.pdf)）。
 
-![](figures/blipv1_2.png)
+![](https://user-images.githubusercontent.com/59380685/241774645-7fd2ecce-cae7-4925-bc51-67a7428899d9.png)
 > 图 2. 当前预训练语言和视觉模型的局限性之一是该模型依赖于：
 >
 > - (1) 在高质量人类注释字幕上进行训练的对象检测器。
@@ -120,7 +120,7 @@ BLIP***在预训练时联合优化了三个目标***，有两个基于理解的�
 
 为了能够训练/预训练这种用于理解和生成任务的模型，作者提出了一种**编码**器(**E**ncoder)和**解码器**(**D**ecoder)的多模型混合，它可以集成三个功能，如图 3（下图）所示：
 
-![](figures/blipv1_3.png)
+![](https://user-images.githubusercontent.com/59380685/241774672-e26c350f-7acd-4c2a-bbc1-361878d65d21.png)
 
 > 图 3. BLIP 的预训练模型架构和目标（相同的参数具有相同的颜色）。所提出的编码器-解码器的多模式混合具有三个功能：
 >
@@ -134,7 +134,7 @@ BLIP***在预训练时联合优化了三个目标***，有两个基于理解的�
 
 该模型对文本和图像进行编码，如图 4（下图）所示。文本编码器与 BERT 相同，即 Mask Language Model (Devlin et al., 2019)，带有 [CLS] 标记以附加文本输入的开头以总结句子。
 
-![](figures/blipv1_4.png)
+![](https://user-images.githubusercontent.com/59380685/241774692-b3e5aa5d-f4be-47a4-ad39-2a866f34d93a.png)
 > 图 4.单峰编码器。编码器 使用图像-文本对比 (ITC) 损失进行训练，以对齐视觉和语言表示。
 
 Unimodal 编码器使用Image-Text Contrastive Loss (ITC)。这个想法是 在语义空间中对齐两个特征文本和图像。特别是，由于这项工作依赖于收缩学习，ITC 损失鼓励正图像文本对与负图像文本对具有相似的表示。这一观察是提高视觉和语言理解的有效目标，已在最近的工作 CLIP 中使用（[Radford 等人，2021 年](https://arxiv.org/pdf/2103.00020.pdf)；[Li 等人，2021a](https://arxiv.org/pdf/2201.12086.pdf)）。ITC 损失 ( [Li et al., 2021a](https://arxiv.org/pdf/2201.12086.pdf) ) [฿](https://nips.cc/virtual/2021/poster/28238)使用软标签作为训练目标来解释负对中的潜在正样本。
@@ -156,7 +156,7 @@ Unimodal 编码器使用Image-Text Contrastive Loss (ITC)。这个想法是 在�
 
 编码器依赖于一个额外的交叉注意 (CA) 层（在文本编码器的每个转换器块的自注意 (SA) 层和前馈网络 (FFN) 之间），如下图 6 中的橙色所示. 编码器是特定于任务的，用于编码图像-文本对的多模式表示。
 
-![](figures/blipv1_6.png)
+![](https://user-images.githubusercontent.com/59380685/241774854-9ea8abb2-bcca-4367-9d69-41ff8df462ce.png)
 > 图 6.基于图像的文本编码器。编码器使用额外的交叉注意层来模拟视觉-语言交互，并使用图像-文本匹配 (ITM) 损失进行训练以区分正负图像-文本对。
 
 Image-grounded 文本编码器 使用Image-Text Matching Loss (ITM)。 ITM 旨在捕捉视觉和语言之间的细粒度对齐。ITM 是二元分类任务，其中模型预测匹配的正例和不匹配的负例对（即，模型充当过滤器）。请注意，为了增加负对，通过对比相似性使用硬负挖掘策略来匹配最相似的负对（Li 等人，2021a）。
@@ -165,7 +165,7 @@ Image-grounded 文本编码器 使用Image-Text Matching Loss (ITM)。 ITM 旨�
 
 该解码器使用因果自注意（如图 7 中绿色所示）层，这些层由双向自注意设置。因果自注意力用于预测生成任务中的下一个标记。
 
-![](figures/blipv1_7.png)
+![](https://user-images.githubusercontent.com/59380685/241774884-d6eab763-3878-440e-ad63-4b44785af163.png)
 
 如上所述，为了在利用多任务学习的同时执行高效的预训练：
 
@@ -179,7 +179,7 @@ Image-grounded 文本编码器 使用Image-Text Matching Loss (ITM)。 ITM 旨�
 
 由于人工注释的成本很高，只有有限的高质量人工注释图像对，如 COCO 标题，例如 COCO（Lin 等人，2014）。最近的工作（Li 等人，2021a）在很大程度上依赖于从网络中提取的噪声数据——网络抓取 (WS)。WS 过程是收集大量图像文本对的最快方式，无需人工参与。然而，由于数据是嘈杂的，例如，如下图 8（图像）所示的图像的错误描述，它会影响学习视觉语言对齐信号。
 
-![](figures/blipv1_8.png)
+![](https://user-images.githubusercontent.com/59380685/241774923-ebe076f0-4331-4dfa-9010-8caada975afc.png)
 
 > 图 8. 来自网络的错误图像对（人工编写）。
 > 文字说明：从我家附近的桥上。（来自图 4 的图像）。
@@ -191,7 +191,7 @@ Image-grounded 文本编码器 使用Image-Text Matching Loss (ITM)。 ITM 旨�
 
 字幕**器**和**过滤器**都是从相同的预训练 MED 模型（如上所述）初始化的，并在高质量人工注释的 COCO 数据集（人类数据将用作参考）上分别进行微调。
 
-![](figures/blipv1_9.png)
+![](https://user-images.githubusercontent.com/59380685/241774963-96f5c7a7-1006-4f00-a9b0-2217636f5427.png)
 
 具体来说，如上图 9 所示，字幕器是一个*基于图像的文本解码器*（参见图 7）。它使用 LM 目标进行微调以解码给定图像的文本。
 
@@ -226,7 +226,7 @@ CapFilt 字幕和从网络过滤噪声数据的想法可以打开大门以更高
 
 作者将其与波束搜索进行了比较，波束搜索是一种旨在以最高概率生成字幕的确定性解码方法。尽管核采样比束搜索更嘈杂，但它会生成更多样化的说明。集束搜索生成更安全的字幕，这些字幕在重复时很常见（集束搜索的缺点），因此提供的知识较少。简而言之，Nucleus 采样带来了明显更好的性能，尽管如图 10（图像）所示滤波器的更高噪声比表明噪声更大，但 Nucleus 采样生成了更多样化的说明：
 
-![](figures/blipv1_10.png)
+![](https://user-images.githubusercontent.com/59380685/241775211-64616977-226f-4764-b41c-6d67da09dd65.png)
 > 图 10. Beam Search 和 Nucleus 采样之间的比较。
 > Beam Search K=3：一个婴儿坐在高脚椅上吃蛋糕。
 > Nucleus sampling：一个婴儿吃着他的生日蛋糕，和他妈妈坐在一起。

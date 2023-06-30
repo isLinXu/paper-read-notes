@@ -1,995 +1,464 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Rich feature hierarchies for accurate object detection and semantic segmentation &#8212; 论文阅读笔记</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
-    
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Read/rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation';</script>
     <link rel="shortcut icon" href="../_static/panda.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-    <div class="container-fluid" id="banner"></div>
-
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">论文阅读笔记</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  目录
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Method/index.html">
-   论文阅读指南
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Method/efficent_read_paper.html">
-     高效阅读方法及流程
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Method/how_to_read_paper.html">
-     如何阅读论文
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Method/paper_10_question.html">
-     论文速读十问
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Method/read_important_tips.html">
-     读论文与口头报告的几项重点
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Method/reference.html">
-     参考材料
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../List/index.html">
-   论文阅读清单
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/basis.html">
-     神经网络基础(basis)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/attention.html">
-     注意力部分(attention)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/batch_normalization.html">
-     批量&amp;正则化(batch&amp;normalization)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/classification.html">
-     图像分类(CLAS)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/convolutional.html">
-     高级卷积网络知识(Convolutional)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/gan.html">
-     AI合成部分(GAN)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/nlp.html">
-     自然语言处理(NLP)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/objectdetection.html">
-     目标检测(OBJ)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/rnn.html">
-     循环神经网络(RNN)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/segementation.html">
-     目标分割(SEG)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/transformer.html">
-     Transformer
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/multimodal.html">
-     多模态(MultiModal Learning)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../List/llm.html">
-     大语言模型(Large Language Models)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Notes/index.html">
-   论文阅读笔记
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../Notes/mm-l/index.html">
-     多模态(MultiModal Machine Learning)
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-    <label for="toctree-checkbox-4">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Notes/mm-l/blip-v1.html">
-       BLIP: Bootstrapping Language-Image Pre-training
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Notes/mm-l/blip-v2.html">
-       BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../Notes/llm/index.html">
-     大语言模型(Large Language Models)
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Notes/llm/opt.html">
-       OPT: OPT : Open Pre-trained Transformer Language Models
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Notes/llm/gpt-v1.html">
-       GPT-v1:Improving Language Understanding by Generative Pre-Training
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Notes/llm/gpt-v2.html">
-       GPT-v2:Language Models are Unsupervised Multitask Learners
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Notes/llm/gpt-v3.html">
-       GPT-v3:Language Models are Few-Shot Learners
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Notes/llm/gpt-v4.html">
-       GPT-v4:GPT-4 Technical Report
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="index.html">
-   论文阅读记录
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="simple">
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Summary/index.html">
-   论文阅读总结
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="simple">
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/how_to_read_paper.html">如何阅读论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/paper_10_question.html">论文速读十问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/read_important_tips.html">读论文与口头报告的几项重点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/reference.html">参考材料</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../List/index.html">论文阅读清单</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../List/basis.html">神经网络基础(basis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../List/attention.html">注意力部分(attention)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/batch_normalization.html">批量&amp;正则化(batch&amp;normalization)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/classification.html">图像分类(CLAS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../List/convolutional.html">高级卷积网络知识(Convolutional)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/gan.html">AI合成部分(GAN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/nlp.html">自然语言处理(NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../List/objectdetection.html">目标检测(OBJ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../List/rnn.html">循环神经网络(RNN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/segementation.html">目标分割(SEG)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/transformer.html">Transformer</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/multimodal.html">多模态(MultiModal Learning)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/llm.html">大语言模型(Large Language Models)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Notes/index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v3.html">GPT-v3:Language Models are Few-Shot Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Read/rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FRead/rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Read/rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/isLinXu/paper-read-notes/"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/isLinXu/paper-read-notes//issues/new?title=Issue%20on%20page%20%2FRead/rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/isLinXu/paper-read-notes/edit/master/Read/rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/Read/rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation.md.txt"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#abstract">
-   <strong>
-    Abstract
-   </strong>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   <strong>
-    1. Introduction
-   </strong>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#object-detection-with-r-cnn">
-   <strong>
-    2. Object detection with R-CNN
-   </strong>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#module-design">
-     <strong>
-      2.1. Module design
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#test-time-detection">
-     <strong>
-      2.2. Test-time detection
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#training">
-     <strong>
-      2.3. Training
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#results-on-pascal-voc-2010-12">
-     <strong>
-      2.4. Results on PASCAL VOC 2010-12
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#results-on-ilsvrc2013-detection">
-     <strong>
-      2.5. Results on ILSVRC2013 detection
-     </strong>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualization-ablation-and-modes-of-error">
-   <strong>
-    3. Visualization, ablation, and modes of error
-   </strong>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualizing-learned-features">
-     <strong>
-      3.1. Visualizing learned features
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ablation-studies">
-     <strong>
-      3.2. Ablation studies
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#network-architectures">
-     <strong>
-      3.3. Network architectures
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#detection-error-analysis">
-     <strong>
-      3.4. Detection error analysis
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bounding-box-regression">
-     <strong>
-      3.5. Bounding-box regression
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qualitative-results">
-     <strong>
-      3.6. Qualitative results
-     </strong>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-ilsvrc2013-detection-dataset">
-   <strong>
-    4. The ILSVRC2013 detection dataset
-   </strong>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-overview">
-     <strong>
-      4.1. Dataset overview
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#region-proposals">
-     <strong>
-      4.2. Region proposals
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#training-data">
-     <strong>
-      4.3. Training data
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#validation-and-evaluation">
-     <strong>
-      4.4. Validation and evaluation
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ablation-study">
-     <strong>
-      4.5. Ablation study
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#relationship-to-overfeat">
-     <strong>
-      4.6. Relationship to OverFeat
-     </strong>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#semantic-segmentation">
-   <strong>
-    5. Semantic segmentation
-   </strong>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   <strong>
-    6. Conclusion
-   </strong>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-object-proposal-transformations">
-     A.
-     <strong>
-      Object proposal transformations
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-positive-vs-negative-examples-and-softmax">
-     <strong>
-      B. Positive vs. negative examples and softmax
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-bounding-box-regression">
-     <strong>
-      C. Bounding-box regression
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-additional-feature-visualizations">
-     <strong>
-      D. Additional feature visualizations
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#e-per-category-segmentation-results">
-     <strong>
-      E. Per-category segmentation results
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#f-analysis-of-cross-dataset-redundancy">
-     <strong>
-      F. Analysis of cross-dataset redundancy
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#g-document-change-log">
-     <strong>
-      G. Document change log
-     </strong>
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Rich feature hierarchies for accurate object detection and semantic segmentation</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#abstract">
-   <strong>
-    Abstract
-   </strong>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   <strong>
-    1. Introduction
-   </strong>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#object-detection-with-r-cnn">
-   <strong>
-    2. Object detection with R-CNN
-   </strong>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#module-design">
-     <strong>
-      2.1. Module design
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#test-time-detection">
-     <strong>
-      2.2. Test-time detection
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#training">
-     <strong>
-      2.3. Training
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#results-on-pascal-voc-2010-12">
-     <strong>
-      2.4. Results on PASCAL VOC 2010-12
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#results-on-ilsvrc2013-detection">
-     <strong>
-      2.5. Results on ILSVRC2013 detection
-     </strong>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualization-ablation-and-modes-of-error">
-   <strong>
-    3. Visualization, ablation, and modes of error
-   </strong>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#visualizing-learned-features">
-     <strong>
-      3.1. Visualizing learned features
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ablation-studies">
-     <strong>
-      3.2. Ablation studies
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#network-architectures">
-     <strong>
-      3.3. Network architectures
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#detection-error-analysis">
-     <strong>
-      3.4. Detection error analysis
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bounding-box-regression">
-     <strong>
-      3.5. Bounding-box regression
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qualitative-results">
-     <strong>
-      3.6. Qualitative results
-     </strong>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-ilsvrc2013-detection-dataset">
-   <strong>
-    4. The ILSVRC2013 detection dataset
-   </strong>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataset-overview">
-     <strong>
-      4.1. Dataset overview
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#region-proposals">
-     <strong>
-      4.2. Region proposals
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#training-data">
-     <strong>
-      4.3. Training data
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#validation-and-evaluation">
-     <strong>
-      4.4. Validation and evaluation
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ablation-study">
-     <strong>
-      4.5. Ablation study
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#relationship-to-overfeat">
-     <strong>
-      4.6. Relationship to OverFeat
-     </strong>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#semantic-segmentation">
-   <strong>
-    5. Semantic segmentation
-   </strong>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   <strong>
-    6. Conclusion
-   </strong>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-object-proposal-transformations">
-     A.
-     <strong>
-      Object proposal transformations
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#b-positive-vs-negative-examples-and-softmax">
-     <strong>
-      B. Positive vs. negative examples and softmax
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#c-bounding-box-regression">
-     <strong>
-      C. Bounding-box regression
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#d-additional-feature-visualizations">
-     <strong>
-      D. Additional feature visualizations
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#e-per-category-segmentation-results">
-     <strong>
-      E. Per-category segmentation results
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#f-analysis-of-cross-dataset-redundancy">
-     <strong>
-      F. Analysis of cross-dataset redundancy
-     </strong>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#g-document-change-log">
-     <strong>
-      G. Document change log
-     </strong>
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rich feature hierarchies for accurate object detection and semantic segmentation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract"><strong>Abstract</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>1. Introduction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-detection-with-r-cnn"><strong>2. Object detection with R-CNN</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-design"><strong>2.1. Module design</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-time-detection"><strong>2.2. Test-time detection</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training"><strong>2.3. Training</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-on-pascal-voc-2010-12"><strong>2.4. Results on PASCAL VOC 2010-12</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-on-ilsvrc2013-detection"><strong>2.5. Results on ILSVRC2013 detection</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-ablation-and-modes-of-error"><strong>3. Visualization, ablation, and modes of error</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-learned-features"><strong>3.1. Visualizing learned features</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-studies"><strong>3.2. Ablation studies</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures"><strong>3.3. Network architectures</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-error-analysis"><strong>3.4. Detection error analysis</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bounding-box-regression"><strong>3.5. Bounding-box regression</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-results"><strong>3.6. Qualitative results</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ilsvrc2013-detection-dataset"><strong>4. The ILSVRC2013 detection dataset</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-overview"><strong>4.1. Dataset overview</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#region-proposals"><strong>4.2. Region proposals</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-data"><strong>4.3. Training data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-and-evaluation"><strong>4.4. Validation and evaluation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study"><strong>4.5. Ablation study</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-to-overfeat"><strong>4.6. Relationship to OverFeat</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semantic-segmentation"><strong>5. Semantic segmentation</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>6. Conclusion</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-object-proposal-transformations">A. <strong>Object proposal transformations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-positive-vs-negative-examples-and-softmax"><strong>B. Positive vs. negative examples and softmax</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-bounding-box-regression"><strong>C. Bounding-box regression</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-additional-feature-visualizations"><strong>D. Additional feature visualizations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-per-category-segmentation-results"><strong>E. Per-category segmentation results</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-analysis-of-cross-dataset-redundancy"><strong>F. Analysis of cross-dataset redundancy</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g-document-change-log"><strong>G. Document change log</strong></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section id="rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation">
-<h1>Rich feature hierarchies for accurate object detection and semantic segmentation<a class="headerlink" href="#rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation" title="Permalink to this headline">#</a></h1>
+<h1>Rich feature hierarchies for accurate object detection and semantic segmentation<a class="headerlink" href="#rich-feature-hierarchies-for-accurate-object-detection-and-semantic-segmentation" title="Permalink to this heading">#</a></h1>
 <p>Ross Girshick Jeff Donahue Trevor Darrell Jitendra Malik</p>
 <p>UC Berkeley</p>
 <p>rbg,jdonahue,trevor,malikg&#64;eecs.berkeley.edu</p>
 <section id="abstract">
-<h2><strong>Abstract</strong><a class="headerlink" href="#abstract" title="Permalink to this headline">#</a></h2>
+<h2><strong>Abstract</strong><a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
 <p>Object detection performance, as measured on the canonical PASCAL VOC dataset, has plateaued in the last few years. The best-performing methods are complex ensemble systems that typically combine multiple low-level image features with high-level context. In this paper, we propose a simple and scalable detection algorithm that improves mean average precision (mAP) by more than 30% relative to the previous best result on VOC 2012—achieving a mAP of 53.3%. Our approach combines two key insights: (1) one can apply high-capacity convolutional neural networks (CNNs) to bottom-up region proposals in order to localize and segment objects and (2) when labeled training data is scarce, supervised pre-training for an auxiliary task, followed by domain-specific fine-tuning, yields a significant performance boost. Since we combine region proposals with CNNs, we call our method R-CNN: Regions with CNN features. We also compare R-CNN to OverFeat, a recently proposed sliding-window detector based on a similar CNN architecture. We find that R-CNN outperforms OverFeat by a large margin on the 200-class ILSVRC2013 detection dataset. Source code for the complete system is available at http://www.cs.berkeley.edu/rbg/rcnn.</p>
 <p><strong>摘要</strong></p>
 <p>对象检测性能，例如在典型的PASCAL VOC数据集上测量的结果，在过去几年中已经稳定下来，其中表现最好的方案是将多个低级图像特征与高级语境相结合而组成的复杂系统。在本文中，我们提出了一种简单可扩展的检测算法，其相对于以前的VOC2012数据集的最佳结果，平均精度（mAP）提高了30％以上，达到了53.3％<strong>【以前的方法都是传统算法】</strong>。我们的方法结合了两个关键点：<strong>（1）将大容量（深、复杂）卷积神经网络（CNN）应用于自下而上的候选区域，以便定位和分割对象。（2）当标记的训练数据稀缺时，对辅助任务进行预训练，然后进行域特定的微调，可以显着提升性能</strong>【总结起来就是：首先将深度神经网络用于了目标检测和分割，其次是应用了迁移学习】<strong>。由于我们将候选区域与CNN相结合，所以我们称我们的方法为R-CNN：具有CNN特征的区域。我们还将R-CNN与OverFeat进行比较，OverFeat是最近提出的基于类似CNN架构的滑动窗口检测器。我们发现R-CNN在ILSVRC2013 200类的检测数据集上大幅超越OverFeat【RCNN的第一版是在OverFeat之前发表的，本文其实是第五版V5，在OverFeat之后发表】</strong>。系统的完整源代码在http://www.cs.berkeley.edu/rbg/rcnn。</p>
 </section>
 <section id="introduction">
-<h2><strong>1. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<h2><strong>1. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>Features matter. The last decade of progress on various visual recognition tasks has been based considerably on the use of SIFT [29] and HOG [7]. But if we look at performance on the canonical visual recognition task, PASCAL VOC object detection [15], it is generally acknowledged that progress has been slow during 2010-2012, with small gains obtained by building ensemble systems and employing minor variants of successful methods.</p>
 <p>特征很重要。过去的十年中，各种视觉识别任务取得了很大的进步，这取决于SIFT[29]和HOG[7]的使用**【<strong>建议读者对这两种手工提取的特征进行了解</strong>】**。但是,如果我们观察典型的视觉识别任务的性能，如PASCAL VOC对象检测[<span class="xref myst">15]</span>，会发现2010-2012年进展缓慢，仅通过组合不同模型和使用已有方法的变体来获得很小的改进。</p>
 <p>SIFT and HOG are blockwise orientation histograms, a representation we could associate roughly with complex cells in V1, the first cortical area in the primate visual pathway. But we also know that recognition occurs several stages downstream, which suggests that there might be hierarchical, multi-stage processes for computing features that are even more informative for visual recognition.</p>
@@ -1021,11 +490,11 @@ title="Print to PDF"
 <p>在发掘技术细节之前，我们注意到：由于R-CNN在区域上运行，将其扩展到语义分割的任务就很自然。经过少量的修改，我们也在PASCAL VOC分割任务中取得了有竞争力的成果，VOC 2011测试集的平均分割精度为47.9％。</p>
 </section>
 <section id="object-detection-with-r-cnn">
-<h2><strong>2. Object detection with R-CNN</strong><a class="headerlink" href="#object-detection-with-r-cnn" title="Permalink to this headline">#</a></h2>
+<h2><strong>2. Object detection with R-CNN</strong><a class="headerlink" href="#object-detection-with-r-cnn" title="Permalink to this heading">#</a></h2>
 <p>Our object detection system consists of three modules. The first generates category-independent region proposals. These proposals define the set of candidate detections available to our detector. The second module is a large convolutional neural network that extracts a fixed-length feature vector from each region. The third module is a set of classspecific linear SVMs. In this section, we present our design decisions for each module, describe their test-time usage, detail how their parameters are learned, and show detection results on PASCAL VOC 2010-12 and on ILSVRC2013.</p>
 <p>我们的目标检测系统由三个模块组成。**第一个生成类别无关区域提案。这些提案定义了可用于我们的检测器的候选检测集。第二个模块是从每个区域提取固定长度特征向量的大型卷积神经网络。第三个模块是一组特定类别的线性SVM。**在本节中，我们介绍每个模块的设计思路，描述其测试时使用情况，详细介绍其参数的学习方式，并给出在PASCAL VOC 2010-12和ILSVRC2013上的检测结果。</p>
 <section id="module-design">
-<h3><strong>2.1. Module design</strong><a class="headerlink" href="#module-design" title="Permalink to this headline">#</a></h3>
+<h3><strong>2.1. Module design</strong><a class="headerlink" href="#module-design" title="Permalink to this heading">#</a></h3>
 <p><strong>Region proposals.</strong> A variety of recent papers offer methods for generating category-independent region proposals. Examples include: objectness [1], selective search [39], category-independent object proposals [14], constrained parametric min-cuts (CPMC) [5], multi-scale combinatorial grouping [3], and Ciresan et al. [6], who detect mitotic cells by applying a CNN to regularly-spaced square crops, which are a special case of region proposals. While R-CNN is agnostic to the particular region proposal method, we use selective search to enable a controlled comparison with prior detection work (e.g., [39, 41]).</p>
 <p>_<strong>*区域提案。*</strong>_最近的各种论文提供了生成类别无关区域提案的方法。例子包括：objectness [1]，选择性搜索[39]，类别无关对象提议[14]，约束参数最小化(CPMC)[5]<strong>【这些区域提案算法基本上是基于图像的纹理、轮廓、色彩等特征的】</strong>，多尺度组合分组[3]和Ciresan等提出的[6]通过将CNN应用于特定间隔的方块来检测有丝分裂细胞，这是区域提案的特殊情况。具体的区域提案方法对于R-CNN是透明的，但我们使用选择性搜索以便于与先前检测工作的对照比较（例如39,41）。</p>
 <p><strong>Feature extraction</strong>. We extract a 4096-dimensional feature vector from each region proposal using the Caffe [24] implementation of the CNN described by Krizhevsky et al. [25]. Features are computed by forward propagating a mean-subtracted 227 × 227 RGB image through five convolutional layers and two fully connected layers. We refer readers to [24, 25] for more network architecture details.</p>
@@ -1035,7 +504,7 @@ title="Print to PDF"
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429215432858-1779548973.png" /></p>
 </section>
 <section id="test-time-detection">
-<h3><strong>2.2. Test-time detection</strong><a class="headerlink" href="#test-time-detection" title="Permalink to this headline">#</a></h3>
+<h3><strong>2.2. Test-time detection</strong><a class="headerlink" href="#test-time-detection" title="Permalink to this heading">#</a></h3>
 <p>At test time, we run selective search on the test image to extract around 2000 region proposals (we use selective search’s “fast mode” in all experiments). We warp each proposal and forward propagate it through the CNN in order to compute features. Then, for each class, we score each extracted feature vector using the SVM trained for that class. Given all scored regions in an image, we apply a greedy non-maximum suppression (for each class independently) that rejects a region if it has an intersection over union (IoU) overlap with a higher scoring selected region larger than a learned threshold.</p>
 <p>在测试时，我们对测试图像进行选择性搜索，以提取大约2000个区域提案（我们在所有实验中使用选择性搜索的“快速模式”）。然后缩放每个区域，并通过CNN向前传播，以计算特征。最后，对于每个类，我们使用针对该类训练的SVM来对每个提取的特征向量进行评分。给定图像中的所有区域的得分后，我们应用贪婪非极大值抑制（每个类别独立进行），在训练时学习一个阈值，如果其与得分较高的区域的重叠部分(IoU)高于这个阈值，则丢弃这个区域。</p>
 <p><strong>Run-time analysis</strong>. Two properties make detection efficient. First, all CNN parameters are shared across all categories. Second, the feature vectors computed by the CNN are low-dimensional when compared to other common approaches, such as spatial pyramids with bag-of-visual-word encodings. The features used in the UVA detection system [39], for example, are two orders of magnitude larger than ours (360k vs. 4k-dimensional).</p>
@@ -1048,7 +517,7 @@ title="Print to PDF"
 <p>将R-CNN与Dean等人最近的工作对比也是有趣的。使用DPM和散列的可扩展检测。在引入1万个干扰类的情况下，每个图像的运行时间为5分钟，其在VOC 2007上的map约为16％。通过我们的方法，1万个检测器可以在CPU上运行大约一分钟，而且由于没有近似值，可以使map保持在59％（见<span class="xref myst">消融研究</span>）。</p>
 </section>
 <section id="training">
-<h3><strong>2.3. Training</strong><a class="headerlink" href="#training" title="Permalink to this headline">#</a></h3>
+<h3><strong>2.3. Training</strong><a class="headerlink" href="#training" title="Permalink to this heading">#</a></h3>
 <p><strong>Supervised pre-training.</strong> We discriminatively pre-trained the CNN on a large auxiliary dataset (ILSVRC2012 classification) using image-level annotations only (bounding box labels are not available for this data). Pre-training was performed using the open source Caffe CNN library [24]. In brief, our CNN nearly matches the performance of Krizhevsky et al. [25], obtaining a top-1 error rate 2.2 percentage points higher on the ILSVRC2012 classification validation set. This discrepancy is due to simplifications in the training process.</p>
 <p>_<strong>*监督预训练。*</strong>_我们仅通过使用图像级标记（此数据没有检测框标记）的大型辅助数据集（ILSVRC2012分类数据集）来区分性地对CNN进行预训练。使用开源的Caffe CNN库进行预训练。简而言之，我们的CNN几乎符合Krizhevsky等人的论文中的表现，ILSVRC2012分类验证集获得的top-1错误率高出2.2个百分点。这种差异是由于训练过程中的简化造成的**【<strong>首先大致复现了AlexNe</strong>t<strong>分类网络的性能</strong>】。**</p>
 <p><strong>Domain-specific fine-tuning</strong>. To adapt our CNN to the new task (detection) and the new domain (warped proposal windows), we continue stochastic gradient descent (SGD) training of the CNN parameters using only warped region proposals. Aside from replacing the CNN’s ImageNet specific 1000-way classification layer with a randomly initialized (N + 1)-way classification layer (where N is the number of object classes, plus 1 for background), the CNN architecture is unchanged. For VOC, N = 20 and for ILSVRC2013, N = 200. We treat all region proposals with ≥ 0.5 IoU overlap with a ground-truth box as positives for that box’s class and the rest as negatives. We start SGD at a learning rate of 0.001 (1/10th of the initial pre-training rate), which allows fine-tuning to make progress while not clobbering the initialization. In each SGD iteration, we uniformly sample 32 positive windows (over all classes) and 96 background windows to construct a mini-batch of size 128. We bias the sampling towards positive windows because they are extremely rare compared to background.</p>
@@ -1061,7 +530,7 @@ title="Print to PDF"
 <p>在<span class="xref myst">附录B</span>中，我们将讨论为什么在微调与SVM训练中，正样本和负样本的数量不同。我们还讨论了涉及训练检测SVM的权衡，而不是简单地使用微调CNN的最终softmax层的输出。</p>
 </section>
 <section id="results-on-pascal-voc-2010-12">
-<h3><strong>2.4. Results on PASCAL VOC 2010-12</strong><a class="headerlink" href="#results-on-pascal-voc-2010-12" title="Permalink to this headline">#</a></h3>
+<h3><strong>2.4. Results on PASCAL VOC 2010-12</strong><a class="headerlink" href="#results-on-pascal-voc-2010-12" title="Permalink to this heading">#</a></h3>
 <p>Following the PASCAL VOC best practices [15], we validated all design decisions and hyperparameters on the VOC 2007 dataset (Section 3.2). For final results on the VOC 2010-12 datasets, we fine-tuned the CNN on VOC 2012 train and optimized our detection SVMs on VOC 2012 trainval. We submitted test results to the evaluation server only once for each of the two major algorithm variants (with and without bounding-box regression).</p>
 <p>根据PASCAL VOC最佳实践<span class="xref myst">15</span>，我们在VOC 2007数据集上验证了所有设计和超参数（见<span class="xref myst">消融研究</span>）。对于VOC 2010-12数据集的最终结果，我们对VOC 2012 train上对CNN进行了微调，并在VOC 2012 trainval上优化检测SVM。我们将测试结果提交给评估服务器，对于两种主要算法变体（带有和不带有检测框回归）的每一种，都只提交一次。</p>
 <p>Table 1 shows complete results on VOC 2010. We compare our method against four strong baselines, including SegDPM [18], which combines DPM detectors with the output of a semantic segmentation system [4] and uses additional inter-detector context and image-classifier rescoring. The most germane comparison is to the UVA system from Uijlings et al. [39], since our systems use the same region proposal algorithm. To classify regions, their method builds a four-level spatial pyramid and populates it with densely sampled SIFT, Extended Opponent SIFT, and RGBSIFT descriptors, each vector quantized with 4000-word codebooks. Classification is performed with a histogram intersection kernel SVM. Compared to their multi-feature, non-linear kernel SVM approach, we achieve a large improvement in map, from 35.1% to 53.7% map, while also being much faster (Section 2.2). Our method achieves similar performance (53.3% map) on VOC 2011/12 test.</p>
@@ -1071,7 +540,7 @@ title="Print to PDF"
 <p>表1：（VOC 2010测试的平均检测精度（％）。 R-CNN与UVA和Regionlets最相似，因为所有方法都使用选择性搜索区域提案。检测框回归（BB）在<span class="xref myst">附录C</span>中描述。在本文发布时，SegDPM是PASCAL VOC排行榜中表现最好的方法。 †DPM和SegDPM使用上下文重排，其他方法未使用）</p>
 </section>
 <section id="results-on-ilsvrc2013-detection">
-<h3><strong>2.5. Results on ILSVRC2013 detection</strong><a class="headerlink" href="#results-on-ilsvrc2013-detection" title="Permalink to this headline">#</a></h3>
+<h3><strong>2.5. Results on ILSVRC2013 detection</strong><a class="headerlink" href="#results-on-ilsvrc2013-detection" title="Permalink to this heading">#</a></h3>
 <p>We ran R-CNN on the 200-class ILSVRC2013 detection dataset using the same system hyperparameters that we used for PASCAL VOC. We followed the same protocol of submitting test results to the ILSVRC2013 evaluation server only twice, once with and once without bounding-box regression.</p>
 <p>我们使用与PASCAL VOC相同的系统超参数，在200类的ILSVRC2013检测数据集上运行R-CNN。我们遵循相同的原则，仅提交测试结果给ILSVRC2013评估服务器两次，一次有边界框回归，一次没有。</p>
 <p>Figure 3 compares R-CNN to the entries in the ILSVRC 2013 competition and to the post-competition OverFeat result [34]. R-CNN achieves a map of 31.4%, which is significantly ahead of the second-best result of 24.3% from OverFeat. To give a sense of the AP distribution over classes, box plots are also presented and a table of perclass APs follows at the end of the paper in Table 8. Most of the competing submissions (OverFeat, NEC-MU, UvAEuvision, Toronto A, and UIUC-IFP) used convolutional neural networks, indicating that there is significant nuance in how CNNs can be applied to object detection, leading to greatly varying outcomes.</p>
@@ -1086,9 +555,9 @@ title="Print to PDF"
 </section>
 </section>
 <section id="visualization-ablation-and-modes-of-error">
-<h2><strong>3. Visualization, ablation, and modes of error</strong><a class="headerlink" href="#visualization-ablation-and-modes-of-error" title="Permalink to this headline">#</a></h2>
+<h2><strong>3. Visualization, ablation, and modes of error</strong><a class="headerlink" href="#visualization-ablation-and-modes-of-error" title="Permalink to this heading">#</a></h2>
 <section id="visualizing-learned-features">
-<h3><strong>3.1. Visualizing learned features</strong><a class="headerlink" href="#visualizing-learned-features" title="Permalink to this headline">#</a></h3>
+<h3><strong>3.1. Visualizing learned features</strong><a class="headerlink" href="#visualizing-learned-features" title="Permalink to this heading">#</a></h3>
 <p>First-layer filters can be visualized directly and are easy to understand [25]. They capture oriented edges and opponent colors. Understanding the subsequent layers is more challenging. Zeiler and Fergus present a visually attractive deconvolutional approach in [42]. We propose a simple (and complementary) non-parametric method that directly shows what the network learned.</p>
 <p>第一层卷积核可以直观可视化，易于理解。它们捕获定向边缘和相对颜色。了解后续层次更具挑战性。 Zeiler和Fergus在提出了一种有视觉吸引力的反卷积方法。我们提出一个简单（和补充）非参数方法，直接显示网络学到的内容。</p>
 <p>The idea is to single out a particular unit (feature) in the network and use it as if it were an object detector in its own right. That is, we compute the unit’s activations on a large set of held-out region proposals (about 10 million), sort the proposals from highest to lowest activation, perform nonmaximum suppression, and then display the top-scoring regions. Our method lets the selected unit “speak for itself” by showing exactly which inputs it fires on. We avoid averaging in order to see different visual modes and gain insight into the invariances computed by the unit.</p>
@@ -1102,7 +571,7 @@ title="Print to PDF"
 <p>图4：六个pool5单元的激活最大的区域。感受野和激活值以白色绘制。某些单元与概念对齐，例如人（第1行）或文本（第4行）。其它单元捕获纹理和材料属性，如点阵列（第2行）和镜面反射（第6行）。）</p>
 </section>
 <section id="ablation-studies">
-<h3><strong>3.2. Ablation studies</strong><a class="headerlink" href="#ablation-studies" title="Permalink to this headline">#</a></h3>
+<h3><strong>3.2. Ablation studies</strong><a class="headerlink" href="#ablation-studies" title="Permalink to this heading">#</a></h3>
 <p><strong>Performance layer-by-layer, without fine-tuning.</strong> To understand which layers are critical for detection performance, we analyzed results on the VOC 2007 dataset for each of the CNN’s last three layers. Layer pool5 was briefly described in Section 3.1. The final two layers are summarized below.</p>
 <p>_<strong>*逐层分析性能，没有微调。*</strong>_为了了解哪些层对于检测性能至关重要，我们分析了CNN最后三层在VOC 2007数据集上的结果。<span class="xref myst">上一节</span>简要描述了pool5。最后两层总结如下**【<strong>就是将骨干CNN不同层次提取得特征放到SVM中进行分类，看哪个层特征得效果好</strong>】**。</p>
 <p>Layer fc6 is fully connected to pool5 . To compute features, it multiplies a 4096×9216 weight matrix by the pool5 feature map (reshaped as a 9216-dimensional vector) and then adds a vector of biases. This intermediate vector is component-wise half-wave rectified (x ← max(0, x)).</p>
@@ -1126,7 +595,7 @@ title="Print to PDF"
 <p>所有R-CNN的变体都优于三个DPM基线（表2第8-10行），包括两个使用特征学习的。与仅使用HOG特征的最新版本的DPM相比，我们的map提高了20个百分点以上：54.2％对比33.7％，相对改进61％。HOG和草图表征的组合与单独的HOG相比map提高2.5个点，而HSC在HOG上map提高了4个点（使用内部私有的DPM基线进行比较，两者都使用非公开实现的DPM，低于开源版本）。这些方法的map分别达到29.1％和34.3％。</p>
 </section>
 <section id="network-architectures">
-<h3><strong>3.3. Network architectures</strong><a class="headerlink" href="#network-architectures" title="Permalink to this headline">#</a></h3>
+<h3><strong>3.3. Network architectures</strong><a class="headerlink" href="#network-architectures" title="Permalink to this heading">#</a></h3>
 <p>Most results in this paper use the network architecture from Krizhevsky et al. [25]. However, we have found that the choice of architecture has a large effect on R-CNN detection performance. In Table 3 we show results on VOC 2007 test using the 16-layer deep network recently proposed by Simonyan and Zisserman [43]. This network was one of the top performers in the recent ILSVRC 2014 classification challenge. The network has a homogeneous structure consisting of 13 layers of 3 × 3 convolution kernels, with five max pooling layers interspersed, and topped with three fully-connected layers. We refer to this network as “O-Net” for OxfordNet and the baseline as “T-Net” for TorontoNet.</p>
 <p>本文的大多数结果使用了Krizhevsky等人的网络架构。然而，我们发现架构的选择对R-CNN检测性能有很大的影响。在表3中，我们显示了使用Simonyan和Zisserman最近提出的16层深层网络的VOC 2007测试结果[43]。 该网络是最近ILSVRC 2014分类挑战中表现最佳的网络之一。 该网络具有由13层3×3卷积核组成的均匀结构，其中穿插有五个最大池化层，并且顶部有三个完全连接的层。 我们将这个网络称为OxfordNet的“O-Net”，并将TorontoNet的基线称为“T-Net”。</p>
 <p>To use O-Net in R-CNN, we downloaded the publicly available pre-trained network weights for the VGG ILSVRC 16 layers model from the Caffe Model Zoo.1 We then fine-tuned the network using the same protocol as we used for T-Net. The only difference was to use smaller minibatches (24 examples) as required in order to fit within GPU memory. The results in Table 3 show that RCNN with O-Net substantially outperforms R-CNN with TNet, increasing map from 58.5% to 66.0%. However there is a considerable drawback in terms of compute time, with the forward pass of O-Net taking roughly 7 times longer than T-Net.</p>
@@ -1136,7 +605,7 @@ title="Print to PDF"
 <p>表3：两种不同CNN架构的VOC 2007测试的检测平均精度（％）。 前两行是表2中使用Krizhevsky等人的架构（T-Net）的结果。 第三和第四行使用最近提出的Simonyan和Zisserman（O-Net）的16层架构[43]。</p>
 </section>
 <section id="detection-error-analysis">
-<h3><strong>3.4. Detection error analysis</strong><a class="headerlink" href="#detection-error-analysis" title="Permalink to this headline">#</a></h3>
+<h3><strong>3.4. Detection error analysis</strong><a class="headerlink" href="#detection-error-analysis" title="Permalink to this heading">#</a></h3>
 <p>We applied the excellent detection analysis tool from Hoiem et al. [23] in order to reveal our method’s error modes, understand how fine-tuning changes them, and to see how our error types compare with DPM. A full summary of the analysis tool is beyond the scope of this paper and we encourage readers to consult [23] to understand some finer details (such as “normalized AP”). Since the analysis is best absorbed in the context of the associated plots, we present the discussion within the captions of Figure 5 and Figure 6.</p>
 <p>为了揭示我们的方法的错误模式，我们应用了Hoiem等人的优秀检测分析工具23，以了解微调如何改变它们，并将我们的错误类型与DPM比较。分析工具的完整介绍超出了本文的范围，可以参考23了解更多的细节（如“标准化AP”）。千言万语不如一张图，我们在下图（图5和图6）中讨论。</p>
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429215013067-632448486.png" /></p>
@@ -1149,12 +618,12 @@ title="Print to PDF"
 <p>我们展示了我们的方法（R-CNN）有或没有微调（FT）和边界回归（BB）以及DPM voc-release5的图。总体而言，微调并不会降低敏感度（最大和最小值之间的差异），而且对于几乎所有的特点，都能极大地提高最高和最低性能的子集的性能。这表明微调不仅仅是简单地提高纵横比和边界区域的最低性能子集的性能（在分析之前，基于我们如何缩放网络输入而推测）。相反，微调可以改善所有特点的鲁棒性，包括遮挡，截断，视角和局部可视性。</p>
 </section>
 <section id="bounding-box-regression">
-<h3><strong>3.5. Bounding-box regression</strong><a class="headerlink" href="#bounding-box-regression" title="Permalink to this headline">#</a></h3>
+<h3><strong>3.5. Bounding-box regression</strong><a class="headerlink" href="#bounding-box-regression" title="Permalink to this heading">#</a></h3>
 <p>Based on the error analysis, we implemented a simple method to reduce localization errors. Inspired by the bounding-box regression employed in DPM [17], we train a linear regression model to predict a new detection window given the pool5 features for a selective search region proposal. Full details are given in Appendix C. Results in Table 1, Table 2, and Figure 5 show that this simple approach fixes a large number of mislocalized detections, boosting map by 3 to 4 points.</p>
 <p>基于错误分析，我们实现了一种简单的方法来减少定位错误。受DPM中使用边界框回归的启发，我们训练一个线性回归模型使用在区域提案上提取的pool5特征来预测一个新的检测框。完整的细节在<span class="xref myst">附录C</span>中给出。表1，表2和图5中的结果表明，这种简单的方法解决了大量的定位错误，将map提高了3到4个点。</p>
 </section>
 <section id="qualitative-results">
-<h3><strong>3.6. Qualitative results</strong><a class="headerlink" href="#qualitative-results" title="Permalink to this headline">#</a></h3>
+<h3><strong>3.6. Qualitative results</strong><a class="headerlink" href="#qualitative-results" title="Permalink to this heading">#</a></h3>
 <p>Qualitative detection results on ILSVRC2013 are presented in Figure 8 and Figure 9 at the end of the paper. Each image was sampled randomly from the val2 set and all detections from all detectors with a precision greater than 0.5 are shown. Note that these are not curated and give a realistic impression of the detectors in action. More qualitative results are presented in Figure 10 and Figure 11, but these have been curated. We selected each image because it contained interesting, surprising, or amusing results. Here, also, all detections at precision greater than 0.5 are shown.</p>
 <p>论文结尾处的图8和图9介绍了ILSVRC2013的定性检测结果。 所有显示的图像都是从val2集中随机采样的，其精度大于0.5。 请注意，这些都没有特意挑选，并给出了一个实际检测器的检测结果。 更定性结果如图10和图11所示，这些都是专门挑选的。 我们选择了每张图片，因为它包含有趣，令人惊讶或有趣的结果。 这里，此外，还显示了精度大于0.5的所有检测。</p>
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429214934254-444672537.png" /></p>
@@ -1175,11 +644,11 @@ title="Print to PDF"
 </section>
 </section>
 <section id="the-ilsvrc2013-detection-dataset">
-<h2><strong>4. The ILSVRC2013 detection dataset</strong><a class="headerlink" href="#the-ilsvrc2013-detection-dataset" title="Permalink to this headline">#</a></h2>
+<h2><strong>4. The ILSVRC2013 detection dataset</strong><a class="headerlink" href="#the-ilsvrc2013-detection-dataset" title="Permalink to this heading">#</a></h2>
 <p>In Section 2 we presented results on the ILSVRC2013 detection dataset. This dataset is less homogeneous than PASCAL VOC, requiring choices about how to use it. Since these decisions are non-trivial, we cover them in this section.</p>
 <p>在<span class="xref myst">用R-CNN进行目标检测</span>中，我们介绍了ILSVRC2013检测数据集的结果。该数据集与PASCAL VOC不太一致，需要选择如何使用它。由于这些选择不是显而易见的，我们将在这一节中介绍这些选择。</p>
 <section id="dataset-overview">
-<h3><strong>4.1. Dataset overview</strong><a class="headerlink" href="#dataset-overview" title="Permalink to this headline">#</a></h3>
+<h3><strong>4.1. Dataset overview</strong><a class="headerlink" href="#dataset-overview" title="Permalink to this heading">#</a></h3>
 <p>The ILSVRC2013 detection dataset is split into three sets: train (395,918), val (20,121), and test (40,152), where the number of images in each set is in parentheses. The val and test splits are drawn from the same image distribution. These images are scene-like and similar in complexity (number of objects, amount of clutter, pose variability, etc.) to PASCAL VOC images. The val and test splits are exhaustively annotated, meaning that in each image all instances from all 200 classes are labeled with bounding boxes. The train set, in contrast, is drawn from the ILSVRC2013 classification image distribution. These images have more variable complexity with a skew towards images of a single centered object. Unlike val and test, the train images (due to their large number) are not exhaustively annotated. In any given train image, instances from the 200 classes may or may not be labeled. In addition to these image sets, each class has an extra set of negative images. Negative images are manually checked to validate that they do not contain any instances of their associated class. The negative image sets were not used in this work. More information on how ILSVRC was collected and annotated can be found in [11, 36].</p>
 <p>ILSVRC2013检测数据集分为三组：训练(395,918)，验证(20,121)和测试(40,152)，其中每组的图像数目在括号中。验证和测试集是从相同的图像分布中划分的。这些图像与PASCAL VOC图像中的场景和复杂性（目标数量，杂波量，姿态变异性等）类似。验证和测试集是详尽标注的，这意味着在每个图像中，来自所有200个类的所有实例都被标注为边界框。相比之下，训练集来自ILSVRC2013分类图像。这些图像具有更多的可变复杂性，并且倾向于是单个位于图像中心的目标的图像。与验证和测试集不同，训练集（由于它们的数量很多）没有详尽标注。在任何给定的训练图像中，200个类别的实例可能被标注也可能不被标注。除了这些图像集，每个类都有一组额外的负样本。负样本经过人工检查以确认它们不包含任何相关类的实例。本文没有使用负样本。有关如何收集和标注ILSVRC的更多信息可以在[11,36]中找到。</p>
 <p>The nature of these splits presents a number of choices for training R-CNN. The train images cannot be used for hard negative mining, because annotations are not exhaustive. Where should negative examples come from? Also, the train images have different statistics than val and test. Should the train images be used at all, and if so, to what extent? While we have not thoroughly evaluated a large number of choices, we present what seemed like the most obvious path based on previous experience.</p>
@@ -1188,24 +657,24 @@ title="Print to PDF"
 <p>我们的总体策略是严重依赖验证集，并使用一些训练图像作为一个辅助正样本来源。为了使用验证集进行训练和验证，我们将其分成大小大致相等的“val1”和“val2”集合。由于某些类在val中的数量非常少（最小的只有31个，连110个的一半都不到），所以产生一个近似类间均衡的划分是很重要的。为此，产生了大量的候选分割，并选择了最大相对类间不平衡的最小值（相对不平衡度被定义为|a-b|/(a+b)，其中a和b是两个集合各自的类计数）。每个候选分裂是通过使用其类计数作为特征聚类的验证集图像来生成的，然后是一个可以改善划分平衡度的随机局部搜索。这里使用的特定划分具有约11％的最大相对类间不平衡和4％的中值相对类间不平衡。val1/val2划分和用于生产它们的代码将被公开提供，以允许其他研究人员将他们的方法与在本文中使用的验证集划分方法进行比较。</p>
 </section>
 <section id="region-proposals">
-<h3><strong>4.2. Region proposals</strong><a class="headerlink" href="#region-proposals" title="Permalink to this headline">#</a></h3>
+<h3><strong>4.2. Region proposals</strong><a class="headerlink" href="#region-proposals" title="Permalink to this heading">#</a></h3>
 <p>We followed the same region proposal approach that was used for detection on PASCAL. Selective search [39] was run in “fast mode” on each image in val1, val2, and test (but not on images in train). One minor modification was required to deal with the fact that selective search is not scale invariant and so the number of regions produced depends on the image resolution. ILSVRC image sizes range from very small to a few that are several mega-pixels, and so we resized each image to a fixed width (500 pixels) before running selective search. On val, selective search resulted in an average of 2403 region proposals per image with a 91.6% recall of all ground-truth bounding boxes (at 0.5 IoU threshold). This recall is notably lower than in PASCAL, where it is approximately 98%, indicating significant room for improvement in the region proposal stage.</p>
 <p>我们遵循用于PASCAL检测的区域提案方法。选择性搜索<span class="xref myst">16</span>在val1，val2中的每个图像上以“快速模式”运行，并进行测试（但不是在训练图像上）。需要一个小的修改来处理选择性搜索不是尺度不变的，所以需要产生的区域数量取决于图像分辨率。 ILSVRC的图像尺寸范围从非常小到少量几百万像素的图像，因此我们在运行选择性搜索之前，将每个图像的大小调整为固定的宽度（500像素）。在验证集上，选择性搜索在每个图像上平均有2403个区域提案，检测框真值（以0.5 IoU阈值）的召回率91.6％。这一召回率明显低于PASCAL的约98％，表明该区域提案阶段有明显的改善空间。</p>
 </section>
 <section id="training-data">
-<h3><strong>4.3. Training data</strong><a class="headerlink" href="#training-data" title="Permalink to this headline">#</a></h3>
+<h3><strong>4.3. Training data</strong><a class="headerlink" href="#training-data" title="Permalink to this heading">#</a></h3>
 <p>For training data, we formed a set of images and boxes that includes all selective search and ground-truth boxes from val1 together with up to N ground-truth boxes per class from train (if a class has fewer than N ground-truth boxes in train, then we take all of them). We’ll call this dataset of images and boxes val1+trainN . In an ablation study, we show map on val2 for N ∈ {0, 500, 1000} (Section 4.5).</p>
 <p>对于训练数据，我们形成了一套图像和方框，其中包括val1的所有选择性搜索和检测框真值，以及训练集中每个类别最多N个检测框真值（如果一个类别的检测框真值数少于N个，那就有多少用多少）。我们将把这个数据集称为val1+trainN。在消融研究中，我们给出了N∈{0,500,1000}的val2上的map（见<span class="xref myst">消融实验</span>）。</p>
 <p>Training data is required for three procedures in R-CNN: (1) CNN fine-tuning, (2) detector SVM training, and (3) bounding-box regressor training. CNN fine-tuning was run for 50k SGD iteration on val1+trainN using the exact same settings as were used for PASCAL. Fine-tuning on a single NVIDIA Tesla K20 took 13 hours using Caffe. For SVM training, all ground-truth boxes from val1+trainN were used as positive examples for their respective classes. Hard negative mining was performed on a randomly selected subset of 5000 images from val1. An initial experiment indicated that mining negatives from all of val1, versus a 5000 image subset (roughly half of it), resulted in only a 0.5 percentage point drop in map, while cutting SVM training time in half. No negative examples were taken from train because the annotations are not exhaustive. The extra sets of verified negative images were not used. The bounding-box regressors were trained on val1.</p>
 <p>R-CNN中的三个阶段需要训练数据：（1）CNN微调，（2）检测器SVM训练（3）检测框回归训练。使用与用于PASCAL的完全相同的设置，在val1+trainN上进行50k次SGD迭代以微调CNN。使用Caffe在一块NVIDIA Tesla K20上微调花了13个小时。对于SVM训练，使用来自val1+trainN的所有检测框真值作为各自类别的正样本。对来自val1的5000张（大约一半）随机选择的图像的子集执行难负样本重训练。最初的实验表明，难负样本重训练仅使map下降了0.5个百分点，同时将SVM训练时间缩短了一半。没有从训练集中采样负样本，因为没有详尽标注。没有额外的经过确认的负样本。边界框回归器在val1训练。</p>
 </section>
 <section id="validation-and-evaluation">
-<h3><strong>4.4. Validation and evaluation</strong><a class="headerlink" href="#validation-and-evaluation" title="Permalink to this headline">#</a></h3>
+<h3><strong>4.4. Validation and evaluation</strong><a class="headerlink" href="#validation-and-evaluation" title="Permalink to this heading">#</a></h3>
 <p>Before submitting results to the evaluation server, we validated data usage choices and the effect of fine-tuning and bounding-box regression on the val2 set using the training data described above. All system hyperparameters (e.g., SVM C hyperparameters, padding used in region warping, NMS thresholds, bounding-box regression hyperparameters) were fixed at the same values used for PASCAL. Undoubtedly some of these hyperparameter choices are slightly suboptimal for ILSVRC, however the goal of this work was to produce a preliminary R-CNN result on ILSVRC without extensive dataset tuning. After selecting the best choices on val2, we submitted exactly two result files to the ILSVRC2013 evaluation server. The first submission was without bounding-box regression and the second submission was with bounding-box regression. For these submissions, we expanded the SVM and boundingbox regressor training sets to use val+train1k and val, respectively. We used the CNN that was fine-tuned on val1+train1k to avoid re-running fine-tuning and feature computation.</p>
 <p>在将结果提交给评估服务器之前，我们使用上述训练数据验证了数据使用选择、微调和检测框回归对val 2集的影响。所有系统超参数（例如，SVM C超参数，区域缩放中使用的边界填充，NMS阈值，检测框回归超参数）固定为与PASCAL相同的值。毫无疑问，这些超参数选择中的一些对ILSVRC来说稍微不太理想，但是这项工作的目标是在没有广泛数据集调优的情况下，在ILSVRC上产生初步的R-CNN结果。在选择val2上的最佳配置后，我们提交了两个结果文件到ILSVRC2013评估服务器。第一个没有检测框回归，第二个有检测框回归。对于这些提交，我们扩展了SVM和检测框回归训练集，分别使用val+train1k和val。我们在val1+train1k上微调CNN来避免重新运行微调和特征计算。</p>
 </section>
 <section id="ablation-study">
-<h3><strong>4.5. Ablation study</strong><a class="headerlink" href="#ablation-study" title="Permalink to this headline">#</a></h3>
+<h3><strong>4.5. Ablation study</strong><a class="headerlink" href="#ablation-study" title="Permalink to this heading">#</a></h3>
 <p>Table 4 shows an ablation study of the effects of different amounts of training data, fine-tuning, and boundingbox regression. A first observation is that map on val2 matches map on test very closely. This gives us confidence that map on val2 is a good indicator of test set performance. The first result, 20.9%, is what R-CNN achieves using a CNN pre-trained on the ILSVRC2012 classification dataset (no fine-tuning) and given access to the small amount of training data in val1 (recall that half of the classes in val1 have between 15 and 55 examples). Expanding the training set to val1+trainN improves performance to 24.1%, with essentially no difference between N = 500 and N = 1000. Fine-tuning the CNN using examples from just val1 gives a modest improvement to 26.5%, however there is likely significant overfitting due to the small number of positive training examples. Expanding the fine-tuning set to val1+train1k, which adds up to 1000 positive examples per class from the train set, helps significantly, boosting map to 29.7%. Bounding-box regression improves results to 31.0%, which is a smaller relative gain that what was observed in PASCAL.</p>
 <p>如表（表4）所示：（ILSVRC2013上的数据使用选择、微调和边界回归消融研究。）第一个观察是，val2上的map与测试集上的map非常接近。这使我们有信心相信，val2上的map是测试集性能的良好指标。第一个结果是20.9％，是在ILSVRC2012分类数据集上预训练的CNN（无微调）并允许访问val1中少量训练数据的R-CNN实现（val1中一半的类别，每个类有15到55个样本）。将训练集扩展到val1+trainN将性能提高到24.1％，N = 500和N = 1000之间基本上没有差异。使用仅从val1的样本微调CNN可以稍微改善到26.5％，但是由于用于训练的正样本较少，可能会出现严重的过拟合。将用于微调的数据扩展到val1+train1k，相当于每个类增加了100个正样本用于训练，有助于将map显著提高至29.7％。检测框回归将结果提高到31.0％，这与PASCAL中所观察到的收益相比较小。</p>
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429214721268-824158237.png" /></p>
@@ -1213,13 +682,13 @@ title="Print to PDF"
 <p>表4：ILSVRC2013上的数据使用选择、微调和边界回归消融研究。</p>
 </section>
 <section id="relationship-to-overfeat">
-<h3><strong>4.6. Relationship to OverFeat</strong><a class="headerlink" href="#relationship-to-overfeat" title="Permalink to this headline">#</a></h3>
+<h3><strong>4.6. Relationship to OverFeat</strong><a class="headerlink" href="#relationship-to-overfeat" title="Permalink to this heading">#</a></h3>
 <p>There is an interesting relationship between R-CNN and OverFeat: OverFeat can be seen (roughly) as a special case of R-CNN. If one were to replace selective search region proposals with a multi-scale pyramid of regular square regions and change the per-class bounding-box regressors to a single bounding-box regressor, then the systems would be very similar (modulo some potentially significant differences in how they are trained: CNN detection fine-tuning, using SVMs, etc.). It is worth noting that OverFeat has a significant speed advantage over R-CNN: it is about 9x faster, based on a figure of 2 seconds per image quoted from [34]. This speed comes from the fact that OverFeat’s sliding windows (i.e., region proposals) are not warped at the image level and therefore computation can be easily shared between overlapping windows. Sharing is implemented by running the entire network in a convolutional fashion over arbitrary-sized inputs. Speeding up R-CNN should be possible in a variety of ways and remains as future work.</p>
 <p>R-CNN和OverFeat之间有一个有趣的关系：OverFeat可以看作（大致上）是R-CNN的一个特例。如果用一个多尺度的正方形区域的金字塔取代选择性搜索区域提案，并将每个类别的检测框回归器改变为一个单一的检测框回归函数，则两个系统将是非常相似的（训练上有一些潜在的显著差异：CNN微调、使用SVM等）。值得注意的是，OverFeat比R-CNN具有显着的速度优势：根据<span class="xref myst">18</span>引用的图中显示每张图像2秒，速度约为RCNN的9倍。这种速度来自于OverFeat的滑动窗口（即区域提案）在图像级别没有缩放的事实，因此可以在重叠窗口之间轻松共享计算。通过在任意大小的输入上以卷积方式运行整个网络来实现共享。加快R-CNN的速度应该有很多可行的办法，未来的工作中将会考虑。</p>
 </section>
 </section>
 <section id="semantic-segmentation">
-<h2><strong>5. Semantic segmentation</strong><a class="headerlink" href="#semantic-segmentation" title="Permalink to this headline">#</a></h2>
+<h2><strong>5. Semantic segmentation</strong><a class="headerlink" href="#semantic-segmentation" title="Permalink to this heading">#</a></h2>
 <p>Region classification is a standard technique for semantic segmentation, allowing us to easily apply R-CNN to the PASCAL VOC segmentation challenge. To facilitate a direct comparison with the current leading semantic segmentation system (called O2P for “second-order pooling”) [4], we work within their open source framework. O2P uses CPMC to generate 150 region proposals per image and then predicts the quality of each region, for each class, using support vector regression (SVR). The high performance of their approach is due to the quality of the CPMC regions and the powerful second-order pooling of multiple feature types (enriched variants of SIFT and LBP). We also note that Farabet et al. [16] recently demonstrated good results on several dense scene labeling datasets (not including PASCAL) using a CNN as a multi-scale per-pixel classifier.</p>
 <p>区域分类是语义分割的基础，这使我们可以轻松地将R-CNN应用于PASCAL VOC分割挑战。为了便于与当前领先的语义分割系统（称为“二阶池化”的O2P）的直接比较，我们在其开源框架内修改。O2P使用CPMC为每个图像生成150个区域提案，然后使用支持向量回归(SVR)来预测对于每个类别的每个区域的质量。他们的方法的高性能是由于CPMC区域的高质量和强大的多种特征类型（SIFT和LBP的丰富变体）的二阶池化。我们还注意到，Farabet等最近使用CNN作为多尺度像素级分类器在几个密集场景标记数据集（不包括PAS-CAL）上取得了良好的结果。</p>
 <p>We follow [2, 4] and extend the PASCAL segmentation training set to include the extra annotations made available by Hariharan et al. [22]. Design decisions and hyperparameters were cross-validated on the VOC 2011 validation set. Final test results were evaluated only once.</p>
@@ -1239,7 +708,7 @@ title="Print to PDF"
 <p>表6：VOC 2011测试的分段准确度（％）。 我们比较两个强大的基线：“区域和部分”（R＆P）[2]的方法和[4]的二阶合并（O2P）方法。 没有任何微调，我们的CNN实现了最高的细分性能，优于R＆P并大致匹配O2P。</p>
 </section>
 <section id="conclusion">
-<h2><strong>6. Conclusion</strong><a class="headerlink" href="#conclusion" title="Permalink to this headline">#</a></h2>
+<h2><strong>6. Conclusion</strong><a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>In recent years, object detection performance had stagnated. The best performing systems were complex ensembles combining multiple low-level image features with high-level context from object detectors and scene classifiers. This paper presents a simple and scalable object detection algorithm that gives a 30% relative improvement over the best previous results on PASCAL VOC 2012.</p>
 <p>近年来，物体检测性能停滞不前。性能最好的系统是复杂的组合，将多个低级图像特征与来自物体检测器和场景分类器的高级语境相结合。本文提出了一种简单且可扩展的对象检测算法，相对于PASCAL VOC 2012上的前最佳结果，相对改进了30％。</p>
 <p>We achieved this performance through two insights. The first is to apply high-capacity convolutional neural networks to bottom-up region proposals in order to localize and segment objects. The second is a paradigm for training large CNNs when labeled training data is scarce. We show that it is highly effective to pre-train the network— with supervision—for a auxiliary task with abundant data (image classification) and then to fine-tune the network for the target task where data is scarce (detection). We conjecture that the “supervised pre-training/domain-specific finetuning” paradigm will be highly effective for a variety of data-scarce vision problems.</p>
@@ -1250,7 +719,7 @@ title="Print to PDF"
 <p>_<strong>*致谢：*</strong>_该研究部分由DARPA Mind的Eye与MSEE项目支持，NSF授予了IIS-0905647，IIS-1134072和IIS-1212798，以及丰田支持的MURI N000014-10-1-0933。本研究中使用的GPU由NVIDIA公司慷慨捐赠。</p>
 <p><strong>Appendix A.</strong></p>
 <section id="a-object-proposal-transformations">
-<h3>A. <strong>Object proposal transformations</strong><a class="headerlink" href="#a-object-proposal-transformations" title="Permalink to this headline">#</a></h3>
+<h3>A. <strong>Object proposal transformations</strong><a class="headerlink" href="#a-object-proposal-transformations" title="Permalink to this heading">#</a></h3>
 <p>The convolutional neural network used in this work requires a fixed-size input of 227 × 227 pixels. For detection, we consider object proposals that are arbitrary image rectangles. We evaluated two approaches for transforming object proposals into valid CNN inputs.</p>
 <p>本文中使用的卷积神经网络需要227×227像素的固定大小输入。为了检测，我们认为目标提案是任意矩形的图像。我们评估了将目标提案转换为有效的CNN输入的两种方法。</p>
 <p>The first method (“tightest square with context”) encloses each object proposal inside the tightest square and then scales (isotropically) the image contained in that square to the CNN input size. Figure 7 column (B) shows this transformation. A variant on this method (“tightest square without context”) excludes the image content that surrounds the original object proposal. Figure 7 column (C) shows this transformation. The second method (“warp”) anisotropically scales each object proposal to the CNN input size. Figure 7 column (D) shows the warp transformation.</p>
@@ -1262,7 +731,7 @@ title="Print to PDF"
 <p>对于这些转换中的每一个，我们还考虑在原始目标提案四周包括附加图像内容。内容填充的量(pp)被定义为在缩放后图像中，原始目标提案周围的边界大小。图7显示了每个示例的顶行中p=0像素，底行中p=16像素。在所有方法中，如果矩形框超出图像边缘，超出的部分将被填充为图像均值（然后在将图像输入到CNN之前减去）。一组实验表明，采用上下文填充（ p=16像素）的缩放可以明显提高map（提高3-5个点）。显然还有更多其它可行的方案，包括使用复制而不是平均填充。对这些方案的详尽评估将作为未来的工作。</p>
 </section>
 <section id="b-positive-vs-negative-examples-and-softmax">
-<h3><strong>B. Positive vs. negative examples and softmax</strong><a class="headerlink" href="#b-positive-vs-negative-examples-and-softmax" title="Permalink to this headline">#</a></h3>
+<h3><strong>B. Positive vs. negative examples and softmax</strong><a class="headerlink" href="#b-positive-vs-negative-examples-and-softmax" title="Permalink to this heading">#</a></h3>
 <p>Two design choices warrant further discussion. The first is: Why are positive and negative examples defined differently for fine-tuning the CNN versus training the object detection SVMs? To review the definitions briefly, for finetuning we map each object proposal to the ground-truth instance with which it has maximum IoU overlap (if any) and label it as a positive for the matched ground-truth class if the IoU is at least 0.5. All other proposals are labeled “background” (i.e., negative examples for all classes). For training SVMs, in contrast, we take only the ground-truth boxes as positive examples for their respective classes and label proposals with less than 0.3 IoU overlap with all instances of a class as a negative for that class. Proposals that fall into the grey zone (more than 0.3 IoU overlap, but are not ground truth) are ignored.</p>
 <p>有两个设计选择值得进一步讨论。第一个是：为什么在微调CNN和训练目标检测SVM时定义的正负样本不同？首先简要回顾下正负样本的定义，对于微调，我们将每个目标提案映射到它具有最大IoU重叠（如果有的话）的检测框真值上，如果其IoU至少为0.5，并将其标记为对应类别的正样本。剩下的提案都标记为“背景”（即所有类的负样本）。对于训练SVM，相比之下，我们只采用检测框真值作为各自类别的正样本。与某一类别所有的正样本的IoU都小于0.3的目标提案将被标记为该类别的负样本。其它（IoU超过0.3，但不是检测框真值）的提案被忽略。</p>
 <p>Historically speaking, we arrived at these definitions because we started by training SVMs on features computed by the ImageNet pre-trained CNN, and so fine-tuning was not a consideration at that point in time. In that setup, we found that our particular label definition for training SVMs was optimal within the set of options we evaluated (which included the setting we now use for fine-tuning). When we started using fine-tuning, we initially used the same positive and negative example definition as we were using for SVM training. However, we found that results were much worse than those obtained using our current definition of positives and negatives.</p>
@@ -1275,7 +744,7 @@ title="Print to PDF"
 <p>这个结果表明，微调之后可以获得接近SVM水平的性能，而无需训练SVM。我们推测，通过一些额外的调整来微调以达到更接近的水平。如果是这样，这样可以简化和加速R-CNN训练，而不会在检测性能方面有任何损失。</p>
 </section>
 <section id="c-bounding-box-regression">
-<h3><strong>C. Bounding-box regression</strong><a class="headerlink" href="#c-bounding-box-regression" title="Permalink to this headline">#</a></h3>
+<h3><strong>C. Bounding-box regression</strong><a class="headerlink" href="#c-bounding-box-regression" title="Permalink to this heading">#</a></h3>
 <p>We use a simple bounding-box regression stage to improve localization performance. After scoring each selective search proposal with a class-specific detection SVM, we predict a new bounding box for the detection using a class-specific bounding-box regressor. This is similar in spirit to the bounding-box regression used in deformable part models [17]. The primary difference between the two approaches is that here we regress from features computed by the CNN, rather than from geometric features computed on the inferred DPM part locations.</p>
 <p>我们使用一个简单的检测框回归来提高定位性能。在使用类特定检测SVM对每个选择性搜索提案进行评分之后，我们使用类别特定的边界回归器预测新的检测框。这与在可变部件模型中使用的检测框回归相似<span class="xref myst">19</span>。这两种方法之间的主要区别在于，我们使用CNN计算的特征回归，而不是使用在推测的DPM部件位置上计算的几何特征。</p>
 <p>The input to our training algorithm is a set of N training pairs {(P i , Gi )}i=1,…,N , where P i = (P ix , Piy , Piw, Pih ) specifies the pixel coordinates of the center of proposal P i ’s bounding box together with P i ’s width and height in pixels. Hence forth, we drop the superscript i unless it is needed. Each ground-truth bounding box G is specified in the same way: G = (Gx, Gy, Gw, Gh). Our goal is to learn a transformation that maps a proposed box P to a ground-truth box G.</p>
@@ -1293,7 +762,7 @@ title="Print to PDF"
 <p>在测试的时候，我们为每一个候选框打分，并且预测一次它的新检测窗口。原则上来说，我们可以迭代这个过程（即，为新得到的预测框重新打分，然后从它再预测一个新的边界框，以此类推）。然而，我们发现迭代没有改善结果。</p>
 </section>
 <section id="d-additional-feature-visualizations">
-<h3><strong>D. Additional feature visualizations</strong><a class="headerlink" href="#d-additional-feature-visualizations" title="Permalink to this headline">#</a></h3>
+<h3><strong>D. Additional feature visualizations</strong><a class="headerlink" href="#d-additional-feature-visualizations" title="Permalink to this heading">#</a></h3>
 <p>Figure 12 shows additional visualizations for 20 pool5 units. For each unit, we show the 24 region proposals that maximally activate that unit out of the full set of approximately 10 million regions in all of VOC 2007 test. We label each unit by its (y, x, channel) position in the 6 × 6 × 256 dimensional pool5 feature map. Within each channel, the CNN computes exactly the same function of the input region, with the (y, x) position changing only the receptive ﬁeld.</p>
 <p>图12为20个pool5单元展示了附加的可视化。对于每一个单元来说，我们展示了可以最大激活VOC 2007 测试集的全部的大约1000万个区域中的24个候选区域。我们在6∗6∗256维的pool5特征图上为每个单元都标记了它的（y,x,channel）位置。在每个通道内，CNN计算输入区域的完全相同的函数。</p>
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429214436200-2108732848.png" /></p>
@@ -1302,21 +771,21 @@ title="Print to PDF"
 <p>图12：我们展示了在VOC2007测试中大约1000万个候选区域中的24个候选区域，其最强烈地激活20个单元中的每一个。每个剪辑都用6∗6∗256维的5pool5特征图的单元（y, x, channel）的位置标记。每一个图像区域都用白色的单元的感受野的覆盖图绘制。激活值（我们通过除以通道中所有单元的最大激活值来进行归一化）显示在接受域的左上角。建议放大来看</p>
 </section>
 <section id="e-per-category-segmentation-results">
-<h3><strong>E. Per-category segmentation results</strong><a class="headerlink" href="#e-per-category-segmentation-results" title="Permalink to this headline">#</a></h3>
+<h3><strong>E. Per-category segmentation results</strong><a class="headerlink" href="#e-per-category-segmentation-results" title="Permalink to this heading">#</a></h3>
 <p>In Table 7 we show the per-category segmentation accuracy on VOC 2011 val for each of our six segmentation methods in addition to the O2P method [4]. These results show which methods are strongest across each of the 20 PASCAL classes, plus the background class.</p>
 <p>在表7中，我们展示了我们6个分割方法中的每一个（除了O2PO2P方法）在VOC 2011val集上的每类分割准确度。这些结果展示了对于20个PASCAL类别加上背景类，哪一个方法是最强的。</p>
 <p>![img](file:///tmp/wps-linxu/ksohtml/wpsKfy8ga.jpg)</p>
 <p>Table7: Per-category segmentation accuracy (%) on the VOC 2011 validation set</p>
 </section>
 <section id="f-analysis-of-cross-dataset-redundancy">
-<h3><strong>F. Analysis of cross-dataset redundancy</strong><a class="headerlink" href="#f-analysis-of-cross-dataset-redundancy" title="Permalink to this headline">#</a></h3>
+<h3><strong>F. Analysis of cross-dataset redundancy</strong><a class="headerlink" href="#f-analysis-of-cross-dataset-redundancy" title="Permalink to this heading">#</a></h3>
 <p>One concern when training on an auxiliary dataset is that there might be redundancy between it and the test set. Even though the tasks of object detection and whole-image classiﬁcation are substantially different, making such cross-set redundancy much less worrisome, we still conducted thorough investigation that quantiﬁes the extent to which PASCAL test images are contained within the ILSVRC 2012 training and validation sets. Our ﬁndings may be useful to researchers who are interested in using ILSVRC 2012 as training data for the PASCAL image classiﬁcation task. We performed two checks for duplicate (and near duplicate) images. The ﬁrst test is based on exact matches of ﬂickr image IDs, which are included in the VOC 2007 test annotations (these IDs are intentionally kept secret for subsequent PASCAL test sets). All PASCAL images, and about half of ILSVRC, were collected from ﬂickr.com. This check turned up 31 matches out of 4952 (0.63%).</p>
 <p>当在辅助数据集上进行训练时，一个问题是它与测试集之间可能存在冗余。即使对象检测和整个图像分类的任务有很大的不同，为了使这种交叉冗余不那么令人担忧，我们仍然进行了彻底的调查，量化了PASCAL测试图像包含在ILSVRC2012训练和验证集的程度。我们发现可能对那些有兴趣使用ILSVRC2012作为PASCAL图像分类任务的训练数据的研究人员有用。我们对重复（和近重复）图像执行了再次检查。第一个测试是基于flicker图像ID的精确匹配，这些ID包括在VOC 2007测试注释中（这些ID有意的为后续的PASCAL测试集保密）。所有的PASCAL图像，和约一半的ILSVRC图像，从flickr.com收集。这个检查证明了在4952有31个匹配（0.63%）。</p>
 <p>The second check uses GIST [30] descriptor matching, which was shown in [13] to have excellent performance at near-duplicate image detection in large (&gt; 1million) image collections. Following [13], we computed GIST descriptors on warped 32×32 pixel versions of all ILSVRC 2012 trainval and PASCAL 2007 test images. Euclidean distance nearest-neighbor matching of GIST descriptors revealed 38 near-duplicate images (including all 31 found by ﬂickr ID matching). The matches tend to vary slightly in JPEG compression level and resolution, and to a lesser extent cropping. These ﬁndings show that the overlap is small, less than 1%. For VOC 2012, because ﬂickr IDs are not available, we used the GIST matching method only. Based on GIST matches, 1.5% of VOC 2012 test images are in ILSVRC 2012 trainval. The slightly higher rate for VOC 2012 is likely due to the fact that the two datasets were collected closer together in time than VOC 2007 and ILSVRC 2012 were.</p>
 <p>第二个检测使用了GIST描述符匹配，在[13]中显示在大（&gt;100万）图像集合中的近似图像检测中具有优异的性能。在[13]之后，我们计算了所有的ILSVRC2012trainval和PASCAL 2007测试图像的扭曲32*32像素版本上的GIST描述符。GIST描述符的欧氏距离最近邻匹配揭示了38个近似重复图像（包括通过flickrID匹配找到的31个）。匹配在JPEG压缩级别和分辨率略有变化，并且趋向较小程度的裁剪。这些发现表明重叠是小的，小于1%。对于VOC 2012来说，因为flickrID是不可用的，我们只使用了GIST匹配方法。基于GIST匹配，VOC 2012测试图像的1.5%是在ILSVRC 2012trainval中的。对于VOC 2012略高的比率可能是由于这两个数据集在时间上收集的比VOC 2007和ILSVRC 2012更接近。</p>
 </section>
 <section id="g-document-change-log">
-<h3><strong>G. Document change log</strong><a class="headerlink" href="#g-document-change-log" title="Permalink to this headline">#</a></h3>
+<h3><strong>G. Document change log</strong><a class="headerlink" href="#g-document-change-log" title="Permalink to this heading">#</a></h3>
 <p>This document tracks the progress of R-CNN. To help readers understand how it has changed over time, here’s a brief change log describing the revisions.</p>
 <p><strong>v1</strong> Initial version.</p>
 <p><strong>v2</strong> CVPR 2014 camera-ready revision. Includes substantial improvements in detection performance brought about by(1) starting ﬁne-tuning from a higher learning rate(0.001 instead of 0.0001), (2) using context padding when preparing CNN inputs, and (3) bounding-box regression to ﬁx localization errors.</p>
@@ -1329,36 +798,119 @@ title="Print to PDF"
 </section>
 
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract"><strong>Abstract</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>1. Introduction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-detection-with-r-cnn"><strong>2. Object detection with R-CNN</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-design"><strong>2.1. Module design</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-time-detection"><strong>2.2. Test-time detection</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training"><strong>2.3. Training</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-on-pascal-voc-2010-12"><strong>2.4. Results on PASCAL VOC 2010-12</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#results-on-ilsvrc2013-detection"><strong>2.5. Results on ILSVRC2013 detection</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-ablation-and-modes-of-error"><strong>3. Visualization, ablation, and modes of error</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-learned-features"><strong>3.1. Visualizing learned features</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-studies"><strong>3.2. Ablation studies</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#network-architectures"><strong>3.3. Network architectures</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detection-error-analysis"><strong>3.4. Detection error analysis</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bounding-box-regression"><strong>3.5. Bounding-box regression</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-results"><strong>3.6. Qualitative results</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-ilsvrc2013-detection-dataset"><strong>4. The ILSVRC2013 detection dataset</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-overview"><strong>4.1. Dataset overview</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#region-proposals"><strong>4.2. Region proposals</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-data"><strong>4.3. Training data</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-and-evaluation"><strong>4.4. Validation and evaluation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study"><strong>4.5. Ablation study</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-to-overfeat"><strong>4.6. Relationship to OverFeat</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semantic-segmentation"><strong>5. Semantic segmentation</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion"><strong>6. Conclusion</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-object-proposal-transformations">A. <strong>Object proposal transformations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-positive-vs-negative-examples-and-softmax"><strong>B. Positive vs. negative examples and softmax</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-bounding-box-regression"><strong>C. Bounding-box regression</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-additional-feature-visualizations"><strong>D. Additional feature visualizations</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#e-per-category-segmentation-results"><strong>E. Per-category segmentation results</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-analysis-of-cross-dataset-redundancy"><strong>F. Analysis of cross-dataset redundancy</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#g-document-change-log"><strong>G. Document change log</strong></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
   
-    By isLinXu<br/>
-  
-      &copy; Copyright 2022, isLinXu.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
-</div>
+<p class="component-author">
+By isLinXu
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022, isLinXu.
+      <br/>
+    
+  </p>
 
-      </div>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

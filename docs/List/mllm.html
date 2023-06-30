@@ -1,0 +1,1158 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>多模态大语言模型(mllm) &#8212; 论文阅读笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'List/mllm';</script>
+    <link rel="shortcut icon" href="../_static/panda.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/how_to_read_paper.html">如何阅读论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/paper_10_question.html">论文速读十问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/read_important_tips.html">读论文与口头报告的几项重点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/reference.html">参考材料</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="index.html">论文阅读清单</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="basis.html">神经网络基础(basis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attention.html">注意力部分(attention)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="batch_normalization.html">批量&amp;正则化(batch&amp;normalization)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="classification.html">图像分类(CLAS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="convolutional.html">高级卷积网络知识(Convolutional)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="gan.html">AI合成部分(GAN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="nlp.html">自然语言处理(NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="objectdetection.html">目标检测(OBJ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rnn.html">循环神经网络(RNN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="segementation.html">目标分割(SEG)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="transformer.html">Transformer</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="multimodal.html">多模态(MultiModal Learning)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="llm.html">大语言模型(Large Language Models)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Notes/index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v3.html">GPT-v3:Language Models are Few-Shot Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/List/mllm.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FList/mllm.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/List/mllm.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>多模态大语言模型(mllm)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">多模态大语言模型(mllm)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#awesome-papers">Awesome Papers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-instruction-tuning">Multimodal Instruction Tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-in-context-learning">Multimodal In-Context Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-chain-of-thought">Multimodal Chain-of-Thought</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#llm-aided-visual-reasoning">LLM-Aided Visual Reasoning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-models">Foundation Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">Others</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="mllm">
+<h1>多模态大语言模型(mllm)<a class="headerlink" href="#mllm" title="Permalink to this heading">#</a></h1>
+</section>
+<section id="awesome-papers">
+<h1>Awesome Papers<a class="headerlink" href="#awesome-papers" title="Permalink to this heading">#</a></h1>
+<section id="multimodal-instruction-tuning">
+<h2>Multimodal Instruction Tuning<a class="headerlink" href="#multimodal-instruction-tuning" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Title</p></th>
+<th class="head text-center"><p>Venue</p></th>
+<th class="head text-center"><p>Date</p></th>
+<th class="head text-center"><p>Code</p></th>
+<th class="head text-center"><p>Demo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/SALT-NLP/LLaVAR.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.17107.pdf"><strong>LLaVAR: Enhanced Visual Instruction Tuning for Text-Rich Image Understanding</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-29</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/SALT-NLP/LLaVAR">Github</a></p></td>
+<td class="text-center"><p><span class="xref myst">Coming soon</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/shikras/shikra.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.15195.pdf"><strong>Shikra: Unleashing Multimodal LLM’s Referential Dialogue Magic</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-27</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/shikras/shikra">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/FuxiaoLiu/LRV-Instruction.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.14565.pdf"><strong>Aligning Large Multi-Modal Model with Robust Instruction Tuning</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-26</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/FuxiaoLiu/LRV-Instruction">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://7b6590ed039a06475d.gradio.live/">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/OpenLAMM/LAMM.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.09093.pdf"><strong>Macaw-LLM: Multi-Modal Language Modeling with Image, Audio, Video, and Text Integration</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-15</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/lyuchenyang/Macaw-LLM">Github</a></p></td>
+<td class="text-center"><p><span class="xref myst">Coming soon</span></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/OpenLAMM/LAMM.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.06687.pdf"><strong>LAMM: Language-Assisted Multi-Modal Instruction-Tuning Dataset, Framework, and Benchmark</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-11</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/OpenLAMM/LAMM">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/openlamm/LAMM">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/mbzuai-oryx/Video-ChatGPT.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.05424.pdf"><strong>Video-ChatGPT: Towards Detailed Video Understanding via Large Vision and Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-08</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/mbzuai-oryx/Video-ChatGPT">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://www.ival-mbzuai.com/video-chatgpt">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/Luodian/Otter.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.05425.pdf"><strong>MIMIC-IT: Multi-Modal In-Context Instruction Tuning</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-08</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/Luodian/Otter">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://otter.cliangyu.com/">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference external" href="https://arxiv.org/pdf/2306.04387.pdf"><strong>M<sup>3</sup>IT: A Large-Scale Dataset towards Multi-Modal Multilingual Instruction Tuning</strong></a></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-07</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/DAMO-NLP-SG/Video-LLaMA.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.02858.pdf"><strong>Video-LLaMA: An Instruction-tuned Audio-Visual Language Model for Video Understanding</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-05</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/DAMO-NLP-SG/Video-LLaMA">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/DAMO-NLP-SG/Video-LLaMA">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/LLaVA-Med.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.00890.pdf"><strong>LLaVA-Med: Training a Large Language-and-Vision Assistant for Biomedicine in One Day</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-01</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/LLaVA-Med">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/StevenGrove/GPT4Tools.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.18752.pdf"><strong>GPT4Tools: Teaching Large Language Model to Use Tools via Self-instruction</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-30</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/StevenGrove/GPT4Tools">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/stevengrove/GPT4Tools">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/OpenGVLab/LLaMA-Adapter.svg?style=social&amp;label=Star" /> <br> <strong>ImageBind-LLM: Multi-Modality Instruction Tuning</strong> <br></p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>2023-05-29</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/OpenGVLab/LLaMA-Adapter/tree/main/imagebind_LLM">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="http://imagebind-llm.opengvlab.com/">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/yxuansu/PandaGPT.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.16355.pdf"><strong>PandaGPT: One Model To Instruction-Follow Them All</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-25</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/yxuansu/PandaGPT">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/GMFTBY/PandaGPT">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/joez17/ChatBridge.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.16103.pdf"><strong>ChatBridge: Bridging Modalities with Large Language Model as a Language Catalyst</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-25</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/joez17/ChatBridge">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/luogen1996/LaVIN.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.15023.pdf"><strong>Cheap and Quick: Efficient Vision-Language Instruction Tuning for Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-24</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/luogen1996/LaVIN">Github</a></p></td>
+<td class="text-center"><p>Local Demo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/OptimalScale/DetGPT.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.14167.pdf"><strong>DetGPT: Detect What You Need via Reasoning</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-23</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/OptimalScale/DetGPT">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://d3c431c0c77b1d9010.gradio.live/">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/OpenGVLab/VisionLLM.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.11175.pdf"><strong>VisionLLM: Large Language Model is also an Open-Ended Decoder for Vision-Centric Tasks</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-18</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/OpenGVLab/VisionLLM">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://igpt.opengvlab.com/">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/YuanGongND/ltu.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.10790.pdf"><strong>Listen, Think, and Understand</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-18</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/YuanGongND/ltu">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/YuanGongND/ltu">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/THUDM/VisualGLM-6B.svg?style=social&amp;label=Star" /> <br> <strong>VisualGLM-6B</strong> <br></p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>2023-05-17</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/THUDM/VisualGLM-6B">Github</a></p></td>
+<td class="text-center"><p>Local Demo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/xiaoman-zhang/PMC-VQA.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.10415.pdf"><strong>PMC-VQA: Visual Instruction Tuning for Medical Visual Question Answering</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-17</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/xiaoman-zhang/PMC-VQA">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/salesforce/LAVIS.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.06500.pdf"><strong>InstructBLIP: Towards General-purpose Vision-Language Models with Instruction Tuning</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-11</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/salesforce/LAVIS/tree/main/projects/instructblip">Github</a></p></td>
+<td class="text-center"><p>Local Demo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/OpenGVLab/Ask-Anything.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.06355.pdf"><strong>VideoChat: Chat-Centric Video Understanding</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-10</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/OpenGVLab/Ask-Anything">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://ask.opengvlab.com/">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/open-mmlab/Multimodal-GPT.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.04790.pdf"><strong>MultiModal-GPT: A Vision and Language Model for Dialogue with Humans</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-08</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/open-mmlab/Multimodal-GPT">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://mmgpt.openmmlab.org.cn/">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/phellonchen/X-LLM.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.04160.pdf"><strong>X-LLM: Bootstrapping Advanced Large Language Models by Treating Multi-Modalities as Foreign Languages</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-07</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/phellonchen/X-LLM">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/YunxinLi/LingCloud.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.03701.pdf"><strong>LMEye: An Interactive Perception Network for Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-05</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/YunxinLi/LingCloud">Github</a></p></td>
+<td class="text-center"><p>Local Demo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/OpenGVLab/LLaMA-Adapter.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2304.15010.pdf"><strong>LLaMA-Adapter V2: Parameter-Efficient Visual Instruction Model</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-04-28</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/OpenGVLab/LLaMA-Adapter">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="http://llama-adapter.opengvlab.com/">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/X-PLUG/mPLUG-Owl.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2304.14178.pdf"><strong>mPLUG-Owl: Modularization Empowers Large Language Models with Multimodality</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-04-27</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/X-PLUG/mPLUG-Owl">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/MAGAer13/mPLUG-Owl">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/Vision-CAIR/MiniGPT-4.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2304.10592.pdf"><strong>MiniGPT-4: Enhancing Vision-Language Understanding with Advanced Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-04-20</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/Vision-CAIR/MiniGPT-4">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/haotian-liu/LLaVA.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2304.08485.pdf"><strong>Visual Instruction Tuning</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-04-17</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/haotian-liu/LLaVA">GitHub</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://llava.hliu.cc/">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/OpenGVLab/LLaMA-Adapter.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.16199.pdf"><strong>LLaMA-Adapter: Efficient Fine-tuning of Language Models with Zero-init Attention</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-28</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/OpenGVLab/LLaMA-Adapter">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/csuhan/LLaMA-Adapter">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/VT-NLP/MultiInstruct.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2212.10773.pdf"><strong>MultiInstruct: Improving Multi-Modal Zero-Shot Learning via Instruction Tuning</strong></a> <br></p></td>
+<td class="text-center"><p>ACL</p></td>
+<td class="text-center"><p>2022-12-21</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/VT-NLP/MultiInstruct">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="multimodal-in-context-learning">
+<h2>Multimodal In-Context Learning<a class="headerlink" href="#multimodal-in-context-learning" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Title</p></th>
+<th class="head text-center"><p>Venue</p></th>
+<th class="head text-center"><p>Date</p></th>
+<th class="head text-center"><p>Code</p></th>
+<th class="head text-center"><p>Demo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/Luodian/Otter.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.05425.pdf"><strong>MIMIC-IT: Multi-Modal In-Context Instruction Tuning</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-08</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/Luodian/Otter">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://otter.cliangyu.com/">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/lupantech/chameleon-llm.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2304.09842.pdf"><strong>Chameleon: Plug-and-Play Compositional Reasoning with Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-04-19</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/lupantech/chameleon-llm">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://chameleon-llm.github.io/">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/JARVIS.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.17580.pdf"><strong>HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in HuggingFace</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-30</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/JARVIS">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/microsoft/HuggingGPT">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/MM-REACT.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.11381.pdf"><strong>MM-REACT: Prompting ChatGPT for Multimodal Reasoning and Action</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-20</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/MM-REACT">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/microsoft-cognitive-service/mm-react">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/MILVLG/prophet.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.01903.pdf"><strong>Prompting Large Language Models with Answer Heuristics for Knowledge-based Visual Question Answering</strong></a> <br></p></td>
+<td class="text-center"><p>CVPR</p></td>
+<td class="text-center"><p>2023-03-03</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/MILVLG/prophet">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/allenai/visprog.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://openaccess.thecvf.com/content/CVPR2023/papers/Gupta_Visual_Programming_Compositional_Visual_Reasoning_Without_Training_CVPR_2023_paper.pdf"><strong>Visual Programming: Compositional visual reasoning without training</strong></a> <br></p></td>
+<td class="text-center"><p>CVPR</p></td>
+<td class="text-center"><p>2022-11-18</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/allenai/visprog">Github</a></p></td>
+<td class="text-center"><p>Local Demo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/PICa.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://ojs.aaai.org/index.php/AAAI/article/download/20215/19974"><strong>An Empirical Study of GPT-3 for Few-Shot Knowledge-Based VQA</strong></a> <br></p></td>
+<td class="text-center"><p>AAAI</p></td>
+<td class="text-center"><p>2022-06-28</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/PICa">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/mlfoundations/open_flamingo.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2204.14198.pdf"><strong>Flamingo: a Visual Language Model for Few-Shot Learning</strong></a> <br></p></td>
+<td class="text-center"><p>NeurIPS</p></td>
+<td class="text-center"><p>2022-04-29</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/mlfoundations/open_flamingo">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/dhansmair/flamingo-mini-cap">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><a class="reference external" href="https://arxiv.org/pdf/2106.13884.pdf"><strong>Multimodal Few-Shot Learning with Frozen Language Models</strong></a></p></td>
+<td class="text-center"><p>NeurIPS</p></td>
+<td class="text-center"><p>2021-06-25</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="multimodal-chain-of-thought">
+<h2>Multimodal Chain-of-Thought<a class="headerlink" href="#multimodal-chain-of-thought" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Title</p></th>
+<th class="head text-center"><p>Venue</p></th>
+<th class="head text-center"><p>Date</p></th>
+<th class="head text-center"><p>Code</p></th>
+<th class="head text-center"><p>Demo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/EmbodiedGPT/EmbodiedGPT_Pytorch.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.15021.pdf"><strong>EmbodiedGPT: Vision-Language Pre-Training via Embodied Chain of Thought</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-24</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/EmbodiedGPT/EmbodiedGPT_Pytorch">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference external" href="https://arxiv.org/pdf/2305.13903.pdf"><strong>Let’s Think Frame by Frame: Evaluating Video Chain of Thought with Video Infilling and Prediction</strong></a></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-23</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/ttengwang/Caption-Anything.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.02677.pdf"><strong>Caption Anything: Interactive Image Description with Diverse Multimodal Controls</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-04</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/ttengwang/Caption-Anything">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/TencentARC/Caption-Anything">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference external" href="https://arxiv.org/pdf/2305.02317.pdf"><strong>Visual Chain of Thought: Bridging Logical Gaps with Multimodal Infillings</strong></a></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-03</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/dannyrose30/VCOT">Coming soon</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/lupantech/chameleon-llm.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2304.09842.pdf"><strong>Chameleon: Plug-and-Play Compositional Reasoning with Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-04-19</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/lupantech/chameleon-llm">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://chameleon-llm.github.io/">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference external" href="https://arxiv.org/pdf/2304.07919.pdf"><strong>Chain of Thought Prompt Tuning in Vision Language Models</strong></a></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-04-16</p></td>
+<td class="text-center"><p><span class="xref myst">Coming soon</span></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/MM-REACT.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.11381.pdf"><strong>MM-REACT: Prompting ChatGPT for Multimodal Reasoning and Action</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-20</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/MM-REACT">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/microsoft-cognitive-service/mm-react">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/TaskMatrix.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.04671.pdf"><strong>Visual ChatGPT: Talking, Drawing and Editing with Visual Foundation Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-08</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/TaskMatrix">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/microsoft/visual_chatgpt">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/amazon-science/mm-cot.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2302.00923.pdf"><strong>Multimodal Chain-of-Thought Reasoning in Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-02-02</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/amazon-science/mm-cot">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/allenai/visprog.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://openaccess.thecvf.com/content/CVPR2023/papers/Gupta_Visual_Programming_Compositional_Visual_Reasoning_Without_Training_CVPR_2023_paper.pdf"><strong>Visual Programming: Compositional visual reasoning without training</strong></a> <br></p></td>
+<td class="text-center"><p>CVPR</p></td>
+<td class="text-center"><p>2022-11-18</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/allenai/visprog">Github</a></p></td>
+<td class="text-center"><p>Local Demo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/lupantech/ScienceQA.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://proceedings.neurips.cc/paper_files/paper/2022/file/11332b6b6cf4485b84afadb1352d3a9a-Paper-Conference.pdf"><strong>Learn to Explain: Multimodal Reasoning via Thought Chains for Science Question Answering</strong></a> <br></p></td>
+<td class="text-center"><p>NeurIPS</p></td>
+<td class="text-center"><p>2022-09-20</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/lupantech/ScienceQA">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="llm-aided-visual-reasoning">
+<h2>LLM-Aided Visual Reasoning<a class="headerlink" href="#llm-aided-visual-reasoning" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Title</p></th>
+<th class="head text-center"><p>Venue</p></th>
+<th class="head text-center"><p>Date</p></th>
+<th class="head text-center"><p>Code</p></th>
+<th class="head text-center"><p>Demo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><a class="reference external" href="https://arxiv.org/pdf/2306.11732.pdf"><strong>Retrieving-to-Answer: Zero-Shot Video Question Answering with Frozen Large Language Models</strong></a></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-15</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/showlab/assistgpt.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.08640.pdf"><strong>AssistGPT: A General Multi-modal Assistant that can Plan, Execute, Inspect, and Learn</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-14</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/showlab/assistgpt">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/StevenGrove/GPT4Tools.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.18752.pdf"><strong>GPT4Tools: Teaching Large Language Model to Use Tools via Self-instruction</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-30</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/StevenGrove/GPT4Tools">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://c60eb7e9400930f31b.gradio.live/">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference external" href="https://arxiv.org/pdf/2305.17066.pdf"><strong>Mindstorms in Natural Language-Based Societies of Mind</strong></a></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-26</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/weixi-feng/LayoutGPT.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.15393.pdf"><strong>LayoutGPT: Compositional Visual Planning and Generation with Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-24</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/weixi-feng/LayoutGPT">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/Hxyou/IdealGPT.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.14985.pdf"><strong>IdealGPT: Iteratively Decomposing Vision and Language Reasoning via Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-24</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/Hxyou/IdealGPT">Github</a></p></td>
+<td class="text-center"><p>Local Demo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/matrix-alpha/Accountable-Textual-Visual-Chat.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.05983.pdf"><strong>Accountable Textual-Visual Chat Learns to Reject Human Instructions in Image Re-creation</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-10</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/matrix-alpha/Accountable-Textual-Visual-Chat">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/ttengwang/Caption-Anything.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.02677.pdf"><strong>Caption Anything: Interactive Image Description with Diverse Multimodal Controls</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-04</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/ttengwang/Caption-Anything">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/TencentARC/Caption-Anything">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/lupantech/chameleon-llm.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2304.09842.pdf"><strong>Chameleon: Plug-and-Play Compositional Reasoning with Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-04-19</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/lupantech/chameleon-llm">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://chameleon-llm.github.io/">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/JARVIS.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.17580.pdf"><strong>HuggingGPT: Solving AI Tasks with ChatGPT and its Friends in HuggingFace</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-30</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/JARVIS">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/microsoft/HuggingGPT">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/MM-REACT.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.11381.pdf"><strong>MM-REACT: Prompting ChatGPT for Multimodal Reasoning and Action</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-20</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/MM-REACT">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/microsoft-cognitive-service/mm-react">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/cvlab-columbia/viper.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.08128.pdf"><strong>ViperGPT: Visual Inference via Python Execution for Reasoning</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-14</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/cvlab-columbia/viper">Github</a></p></td>
+<td class="text-center"><p>Local Demo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/Vision-CAIR/ChatCaptioner.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.06594.pdf"><strong>ChatGPT Asks, BLIP-2 Answers: Automatic Questioning Towards Enriched Visual Descriptions</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-12</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/Vision-CAIR/ChatCaptioner">Github</a></p></td>
+<td class="text-center"><p>Local Demo</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/TaskMatrix.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.04671.pdf"><strong>Visual ChatGPT: Talking, Drawing and Editing with Visual Foundation Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-08</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/TaskMatrix">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/microsoft/visual_chatgpt">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/ZrrSkywalker/CaFo.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.02151.pdf"><strong>Prompt, Generate, then Cache: Cascade of Foundation Models makes Strong Few-shot Learners</strong></a> <br></p></td>
+<td class="text-center"><p>CVPR</p></td>
+<td class="text-center"><p>2023-03-03</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/ZrrSkywalker/CaFo">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/vishaal27/SuS-X.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2211.16198.pdf"><strong>SuS-X: Training-Free Name-Only Transfer of Vision-Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2022-11-28</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/vishaal27/SuS-X">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/yangyangyang127/PointCLIP_V2.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2211.11682.pdf"><strong>PointCLIP V2: Adapting CLIP for Powerful 3D Open-world Learning</strong></a> <br></p></td>
+<td class="text-center"><p>CVPR</p></td>
+<td class="text-center"><p>2022-11-21</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/yangyangyang127/PointCLIP_V2">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/allenai/visprog.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://openaccess.thecvf.com/content/CVPR2023/papers/Gupta_Visual_Programming_Compositional_Visual_Reasoning_Without_Training_CVPR_2023_paper.pdf"><strong>Visual Programming: Compositional visual reasoning without training</strong></a> <br></p></td>
+<td class="text-center"><p>CVPR</p></td>
+<td class="text-center"><p>2022-11-18</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/allenai/visprog">Github</a></p></td>
+<td class="text-center"><p>Local Demo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/google-research/google-research.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2204.00598.pdf"><strong>Socratic Models: Composing Zero-Shot Multimodal Reasoning with Language</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2022-04-01</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/google-research/google-research/tree/master/socraticmodels">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="foundation-models">
+<h2>Foundation Models<a class="headerlink" href="#foundation-models" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Title</p></th>
+<th class="head text-center"><p>Venue</p></th>
+<th class="head text-center"><p>Date</p></th>
+<th class="head text-center"><p>Code</p></th>
+<th class="head text-center"><p>Demo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/unilm.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.14824.pdf"><strong>Kosmos-2: Grounding Multimodal Large Language Models to the World</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-26</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/unilm/tree/master/kosmos-2">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/VPGTrans/VPGTrans.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.01278.pdf"><strong>Transfer Visual Prompt Generator across LLMs</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-02</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/VPGTrans/VPGTrans">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://3fc7715dbc44234a7f.gradio.live/">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><a class="reference external" href="https://arxiv.org/pdf/2303.08774.pdf"><strong>GPT-4 Technical Report</strong></a></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-15</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><a class="reference external" href="https://arxiv.org/pdf/2303.03378.pdf"><strong>PaLM-E: An Embodied Multimodal Language Model</strong></a></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-06</p></td>
+<td class="text-center"><p>-</p></td>
+<td class="text-center"><p><a class="reference external" href="https://palm-e.github.io/#demo">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/NVlabs/prismer.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2303.02506.pdf"><strong>Prismer: A Vision-Language Model with An Ensemble of Experts</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-03-04</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/NVlabs/prismer">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/lorenmt/prismer">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/unilm.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2302.14045.pdf"><strong>Language Is Not All You Need: Aligning Perception with Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-02-27</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/unilm">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/salesforce/LAVIS.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2301.12597.pdf"><strong>BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-01-30</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/salesforce/LAVIS/tree/main/projects/blip2">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://colab.research.google.com/github/salesforce/LAVIS/blob/main/examples/blip2_instructed_generation.ipynb">Demo</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/vimalabs/VIMA.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2210.03094.pdf"><strong>VIMA: General Robot Manipulation with Multimodal Prompts</strong></a> <br></p></td>
+<td class="text-center"><p>ICML</p></td>
+<td class="text-center"><p>2022-10-06</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/vimalabs/VIMA">Github</a></p></td>
+<td class="text-center"><p>Local Demo</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/MineDojo/MineDojo.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2206.08853.pdf"><strong>MineDojo: Building Open-Ended Embodied Agents with Internet-Scale Knowledge</strong></a> <br></p></td>
+<td class="text-center"><p>NeurIPS</p></td>
+<td class="text-center"><p>2022-06-17</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/MineDojo/MineDojo">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/microsoft/unilm.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2206.06336.pdf"><strong>Language Models are General-Purpose Interfaces</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2022-06-13</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/microsoft/unilm">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Title</p></th>
+<th class="head text-center"><p>Venue</p></th>
+<th class="head text-center"><p>Date</p></th>
+<th class="head text-center"><p>Page</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/BradyFU/Awesome-Multimodal-Large-Language-Models.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.13394.pdf"><strong>MME: A Comprehensive Evaluation Benchmark for Multimodal Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-23</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models/tree/Evaluation">Github</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/OpenGVLab/Multi-Modality-Arena.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.09265.pdf"><strong>LVLM-eHub: A Comprehensive Evaluation Benchmark for Large Vision-Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-15</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/OpenGVLab/Multi-Modality-Arena">Github</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/OpenLAMM/LAMM.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.06687.pdf"><strong>LAMM: Language-Assisted Multi-Modal Instruction-Tuning Dataset, Framework, and Benchmark</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-11</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/OpenLAMM/LAMM#lamm-benchmark">Github</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/DAMO-NLP-SG/M3Exam.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2306.05179.pdf"><strong>M3Exam: A Multilingual, Multimodal, Multilevel Benchmark for Examining Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-08</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/DAMO-NLP-SG/M3Exam">Github</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="others">
+<h2>Others<a class="headerlink" href="#others" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Title</p></th>
+<th class="head text-center"><p>Venue</p></th>
+<th class="head text-center"><p>Date</p></th>
+<th class="head text-center"><p>Code</p></th>
+<th class="head text-center"><p>Demo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><a class="reference external" href="https://arxiv.org/pdf/2306.00693.pdf"><strong>Can Large Pre-trained Models Help Vision Models on Perception Tasks?</strong></a></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-06-01</p></td>
+<td class="text-center"><p><span class="xref myst">Coming soon</span></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/yuhangzang/ContextDET.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.18279.pdf"><strong>Contextual Object Detection with Multimodal Large Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-29</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/yuhangzang/ContextDET">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/yuhangzang/ContextDet-Demo">Demo</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/kohjingyu/gill.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.17216.pdf"><strong>Generating Images with Multimodal Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-26</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/kohjingyu/gill">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/yunqing-me/AttackVLM.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.16934.pdf"><strong>On Evaluating Adversarial Robustness of Large Vision-Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-26</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/yunqing-me/AttackVLM">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/RUCAIBox/POPE.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2305.10355.pdf"><strong>Evaluating Object Hallucination in Large Vision-Language Models</strong></a> <br></p></td>
+<td class="text-center"><p>arXiv</p></td>
+<td class="text-center"><p>2023-05-17</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/RUCAIBox/POPE">Github</a></p></td>
+<td class="text-center"><p>-</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><img alt="Star" src="https://img.shields.io/github/stars/kohjingyu/fromage.svg?style=social&amp;label=Star" /> <br> <a class="reference external" href="https://arxiv.org/pdf/2301.13823.pdf"><strong>Grounding Language Models to Images for Multimodal Inputs and Outputs</strong></a> <br></p></td>
+<td class="text-center"><p>ICML</p></td>
+<td class="text-center"><p>2023-01-31</p></td>
+<td class="text-center"><p><a class="reference external" href="https://github.com/kohjingyu/fromage">Github</a></p></td>
+<td class="text-center"><p><a class="reference external" href="https://huggingface.co/spaces/jykoh/fromage">Demo</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">多模态大语言模型(mllm)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#awesome-papers">Awesome Papers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-instruction-tuning">Multimodal Instruction Tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-in-context-learning">Multimodal In-Context Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multimodal-chain-of-thought">Multimodal Chain-of-Thought</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#llm-aided-visual-reasoning">LLM-Aided Visual Reasoning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#foundation-models">Foundation Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#others">Others</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By isLinXu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022, isLinXu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

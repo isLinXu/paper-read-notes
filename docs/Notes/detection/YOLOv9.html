@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>YOLOv9 &#8212; 论文阅读笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/detection/YOLOv9';</script>
+    <link rel="icon" href="../../_static/panda.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/how_to_read_paper.html">如何阅读论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/paper_10_question.html">论文速读十问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/read_important_tips.html">读论文与口头报告的几项重点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/reference.html">参考材料</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../List/index.html">论文阅读清单</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../List/basis.html">神经网络基础(basis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/attention.html">注意力部分(attention)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/batch_normalization.html">批量&amp;正则化(batch&amp;normalization)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/classification.html">图像分类(CLAS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/convolutional.html">高级卷积网络知识(Convolutional)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/gan.html">AI合成部分(GAN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/nlp.html">自然语言处理(NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/objectdetection.html">目标检测(OBJ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/rnn.html">循环神经网络(RNN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/segementation.html">目标分割(SEG)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/transformer.html">Transformer</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/multimodal.html">多模态(MultiModal Learning)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/llm.html">大语言模型(Large Language Models)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v3.html">GPT-v3:Language Models are Few-Shot Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/detection/YOLOv9.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/detection/YOLOv9.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Notes/detection/YOLOv9.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>YOLOv9</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">解决方案关键</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">实验设计</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">实验结果</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">结论</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="yolov9">
+<h1>YOLOv9<a class="headerlink" href="#yolov9" title="Link to this heading">#</a></h1>
+<p><strong>标题：</strong> YOLOv9: Learning What You Want to Learn Using Programmable Gradient Information</p>
+<p><strong>作者：</strong> Chien-Yao Wang, I-Hau Yeh, Hong-Yuan Mark Liao (Institute of Information Science, Academia Sinica, Taiwan; National Taipei University of Technology, Taiwan; Department of Information and Computer Engineering, Chung Yuan Christian University, Taiwan)</p>
+<p><strong>摘要：</strong>
+YOLOv9是一个新的目标检测系统，它通过提出可编程梯度信息（Programmable Gradient Information, PGI）和一个新的轻量级网络架构——Generalized Efficient Layer Aggregation Network (GELAN)——来解决深度网络中信息瓶颈问题。PGI能够为目标任务提供完整的输入信息以计算目标函数，从而获得可靠的梯度信息来更新网络权重。GELAN基于梯度路径规划设计，证明了PGI在轻量级模型上取得了优越的结果。实验结果表明，YOLOv9在MS COCO数据集上的目标检测性能超过了现有的实时目标检测器。</p>
+<p><strong>1. 问题：</strong>
+论文试图解决深度学习模型在目标检测任务中由于信息瓶颈导致的信息丢失问题，这可能导致梯度信息不可靠，从而影响模型的预测准确性。</p>
+<p><strong>2. 新问题：</strong>
+信息瓶颈问题在深度学习领域是一个已知问题，但PGI和GELAN的提出为解决这一问题提供了新的视角和方法。</p>
+<p><strong>3. 科学假设：</strong>
+假设通过PGI和GELAN可以更有效地保留和利用输入数据的关键特征，从而提高目标检测的准确性。</p>
+<p><strong>4. 相关研究：</strong></p>
+<ul class="simple">
+<li><p>实时目标检测器：YOLO系列、SSD、RetinaNet等。</p></li>
+<li><p>可逆架构：如RevCol、Res2Net、CBNet等。</p></li>
+<li><p>辅助监督：深度监督、多尺度特征学习等。</p></li>
+<li><p>领域内值得关注的研究员包括但不限于Joseph Redmon、Ali Farhadi（YOLO系列的主要贡献者）。</p></li>
+</ul>
+<p><strong>5. 解决方案关键：</strong>
+PGI和GELAN。PGI通过辅助可逆分支生成可靠的梯度信息，而GELAN则是一种轻量级的网络架构，它基于梯度路径规划设计，能够适应不同的计算块和深度设置。</p>
+<p><strong>6. 实验设计：</strong>
+实验在MS COCO数据集上进行，使用YOLOv7 AF作为基础模型，通过替换ELAN为GELAN并引入PGI来构建YOLOv9。所有模型从头开始训练，训练周期为500个epoch。</p>
+<p><strong>7. 数据集与代码：</strong>
+使用的数据集是MS COCO 2017分割版。源代码已在GitHub上开源：https://github.com/WongKinYiu/yolov9。</p>
+<p><strong>8. 实验结果：</strong>
+YOLOv9在MS COCO数据集上取得了优异的性能，超过了现有的实时目标检测器，这支持了论文提出的科学假设。</p>
+<p><strong>9. 贡献：</strong></p>
+<ul class="simple">
+<li><p>提出了PGI，解决了深度监督机制不适用于轻量级神经网络的问题。</p></li>
+<li><p>设计了GELAN，一种高效的轻量级神经网络架构。</p></li>
+<li><p>YOLOv9结合了PGI和GELAN，在目标检测任务上取得了优异的性能。</p></li>
+</ul>
+<p><strong>10. 下一步工作：</strong></p>
+<ul class="simple">
+<li><p>进一步探索PGI和GELAN在其他视觉任务中的应用。</p></li>
+<li><p>在更大的数据集上测试YOLOv9的性能。</p></li>
+<li><p>探索更多可逆架构和辅助监督技术以提高模型性能。</p></li>
+</ul>
+<section id="id1">
+<h2>回答问题<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>问题：</strong> 解决深度学习模型在目标检测中因信息瓶颈导致的问题。</p></li>
+<li><p><strong>新问题：</strong> 不是新问题，但提供了新的解决方案。</p></li>
+<li><p><strong>科学假设：</strong> PGI和GELAN可以提高目标检测的准确性。</p></li>
+<li><p><strong>相关研究：</strong> YOLO系列、可逆架构、辅助监督等。</p></li>
+<li><p><strong>解决方案关键：</strong> PGI和GELAN。</p></li>
+<li><p><strong>实验设计：</strong> 在MS COCO数据集上进行，500个训练周期。</p></li>
+<li><p><strong>数据集与代码：</strong> MS COCO数据集，代码已开源。</p></li>
+<li><p><strong>实验结果：</strong> 支持假设，YOLOv9性能优异。</p></li>
+<li><p><strong>贡献：</strong> 提出了PGI和GELAN，设计了YOLOv9。</p></li>
+<li><p><strong>下一步工作：</strong> 探索PGI和GELAN在其他任务中的应用，测试更大数据集上的性能。</p></li>
+</ol>
+</section>
+<section id="id2">
+<h2>解决方案关键<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p><strong>可编程梯度信息（PGI）：</strong>
+PGI是本文提出的一个新概念，旨在解决深度神经网络在训练过程中由于信息瓶颈导致的信息丢失问题。PGI通过辅助可逆分支生成可靠的梯度信息，这些信息用于更新网络参数，确保深度特征能够保持对执行目标任务至关重要的特征。PGI的可逆架构建立在辅助分支上，不增加额外的推理成本。PGI还允许自由选择适合目标任务的损失函数，克服了掩码建模中的问题。</p>
+<p><strong>通用高效层聚合网络（GELAN）：</strong>
+GELAN是本文提出的一个新的轻量级网络架构，基于梯度路径规划设计。GELAN的设计考虑了参数数量、计算复杂性、准确性和推理速度，使用户可以为不同的推理设备选择适当的计算块。GELAN的架构证明了PGI在轻量级模型上能够获得优越的结果。</p>
+</section>
+<section id="id3">
+<h2>实验设计<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p><strong>数据集：</strong>
+实验使用了MS COCO数据集，这是目标检测领域广泛使用的标准数据集，包含多种类别的对象。</p>
+<p><strong>训练设置：</strong>
+所有模型从头开始训练，没有使用预训练模型。训练使用了300个epoch，其中前5个epoch为热身阶段，仅更新偏置。使用随机梯度下降（SGD）优化器进行训练，初始学习率为0.01，并采用线性衰减策略。权重衰减设置为0.0005，动量为0.9。批量大小为128，输入尺寸在448到832之间均匀抽取，步长为32。</p>
+<p><strong>数据增强：</strong>
+实验中使用了包括随机水平翻转、颜色抖动、多尺度增强和马赛克增强在内的数据增强技术。在训练的最后15个epoch中关闭了马赛克数据增强。</p>
+<p><strong>评估：</strong>
+在Tesla V100 GPU上，使用FP16精度和批量大小为1进行评估。报告的FPS（帧每秒）和延迟都是在这个设置下测量的。</p>
+</section>
+<section id="id4">
+<h2>实验结果<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p><strong>性能提升：</strong>
+实验结果表明，YOLOv9在不同模型尺寸上均取得了优异的性能。例如，YOLOv9-S在参数和计算量较少的情况下，相比YOLOv7 AF，有显著的性能提升。YOLOv9-E在保持准确性的同时，相比于YOLOv8减少了参数数量和计算量。</p>
+<p><strong>与其他方法的比较：</strong>
+YOLOv9在与其他实时目标检测器的比较中表现出色，包括与基于Transformer的检测器和基于卷积的检测器的比较。YOLOv9在速度和准确性上都超过了这些方法。</p>
+<p><strong>不同训练方法的比较：</strong>
+YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识蒸馏和复杂设置）中都展现了优越的性能，证明了其在参数利用效率和计算复杂性与准确性之间取得了良好的平衡。</p>
+<p><strong>可视化：</strong>
+通过可视化特征图，展示了不同架构在不同深度下保留信息的能力。GELAN和YOLOv9（GELAN + PGI）在较深的层次上仍能保留足够的信息，而其他架构则随着层数的增加逐渐丢失了重要信息。</p>
+</section>
+<section id="id5">
+<h2>结论<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>YOLOv9通过PGI和GELAN的结合，解决了深度学习中的信息瓶颈问题，特别是在轻量级神经网络中。YOLOv9在目标检测任务上显示出强大的竞争力，其设计使得深度模型在减少参数数量和计算量的同时，仍然提高了准确性。</p>
+<p>关闭马赛克增强的好处是什么？
+马赛克增强（Mosaic Augmentation）是一种数据增强技术，它通过将四个随机选择的训练图像切割并重新排列成一个新的图像来增加数据的多样性，从而提高模型的泛化能力。这种技术可以模拟更多的场景变化，帮助模型学习到更加鲁棒的特征表示。 在论文中提到的实验设计里，作者在训练的最后15个epoch关闭了马赛克数据增强，这可能是基于以下几点考虑：</p>
+<ol class="arabic simple">
+<li><p><strong>模型稳定化</strong>：在训练的后期阶段，模型可能已经学习到了足够的特征，此时关闭数据增强可以使得模型在这些特征上更加稳定，避免过度拟合。</p></li>
+<li><p><strong>准确度提升</strong>：数据增强通常会带来一些噪声，这在训练初期有助于模型学习泛化能力，但在训练后期可能会干扰模型对真实特征的学习。关闭增强可以帮助模型更准确地学习数据集中的模式。</p></li>
+<li><p><strong>模拟真实环境</strong>：在训练的最后阶段，减少或关闭数据增强可以让模型更多地接触到未经增强的、更接近真实环境的数据，这有助于提高模型在实际应用中的性能。</p></li>
+<li><p><strong>计算效率</strong>：数据增强会增加训练的计算负担。在训练后期关闭某些数据增强方法可以提高训练的效率，尤其是在资源有限的情况下。</p></li>
+<li><p><strong>超参数调整</strong>：关闭马赛克增强可能是超参数调整的一部分，作者可能通过实验发现，在训练后期关闭马赛克增强能够获得更好的性能表现。 需要注意的是，这些好处并不是绝对的，它们可能依赖于具体的应用场景、数据集特性以及模型的当前状态。在实际应用中，是否关闭数据增强以及何时关闭，需要根据具体情况和实验结果来决定。</p></li>
+</ol>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">解决方案关键</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">实验设计</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">实验结果</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">结论</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By isLinXu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022, isLinXu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

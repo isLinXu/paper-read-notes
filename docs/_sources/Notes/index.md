@@ -3,4 +3,5 @@
 :maxdepth: 2
 mm-l/index.md
 llm/index.md
+detection/index.md
 ```

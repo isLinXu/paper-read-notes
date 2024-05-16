@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Learning Efficient Convolutional Networks through Network Slimming &#8212; 论文阅读笔记</title>
   
@@ -19,33 +18,32 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Read/learning-efficient-convolutional-networks-through-network-slimming';</script>
-    <link rel="shortcut icon" href="../_static/panda.png"/>
+    <link rel="icon" href="../_static/panda.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -57,7 +55,15 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -92,11 +98,16 @@
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -111,9 +122,11 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../index.html">
+  
   
   
   
@@ -123,12 +136,23 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="nav bd-sidenav">
@@ -167,7 +191,17 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Notes/index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+
+
+
+
+
+
+
+
+
 <li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -356,20 +390,22 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -419,19 +455,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="learning-efficient-convolutional-networks-through-network-slimming">
-<h1>Learning Efficient Convolutional Networks through Network Slimming<a class="headerlink" href="#learning-efficient-convolutional-networks-through-network-slimming" title="Permalink to this heading">#</a></h1>
+<h1>Learning Efficient Convolutional Networks through Network Slimming<a class="headerlink" href="#learning-efficient-convolutional-networks-through-network-slimming" title="Link to this heading">#</a></h1>
 <p>Zhuang Liu1∗ Jianguo Li2 Zhiqiang Shen3 Gao Huang4 Shoumeng Yan2 Changshui Zhang1</p>
 <p>1CSAI, TNList, Tsinghua University 2Intel Labs China 3Fudan University 4Cornell University {liuzhuangthu, zhiqiangshen0214}&#64;gmail.com, {jianguo.li, shoumeng.yan}&#64;intel.com, gh349&#64;cornell.edu, zcs&#64;mail.tsinghua.edu.cn</p>
 <section id="abstract">
-<h2><strong>Abstract</strong><a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<h2><strong>Abstract</strong><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>The deployment of deep convolutional neural networks (CNNs) in many Real-World applications is largely hindered by their high computational cost. In this paper, we propose a novel learning scheme for CNNs to simultaneously 1) reduce the model size; 2) decrease the run-time memory footprint; and 3) lower the number of computing operations, without compromising accuracy. This is achieved by enforcing channel-level sparsity in the network in a simple but effective way. Different from many existing approaches, the proposed method directly applies to modern CNN architectures, introduces minimum overhead to the training process, and requires no special software/hardware accelerators for the resulting models. We call our approach network slimming, which takes wide and large networks as input models, but during training insigniﬁcant channels are automatically identiﬁed and pruned afterwards, yielding thin and compact models with comparable accuracy. We empirically demonstrate the effectiveness of our approach with several state-of-the-art CNN models, including VGGNet, ResNet and DenseNet, on various image classiﬁcation datasets. For VGGNet, a multi-pass version of network slimming gives a 20× reduction in model size and a 5× reduction in computing operations.</p>
 <p>在许多实际应用中部署深度卷积神经网络（CNN）很大程度上受到其计算成本高的限制。在本文中，我们提出了一种新的CNNs学习方案，能同时1）减小模型大小; 2）减少运行时内存占用; 3）在不影响准确率的情况下降低计算操作的数量。这种学习方案是<strong>通过在网络中进行通道层次稀疏来实现****，简单而****有效</strong>。与许多现有方法不同，我们所提出的方法直接应用于现代CNN架构，引入训练过程的开销最小，并且所得模型不需要特殊软件/硬件加速器。我们将我们的方法称为网络瘦身（network slimming），此方法以大型网络作为输入模型，但在训练过程中，无关紧要的通道被自动识别和剪枝，从而产生精度相当但薄而紧凑（高效）的模型。在几个最先进的CNN模型（包括VGGNet，ResNet和DenseNet）上，我们使用各种图像分类数据集，凭经验证明了我们方法的有效性。对于VGGNet，网络瘦身后的多通道版本使模型大小减少20倍，计算操作减少5倍。</p>
 </section>
 <section id="introduction">
-<h2><strong>1. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2><strong>1. Introduction</strong><a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>In recent years, convolutional neural networks (CNNs) have become the dominant approach for a variety of computer vision tasks, e.g., image classification [22], object detection [8], semantic segmentation [26]. Large-scale datasets, high-end modern GPUs and new network architectures allow the development of unprecedented large CNN models. For instance, from AlexNet [22], VGGNet [31] and GoogleNet [34] to ResNets [14], the ImageNet Classification Challenge winner models have evolved from 8 layers to more than 100 layers.</p>
 <p>近年来，卷积神经网络（CNN）已成为各种计算机视觉任务的主要方法，例如图像分类[22]，物体检测[8]，语义分割[26]。 大规模数据集，高端现代GPU和新的网络架构允许开发前所未有的大型CNN模型。 例如，从AlexNet [22]，VGGNet [31]和GoogleNet [34]到ResNets [14]，ImageNet分类挑战赛冠军模型已经从8层发展到100多层。</p>
 <p>However, large CNNs, although with stronger representation power, are more resource-hungry. For instance, a 152-layer ResNet [14] has more than 60 million parameters and requires more than 20 Giga float-point-operations (FLOPs) when inferencing an image with resolution 224× 224. This is unlikely to be affordable on resource constrained platforms such as mobile devices, wearables or Internet of Things (IoT) devices.</p>
@@ -448,7 +484,7 @@ document.write(`
 <p>在几个基准数据集和不同网络架构上的实验表明，我们获得的CNN模型，其大小压缩高达20倍，原始计算操作减少5倍，同时实现了相同甚至更高的精度。此外，我们的方法利用传统硬件和深度学习软件包实现模型压缩和推理加速，因此得到的轻量化模型不需要任何稀疏存储格式或特殊的计算操作。</p>
 </section>
 <section id="related-work">
-<h2><strong>2. Related Work</strong><a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
+<h2><strong>2. Related Work</strong><a class="headerlink" href="#related-work" title="Link to this heading">#</a></h2>
 <p>In this section, we discuss related work from five aspects. Low-rank Decomposition approximates weight matrix in neural networks with low-rank matrix using techniques like Singular Value Decomposition (SVD) [7]. This method works especially well on fully-connected layers, yielding ∼3x model-size compression however without notable speed acceleration, since computing operations in CNN mainly come from convolutional layers.</p>
 <p>在本节中，我们将从五个方面讨论相关工作。用奇异值分解（SVD）等技术使具有较低秩的矩阵去逼近神经网络中的权重矩阵[7]。 这种方法在全连接的层上工作得特别好，产生~3倍模型大小的压缩，但没有明显的速度加速，因为CNN中的计算操作主要来自卷积层。</p>
 <p><strong>Weight Quantization.</strong> HashNet [3] proposes to quantize the network weights. Before training, network weights are hashed to different groups and within each group weight the value is shared. In this way only the shared weights and hash indices need to be stored, thus a large amount of storage space could be saved. [12] uses a improved quantization technique in a deep compression pipeline and achieves 35x to 49x compression rates on AlexNet and VGGNet. However, these techniques can neither save run-time memory nor inference time, since during inference shared weights need to be restored to their original positions.</p>
@@ -469,7 +505,7 @@ document.write(`
 <p>神经结构学习。 虽然最先进的CNN通常由专家[22,31,14]设计，但也有一些关于自动学习网络架构的探索。 [20]引入了用于给定资源预算的网络架构搜索的子模块/超模块优化。 最近的一些工作[38,1]提出通过强化学习自动学习神经结构。 这些方法的搜索空间非常大，因此需要训练数百个模型来区分好与坏。 网络瘦身也可以被视为架构学习的一种方法，尽管选择仅限于每层的宽度。 然而，与上述方法相比，网络瘦身仅通过一个训练过程来学习网络架构，这符合我们的效率目标。</p>
 </section>
 <section id="network-slimming">
-<h2><strong>3. Network slimming</strong><a class="headerlink" href="#network-slimming" title="Permalink to this heading">#</a></h2>
+<h2><strong>3. Network slimming</strong><a class="headerlink" href="#network-slimming" title="Link to this heading">#</a></h2>
 <p>We aim to provide a simple scheme to achieve channel-level sparsity in deep CNNs. In this section, we first discuss the advantages and challenges of channel-level sparsity, and introduce how we leverage the scaling layers in batch normalization to effectively identify and prune unimportant channels in the network.</p>
 <p>我们的目标是提供一个简单的方案来实现深度CNN中的信道层次的稀疏。 在本节中，我们首先讨论了信道层次稀疏的优势和挑战，并介绍了如何利用批量规范化中的扩展层（缩放因子）来有效地识别和修剪网络中不重要的信道。</p>
 <p><strong>Advantages of Channel-level Sparsity</strong>. As discussed in prior works [35, 23, 11], sparsity can be realized at different levels, e.g., weight-level, kernel-level, channel-level or layer-level. Fine-grained level (e.g., weight-level) sparsity gives the highest flexibility and generality leads to higher compression rate, but it usually requires special software or hardware accelerators to do fast inference on the sparse model [11]. On the contrary, the coarsest layer-level sparsity does not require special packages to harvest the inference speedup, while it is less flexible as some whole layers need to be pruned. In fact, removing layers is only effective when the depth is sufficiently large, e.g., more than 50 layers [35, 18]. In comparison, channel-level sparsity provides a nice tradeoff between flexibility and ease of implementation. It can be applied to any typical CNNs or fully connected networks (treat each neuron as a channel), and the resulting network is essentially a “thinned” version of the unpruned network, which can be efficiently inferenced on conventional CNN platforms.</p>
@@ -502,11 +538,11 @@ document.write(`
 <p>处理跨层连接和预激活结构。 上面介绍的网络瘦身过程可以直接应用于大多数简单的CNN架构，如AlexNet [22]和VGGNet [31]。 当它应用于具有跨层连接的现代网络和预激活设计（如ResNet [15]和DenseNet [17]）时，需要进行一些调整。 对于这些网络，层的输出可以被视为多个后续层的输入，其中BN层被放置在卷积层之前。 在这种情况下，在层的输入端实现稀疏性，即，该层选择性地使用它接收的通道子集。 为了在测试时获得参数和计算节省，我们需要设置一个通道选择层来屏蔽我们识别出的无关紧要的通道。</p>
 </section>
 <section id="experiments">
-<h2><strong>4. Experiments</strong><a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<h2><strong>4. Experiments</strong><a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
 <p>We empirically demonstrate the effectiveness of network slimming on several benchmark datasets. We implement our method based on the publicly available Torch [5] implementation for ResNets by [10]. The code is available at https://github.com/liuzhuang13/slimming</p>
 <p>我们经验性地证明了网络瘦身对几个基准数据集的有效性。 我们基于[10]的ResNets的公开可用的Torch 版本[5]实现来验证我们的方法。 该代码可在https://github.com/liuzhuang13/slimming获得</p>
 <section id="datasets">
-<h3><strong>4.1. Datasets</strong><a class="headerlink" href="#datasets" title="Permalink to this heading">#</a></h3>
+<h3><strong>4.1. Datasets</strong><a class="headerlink" href="#datasets" title="Link to this heading">#</a></h3>
 <p><strong>CIFAR</strong>. The two CIFAR datasets [21] consist of natural images with resolution 32×32. CIFAR-10 is drawn from 10 and CIFAR-100 from 100 classes. The train and test sets contain 50,000 and 10,000 images respectively. On CIFAR10, a validation set of 5,000 images is split from the training set for the search of λ (in Equation 1) on each model. We report the final test errors after training or fine-tuning on all training images. A standard data augmentation scheme (shifting/mirroring) [14, 18, 24] is adopted. The input data is normalized using channel means and standard deviations. We also compare our method with [23] on CIFAR datasets.</p>
 <p>CIFAR。 两个CIFAR数据集[21]由分辨率为32×32的自然图像组成。 CIFAR-10有10个类，CIFAR-100有100个类。 训练和测试集分别包含50,000和10,000个图像。 在CIFAR10上，从训练集中分离出5,000个图像的验证集，用于在每个模型上搜索λ（在等式1中）。 我们在训练或微调所有训练图像后报告最终的测试错误。 采用标准数据增强方案（移位/镜像）[14,18,24]。 使用通道平均值和标准偏差对输入数据进行标准化。 我们还将我们的方法与[23]在CIFAR数据集上进行了比较。</p>
 <p><strong>SVHN</strong>. The Street View House Number (SVHN) dataset [27] consists of 32x32 colored digit images. Following common practice [9, 18, 24] we use all the 604,388 training images, from which we split a validation set of 6,000 images for model selection during training. The test set contains 26,032 images. During training, we select the model with the lowest validation error as the model to be pruned (or the baseline model). We also report the test errors of the models with lowest validation errors during ﬁne-tuning.</p>
@@ -517,7 +553,7 @@ document.write(`
 <p>MNIST。 MNIST是一个手写的数字数据集，包含60,000个训练图像和10,000个测试图像。 为了测试我们的方法在完全连接的网络上的有效性（将每个神经元视为1×1空间大小的通道），我们将该方法与[35]在该数据集上进行比较</p>
 </section>
 <section id="network-models">
-<h3><strong>4.2. Network Models</strong><a class="headerlink" href="#network-models" title="Permalink to this heading">#</a></h3>
+<h3><strong>4.2. Network Models</strong><a class="headerlink" href="#network-models" title="Link to this heading">#</a></h3>
 <p>On CIFAR and SVHN dataset, we evaluate our method on three popular network architectures: VGGNet[31], ResNet [14] and DenseNet [17]. The VGGNet is originally designed for ImageNet classiﬁcation. For our experiment a variation of the original VGGNet for CIFAR dataset is taken from [36]. For ResNet, a 164-layer pre-activation ResNet with bottleneck structure (ResNet-164) [15] is used. For DenseNet, we use a 40-layer DenseNet with growth rate 12 (DenseNet-40).</p>
 <p>在CIFAR和SVHN数据集上，我们在三种流行的网络架构上评估我们的方法：VGGNet [31]，ResNet [14]和DenseNet [17]。 VGGNet最初是为ImageNet分类而设计的。 对于我们的实验，原始VGGNet的变体取自[36] 在CIFAR数据集的结果。 对于ResNet，使用具有瓶颈结构的164层预激活ResNet（ResNet-164）[15]。 对于DenseNet，我们使用40层DenseNet，增长率为12（DenseNet-40）。</p>
 <p>On ImageNet dataset, we adopt the 11-layer (8-conv + 3 FC) “VGG-A” network [31] model with batch normalization from [4]. We remove the dropout layers since we use relatively heavy data augmentation. To prune the neurons in fully-connected layers, we treat them as convolutional channels with 1×1 spatial size.</p>
@@ -526,7 +562,7 @@ document.write(`
 <p>在MNIST数据集上，我们在与[35]中相同的3层全连接网络上评估我们的方法。</p>
 </section>
 <section id="training-pruning-and-fine-tuning">
-<h3><strong>4.3. Training, Pruning and Fine-tuning</strong><a class="headerlink" href="#training-pruning-and-fine-tuning" title="Permalink to this heading">#</a></h3>
+<h3><strong>4.3. Training, Pruning and Fine-tuning</strong><a class="headerlink" href="#training-pruning-and-fine-tuning" title="Link to this heading">#</a></h3>
 <p><strong>Normal Training</strong>. We train all the networks normally from scratch as baselines. All the networks are trained using SGD. On CIFAR and SVHN datasets we train using minibatch size 64 for 160 and 20 epochs, respectively. The initial learning rate is set to 0.1, and is divided by 10 at 50% and 75% of the total number of training epochs. On ImageNet and MNIST datasets, we train our models for 60 and 30 epochs respectively, with a batch size of 256, and an initial learning rate of 0.1 which is divided by 10 after 1/3 and 2/3 fraction of training epochs. We use a weight decay of 10−4 and a Nesterov momentum [33] of 0.9 without dampening. The weight initialization introduced by [13] is adopted. Our optimization settings closely follow the original implementation at [10]. In all our experiments, we initialize all channel scaling factors to be 0.5, since this gives higher accuracy for the baseline models compared with default setting (all initialized to be 1) from [10].</p>
 <p>正常训练。 我们通常从头开始训练所有网络作为基线。 所有网络都使用SGD进行训练。 在CIFAR和SVHN数据集上，我们分别使用尺寸为64的小批量训练160和20个epochs。 初始学习率设置为0.1，并且在训练epoch总数的50％和75％处除以10。 在ImageNet和MNIST数据集上，我们分别训练60和30个epochs的模型，批量大小为256，初始学习率为0.1，在1/3和2/3的训练epoch之后除以10。 我们使用10-4的重量衰减和0.9的Nesterov动量[33],不使用权重衰减（对么？）。 采用[13]引入的权重初始化。 我们的优化设置参考[10]原始实现。 在我们的所有实验中，我们将所有通道缩放因子初始化为0.5，因为与[10]中的默认设置（全部初始化为1）相比，这为基线模型提供了更高的准确性。</p>
 <p><strong>Training with Sparsity.</strong> For CIFAR and SVHN datasets, when training with channel sparse regularization, the hyper parameter λ, which controls the tradeoff between empirical loss and sparsity, is determined by a grid search over 10−3, 10−4, 10−5 on CIFAR-10 validation set. For VGGNet we choose λ=10−4 and for ResNet and DenseNet λ=10−5. For VGG-A on ImageNet, we set λ=10−5. All other settings are kept the same as in normal training.</p>
@@ -537,7 +573,7 @@ document.write(`
 <p>微调。 在修剪之后，我们获得了一个更窄更紧凑的模型，然后进行了调整。 在CIFAR，SVHN和MNIST数据集上，微调使用与训练相同的优化设置。 对于ImageNet数据集，由于时间限制，我们仅在5个epochs内以10-3的学习速率调整修剪的VGG-A。</p>
 </section>
 <section id="results">
-<h3><strong>4.4. Results</strong><a class="headerlink" href="#results" title="Permalink to this heading">#</a></h3>
+<h3><strong>4.4. Results</strong><a class="headerlink" href="#results" title="Link to this heading">#</a></h3>
 <p><strong>CIFAR and SVHN</strong> The results on CIFAR and SVHN are shown in Table 1. We mark all lowest test errors of a model in boldface.</p>
 <p>CIFAR和SVHN CIFAR和SVHN的结果如表1所示。我们用粗体标记模型的所有最低测试误差。</p>
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429211720975-1001210397.png" /></p>
@@ -556,7 +592,7 @@ document.write(`
 <p>我们在补充材料中提供了一些额外的实验结果，包括（1）CIFAR-10上紧凑型VGGNet的详细结构; （2）在实践中节省挂钟时间（怎么翻译？加载时间？）和运行时间。 （3）与以前的通道修剪方法[23]进行比较;</p>
 </section>
 <section id="results-for-multi-pass-scheme">
-<h3><strong>4.5. Results for Multi-pass Scheme</strong><a class="headerlink" href="#results-for-multi-pass-scheme" title="Permalink to this heading">#</a></h3>
+<h3><strong>4.5. Results for Multi-pass Scheme</strong><a class="headerlink" href="#results-for-multi-pass-scheme" title="Link to this heading">#</a></h3>
 <p>We employ the multi-pass scheme on CIFAR datasets using VGGNet. Since there are no skip-connections, pruning away a whole layer will completely destroy the models. Thus, besides setting the percentile threshold as 50%, we also put a constraint that at each layer, at most 50% of channels can be pruned.</p>
 <p>我们在使用VGGNet的CIFAR数据集上采用多程方案。 由于没有跳跃连接，修剪整个层将完全破坏模型。 因此，除了将百分位数阈值设置为50％之外，我们还设置了一个约束，即在每一层，最多可以修剪50％的通道。</p>
 <p>The test errors of models in each iteration are shown in Table 4. As the pruning process goes, we obtain more and more compact models. On CIFAR-10, the trained model achieves the lowest test error in iteration 5. This model achieves 20× parameter reduction and 5× FLOP reduction, while still achieving lower test error. On CIFAR-100, after iteration 3, the test error begins to increase. This is possibly due to that it contains more classes than CIFAR-10, so pruning channels too agressively will inevitably hurt the performance. However, we can still prune near 90% parameters and near 70% FLOPs without notable accuracy loss.</p>
@@ -565,7 +601,7 @@ document.write(`
 </section>
 </section>
 <section id="analysis">
-<h2><strong>5. Analysis</strong><a class="headerlink" href="#analysis" title="Permalink to this heading">#</a></h2>
+<h2><strong>5. Analysis</strong><a class="headerlink" href="#analysis" title="Link to this heading">#</a></h2>
 <p>There are two crucial hyper-parameters in network slimming, the pruned percentage t and the coefﬁcient of the sparsity regularization term λ (see Equation 1). In this section, we analyze their effects in more detail.</p>
 <p>网络瘦身有两个关键的超参数，修剪百分比t和稀疏正则化项λ的系数（见公式1）。 在本节中，我们将更详细地分析它们的影响。</p>
 <p><strong>Effect of Pruned Percentage</strong>. Once we obtain a model trained with sparsity regularization, we need to decide what percentage of channels to prune from the model. If we prune too few channels, the resource saving can be very limited. However, it could be destructive to the model if we prune too many channels, and it may not be possible to recover the accuracy by ﬁne-tuning. We train a DenseNet40 model with λ=10−5 on CIFAR-10 to show the effect of pruning a varying percentage of channels. The results are summarized in Figure 5.</p>
@@ -581,7 +617,7 @@ document.write(`
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429211322683-625462196.png" /></p>
 </section>
 <section id="conclusion">
-<h2><strong>6. Conclusion</strong><a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<h2><strong>6. Conclusion</strong><a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>We proposed the network slimming technique to learn more compact CNNs. It directly imposes sparsity-induced regularization on the scaling factors in batch normalization layers, and unimportant channels can thus be automatically identiﬁed during training and then pruned. On multiple datasets, we have shown that the proposed method is able to signiﬁcantly decrease the computational cost (up to 20×) of state-of-the-art networks, with no accuracy loss. More importantly, the proposed method simultaneously reduces the model size, run-time memory, computing operations while introducing minimum overhead to the training process, and the resulting models require no special libraries/hardware for efﬁcient inference.</p>
 <p>我们提出了网络瘦身技术来学习更紧凑的CNN。 它直接对批量归一化层中的缩放因子施加稀疏诱导的正则化，因此可以在训练期间自动识别不重要的通道，然后进行修剪。 在多个数据集上，我们已经表明，所提出的方法能够显着降低最先进网络的计算成本（高达20倍），没有精度损失。 更重要的是，所提出的方法同时减少了模型大小，运行时内存，计算操作，同时为训练过程引入了最小的开销，并且所得到的模型不需要特殊的库/硬件来进行有效的推理。</p>
 <p><strong>References</strong></p>
@@ -632,8 +668,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -643,6 +681,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -672,7 +711,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -685,6 +724,7 @@ By isLinXu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022, isLinXu.
@@ -702,7 +742,7 @@ By isLinXu
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -711,8 +751,8 @@ By isLinXu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

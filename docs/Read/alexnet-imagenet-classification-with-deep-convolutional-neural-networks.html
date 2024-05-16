@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>ImageNet Classification with Deep Convolutional Neural Networks &#8212; 论文阅读笔记</title>
   
@@ -19,33 +18,32 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Read/alexnet-imagenet-classification-with-deep-convolutional-neural-networks';</script>
-    <link rel="shortcut icon" href="../_static/panda.png"/>
+    <link rel="icon" href="../_static/panda.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -57,7 +55,15 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -92,11 +98,16 @@
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -111,9 +122,11 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../index.html">
+  
   
   
   
@@ -123,12 +136,23 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="nav bd-sidenav">
@@ -167,7 +191,17 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Notes/index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+
+
+
+
+
+
+
+
+
 <li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -356,20 +390,22 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -428,20 +464,20 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="imagenet-classification-with-deep-convolutional-neural-networks">
-<h1>ImageNet Classification with Deep Convolutional Neural Networks<a class="headerlink" href="#imagenet-classification-with-deep-convolutional-neural-networks" title="Permalink to this heading">#</a></h1>
+<h1>ImageNet Classification with Deep Convolutional Neural Networks<a class="headerlink" href="#imagenet-classification-with-deep-convolutional-neural-networks" title="Link to this heading">#</a></h1>
 <p>Alex Krizhevsky University of Toronto kriz&#64;cs.utoronto.ca
 Ilya Sutskever University of Toronto ilya&#64;cs.utoronto.ca
 GeoffreyE. Hinton University of Toronto hinton&#64;cs.utoronto.ca</p>
 <section id="abstract">
-<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>We trained a large, deep convolutional neural network to classify the 1.2 million high-resolution images in the ImageNet LSVRC-2010 contest into the 1000 different classes. On the test data, we achieved top-1 and top-5 error rates of 37.5% and 17.0% which is considerably better than the previous state-of-the-art. The neural network, which has 60 million parameters and 650,000 neurons, consists of ﬁve convolutional layers, some of which are followed by max-pooling layers, and three fully-connected layers with a ﬁnal 1000-way softmax. To make training faster, we used non-saturating neurons and a very efﬁcient GPU implementation of the convolution operation. To reduce overﬁtting in the fully-connected layers we employed a recently-developed regularization method called “dropout” that proved to be very effective. We also entered a variant of this model in the ILSVRC-2012 competition and achieved a winning top-5 test error rate of 15.3%, compared to 26.2% achieved by the second-best entry.</p>
 <p>本文训练了一个大规模的深度卷积神经网络来将ImageNet LSVRC-2010比赛中的包含120万幅高分辨率的图像数据集分为1000种不同类别。在测试集上，本文所得的top-1和top-5错误率分别为37.5%和17.0%，该测试结果大大优于当前的最佳水平。本文的神经网络包含6千万个参数和65万个神经元，包含了5个卷积层，其中有几层后面跟着最大池化（max-pooling）层，以及3个全连接层，最后还有一个1000路的softmax层。为了加快训练速度，本文使用了不饱和神经元以及一种高效的基于GPU的卷积运算方法。为了减少全连接层的过拟合，本文采用了最新的正则化方法“dropout”，该方法被证明非常有效。我们以该模型的变体参加了ILSVRC-2012比赛，相比第二名26.2%，我们以15.3%的top-5测试错误率获胜。</p>
 </section>
 <section id="introduction">
-<h2>1 Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1 Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Current approaches to object recognition make essential use of machine learning methods. To improve their performance, we can collect larger datasets, learn more powerful models, and use better techniques for preventing over ﬁtting. Until recently, datasets of labeled images were relatively small — on the order of tens of thousands of images (e.g., NORB [16], Caltech-101/256 [8, 9], and CIFAR-10/100 [12]). Simple recognition tasks can be solved quite well with datasets of this size, especially if they are augmented with label-preserving transformations. For example, the current best error rate on the MNIST digit-recognition task (&lt;0.3%) approaches human performance [4]. But objects in realistic settings exhibit considerable variability, so to learn to recognize them it is necessary to use much larger training sets. And indeed, the shortcomings of small image datasets have been widely recognized (e.g., Pinto et al [21]), but it has only recently become possible to collect labeled datasets with millions of images. The new larger datasets include LabelMe [23], which consists of hundreds of thousands of fully-segmented images, and ImageNet [6], which consists of over 15 million labeled high-resolution images in over 22,000 categories.</p>
 <p>当前目标识别的方法基本都使用了机器学习的方法。为了提高这些方法的性能，我们可以收集更大的数据集，学习得到更加强大的模型，然后使用更好的方法防止过拟合。直到现在，相比于成千上百的图像，带标签的图像数据集相对较小（如NORB[16]，Caltech-101/256[8,9]，以及CIFAR-10/100[12]）。这种规模的数据集能使得简单的识别任务得到很好地解决，特别是如果他们进行带标签的转换来增广数据集。例如，当前MINIST数字识别任务最小的错误率（&lt;0.3% ）已经接近人类水平[4]。但是现实世界中的目标呈现出相当大的变化性，因此学习去识别它们就必须要使用更大的训练数据集。事实上，人们也已广泛地认识到小图像数据集的缺点（如Pinto等[21]），但直到最近，收集包含数百万图像的带标签数据集才成为可能。新的更大的数据集包括由数十万张全分割图像的LabelMe[23]和包含超过22000类的1500万张带标签高分辨率图像ImageNet[6]组成。</p>
 <p>To learn about thousands of objects from millions of images, we need a model with a large learning capacity. However, the immense complexity of the object recognition task means that this problem cannot be specified even by a dataset as large as ImageNet, so our model should also have lots of prior knowledge to compensate for all the data we don’t have. Convolutional neural networks (CNNs) constitute one such class of models [16, 11, 13, 18, 15, 22, 26]. Their capacity can be controlled by varying their depth and breadth, and they also make strong and mostly correct assumptions about the nature of images (namely, stationarity of statistics and locality of pixel dependencies). Thus, compared to standard feedforward neural networks with similarly-sized layers, CNNs have much fewer connections and parameters and so they are easier to train, while their theoretically-best performance is likely to be only slightly worse.</p>
@@ -454,7 +490,7 @@ The specific contributions of this paper are as follows: we trained one of the l
 <p>最后，网络的大小主要受限于GPU的内存大小和我们愿意忍受的训练时间长度。本文的网络在两个GTX 580 3GB GPU上训练了五到六天。本文所有的实验表明，如果有更快的GPU、更大的数据集，结果可以更好。</p>
 </section>
 <section id="the-dataset">
-<h2>2 The Dataset<a class="headerlink" href="#the-dataset" title="Permalink to this heading">#</a></h2>
+<h2>2 The Dataset<a class="headerlink" href="#the-dataset" title="Link to this heading">#</a></h2>
 <p>ImageNet is a dataset of over 15 million labeled high-resolution images belonging to roughly 22,000 categories. The images were collected from the web and labeled by human labelers using Amazon’s Mechanical Turk crowd-sourcing tool. Starting in 2010, as part of the Pascal Visual Object Challenge, an annual competition called the ImageNet Large-Scale Visual Recognition Challenge (ILSVRC) has been held. ILSVRC uses a subset of ImageNet with roughly 1000 images in each of 1000 categories. In all, there are roughly 1.2 million training images, 50,000 validation images, and 150,000 testing images.</p>
 <p>ImageNet数据集包含有大概22000种类别共150多万带标签的高分辨率图像。这些图像是从网络上收集得来，由亚马逊的Mechanical Turkey的众包工具进行人工标记。从2010年开始，作为Pascal视觉目标挑战的一部分，ImageNet大规模视觉识别挑战（ImageNet Large-Scale Visual Recognition Challenge ，ILSVRC）比赛每年都会举行。ILSVRC采用ImageNet的子集，共包含一千个类别，每个类别包含大约1000幅图像。总的来说，大约有120万张训练图像，5万张验证图像以及15万张测试图像。</p>
 <p>ILSVRC-2010 is the only version of ILSVRC for which the test set labels are available, so this is the version on which we performed most of our experiments. Since we also entered our model in the ILSVRC-2012 competition, in Section 6 we report our results on this version of the dataset as well, for which test set labels are unavailable. On ImageNet, it is customary to report two error rates: top-1 and top-5, where the top-5 error rate is the fraction of test images for which the correct label is not among the five labels considered most probable by the model.</p>
@@ -463,14 +499,14 @@ The specific contributions of this paper are as follows: we trained one of the l
 <p>ImageNet包含不同分辨率的图像，但是本文的模型要求固定的输入维度。因此，本文将这些图像下采样为256x256 。给定一幅矩形图像，本文采用的方法是首先重新调整图像使得短边长度为256，然后裁剪出中央256x256 的区域。除了将图像减去训练集的图像均值(训练集和测试集都减去训练集的图像均值)，本文不做任何其他图像预处理。因此本文直接在每个像素的原始RGB值上进行训练。</p>
 </section>
 <section id="the-architecture">
-<h2>3 The Architecture<a class="headerlink" href="#the-architecture" title="Permalink to this heading">#</a></h2>
+<h2>3 The Architecture<a class="headerlink" href="#the-architecture" title="Link to this heading">#</a></h2>
 <p>The architecture of our network is summarized in Figure 2. It contains eight learned layers — ve convolutional and three fully-connected. Below, we describe some of the novel or unusual features of our network’s architecture. Sections 3.1-3.4 are sorted according to our estimation of their importance, with the most important first.
 本文网络结构详见图2。它包含8层学习层——5层卷积层和三层全连接层。下面将描述该网络结构的一些创新和新的特征。3.1节至3.4节根据他们的重要性从大到小排序。</p>
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429205402634-16533092.png" /></p>
 <p>Figure 2: An illustration of the architecture of our CNN, explicitly showing the delineation of responsibilities between the two GPUs. One GPU runs the layer-parts at the top of the ﬁgure while the other runs the layer-parts at the bottom. The GPUs communicate only at certain layers. The network’s inputis150,528-dimensional, and the number of neurons in the network’s remaining layers is given by 253,440–186,624–64,896–64,896–43,264– 4096–4096–1000.</p>
 <p>图2 本文CNN的结构图示，明确地描述了两个GPU之间的职责。一个GPU运行图上方的层，另一个运行图下方的层。两个GPU只在特定的层通信。网络的输入是150,528维的，网络剩余层中的神经元数目分别是253440，186624，64896，64896，43264，4096，4096，1000</p>
 <section id="relu-nonlinearity">
-<h3>3.1 ReLU Nonlinearity<a class="headerlink" href="#relu-nonlinearity" title="Permalink to this heading">#</a></h3>
+<h3>3.1 ReLU Nonlinearity<a class="headerlink" href="#relu-nonlinearity" title="Link to this heading">#</a></h3>
 <p>The standard way to model a neuron’s output f as a function of its input x is with f(x) = tanh(x) or f(x) = (1 + e−x)−1. In terms of training time with gradient descent, these saturating nonlinearities are much slower than the non-saturating nonlinearity f(x) = max(0,x). Following Nair and Hinton [20], we refer to neurons with this nonlinearity as Rectified Linear Units (ReLUs). Deep convolutional neural networks with ReLUs train several times faster than their equivalents with tanh units. This is demonstrated in Figure 1, which shows the number of iterations required to reach 25% training error on the CIFAR-10 dataset for a particular four-layer convolutional network. This plot shows that we would not have been able to experiment with such large neural networks for this work if we had used traditional saturating neuron models.</p>
 <p>通常使用一个关于输入x的函数模拟神经元的输出f，这种标准函数是f(x)=tanh(x)或者f(x)=(1+e−x)-1。在梯度下降训练时间上，这些饱和的非线性函数比不饱和非线性函数f(x)=max(0,x)f(x)=max(0,x)更慢。根据Nair和Hinton[20]，本文将具有这种非线性特征的神经元称为修正线性单元（ReLUs: Rectified Linear Units）。使用ReLUs的深度卷积神经网络训练速度比同样情况下使用tanh单元的速度快好几倍。图1表示使用特定的四层卷积网络在数据集CIFAR-10上达到25%错误率所需的迭代次数。这个图表明如果使用传统的饱和神经元模型我们不可能利用这么大规模的神经网络对本文工作进行试验。</p>
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429205531032-963928677.png" /></p>
@@ -480,14 +516,14 @@ The specific contributions of this paper are as follows: we trained one of the l
 <p>本文不是第一个考虑在CNNs中寻找传统神经模型替代方案的。例如，Jarrett等[11]考虑使用非线性函数f(x)=|tanh(x)|，在数据集Caltech-101上，与基于局部平均池化的对比归一化结合取得了很好地效果。但是，在这个数据集上他们主要关心的就是防止过拟合，而本文用ReLUs主要是对训练集的拟合进行加速。快速学习对由大规模数据集上训练出大模型的性能有相当大的影响。</p>
 </section>
 <section id="training-on-multiple-gpus">
-<h3>3.2 Training on Multiple GPUs<a class="headerlink" href="#training-on-multiple-gpus" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Training on Multiple GPUs<a class="headerlink" href="#training-on-multiple-gpus" title="Link to this heading">#</a></h3>
 <p>A single GTX 580 GPU has only 3GB of memory, which limits the maximum size of the networks that can be trained on it. It turns out that 1.2 million training examples are enough to train networks which are too big to fit on one GPU. Therefore we spread the net across two GPUs. Current GPUs are particularly well-suited to cross-GPU parallelization, as they are able to read from and write to one another’s memory directly, without going through host machine memory. The parallelization scheme that we employ essentially puts half of the kernels (or neurons) on each GPU, with one additional trick: the GPUs communicate only in certain layers. This means that, for example, the kernels of layer 3 take input from all kernel maps in layer 2. However, kernels in layer 4 take input only from those kernel maps in layer 3 which reside on the same GPU. Choosing the pattern of connectivity is a problem for cross-validation, but this allows us to precisely tune the amount of communication until it is an acceptable fraction of the amount of computation.</p>
 <p>单个GTX 580 GPU只有3GB的内存，从而限制了能由它训练出的网络的最大规模。实验表明使用120万训练样本训练网络已足够，但是这个任务对一个GPU来说太大了。因此，本文中的网络使用两个GPU。当前的GPU都能很方便地进行交叉GPU并行，因为它们可以直接相互读写内存，而不用经过主机内存。我们采用的并行模式本质上来说就是在每一个GPU上放二分之一的核(或者神经元)，我们还使用了另一个技巧：只有某些层才能进行GPU之间的通信。这就意味着，例如第三层的输入为第二层的所有特征图。但是，第四层的输入仅仅是第三层在同一GPU上的特征图。在交叉验证时，连接模式的选择是一个问题，而这个也恰好允许我们精确地调整通信的数量，直到他占计算数量的一个合理比例。</p>
 <p>The resultant architecture is somewhat similar to that of the “columnar” CNN employed by Cires¸an et al.[5],except that our columns are not independent(seeFigure2). This scheme reduces our top-1 and top-5 error rates by 1.7% and 1.2%, respectively, as compared with a net with half as many kernels in each convolutional layer trained on one GPU. The two-GPU net takes slightly less time to train than the one-GPU net2.</p>
 <p>最终的结构有点像Ciresan等[5]采用的柱状卷积神经网络，但是本文的列不是独立的（见图2）。与每个卷积层拥有本文一半的核,并且在一个GPU上训练的网络相比，这种组合让本文的top-1和top-5错误率分别下降了1.7%和1.2%。本文的2-GPU网络训练时间比一个GPU的时间都要略少。</p>
 </section>
 <section id="local-response-normalization">
-<h3>3.3 Local Response Normalization<a class="headerlink" href="#local-response-normalization" title="Permalink to this heading">#</a></h3>
+<h3>3.3 Local Response Normalization<a class="headerlink" href="#local-response-normalization" title="Link to this heading">#</a></h3>
 <p>ReLUs have the desirable property that they do not require input normalization to prevent them from saturating. If at least some training examples produce a positive input to a ReLU, learning will happen in that neuron. However, we still find that the following local normalization scheme aids generalization. Denoting by aix,y the activity of a neuron computed by applying kernel i at position (x,y) and then applying the ReLU nonlinearity, the response-normalized activity bix,y is given by the expression</p>
 <p>ReLUs具有符合本文要求的一个性质：它不需要对输入进行归一化来防止饱和。只要一些训练样本产生一个正输入给一个ReLU，那么在那个神经元中学习就会开始。但是，我们还是发现如下的局部标准化方案有助于增加泛化性能。aix,y表示使用核i作用于(x,y)然后再采用ReLU非线性函数计算得到的活跃度，那么响应标准化活跃bix,y由以下公式计算出.</p>
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429205612275-1333567698.png" /></p>
@@ -497,12 +533,12 @@ The specific contributions of this paper are as follows: we trained one of the l
 <p>这个方案与Jarrett等[11]的局部对比度归一化方案有些相似，但本文更加准确的称呼为“亮度归一化”(brightness normalization)，因为本文没有减去平均活跃度。响应归一化将top-1和top-5的错误率分别降低了1.4%和1.2%。本文也在CIFAR-10数据集上验证了这个方案的有效性：一个四层的CNN网络在未归一化的情况下错误率是13%，在归一化的情况下是11%。</p>
 </section>
 <section id="overlapping-pooling">
-<h3>3.4 Overlapping Pooling<a class="headerlink" href="#overlapping-pooling" title="Permalink to this heading">#</a></h3>
+<h3>3.4 Overlapping Pooling<a class="headerlink" href="#overlapping-pooling" title="Link to this heading">#</a></h3>
 <p>Pooling layers in CNNs summarize the outputs of neighboring groups of neurons in the same kernel map. Traditionally, the neighborhoods summarized by adjacent pooling units do not overlap (e.g., [17, 11, 4]). To be more precise, a pooling layer can be thought of as consisting of a grid of pooling units spaced s pixels apart, each summarizing a neighborhood of size z×z centered at the location of the pooling unit. If we set s = z, we obtain traditional local pooling as commonly employed in CNNs. If we set s &lt; z, we obtain overlapping pooling. This is what we use throughout our network, with s = 2 and z = 3. This scheme reduces the top-1 and top-5 error rates by 0.4% and 0.3%, respectively, as compared with the non-overlapping scheme s = 2, z = 2, which produces output of equivalent dimensions. We generally observe during training that models with overlapping pooling find it slightly more difficult to overfit.</p>
 <p>CNNs中的池化层归纳了同一个核特征图中的相邻神经元组的输出。通常，由邻接池化单元归纳的邻域并不重叠（例如，[17,11,4]）。更确切地说，一个池化层可以被看作是包含了每间隔S个像素的池化单元的栅格组成，每一个都归纳了以池化单元为中心大小为Z x Z的邻域。如果令S=Z，将会得到CNNs通常采用的局部池化。如果我们设置s &lt;z，我们获得重叠池化。 这是我们在整个网络中使用的，s = 2和z = 3.与非重叠方案s =2, z= 2相比，该方案分别将top-1和top-5错误率分别降低0.4％和0.3％，产生等效尺寸的输出。 我们在训练期间观察到具有重叠池化的模型通常过度拟合稍微困难一些。</p>
 </section>
 <section id="overall-architecture">
-<h3>3.5 Overall Architecture<a class="headerlink" href="#overall-architecture" title="Permalink to this heading">#</a></h3>
+<h3>3.5 Overall Architecture<a class="headerlink" href="#overall-architecture" title="Link to this heading">#</a></h3>
 <p>Now we are ready to describe the overall architecture of our CNN. As depicted in Figure 2, the net contains eight layers with weights; the first five are convolutional and the remaining three are fully connected. The output of the last fully-connected layer is fed to a 1000-way softmax which produces a distribution over the 1000 class labels. Our network maximizes the multinomial logistic regression objective, which is equivalent to maximizing the average across training cases of the log-probability of the correct label under the prediction distribution.</p>
 <p>现在我们可以来描述本文CNN的整体结构。正如图2所示，这个网络包含八个有权值的层：前五层是卷积层，剩下的三层是全连接层。最后一个全连接层的输出传递给一个1000路的softmax层，这个softmax产生一个对1000类标签的分布。本文的网络最大化多项Logistic回归结果，也就是最大化训练集预测正确的标签的对数概率。</p>
 <p>The kernels of the second, fourth, and fifth convolutional layers are connected only to those kernel maps in the previous layer which reside on the same GPU (see Figure 2). The kernels of the third convolutional layer are connected to all kernel maps in the second layer. The neurons in the fully connected layers are connected to all neurons in the previous layer. Response-normalization layers follow the first and second convolutional layers. Max-pooling layers, of the kind described in Section 3.4, follow both response-normalization layers as well as the fifth convolutional layer. The ReLU non-linearity is applied to the output of every convolutional and fully-connected layer.</p>
@@ -512,11 +548,11 @@ The specific contributions of this paper are as follows: we trained one of the l
 </section>
 </section>
 <section id="reducing-overfitting">
-<h2>4 Reducing Overfitting<a class="headerlink" href="#reducing-overfitting" title="Permalink to this heading">#</a></h2>
+<h2>4 Reducing Overfitting<a class="headerlink" href="#reducing-overfitting" title="Link to this heading">#</a></h2>
 <p>Our neural network architecture has 60 million parameters. Although the 1000 classes of ILSVRC make each training example impose 10 bits of constraint on the mapping from image to label, this turns out to be insufficient to learn so many parameters without considerable overfitting. Below, we describe the two primary ways in which we combat overfitting.
 本文的神经网络结构有6千万个参数。尽管ILSVRC的1000个类别使得每一个训练样本利用10bit的数据就可以将图像映射到标签上，但是如果没有大量的过拟合，是不足以学习这么多参数的。接下来，本文描述了两种对抗过拟合的主要的方法。</p>
 <section id="data-augmentation">
-<h3>4.1 Data Augmentation<a class="headerlink" href="#data-augmentation" title="Permalink to this heading">#</a></h3>
+<h3>4.1 Data Augmentation<a class="headerlink" href="#data-augmentation" title="Link to this heading">#</a></h3>
 <p>The easiest and most common method to reduce overfitting on image data is to artificially enlarge the dataset using label-preserving transformations (e.g., [25, 4, 5]). We employ two distinct forms of data augmentation, both of which allow transformed images to be produced from the original images with very little computation, so the transformed images do not need to be stored on disk. In our implementation, the transformed images are generated in Python code on the CPU while the GPU is training on the previous batch of images. So these data augmentation schemes are, in effect, computationally free.
 降低图像数据过拟合的最简单常见的方法就是利用标签转换人为地增大数据集（例如，[25,4,5]）。本文采取两种不同的数据增强方式，这两种方式只需要少量的计算就可以从原图中产生转换图像，因此转换图像不需要存入磁盘。本文中利用GPU训练先前一批图像的同时，使用CPU运行Python代码生成转换图像。因此这些数据增强方法实际上是不用消耗计算资源的。</p>
 <p>The first form of data augmentation consists of generating image translations and horizontal reflections. We do this by extracting random 224×224 patches(and their horizontal reflections) from the 256×256 images and training our network on these extracted patches 4. This increases the size of our training set by a factor of 2048, though the resulting training examples are, of course, highly interdependent. Without this scheme, our network suffers from substantial overfitting, which would have forced us to use much smaller networks. At test time, the network makes a prediction by extracting five 224 × 224 patches (the four corner patches and the center patch) as well as their horizontal reflections (hence ten patches in all), and averaging the predictions made by the network’s softmax layer on the ten patches.</p>
@@ -529,7 +565,7 @@ The specific contributions of this paper are as follows: we trained one of the l
 <p>这里Pi,λi分别是RGB像素值的3x3协方差矩阵的第i个特征向量和特征值，αi是上述的随机变量。每一个αi的值对一幅特定的训练图像的所有像素是不变的，直到这幅图像再次用于训练，此时才又赋予αi新的值。这个方案得到了自然图像的一个重要的性质，也就是，改变光照的颜色和强度，目标的特性是不变的。这个方案将top-1错误率降低了1%。</p>
 </section>
 <section id="dropout">
-<h3>4.2 Dropout<a class="headerlink" href="#dropout" title="Permalink to this heading">#</a></h3>
+<h3>4.2 Dropout<a class="headerlink" href="#dropout" title="Link to this heading">#</a></h3>
 <p>Combining the predictions of many different models is a very successful way to reduce test errors [1, 3], but it appears to be too expensive for big neural networks that already take several days to train. There is, however, a very efficient version of model combination that only costs about a factor of two during training. The recently-introduced technique, called “dropout” [10], consists of setting to zero the output of each hidden neuron with probability 0.5. The neurons which are “dropped out” in this way do not contribute to the forward pass and do not participate in backpropagation. So every time an input is presented, the neural network samples a different architecture, but all these architectures share weights. This technique reduces complex co-adaptations of neurons, since a neuron cannot rely on the presence of particular other neurons. It is, therefore, forced to learn more robust features that are useful in conjunction with many different random subsets of the other neurons. At test time, we use all the neurons but multiply their outputs by 0.5, which is a reasonable approximation to taking the geometric mean of the predictive distributions produced by the exponentially-many dropout networks.</p>
 <p>结合多种不同模型的预测结果是一种可以降低测试误差的非常成功的方法[1,3]，但是这对于已经要花很多天来训练的大规模神经网络来说显得太耗费时间了。但是，有一种非常有效的模型结合的方法，训练时间只需要原先的两倍。最新研究的技术，叫做“dropout”[10]，它将每一个隐藏神经元的输出以50%的概率设为0。这些以这种方式被“踢出”的神经元不会参加前向传递，也不会加入反向传播。因此每次有输入时，神经网络采样一个不同的结构，但是所有这些结构都共享权值。这个技术降低了神经元之间复杂的联合适应性，因为一个神经元不是依赖于另一个特定的神经元的存在的。因此迫使要学到在连接其他神经元的多个不同随机子集的时候更鲁棒性的特征。在测试时，本文使用所有的神经元，但对其输出都乘以了0.5，对采用多指数dropout网络生成的预测分布的几何平均数来说这是一个合理的近似。</p>
 <p>We use dropout in the first two fully-connected layers of Figure2. Without dropout, our network exhibits substantial overfitting. Dropout roughly doubles the number of iterations required to converge.
@@ -537,7 +573,7 @@ The specific contributions of this paper are as follows: we trained one of the l
 </section>
 </section>
 <section id="details-of-learning">
-<h2>5 Details of learning<a class="headerlink" href="#details-of-learning" title="Permalink to this heading">#</a></h2>
+<h2>5 Details of learning<a class="headerlink" href="#details-of-learning" title="Link to this heading">#</a></h2>
 <p>We trained our models using stochastic gradient descent with a batch size of 128 examples, momentum of 0.9, and weight decay of 0.0005. We found that this small amount of weight decay was important for the model to learn. In other words, weight decay here is not merely a regularizer: it reduces the model’s training error. The update rule for weight w was</p>
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429210052541-1918180964.png" /></p>
 <p>where i is the iteration index,  is the momentum variable,  is the learning rate, and  is the average over the ith batch Di of the derivative of the objective with respect to w, evaluated at wi.
@@ -550,7 +586,7 @@ The specific contributions of this paper are as follows: we trained one of the l
 本文对所有层使用相同的学习速率，这个由在整个学习过程中手动地调整得到。我们采用启发式算法:当验证错误率停止降低就将当前学习速率除以10。本文的学习速率初始值设为0.01，在终止之前减小了三次。本文训练该网络对120万的图像训练集大约进行了90个周期，使用了两个NVIDIA GTX 580 3GB GPU，花费了5到6天的时间。</p>
 </section>
 <section id="results">
-<h2>6 Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<h2>6 Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
 <p>Our results on ILSVRC-2010 are summarized in Table 1. Our network achieves top-1 and top-5 test set error rates of 37.5% and 17.0%5. The best performance achieved during the ILSVRC2010 competition was 47.1% and 28.2% with an approach that averages the predictions produced from six sparse-coding models trained on different features [2], and since then the best published results are 45.7% and 25.7% with an approach that averages the predictions of two classifiers trained on Fisher Vectors (FVs) computed from two types of densely-sampled features [24].
 本文的在ILSVRC-2010上的结果见表1。本文网络的测试集top-1和top-5的错误率分别为37.5%和17.0%。在ILSVRC-2010比赛中最好的结果是47.1%和28.2%，采用的方法是对六个基于不同特征训练得到的稀疏编码模型的预测结果求平均数[2]，此后最好的结果是45.7%和25.7%，采用的方法是对基于从两种密集采样特征计算得到的Fisher向量（FVs），训练得到两个分类器，所得的预测结果求平均数[24]。</p>
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429210147793-472769871.png" /></p>
@@ -564,7 +600,7 @@ The specific contributions of this paper are as follows: we trained one of the l
 <p>Finally, we also report our error rates on the Fall 2009 version of ImageNet with 10,184 categories and 8.9 million images. On this dataset we follow the convention in the literature of using half of the images for training and half for testing. Since there is no established test set, our split necessarily differs from the splits used by previous authors, but this does not affect the results appreciably. Our top-1 and top-5 error rates on this dataset are 67.4% and 40.9%, attained by the net described above but with an additional, sixth convolutional layer over the last pooling layer. The best published results on this dataset are 78.1% and 60.9% [19].
 最后，我们也汇报了我们的基于包含10184钟类别890万张图像的Fall 2009的错误率。对于该数据集我们遵从文献中的约定：一半为训练集一半为测试集。由于没有确定的测试集，我们的分割必然与前面作者使用的不一样，但是这并不会明显地影响结果。我们在该数据集上得到top-1和top-5错误率分别为67.4%和40.9%，这个结果是由在上述网络的最后一个池化层加了第六层卷积层所得到的。之前在这个数据集上最好的结果是78.1%和60.9%[19]。</p>
 <section id="qualitative-evaluations">
-<h3>6.1 Qualitative Evaluations<a class="headerlink" href="#qualitative-evaluations" title="Permalink to this heading">#</a></h3>
+<h3>6.1 Qualitative Evaluations<a class="headerlink" href="#qualitative-evaluations" title="Link to this heading">#</a></h3>
 <p>Figure 3 shows the convolutional kernels learned by the network’s two data-connected layers. The network has learned a variety of frequency-and orientation-selective kernels, as well as various colored blobs. Notice the specialization exhibited by the two GPUs, a result of the restricted connectivity described in Section 3.5. The kernels on GPU 1 are largely color-agnostic, while the kernels on on GPU 2 are largely color-specific. This kind of specialization occurs during every run and is independent of any particular random weight initialization (modulo a renumbering of the GPUs).
 图3表示由网络的两个数据连接层学习到的卷积核。该网络已经学习到了各种各样的具有频率、方向选择性的核以及多种着色斑块。注意到两个GPU展现出的特殊化，这是3.5节描述的限制连接的结果。GPU1上的核大部分颜色不可知，而GPU2上的核大部分有颜色。这种特殊化每一次运行时都会发生，并且独立于任何特定随机权值初始化（模除GPU的重编号）。</p>
 <p><img alt="" src="https://img2022.cnblogs.com/blog/1571518/202204/1571518-20220429210307163-83883366.png" /></p>
@@ -582,14 +618,14 @@ Computing similarity by using Euclidean distance between two 4096-dimensional, r
 </section>
 </section>
 <section id="discussion">
-<h2>7 Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h2>
+<h2>7 Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h2>
 <p>Our results show that a large, deep convolutional neural network is capable of achieving record breaking results on a highly challenging dataset using purely supervised learning. It is notable that our network’s performance degrades if a single convolutional layer is removed. For example, removing any of the middle layers results in a loss of about 2% for the top-1 performance of the network. So the depth really is important for achieving our results.
 本文的结果表明一个大规模深度卷积神经网络在具有高度挑战性的数据集上仅用监督学习就能够获得破纪录的好结果。值得注意的是如果一个卷积层被移除则本文的网络性能会降低。例如，移除任一个中间层，网络的top-1性能会降低大约2%。因此深度对本文的结果真的很重要。</p>
 <p>To simplify our experiments, we did not use any unsupervised pre-training even though we expect that it will help, especially if we obtain enough computational power to significantly increase the size of the network without obtaining a corresponding increase in the amount of labeled data. Thus far, our results have improved as we have made our network larger and trained it longer but we still have many orders of magnitude to go in order to match the infero-temporal pathway of the human visual system. Ultimately we would like to use very large and deep convolutional nets on video sequences where the temporal structure provides very helpful information that is missing or far less obvious in static images.
 为了简化本文的实验，我们没有使用任何非监督预训练即使我们认为它会起作用，尤其是我们可以在标签数据没有发生相应增长的情况下，获得足够的计算资源来增大我们网络的大小，能够有足够的计算能力去显著地增加网络的大小。迄今，由于我们使用了更大的网络，训练了更长的时间，本文的结果已经有所提高，但我们仍然有很多需求来进行时空下人类视觉系统的研究。最终我们想要将非常大规模地深度卷积网络应用于视频序列的处理，视频序列中的时间结构提供了许多有用的信息，而这些信息在静态图中丢失了或者不是很明显。</p>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <p>[1] R.M.BellandY.Koren.Lessons from the net ﬂixprize challenge. ACM SIG KDD Explorations News letter, 9(2):75–79, 2007.
 [2] A. Berg, J. Deng, and L. Fei-Fei. Large scale visual recognition challenge 2010. www.imagenet.org/challenges. 2010.
 [3] L. Breiman. Random forests. Machine learning, 45(1):5–32, 2001.
@@ -625,8 +661,10 @@ Computing similarity by using Euclidean distance between two 4096-dimensional, r
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -636,6 +674,7 @@ Computing similarity by using Euclidean distance between two 4096-dimensional, r
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -674,7 +713,7 @@ Computing similarity by using Euclidean distance between two 4096-dimensional, r
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -687,6 +726,7 @@ By isLinXu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022, isLinXu.
@@ -704,7 +744,7 @@ By isLinXu
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -713,8 +753,8 @@ By isLinXu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>论文复现赛指南-NLP方向 &#8212; 论文阅读笔记</title>
   
@@ -19,33 +18,32 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Implementation/articlereproduction_nlp';</script>
-    <link rel="shortcut icon" href="../_static/panda.png"/>
+    <link rel="icon" href="../_static/panda.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -57,7 +55,15 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -92,11 +98,14 @@
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -111,9 +120,11 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../index.html">
+  
   
   
   
@@ -123,12 +134,23 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="nav bd-sidenav">
@@ -167,7 +189,17 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Notes/index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+
+
+
+
+
+
+
+
+
 <li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -356,20 +388,22 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -477,17 +511,17 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="nlp">
-<h1>论文复现赛指南-NLP方向<a class="headerlink" href="#nlp" title="Permalink to this heading">#</a></h1>
+<h1>论文复现赛指南-NLP方向<a class="headerlink" href="#nlp" title="Link to this heading">#</a></h1>
 <blockquote>
 <div><p>本文为针对 <code class="docutils literal notranslate"><span class="pre">NLP</span></code> 方向的复现赛指南</p>
 <p>如果希望查阅 <code class="docutils literal notranslate"><span class="pre">CV</span></code> 方向的复现赛指南，可以参考：<a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_CV.md">CV方向论文复现赛指南</a></p>
 <p>如果希望查阅 <code class="docutils literal notranslate"><span class="pre">推荐</span></code> 方向的复现赛指南，可以参考：<a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/ArticleReproduction_REC.md">推荐方向论文复现赛指南</a></p>
 </div></blockquote>
 <section id="id1">
-<h2>目录<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>目录<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>\1. 总览</p>
 <ul>
@@ -538,9 +572,9 @@ document.write(`
 </ul>
 </section>
 <section id="id2">
-<h2>1. 总览<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>1. 总览<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="id3">
-<h3>1.1 背景<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3>1.1 背景<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>以深度学习为核心的人工智能技术仍在高速发展，通过论文复现，开发者可以获得</p>
 <ul>
@@ -552,7 +586,7 @@ document.write(`
 </ul>
 </section>
 <section id="id4">
-<h3>1.2 前序工作<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>1.2 前序工作<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>基于本指南复现论文过程中，建议开发者准备以下内容。</p>
 <ul class="simple">
 <li><p>了解该模型输入输出格式。以BERT的情感分类任务为例，通过阅读论文与参考代码，了解到模型输入为<code class="docutils literal notranslate"><span class="pre">[batch_size,</span> <span class="pre">sequence_length]</span></code>的tensor，类型为<code class="docutils literal notranslate"><span class="pre">int64</span></code>，label为<code class="docutils literal notranslate"><span class="pre">[batch,</span> <span class="pre">]</span></code>的label，类型为<code class="docutils literal notranslate"><span class="pre">int64</span></code>。</p></li>
@@ -572,9 +606,9 @@ document.write(`
 </section>
 </section>
 <section id="id5">
-<h2>2. 整体框图<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2>2. 整体框图<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <section id="id6">
-<h3>2.1 流程概览<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>2.1 流程概览<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>面对一篇自然语言处理的论文，复现该论文的整体流程如下图所示。</p>
 <p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/images/framework_reprodcv.png"><img alt="图片" src="https://github.com/PaddlePaddle/models/raw/release/2.2/docs/lwfx/images/framework_reprodcv.png" /></a></p>
 <p>总共包含12个步骤。为了高效复现论文，设置了6个验收节点。如上图中黄色框所示。后续章节会详细介绍上述步骤和验收节点，具体内容安排如下：</p>
@@ -584,9 +618,9 @@ document.write(`
 </ul>
 </section>
 <section id="reprod-log-whl">
-<h3>2.2 reprod_log whl包<a class="headerlink" href="#reprod-log-whl" title="Permalink to this heading">#</a></h3>
+<h3>2.2 reprod_log whl包<a class="headerlink" href="#reprod-log-whl" title="Link to this heading">#</a></h3>
 <section id="reprod-log">
-<h4>2.2.1 reprod_log工具简介<a class="headerlink" href="#reprod-log" title="Permalink to this heading">#</a></h4>
+<h4>2.2.1 reprod_log工具简介<a class="headerlink" href="#reprod-log" title="Link to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">reprod_log</span></code>是用于论文复现赛中辅助自查和验收工具。该工具源代码地址在：https://github.com/WenmuZhou/reprod_log。主要功能如下：</p>
 <ul class="simple">
 <li><p>存取指定节点的输入输出tensor</p></li>
@@ -597,7 +631,7 @@ document.write(`
 <p>更多API与使用方法可以参考：<a class="reference external" href="https://github.com/WenmuZhou/reprod_log/blob/master/README.md">reprod_log API使用说明</a>。</p>
 </section>
 <section id="reprod-logdemo">
-<h4>2.2.2 reprod_log使用demo<a class="headerlink" href="#reprod-logdemo" title="Permalink to this heading">#</a></h4>
+<h4>2.2.2 reprod_log使用demo<a class="headerlink" href="#reprod-logdemo" title="Link to this heading">#</a></h4>
 <p>下面基于代码：https://github.com/JunnYu/BERT-SST2-Prod/tree/main/pipeline/reprod_log_demo，给出如何使用该工具。</p>
 <p>文件夹中包含<code class="docutils literal notranslate"><span class="pre">write_log.py</span></code>和<code class="docutils literal notranslate"><span class="pre">check_log_diff.py</span></code>文件，其中<code class="docutils literal notranslate"><span class="pre">write_log.py</span></code>中给出了<code class="docutils literal notranslate"><span class="pre">ReprodLogger</span></code>类的使用方法，<code class="docutils literal notranslate"><span class="pre">check_log_diff.py</span></code>给出了<code class="docutils literal notranslate"><span class="pre">ReprodDiffHelper</span></code>类的使用方法，依次运行两个python文件，使用下面的方式运行代码。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># 进入文件夹</span>
@@ -619,7 +653,7 @@ document.write(`
 <p>可以看出：对于key为<code class="docutils literal notranslate"><span class="pre">demo_test_1</span></code>的矩阵，由于diff为0，小于设置的阈值<code class="docutils literal notranslate"><span class="pre">1e-6</span></code>，核验成功；对于key为<code class="docutils literal notranslate"><span class="pre">demo_test_2</span></code>的矩阵，由于diff为0.33，大于设置的阈值<code class="docutils literal notranslate"><span class="pre">1e-6</span></code>，核验失败。</p>
 </section>
 <section id="id7">
-<h4>2.2.3 reprod_log在论文复现中应用<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<h4>2.2.3 reprod_log在论文复现中应用<a class="headerlink" href="#id7" title="Link to this heading">#</a></h4>
 <p>在论文复现中，基于reprod_log的结果记录模块，产出下面若干文件</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>log_reprod
 ├── forward_paddle.npy
@@ -649,9 +683,9 @@ document.write(`
 </section>
 </section>
 <section id="id8">
-<h2>3. 论文复现理论知识及实战<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h2>3. 论文复现理论知识及实战<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <section id="id9">
-<h3>3.1 模型结构对齐<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3>3.1 模型结构对齐<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>对齐模型结构时，一般有3个主要步骤：</p>
 <ul class="simple">
 <li><p>网络结构代码转换</p></li>
@@ -660,7 +694,7 @@ document.write(`
 </ul>
 <p>下面详细介绍这3个部分。</p>
 <section id="id10">
-<h4>3.1.1 网络结构代码转换<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
+<h4>3.1.1 网络结构代码转换<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <p><strong>【基本流程】</strong></p>
 <p>由于PyTorch的API和PaddlePaddle的API非常相似，可以参考<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/08_api_mapping/pytorch_api_mapping_cn.html">PyTorch-PaddlePaddle API映射表</a> ，组网部分代码直接进行手动转换即可。</p>
 <p><strong>【注意事项】</strong></p>
@@ -670,7 +704,7 @@ document.write(`
 <p>对应转换后的PaddlePaddle实现: <a class="reference external" href="https://github.com/PaddlePaddle/PaddleNLP/blob/develop/paddlenlp/transformers/bert/modeling.py">paddlenlp-bert</a></p>
 </section>
 <section id="id11">
-<h4>3.1.2 权重转换<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<h4>3.1.2 权重转换<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
 <p><strong>【基本流程】</strong></p>
 <p>组网代码转换完成之后，需要对模型权重进行转换，如果PyTorch repo中已经提供权重，那么可以直接下载并进行后续的转换；如果没有提供，则可以基于PyTorch代码，随机生成一个初始化权重(定义完model以后，使用<code class="docutils literal notranslate"><span class="pre">torch.save()</span></code> API保存模型权重)，然后进行权重转换。</p>
 <p><strong>【注意事项】</strong></p>
@@ -791,7 +825,7 @@ document.write(`
 <p>运行完成之后，会在当前目录生成<code class="docutils literal notranslate"><span class="pre">model_state.pdparams</span></code>文件，即为转换后的PaddlePaddle预训练模型。 <strong>Tips</strong>: 由于paddlenlp中已有转换后的bert-base-uncased模型，因此可以一键加载，程序会自动下载对应权重！</p>
 </section>
 <section id="id12">
-<h4>3.1.3 模型组网正确性验证<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<h4>3.1.3 模型组网正确性验证<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
 <p><strong>【基本流程】</strong></p>
 <ol class="arabic simple">
 <li><p>定义PyTorch模型，加载权重，固定seed，基于numpy生成随机数，转换为PyTorch可以处理的tensor，送入网络，获取输出，使用reprod_log保存结果。</p></li>
@@ -832,7 +866,7 @@ document.write(`
 </section>
 </section>
 <section id="id13">
-<h3>3.2 验证/测试集数据读取对齐<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3>3.2 验证/测试集数据读取对齐<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p><strong>【基本流程】</strong></p>
 <p>对于一个数据集，一般有以下一些信息需要重点关注</p>
 <ul class="simple">
@@ -860,7 +894,7 @@ document.write(`
 <p>使用方法可以参考<a class="reference external" href="https://github.com/JunnYu/BERT-SST2-Prod/blob/main/pipeline/Step2/README.md">数据检查文档</a>。</p>
 </section>
 <section id="id14">
-<h3>3.3 评估指标对齐<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<h3>3.3 评估指标对齐<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <p><strong>【基本流程】</strong></p>
 <p>PaddlePaddle提供了一系列Metric计算类，比如说<code class="docutils literal notranslate"><span class="pre">Accuracy</span></code>, <code class="docutils literal notranslate"><span class="pre">Auc</span></code>, <code class="docutils literal notranslate"><span class="pre">Precision</span></code>, <code class="docutils literal notranslate"><span class="pre">Recall</span></code>等，而PyTorch中，目前可以通过组合的方式实现metric计算，或者调用<a class="reference external" href="https://huggingface.co/docs/datasets/about_metrics.html?highlight=metric">huggingface-datasets</a>，在论文复现的过程中，需要注意保证对于该模块，给定相同的输入，二者输出完全一致。具体流程如下。</p>
 <ol class="arabic simple">
@@ -893,7 +927,7 @@ document.write(`
 </ol>
 </section>
 <section id="id15">
-<h3>3.4 损失函数对齐<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<h3>3.4 损失函数对齐<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <p><strong>【基本流程】</strong></p>
 <p>PaddlePaddle与PyTorch均提供了很多loss function，用于模型训练，具体的API映射表可以参考：<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/guides/08_api_mapping/pytorch_api_mapping_cn.html#lossapi">Loss类API映射列表</a>。以CrossEntropyLoss为例，主要区别为：</p>
 <ul class="simple">
@@ -926,7 +960,7 @@ document.write(`
 </ol>
 </section>
 <section id="id16">
-<h3>3.5 优化器对齐<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<h3>3.5 优化器对齐<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p><strong>【基本流程】</strong></p>
 <p>PaddlePaddle中的optimizer有<code class="docutils literal notranslate"><span class="pre">paddle.optimizer</span></code>等一系列实现，PyTorch中则有<code class="docutils literal notranslate"><span class="pre">torch.Optim</span></code>等一系列实现。</p>
 <p><strong>【注意事项】</strong></p>
@@ -939,7 +973,7 @@ document.write(`
 <p>本部分对齐建议对照<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/optimizer/Overview_cn.html">PaddlePaddle优化器API文档</a>与参考代码的优化器实现进行对齐，用之后的反向对齐统一验证该模块的正确性。</p>
 </section>
 <section id="id17">
-<h3>3.6 学习率对齐<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<h3>3.6 学习率对齐<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <p><strong>【基本流程】</strong></p>
 <ul class="simple">
 <li><p>学习率策略主要用于指定训练过程中的学习率变化曲线，这里可以将定义好的学习率策略，不断step，即可得到对应的学习率值，可以将学习率值保存在列表或者矩阵中，使用<code class="docutils literal notranslate"><span class="pre">reprod_log</span></code>工具判断二者是否对齐。</p></li>
@@ -950,7 +984,7 @@ document.write(`
 <p>学习率复现对齐，可以参考代码：<a class="reference external" href="https://github.com/JunnYu/BERT-SST2-Prod/blob/main/pipeline/Step4/README.md#%E5%AD%A6%E4%B9%A0%E7%8E%87%E5%AF%B9%E9%BD%90%E9%AA%8C%E8%AF%81">学习率对齐验证文档</a>。</p>
 </section>
 <section id="id18">
-<h3>3.7 正则化策略对齐<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<h3>3.7 正则化策略对齐<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <p><strong>【基本流程】</strong></p>
 <p>L2正则化策略用于模型训练，可以防止模型对训练数据过拟合，L1正则化可以用于得到稀疏化的权重矩阵，PaddlePaddle中有<code class="docutils literal notranslate"><span class="pre">paddle.regularizer.L1Decay</span></code>与<code class="docutils literal notranslate"><span class="pre">paddle.regularizer.L2Decay</span></code> API。PyTorch中，torch.optim集成的优化器只有L2正则化方法，直接在构建optimizer的时候，传入<code class="docutils literal notranslate"><span class="pre">weight_decay</span></code>参数即可。</p>
 <p><strong>【注意事项】</strong></p>
@@ -962,7 +996,7 @@ document.write(`
 <p>本部分对齐建议对照<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/regularizer/L2Decay_cn.html">PaddlePaddle正则化API文档</a>与参考代码的优化器实现进行对齐，用之后的反向对齐统一验证该模块的正确性。</p>
 </section>
 <section id="id19">
-<h3>3.8 反向对齐<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h3>
+<h3>3.8 反向对齐<a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
 <p><strong>【基本流程】</strong></p>
 <p>此处可以通过numpy生成假的数据和label（推荐），也可以准备固定的真实数据。具体流程如下。</p>
 <ol class="arabic simple">
@@ -1034,7 +1068,7 @@ document.write(`
 </ol>
 </section>
 <section id="id20">
-<h3>3.9 训练集数据读取对齐<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
+<h3>3.9 训练集数据读取对齐<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
 <p><strong>【基本流程】</strong></p>
 <p>该部分内容与3.2节内容基本一致，参考PyTorch的代码，实现训练集数据读取与预处理模块即可。</p>
 <p><strong>【注意事项】</strong></p>
@@ -1057,7 +1091,7 @@ document.write(`
 </div>
 </section>
 <section id="id21">
-<h3>3.10 网络初始化对齐<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
+<h3>3.10 网络初始化对齐<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
 <p><strong>【基本流程】</strong></p>
 <ul class="simple">
 <li><p>下面给出了部分初始化API的映射表。</p></li>
@@ -1091,7 +1125,7 @@ document.write(`
 <p>本部分对齐建议对照<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/nn/Overview_cn.html#chushihuaxiangguan">PaddlePaddle 初始化API文档</a>与参考代码的初始化实现对齐。</p>
 </section>
 <section id="id22">
-<h3>3.11 模型训练对齐<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h3>
+<h3>3.11 模型训练对齐<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
 <p><strong>【基本流程】</strong></p>
 <p>完成前面的步骤之后，就可以开始全量数据的训练对齐任务了。按照下面的步骤进行训练对齐。</p>
 <ol class="arabic simple">
@@ -1130,10 +1164,10 @@ document.write(`
 </ol>
 </section>
 <section id="id23">
-<h3>3.12 单机多卡训练<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h3>
+<h3>3.12 单机多卡训练<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
 <p>如果希望使用单机多卡提升训练效率，可以从以下几个过程对代码进行修改。</p>
 <section id="id24">
-<h4>3.12.1 数据读取<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h4>
+<h4>3.12.1 数据读取<a class="headerlink" href="#id24" title="Link to this heading">#</a></h4>
 <p>对于PaddlePaddle来说，多卡数据读取这块主要的变化在sampler</p>
 <p>对于单机单卡，sampler实现方式如下所示。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">train_sampler</span> <span class="o">=</span> <span class="n">paddle</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">RandomSampler</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
@@ -1153,7 +1187,7 @@ document.write(`
 <p>注意：在这种情况下，单机多卡的代码仍然能够以单机单卡的方式运行，因此建议以这种sampler方式进行论文复现。</p>
 </section>
 <section id="id25">
-<h4>3.12.2 多卡模型初始化<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h4>
+<h4>3.12.2 多卡模型初始化<a class="headerlink" href="#id25" title="Link to this heading">#</a></h4>
 <p>如果以多卡的方式运行，需要初始化并行训练环境，代码如下所示。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">paddle</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">get_world_size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">paddle</span><span class="o">.</span><span class="n">distributed</span><span class="o">.</span><span class="n">init_parallel_env</span><span class="p">()</span>
@@ -1166,11 +1200,11 @@ document.write(`
 </div>
 </section>
 <section id="id26">
-<h4>3.12.3 模型保存、日志保存等其他模块<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h4>
+<h4>3.12.3 模型保存、日志保存等其他模块<a class="headerlink" href="#id26" title="Link to this heading">#</a></h4>
 <p>以模型保存为例，我们只需要在0号卡上保存即可，否则多个trainer同时保存的话，可能会造成写冲突，导致最终保存的模型不可用。</p>
 </section>
 <section id="id27">
-<h4>3.12.4 程序启动方式<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h4>
+<h4>3.12.4 程序启动方式<a class="headerlink" href="#id27" title="Link to this heading">#</a></h4>
 <p>对于单机单卡或者单机多卡的启动脚本可以参考：https://github.com/PaddlePaddle/PaddleNLP/tree/develop/examples/language_model/bert</p>
 <p>对于单机单卡，启动脚本如下所示</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">unset</span> <span class="n">CUDA_VISIBLE_DEVICES</span>
@@ -1212,7 +1246,7 @@ document.write(`
 </section>
 </section>
 <section id="tipc">
-<h3>3.13 TIPC基础链条测试接入<a class="headerlink" href="#tipc" title="Permalink to this heading">#</a></h3>
+<h3>3.13 TIPC基础链条测试接入<a class="headerlink" href="#tipc" title="Link to this heading">#</a></h3>
 <p><strong>【基本流程】</strong></p>
 <ul class="simple">
 <li><p>完成模型的训练、导出inference、基于PaddleInference的推理过程的文档与代码。参考链接：</p>
@@ -1237,10 +1271,10 @@ document.write(`
 </section>
 </section>
 <section id="faq">
-<h2>4. 论文复现注意事项与FAQ<a class="headerlink" href="#faq" title="Permalink to this heading">#</a></h2>
+<h2>4. 论文复现注意事项与FAQ<a class="headerlink" href="#faq" title="Link to this heading">#</a></h2>
 <p>本部分主要总结大家在论文复现赛过程中遇到的问题，如果本章内容没有能够解决你的问题，欢迎给该文档提出优化建议或者给Paddle提<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/new/choose">ISSUE</a>。</p>
 <section id="id28">
-<h3>4.1 通用注意事项<a class="headerlink" href="#id28" title="Permalink to this heading">#</a></h3>
+<h3>4.1 通用注意事项<a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>需要仔细对照PaddlePaddle与参考代码的优化器参数实现，确保优化器参数严格对齐。</p></li>
 <li><p>如果遇到一些Paddle不支持的API操作，可以尝试使用替代实现进行复现。如下面的PyTorch代码，PaddlePaddle中可以通过slice + concat API的组合形式进行功能实现。同时，对于这个问题，建议优先给Paddle提<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/new/choose">ISSUE</a>，列出Paddle不支持的实现，开发人员会根据优先级进行开发。</p></li>
@@ -1265,9 +1299,9 @@ document.write(`
 </ul>
 </section>
 <section id="id29">
-<h3>4.2 模型结构对齐<a class="headerlink" href="#id29" title="Permalink to this heading">#</a></h3>
+<h3>4.2 模型结构对齐<a class="headerlink" href="#id29" title="Link to this heading">#</a></h3>
 <section id="api">
-<h4>4.2.1 API<a class="headerlink" href="#api" title="Permalink to this heading">#</a></h4>
+<h4>4.2.1 API<a class="headerlink" href="#api" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>对于 <code class="docutils literal notranslate"><span class="pre">paddle.nn.Linear</span></code> 层的weight参数，PaddlePaddle与PyTorch的保存方式不同，在转换时需要进行转置，示例代码可以参考<a class="reference external" href="https://github.com/JunnYu/BERT-SST2-Prod/blob/main/pipeline/weights/torch2paddle.py">BERT权重转换脚本</a>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">torch.masked_fill</span></code>函数的功能目前可以使用<code class="docutils literal notranslate"><span class="pre">paddle.where</span></code>进行实现，可以参考：<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/faq/train_cn.html#paddletorch-masked-fillapi">链接</a>。</p></li>
@@ -1275,14 +1309,14 @@ document.write(`
 </ul>
 </section>
 <section id="id30">
-<h4>4.2.2 权重转换<a class="headerlink" href="#id30" title="Permalink to this heading">#</a></h4>
+<h4>4.2.2 权重转换<a class="headerlink" href="#id30" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>在权重转换的时候，不能只关注参数的名称，比如说有些<code class="docutils literal notranslate"><span class="pre">paddle.nn.Linear</span></code>层，但是定义的变量名称为<code class="docutils literal notranslate"><span class="pre">conv</span></code>，这种也是需要进行权重转置的。</p></li>
 <li><p>权重转换时，建议同时打印 Paddle 和 PyTorch 对应权重的shape，以防止名称相似但是shape不同的参数权重转换报错。</p></li>
 </ul>
 </section>
 <section id="id31">
-<h4>4.2.3 模型组网正确性验证<a class="headerlink" href="#id31" title="Permalink to this heading">#</a></h4>
+<h4>4.2.3 模型组网正确性验证<a class="headerlink" href="#id31" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>在论文复现的过程中，可能会遇到一些经典的模型结构，比如Transformer等，Paddle官方也提供了Transformer的实现，但是这里建议自己根据PyTorch代码重新实现一遍，一方面是对整体的模型结构更加熟悉，另一方面也保证模型结构和权重完全对齐。</p></li>
 <li><p>在复杂的网络结构中，如果前向结果对不齐，可以按照模块排查问题，比如依次获取embedding、transformer-block、mlm-head输出等，看下问题具体出现在哪个子模块，再进到子模块详细排查。</p></li>
@@ -1291,20 +1325,20 @@ document.write(`
 </section>
 </section>
 <section id="id32">
-<h3>4.3 验证/测试集数据读取对齐<a class="headerlink" href="#id32" title="Permalink to this heading">#</a></h3>
+<h3>4.3 验证/测试集数据读取对齐<a class="headerlink" href="#id32" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>需要仔细排查数据预处理，不仅包含的预处理方法相同，也需要保证预处理的流程相同，比如padding策略不同和截断策略的不同会导致得到最终的结果是不同的。</p></li>
 </ul>
 </section>
 <section id="id33">
-<h3>4.4 评估指标对齐<a class="headerlink" href="#id33" title="Permalink to this heading">#</a></h3>
+<h3>4.4 评估指标对齐<a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>真实数据评估时，需要注意评估时 <code class="docutils literal notranslate"><span class="pre">paddle.io.DataLoader</span></code> 的 <code class="docutils literal notranslate"><span class="pre">drop_last</span></code> 参数是否打开(文档<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/io/DataLoader_cn.html#dataloader">链接</a>)，复现代码需要与参考代码保持一致，否则最后不够batch-size的数据的评估会有diff。</p></li>
 <li><p>在识别或者检索过程中，为了加速评估过程，往往会将评估函数由CPU实现改为GPU实现，由此会带来评估函数输出的不一致。这是由于sort函数对于相同值的排序结果不同带来的。在复现的过程中，如果可以接受轻微的指标不稳定，可以使用PaddlePaddle的sort函数，如果对于指标非常敏感，同时对速度性能要求很高，可以给PaddlePaddle提<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/new/choose">ISSUE</a>，由研发人员高优开发。</p></li>
 </ul>
 </section>
 <section id="id34">
-<h3>4.5 损失函数对齐<a class="headerlink" href="#id34" title="Permalink to this heading">#</a></h3>
+<h3>4.5 损失函数对齐<a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>部分算法的损失函数中会用到 bool 索引，这时候可以使用<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/api/paddle/where_cn.html#where">paddle.where</a> 代替。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">paddle.nn.CrossEntropyLoss</span></code> 默认是在最后一维(axis=-1)计算损失函数，而 <code class="docutils literal notranslate"><span class="pre">torch.nn.CrossEntropyLoss</span></code> 是在axis=1的地方计算损失函数，因此如果输入的维度大于2，这里需要保证计算的维(axis)相同，否则可能会出错。</p></li>
@@ -1325,7 +1359,7 @@ document.write(`
 </div>
 </section>
 <section id="id35">
-<h3>4.6 优化器对齐<a class="headerlink" href="#id35" title="Permalink to this heading">#</a></h3>
+<h3>4.6 优化器对齐<a class="headerlink" href="#id35" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Paddle目前支持在 <code class="docutils literal notranslate"><span class="pre">optimizer</span></code> 中通过设置 <code class="docutils literal notranslate"><span class="pre">params_groups</span></code> 的方式设置不同参数的更新方式，可以参考<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/blob/develop/python/paddle/optimizer/optimizer.py#L107">代码示例</a> 。</p></li>
 <li><p>有些模型训练时，会使用梯度累加策略，即累加到一定step数量之后才进行参数更新，这时在实现上需要注意对齐。</p></li>
@@ -1334,7 +1368,7 @@ document.write(`
 </ul>
 </section>
 <section id="id36">
-<h3>4.7 学习率对齐<a class="headerlink" href="#id36" title="Permalink to this heading">#</a></h3>
+<h3>4.7 学习率对齐<a class="headerlink" href="#id36" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>PaddlePaddle 中参数的学习率受到优化器学习率和<code class="docutils literal notranslate"><span class="pre">ParamAttr</span></code>中设置的学习率影响，因此跟踪学习率需要将二者结合进行跟踪。</p></li>
 <li><p>对于复现代码和参考代码，学习率在整个训练过程中在相同的轮数相同的iter下应该保持一致，可以通过<code class="docutils literal notranslate"><span class="pre">reprod_log</span></code>工具、打印学习率值或者可视化二者学习率的log来查看diff。</p></li>
@@ -1342,13 +1376,13 @@ document.write(`
 </ul>
 </section>
 <section id="id37">
-<h3>4.8 正则化策略对齐<a class="headerlink" href="#id37" title="Permalink to this heading">#</a></h3>
+<h3>4.8 正则化策略对齐<a class="headerlink" href="#id37" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>在如Transformer或者少部分CNN模型中，存在一些参数不做正则化(正则化系数为0)的情况。这里需要找到这些参数并对齐取消实施正则化策略，可以参考<a class="reference external" href="https://github.com/PaddlePaddle/PaddleClas/blob/release%2F2.3/ppcls/arch/backbone/model_zoo/resnest.py#L72">这里</a>，对特定参数进行修改。</p></li>
 </ul>
 </section>
 <section id="id38">
-<h3>4.9 反向对齐<a class="headerlink" href="#id38" title="Permalink to this heading">#</a></h3>
+<h3>4.9 反向对齐<a class="headerlink" href="#id38" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>反向对齐时，如果第二轮开始，loss开始无法对齐，则首先需要排查下超参数的差异，没问题的话，在<code class="docutils literal notranslate"><span class="pre">loss.backward()</span></code>方法之后，使用<code class="docutils literal notranslate"><span class="pre">tensor.grad</span></code>获取梯度值，二分的方法查找diff，定位出PaddlePaddle与PyTorch梯度无法对齐的API或者操作，然后进一步验证。第3章中给出了获取所有参数的梯度方法，如果只希望打印特定参数的梯度，可以用下面的方式。</p></li>
 </ul>
@@ -1368,15 +1402,15 @@ document.write(`
 </div>
 </section>
 <section id="id39">
-<h3>4.10 训练集数据读取对齐<a class="headerlink" href="#id39" title="Permalink to this heading">#</a></h3>
+<h3>4.10 训练集数据读取对齐<a class="headerlink" href="#id39" title="Link to this heading">#</a></h3>
 <section id="id40">
-<h4>4.10.1 API<a class="headerlink" href="#id40" title="Permalink to this heading">#</a></h4>
+<h4>4.10.1 API<a class="headerlink" href="#id40" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>在前向过程中，如果数据预处理过程运行出错，请先将 <code class="docutils literal notranslate"><span class="pre">paddle.io.DataLoader</span></code> 的 <code class="docutils literal notranslate"><span class="pre">num_workers</span></code> 参数设为0，然后根据单个进程下的报错日志定位出具体的bug。</p></li>
 </ul>
 </section>
 <section id="id41">
-<h4>4.10.2 数据预处理<a class="headerlink" href="#id41" title="Permalink to this heading">#</a></h4>
+<h4>4.10.2 数据预处理<a class="headerlink" href="#id41" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>如果数据处理过程中涉及到随机数生成，建议固定seed (<code class="docutils literal notranslate"><span class="pre">np.random.seed(0)</span></code>, <code class="docutils literal notranslate"><span class="pre">random.seed(0)</span></code>)，查看复现代码和参考代码处理后的数据是否有diff。</p></li>
 <li><p>对文本进行tokenizer处理时，需要确定文本的截断策略，padding策略。</p></li>
@@ -1384,16 +1418,16 @@ document.write(`
 </section>
 </section>
 <section id="id42">
-<h3>4.11 网络初始化对齐<a class="headerlink" href="#id42" title="Permalink to this heading">#</a></h3>
+<h3>4.11 网络初始化对齐<a class="headerlink" href="#id42" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>对于不同的深度学习框架，网络初始化在大多情况下，即使值的分布完全一致，也无法保证值完全一致，这里也是论文复现中不确定性比较大的地方。如果十分怀疑初始化导致的问题，建议将参考的初始化权重转成paddle模型，加载该初始化模型训练，看下收敛精度。</p></li>
 <li><p>CNN对于模型初始化相对来说没有那么敏感，在迭代轮数与数据集足够的情况下，最终精度指标基本接近；而transformer系列模型对于初始化比较敏感，在transformer系列模型训练对齐过程中，建议对这一块进行重点检查。</p></li>
 </ul>
 </section>
 <section id="id43">
-<h3>4.12 模型训练对齐<a class="headerlink" href="#id43" title="Permalink to this heading">#</a></h3>
+<h3>4.12 模型训练对齐<a class="headerlink" href="#id43" title="Link to this heading">#</a></h3>
 <section id="id44">
-<h4>4.12.1 训练对齐通用问题<a class="headerlink" href="#id44" title="Permalink to this heading">#</a></h4>
+<h4>4.12.1 训练对齐通用问题<a class="headerlink" href="#id44" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>有条件的话，复现工作之前最好先基于官方代码完成训练，保证与官方指标能够对齐，并且将训练策略和训练过程中的关键指标记录保存下来，比如每个epoch的学习率、Train Loss、Eval Loss、Eval Acc等，在复现网络的训练过程中，将关键指标保存下来，这样可以将两次训练中关键指标的变化曲线绘制出来，能够很方便的进行对比。</p></li>
 <li><p>训练过程中可以对loss或者acc进行可视化，和竞品loss或者acc进行直观的对比；如果训练较大的数据集，1次完整训练的成本比较高，此时可以隔一段时间查看一下，如果精度差异比较大，建议先停掉实验，排查原因。</p></li>
@@ -1415,14 +1449,14 @@ document.write(`
 </ul>
 </section>
 <section id="id45">
-<h4>4.12.2 细分场景特定问题<a class="headerlink" href="#id45" title="Permalink to this heading">#</a></h4>
+<h4>4.12.2 细分场景特定问题<a class="headerlink" href="#id45" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>小数据上指标波动可能比较大，时间允许的话，可以跑多次实验，取平均值。</p></li>
 </ul>
 </section>
 </section>
 <section id="id46">
-<h3>4.13 TIPC基础链条测试接入<a class="headerlink" href="#id46" title="Permalink to this heading">#</a></h3>
+<h3>4.13 TIPC基础链条测试接入<a class="headerlink" href="#id46" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>在接入时，建议将少量用于测试的数据打包(<code class="docutils literal notranslate"><span class="pre">tar</span> <span class="pre">-zcf</span> <span class="pre">lite_data.tar</span> <span class="pre">data/</span></code>)，放在data目录下，后续在进行环境准备的时候，直接解压该压缩包即可。</p></li>
 <li><p>接入过程中，需要依赖于inference模型，因此建议首先提供模型导出和基于inference模型的预测脚本，之后再接入TIPC测试代码与文档。</p></li>
@@ -1437,8 +1471,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -1448,6 +1484,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1535,7 +1572,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1548,6 +1585,7 @@ By isLinXu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022, isLinXu.
@@ -1565,7 +1603,7 @@ By isLinXu
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1574,8 +1612,8 @@ By isLinXu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,0 +1,607 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>YOLOv1 &#8212; 论文阅读笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/detection/YOLOv1';</script>
+    <link rel="icon" href="../../_static/panda.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="YOLOv2" href="YOLOv2.html" />
+    <link rel="prev" title="Cascade-RCNN" href="Cascade-RCNN.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/how_to_read_paper.html">如何阅读论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/paper_10_question.html">论文速读十问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/read_important_tips.html">读论文与口头报告的几项重点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/reference.html">参考材料</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../List/index.html">论文阅读清单</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../List/basis.html">神经网络基础(basis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/attention.html">注意力部分(attention)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/batch_normalization.html">批量&amp;正则化(batch&amp;normalization)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/classification.html">图像分类(CLAS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/convolutional.html">高级卷积网络知识(Convolutional)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/gan.html">AI合成部分(GAN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/nlp.html">自然语言处理(NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/objectdetection.html">目标检测(OBJ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/rnn.html">循环神经网络(RNN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/segementation.html">目标分割(SEG)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/transformer.html">Transformer</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/multimodal.html">多模态(MultiModal Learning)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/llm.html">大语言模型(Large Language Models)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v3.html">GPT-v3:Language Models are Few-Shot Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6: A Single-Stage Object Detection Framework for Industrial Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOF.html">YOLOF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOP.html">YOLOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6 v3.0: A Full-Scale Reloading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/detection/YOLOv1.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/detection/YOLOv1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Notes/detection/YOLOv1.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>YOLOv1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="yolov1">
+<h1>YOLOv1<a class="headerlink" href="#yolov1" title="Link to this heading">#</a></h1>
+<p><strong>标题：</strong> You Only Look Once: Unified, Real-Time Object Detection</p>
+<p><strong>作者：</strong> Joseph Redmon, Santosh Divvala, Ross Girshick, Ali Farhadi</p>
+<p><strong>单位：</strong> University of Washington, Allen Institute for AI, Facebook AI Research</p>
+<p><strong>网址：</strong> http://pjreddie.com/yolo/</p>
+<p><strong>摘要：</strong>
+本文提出了一种新的目标检测方法，称为YOLO（You Only Look Once）。与传统的目标检测方法不同，YOLO将目标检测视为一个回归问题，直接从图像像素到边界框坐标和类别概率。YOLO使用单个神经网络直接从整幅图像中预测边界框和类别概率。由于整个检测流程是一个单一的网络，它可以在检测性能上进行端到端的直接优化。YOLO的统一架构非常快速，基础YOLO模型以45帧每秒的速度实时处理图像。一个更小版本的网络，Fast YOLO，以155帧每秒处理图像，同时仍然达到其他实时检测器平均精度（mAP）的两倍。与最先进的检测系统相比，YOLO在定位上可能会犯更多错误，但在背景上预测误报的可能性较小。最后，YOLO学习到的是非常通用的目标表示。在从自然图像泛化到其他领域（如艺术品）时，YOLO的表现超过了其他检测方法，包括DPM和R-CNN。</p>
+<p><strong>1、这篇论文试图解决什么问题：</strong>
+论文试图解决目标检测领域的实时性和准确性问题。传统的目标检测方法通常需要复杂的流程和多个独立训练的组件，这使得它们在速度和优化上存在限制。YOLO旨在通过单一神经网络实现快速且准确的目标检测。</p>
+<p><strong>2、这是否是一个新的问题：</strong>
+这不是一个全新的问题，目标检测是计算机视觉中长期存在的研究问题。然而，YOLO提出了一种新的解决方案，即通过单一网络实现实时目标检测，这在当时是具有创新性的。</p>
+<p><strong>3、这篇文章要验证一个什么科学假设：</strong>
+文章的核心科学假设是，通过将目标检测框架为一个回归问题，并使用单一神经网络进行端到端的训练，可以创建一个既快速又准确的目标检测系统。</p>
+<p><strong>4、有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</strong>
+相关研究包括：</p>
+<ul class="simple">
+<li><p>Deformable Parts Models (DPM)</p></li>
+<li><p>R-CNN系列（包括Fast R-CNN和Faster R-CNN）</p></li>
+<li><p>OverFeat</p></li>
+<li><p>MultiBox
+这些研究可以归类为使用深度学习进行目标检测的不同方法。领域内值得关注的研究员包括Joseph Redmon、Ross Girshick、Ali Farhadi等。</p></li>
+</ul>
+<p><strong>5、论文中提到的解决方案之关键是什么：</strong>
+解决方案的关键是将目标检测作为图像像素到边界框坐标和类别概率的回归问题，并使用单个卷积神经网络（CNN）进行端到端的训练。</p>
+<p><strong>6、论文中的实验是如何设计的：</strong>
+实验设计包括在PASCAL VOC数据集上评估YOLO与其他实时检测系统的性能和速度。此外，还包括对Fast R-CNN检测结果使用YOLO进行重分（rescoring）的实验，以及在艺术品数据集上测试YOLO的泛化能力。</p>
+<p><strong>7、用于定量评估的数据集上什么？代码有没有开源？</strong>
+用于定量评估的数据集包括PASCAL VOC 2007和VOC 2012。代码已经开源，可以在论文提供的网址上找到。</p>
+<p><strong>8、论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong>
+是的，实验结果支持了科学假设。YOLO在速度上达到了实时性能，并且在mAP上超过了其他实时检测系统。此外，YOLO在艺术品数据集上的表现也证明了其良好的泛化能力。</p>
+<p><strong>9、这篇论文到底有什么贡献？</strong>
+论文的贡献包括：</p>
+<ul class="simple">
+<li><p>提出了YOLO，一种新的实时目标检测框架，它通过单一网络实现快速且准确的目标检测。</p></li>
+<li><p>证明了YOLO在PASCAL VOC数据集上具有良好的性能，并且在艺术品数据集上展现了优秀的泛化能力。</p></li>
+<li><p>开源了YOLO的代码和预训练模型，为后续研究提供了工具和数据。</p></li>
+</ul>
+<p><strong>10、下一步呢？有什么工作可以继续深入？</strong>
+下一步的工作可能包括：</p>
+<ul class="simple">
+<li><p>改进YOLO的网络结构，以提高对小目标和密集目标的检测性能。</p></li>
+<li><p>探索YOLO在其他领域的应用，如视频分析、机器人视觉等。</p></li>
+<li><p>进一步研究如何结合YOLO与其他目标检测方法，以提高整体性能。</p></li>
+<li><p>开发更复杂的数据增强技术，以提高YOLO的泛化能力。</p></li>
+</ul>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Cascade-RCNN.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Cascade-RCNN</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="YOLOv2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">YOLOv2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By isLinXu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022, isLinXu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

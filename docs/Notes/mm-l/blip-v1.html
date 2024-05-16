@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>BLIP: Bootstrapping Language-Image Pre-training &#8212; 论文阅读笔记</title>
   
@@ -19,33 +18,32 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/mm-l/blip-v1';</script>
-    <link rel="shortcut icon" href="../../_static/panda.png"/>
+    <link rel="icon" href="../../_static/panda.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models" href="blip-v2.html" />
@@ -59,7 +57,15 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -94,11 +100,14 @@
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -113,9 +122,11 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../../index.html">
+  
   
   
   
@@ -125,12 +136,23 @@
       
     
     
-    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="current nav bd-sidenav">
@@ -180,12 +202,42 @@
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
 </ul>
 </li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../detection/index.html">阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../detection/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../detection/yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -358,20 +410,22 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -415,13 +469,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="blip-bootstrapping-language-image-pre-training">
-<h1>BLIP: Bootstrapping Language-Image Pre-training<a class="headerlink" href="#blip-bootstrapping-language-image-pre-training" title="Permalink to this heading">#</a></h1>
+<h1>BLIP: Bootstrapping Language-Image Pre-training<a class="headerlink" href="#blip-bootstrapping-language-image-pre-training" title="Link to this heading">#</a></h1>
 <hr class="docutils" />
 <section id="id1">
-<h2>简述<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>简述<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>​	视觉和语言是人类感知世界的两种最基本的方式，也是人工智能的两大基石。人工智能的一个长期目标是构建能够通过视觉和语言输入理解世界，并通过自然语言与人类交流的智能体。</p>
 <p>​	为了实现这一目标，<em><strong>视觉语言预训练</strong></em> 已成为一种有效的方法，其中深度神经网络模型在大规模图像文本数据集上进行预训练，以提高下游视觉语言任务的性能，例如 image-文本检索、图像字幕和视觉问答。</p>
 <p>​	简而言之，视觉语言预训练旨在利用图像文本数据教会模型共同理解视觉和文本信息的能力。<em>通过</em>预训练，模型在微调之前已经过<em>训练（微调⁄涉及使用来自下游任务的数据对预训练模型进行额外训练。）。<strong>如果没有预训练，模型需要在</strong>每个</em>下游任务上从头开始训练，这会导致性能下降。</p>
@@ -433,7 +487,7 @@ document.write(`
 </ul>
 </section>
 <section id="web">
-<h2>局限性：大多数模型缺乏灵活性，Web 数据嘈杂<a class="headerlink" href="#web" title="Permalink to this heading">#</a></h2>
+<h2>局限性：大多数模型缺乏灵活性，Web 数据嘈杂<a class="headerlink" href="#web" title="Link to this heading">#</a></h2>
 <p>尽管视觉语言预训练取得了巨大成功，但现有方法有两个主要<em>局限性</em>：</p>
 <ul class="simple">
 <li><p>从<em><strong>模型的</strong></em>角度来看，<em>大多数现有的预训练模型都不够灵活，无法适应广泛的视觉语言任务</em>。基于编码器的模型不太容易直接转移到文本生成任务，而编码器-解码器模型尚未成功用于图像-文本检索任务。</p></li>
@@ -441,7 +495,7 @@ document.write(`
 </ul>
 </section>
 <section id="id2">
-<h2>解决方案<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>解决方案<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>为了解决这些限制，我们提出了<strong>BLIP：Bootstrapping Language-Image Pre-training</strong> for unified vision-language understanding and generation。BLIP创新地引入了下面两项工作：</p>
 <ul class="simple">
 <li><p>一种<em>新的模型架构</em>，可以比现有方法实现<em>更广泛的下游任务，以及</em></p></li>
@@ -458,6 +512,7 @@ document.write(`
 <li><p>零样本视频问答。</p></li>
 </ul>
 <p>首先，通过字幕生成任务中的一些示例来看一下BLIP是如何生成比以前最先进的模型更准确的字幕的：</p>
+<p><img alt="" src="../../_images/blipv1_1.png" /></p>
 <p><img alt="" src="https://user-images.githubusercontent.com/59380685/241774610-8e6c71d7-fecd-48aa-a397-c868d55717aa.png" /></p>
 <blockquote>
 <div><p>图 1. 来自 COCO-Caption 的第一张图片（Karpathy 测试集）。(COCO_val2014_000000000042.jpg)</p>
@@ -485,7 +540,7 @@ document.write(`
 </ul>
 </section>
 <section id="blip">
-<h2>BLIP的工作原理<a class="headerlink" href="#blip" title="Permalink to this heading">#</a></h2>
+<h2>BLIP的工作原理<a class="headerlink" href="#blip" title="Link to this heading">#</a></h2>
 <p><em><strong>视觉语言理解和生成的统一模型</strong></em></p>
 <p>为了预训练具有理解和生成能力的统一视觉语言模型*，* BLIP 引入了<strong>编码器-解码器的多模式混合</strong>，这是一种可以在以下三种功能*之一中运行的多任务模型：</p>
 <ol class="arabic simple">
@@ -510,15 +565,29 @@ document.write(`
 <p>接着看下模型架构：</p>
 </section>
 <section id="id3">
-<h2><strong>模型架构</strong><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><strong>模型架构</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>该模型使用 Vision Transformer ViT（<a class="reference external" href="https://arxiv.org/pdf/2010.11929.pdf">Dosovitskiy 等人，2021 年</a>）将输入图像分成多个块，并将它们编码为嵌入序列，并添加 [CLS] 令牌来表示地球图像特征。正如作者所提到的，ViT 使用较少的计算成本并且是一种直接的方法，并且正在被最近的方法采用。</p>
 <blockquote>
 <div><p>请注意，如图 2（下图）所示，大多数基于 Transformer 字幕生成和预训练语言和视觉的方法都使用预计算的特征边界框，这使得这些模型对任何域适应都不友好并且计算量大。例如，对于每张新图像，模型都需要预先计算这个外部特征。</p>
 <p>Caption Transformer（<a class="reference external" href="https://arxiv.org/pdf/1908.06954.pdf">Huang 等人，2019 年</a>；<a class="reference external" href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Cornia_Meshed-Memory_Transformer_for_Image_Captioning_CVPR_2020_paper.pdf">Cornia 等人，2020 年）</a>和预训练语言和视觉模型（OSCAR（<a class="reference external" href="https://arxiv.org/pdf/2004.06165.pdf">Li 等人，2020 年</a>）、UNITER（<a class="reference external" href="https://arxiv.org/pdf/1909.11740.pdf">Chen 等人，2020b</a>））。预计算功能，例如 Faster R-CNN（<a class="reference external" href="https://arxiv.org/pdf/1506.01497.pdf">Ren 等人，2016 年</a>）和 Buttom-up（安德森<a class="reference external" href="https://arxiv.org/pdf/1707.07998.pdf">等人，2018 年</a>）。</p>
 </div></blockquote>
+<p><img alt="" src="../../_images/blipv1_2.png" /></p>
 <p><img alt="" src="https://user-images.githubusercontent.com/59380685/241774645-7fd2ecce-cae7-4925-bc51-67a7428899d9.png" /></p>
 <blockquote>
-<div><p>图 2. 当前预训练语言和视觉模型的局限性之一是该模型依赖于：</p>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>7b836a65d7c41e1df6fc628370e438002f3bd83e
+图 2. 当前预训练语言和视觉模型的局限性之一是该模型依赖于：</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 <ul class="simple">
 <li><p>(1) 在高质量人类注释字幕上进行训练的对象检测器。</p></li>
 <li><p>(2) 计算量大。</p></li>
@@ -526,7 +595,23 @@ document.write(`
 </ul>
 </div></blockquote>
 <p>为了能够训练/预训练这种用于理解和生成任务的模型，作者提出了一种<strong>编码</strong>器(<strong>E</strong>ncoder)和<strong>解码器</strong>(<strong>D</strong>ecoder)的多模型混合，它可以集成三个功能，如图 3（下图）所示：</p>
+<p><img alt="" src="../../_images/blipv1_3.png" /></p>
 <p><img alt="" src="https://user-images.githubusercontent.com/59380685/241774672-e26c350f-7acd-4c2a-bbc1-361878d65d21.png" /></p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>7b836a65d7c41e1df6fc628370e438002f3bd83e</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 <blockquote>
 <div><p>图 3. BLIP 的预训练模型架构和目标（相同的参数具有相同的颜色）。所提出的编码器-解码器的多模式混合具有三个功能：</p>
 <ul class="simple">
@@ -538,9 +623,23 @@ document.write(`
 <p>下面针对上图，分别更详细地讨论每个部分：</p>
 <p><strong>(1) 单峰编码器。</strong></p>
 <p>该模型对文本和图像进行编码，如图 4（下图）所示。文本编码器与 BERT 相同，即 Mask Language Model (Devlin et al., 2019)，带有 [CLS] 标记以附加文本输入的开头以总结句子。</p>
+<p><img alt="" src="../../_images/blipv1_4.png" /></p>
 <p><img alt="" src="https://user-images.githubusercontent.com/59380685/241774692-b3e5aa5d-f4be-47a4-ad39-2a866f34d93a.png" /></p>
 <blockquote>
-<div><p>图 4.单峰编码器。编码器 使用图像-文本对比 (ITC) 损失进行训练，以对齐视觉和语言表示。</p>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>7b836a65d7c41e1df6fc628370e438002f3bd83e
+图 4.单峰编码器。编码器 使用图像-文本对比 (ITC) 损失进行训练，以对齐视觉和语言表示。</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 </div></blockquote>
 <p>Unimodal 编码器使用Image-Text Contrastive Loss (ITC)。这个想法是 在语义空间中对齐两个特征文本和图像。特别是，由于这项工作依赖于收缩学习，ITC 损失鼓励正图像文本对与负图像文本对具有相似的表示。这一观察是提高视觉和语言理解的有效目标，已在最近的工作 CLIP 中使用（<a class="reference external" href="https://arxiv.org/pdf/2103.00020.pdf">Radford 等人，2021 年</a>；<a class="reference external" href="https://arxiv.org/pdf/2201.12086.pdf">Li 等人，2021a</a>）。ITC 损失 ( <a class="reference external" href="https://arxiv.org/pdf/2201.12086.pdf">Li et al., 2021a</a> ) <a class="reference external" href="https://nips.cc/virtual/2021/poster/28238">฿</a>使用软标签作为训练目标来解释负对中的潜在正样本。</p>
 <blockquote>
@@ -560,6 +659,7 @@ document.write(`
 </div></blockquote>
 <p>(2) 基于图像的文本编码器。</p>
 <p>编码器依赖于一个额外的交叉注意 (CA) 层（在文本编码器的每个转换器块的自注意 (SA) 层和前馈网络 (FFN) 之间），如下图 6 中的橙色所示. 编码器是特定于任务的，用于编码图像-文本对的多模式表示。</p>
+<p><img alt="" src="../../_images/blipv1_6.png" /></p>
 <p><img alt="" src="https://user-images.githubusercontent.com/59380685/241774854-9ea8abb2-bcca-4367-9d69-41ff8df462ce.png" /></p>
 <blockquote>
 <div><p>图 6.基于图像的文本编码器。编码器使用额外的交叉注意层来模拟视觉-语言交互，并使用图像-文本匹配 (ITM) 损失进行训练以区分正负图像-文本对。</p>
@@ -567,6 +667,7 @@ document.write(`
 <p>Image-grounded 文本编码器 使用Image-Text Matching Loss (ITM)。 ITM 旨在捕捉视觉和语言之间的细粒度对齐。ITM 是二元分类任务，其中模型预测匹配的正例和不匹配的负例对（即，模型充当过滤器）。请注意，为了增加负对，通过对比相似性使用硬负挖掘策略来匹配最相似的负对（Li 等人，2021a）。</p>
 <p>(3) 基于图像的文本解码器。</p>
 <p>该解码器使用因果自注意（如图 7 中绿色所示）层，这些层由双向自注意设置。因果自注意力用于预测生成任务中的下一个标记。</p>
+<p><img alt="" src="../../_images/blipv1_7.png" /></p>
 <p><img alt="" src="https://user-images.githubusercontent.com/59380685/241774884-d6eab763-3878-440e-ad63-4b44785af163.png" /></p>
 <p>如上所述，为了在利用多任务学习的同时执行高效的预训练：</p>
 <ul class="simple">
@@ -577,7 +678,7 @@ document.write(`
 <p>因此，共享这些层可以提高训练效率，同时受益于多任务学习。</p>
 </section>
 <section id="capfilt">
-<h2>CapFilt<a class="headerlink" href="#capfilt" title="Permalink to this heading">#</a></h2>
+<h2>CapFilt<a class="headerlink" href="#capfilt" title="Link to this heading">#</a></h2>
 <p>由于人工注释的成本很高，只有有限的高质量人工注释图像对，如 COCO 标题，例如 COCO（Lin 等人，2014）。最近的工作（Li 等人，2021a）在很大程度上依赖于从网络中提取的噪声数据——网络抓取 (WS)。WS 过程是收集大量图像文本对的最快方式，无需人工参与。然而，由于数据是嘈杂的，例如，如下图 8（图像）所示的图像的错误描述，它会影响学习视觉语言对齐信号。</p>
 <p><img alt="" src="https://user-images.githubusercontent.com/59380685/241774923-ebe076f0-4331-4dfa-9010-8caada975afc.png" /></p>
 <blockquote>
@@ -590,7 +691,23 @@ document.write(`
 <li><p>用于去除噪声图像-文本对的过滤<em>器</em>。</p></li>
 </ul>
 <p>字幕<strong>器</strong>和<strong>过滤器</strong>都是从相同的预训练 MED 模型（如上所述）初始化的，并在高质量人工注释的 COCO 数据集（人类数据将用作参考）上分别进行微调。</p>
-<p><img alt="" src="https://user-images.githubusercontent.com/59380685/241774963-96f5c7a7-1006-4f00-a9b0-2217636f5427.png" /></p>
+<p><img alt="" src="../../_images/blipv1_9.png" />
+<img alt="" src="https://user-images.githubusercontent.com/59380685/241774963-96f5c7a7-1006-4f00-a9b0-2217636f5427.png" /></p>
+<blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>7b836a65d7c41e1df6fc628370e438002f3bd83e</p>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
 <p>具体来说，如上图 9 所示，字幕器是一个<em>基于图像的文本解码器</em>（参见图 7）。它使用 LM 目标进行微调以解码给定图像的文本。</p>
 <p>(1) 给定网络图像$I_w$，字幕生成器生成合成字幕$T_s$，每个图像一个字幕。</p>
 <p>(2)<em>过滤器</em>是一个基于图像的文本编码器。它与 ITC 和 ITM 目标进行了微调，以了解文本是否与图像匹配。该过滤器去除了原始网络文本$T_w$和合成文本$T_s$中的噪声文本，如果 ITM 头预测文本与图像不匹配，则该文本被认为是噪声文本。</p>
@@ -629,7 +746,7 @@ Nucleus sampling：一个婴儿吃着他的生日蛋糕，和他妈妈坐在一�
 </section>
 <hr class="docutils" />
 <section id="id4">
-<h2><strong>展望发展</strong><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2><strong>展望发展</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>BLIP 研究对 AI 及其他领域都有好处：</p>
 <ul class="simple">
 <li><p>人工智能的好处：BLIP 对人工智能的贡献包括：</p>
@@ -651,7 +768,7 @@ Nucleus sampling：一个婴儿吃着他的生日蛋糕，和他妈妈坐在一�
 </ul>
 </section>
 <section id="id5">
-<h2><strong>总结</strong><a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2><strong>总结</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>视觉语言研究是：</p>
 <ul>
@@ -710,8 +827,10 @@ Nucleus sampling：一个婴儿吃着他的生日蛋糕，和他妈妈坐在一�
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="index.html"
@@ -740,6 +859,7 @@ Nucleus sampling：一个婴儿吃着他的生日蛋糕，和他妈妈坐在一�
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -762,7 +882,7 @@ Nucleus sampling：一个婴儿吃着他的生日蛋糕，和他妈妈坐在一�
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -775,6 +895,7 @@ By isLinXu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022, isLinXu.
@@ -792,7 +913,7 @@ By isLinXu
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -801,8 +922,8 @@ By isLinXu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>detection &#8212; 论文阅读笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/detection/index';</script>
+    <link rel="icon" href="../../_static/panda.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="目标检测二十年：一项综述" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html" />
+    <link rel="prev" title="GPT-v4:GPT-4 Technical Report" href="../llm/gpt-v4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/how_to_read_paper.html">如何阅读论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/paper_10_question.html">论文速读十问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/read_important_tips.html">读论文与口头报告的几项重点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/reference.html">参考材料</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../List/index.html">论文阅读清单</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../List/basis.html">神经网络基础(basis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/attention.html">注意力部分(attention)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/batch_normalization.html">批量&amp;正则化(batch&amp;normalization)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/classification.html">图像分类(CLAS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/convolutional.html">高级卷积网络知识(Convolutional)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/gan.html">AI合成部分(GAN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/nlp.html">自然语言处理(NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/objectdetection.html">目标检测(OBJ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/rnn.html">循环神经网络(RNN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/segementation.html">目标分割(SEG)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/transformer.html">Transformer</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/multimodal.html">多模态(MultiModal Learning)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/llm.html">大语言模型(Large Language Models)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v3.html">GPT-v3:Language Models are Few-Shot Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6: A Single-Stage Object Detection Framework for Industrial Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOF.html">YOLOF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOP.html">YOLOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6 v3.0: A Full-Scale Reloading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/detection/index.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/detection/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Notes/detection/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>detection</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="detection">
+<h1>detection<a class="headerlink" href="#detection" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id2"><strong>摘要</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id3"><strong>1 引言</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id4"><strong>2 目标检测二十年</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id5"><strong>2.1 目标检测的路线图</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id7"><strong>2.2 目标检测数据集和评价指标</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id9"><strong>2.3 目标检测中的技术演变</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id15"><strong>3 加速检测</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id16"><strong>3.1 特征图共享计算</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id19"><strong>3.2 加速分类器</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id20"><strong>3.3 级联检测</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id21"><strong>3.4 网络剪枝和量化</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id25"><strong>3.5 轻量级网络设计</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id31"><strong>3.6 数值加速</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id36"><strong>4 最近目标检测的进展</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id37"><strong>4.1 使用更好的引擎进行检测</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id38"><strong>4.2 使用更好的特征进行检测</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id42"><strong>4.3 非滑动窗口检测</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id43"><strong>4.4 提高定位的改进</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id46"><strong>4.5 与分割结合的学习</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id49"><strong>4.6 旋转和平移变化的鲁棒检测</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id52"><strong>4.7 从头开始训练</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id53"><strong>4.8 对抗性训练</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id54"><strong>4.9 弱监督目标检测</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id55"><strong>5 应用</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id56"><strong>5.1 行人检测</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id59"><strong>5.2 面部检测</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id62"><strong>5.3 文本检测</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id65"><strong>5.4 交通标志和交通信号检测</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id68"><strong>5.5 遥感目标检测</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id71"><strong>6 结论和未来方向</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id1"><strong>摘要</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id2"><strong>1 引言</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolo"><strong>2 YOLO在不同领域的应用</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#nms"><strong>3 目标检测指标和非最大值抑制（NMS）</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#ap"><strong>3.1 AP如何工作？</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id3"><strong>3.2 计算AP</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id4"><strong>3.3 非最大值抑制（NMS）</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id5"><strong>4 YOLO：只看一次</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov1"><strong>4.1 YOLOv1如何工作？</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id6"><strong>4.2 YOLOv1 架构</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id7"><strong>4.3 YOLOv1 训练</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id8"><strong>4.4 YOLOv1 的优势和局限性</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov2"><strong>5 YOLOv2：更好、更快、更强</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id9"><strong>5.1 YOLOv2 架构</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolo9000-yolov2"><strong>5.2 YOLO9000 是一个更强大的 YOLOv2</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov3"><strong>6 YOLOv3</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id10"><strong>6.1 YOLOv3 架构</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id11"><strong>6.2 YOLOv3 多尺度预测</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id12"><strong>6.3 YOLOv3 结果</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id13"><strong>7 骨干、颈部和头部</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov4"><strong>8 YOLOv4</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id14"><strong>8.1 YOLOv4 结果</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov5"><strong>9 YOLOv5</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id15"><strong>9.1 YOLOv5 结果</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#scaled-yolov4"><strong>10 Scaled-YOLOv4</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolor"><strong>11 YOLOR</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolox"><strong>12 YOLOX</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov6"><strong>13 YOLOv6</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id16"><strong>13.1 YOLOv6 结果</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov7"><strong>14 YOLOv7</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov4-yolor"><strong>14.1 与 YOLOv4 和 YOLOR 的比较</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id17"><strong>14.2 YOLOv7 结果</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#damo-yolo"><strong>15 DAMO-YOLO</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov8"><strong>16 YOLOv8</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id18"><strong>16.1 YOLOv8 结果</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#pp-yolo-pp-yolov2-pp-yoloe"><strong>17 PP-YOLO, PP-YOLOv2, 和 PP-YOLOE</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#pp-yolo"><strong>17.1 PP-YOLO 增强和预处理</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id19"><strong>17.2 PP-YOLO 结果</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#pp-yolov2"><strong>17.3 PP-YOLOv2</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#pp-yoloe"><strong>17.4 PP-YOLOE</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id20"><strong>18 讨论</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id21"><strong>19 YOLO 的未来</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id22"><strong>20.1 速度和准确性之间的权衡</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Cascade-RCNN.html#id1">回答问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOv3.html">YOLOv3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOv3.html#id1">回答问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOv4.html">YOLOv4</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOv4.html#id1">回答问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOX.html">YOLOX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOX.html#id1">回答问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOv6.html">YOLOv6: A Single-Stage Object Detection Framework for Industrial Applications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOv6.html#id1">回答问题：</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOF.html">YOLOF</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOF.html#id1">论文阅读笔记</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YOLOF.html#id2">回答问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOP.html">YOLOP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOP.html#id1">回答问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOR.html">YOLOR</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOR.html#id1">回答问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOS.html">YOLOS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOS.html#id1">回答问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOv7.html">YOLOv7</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOv7.html#id1">回答问题</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6 v3.0: A Full-Scale Reloading</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOv6_v3.0.html#id1">回答问题：</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOv9.html">YOLOv9</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOv9.html#id1">回答问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YOLOv9.html#id2">解决方案关键</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YOLOv9.html#id3">实验设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YOLOv9.html#id4">实验结果</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YOLOv9.html#id5">结论</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="YOLOOC.html#id1">回答问题：</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../llm/gpt-v4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">GPT-v4:GPT-4 Technical Report</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>目标检测二十年：一项综述</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By isLinXu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022, isLinXu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

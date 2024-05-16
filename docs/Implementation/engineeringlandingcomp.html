@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>模型工程落地赛指南 &#8212; 论文阅读笔记</title>
   
@@ -19,33 +18,32 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Implementation/engineeringlandingcomp';</script>
-    <link rel="shortcut icon" href="../_static/panda.png"/>
+    <link rel="icon" href="../_static/panda.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -57,7 +55,15 @@
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -92,11 +98,14 @@
 </form></div>
   </div>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -111,9 +120,11 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../index.html">
+  
   
   
   
@@ -123,12 +134,23 @@
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
 <ul class="nav bd-sidenav">
@@ -167,7 +189,17 @@
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Notes/index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+
+
+
+
+
+
+
+
+
 <li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -356,20 +388,22 @@
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -446,10 +480,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section id="id1">
-<h1>模型工程落地赛指南<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1>模型工程落地赛指南<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/release/2.2/docs/lwfx/EngineeringLandingComp.md#1">1. 背景</a></p></li>
 <li><p>\2. 系统框图</p>
@@ -482,7 +516,7 @@ document.write(`
 </li>
 </ul>
 <section id="id2">
-<h2>1. 背景<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>1. 背景<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>飞桨除了基本的模型训练和预测，还提供了支持多端多平台的高性能推理部署工具。希望通过模型工程落地赛指南，完成以下2个目标。</p>
 <ul class="simple">
 <li><p>保证飞桨训推一体这样一个复杂系统工程的可靠性：软件环境、硬件版本复杂多变，通过训推一体链条基础链条，保证模型基础训练预测功能的可靠性。</p></li>
@@ -492,9 +526,9 @@ document.write(`
 <p>官网链接：<a class="reference external" href="https://www.paddlepaddle.org.cn/wholechain">飞桨训练推理部署导航</a></p>
 </section>
 <section id="id3">
-<h2>2. 系统框图<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2>2. 系统框图<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <section id="id4">
-<h3>2.1 任务概览<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3>2.1 任务概览<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>工程落地赛包含以下2种方式。</p>
 <ol class="arabic simple">
 <li><p>合入官方套件：按照规范，将模型合入官方套件。</p></li>
@@ -510,13 +544,13 @@ document.write(`
 </section>
 </section>
 <section id="id5">
-<h2>3. 模型合入官方套件<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2>3. 模型合入官方套件<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <section id="id6">
-<h3>3.1 简介<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3>3.1 简介<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>将开发者经过整理且符合规范的代码合入到官方套件，可以进一步提升个人影响力以及代码文档的规范性，同时也可以增加官方套件的丰富性。</p>
 </section>
 <section id="id7">
-<h3>3.2 具体内容<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>3.2 具体内容<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>按照官方套件的代码规范，将复现的论文适配到对应的套件中。各个repo的代码贡献指南以及参考PR如下所示。</p>
 <table class="table">
 <thead>
@@ -558,20 +592,20 @@ document.write(`
 </table>
 </section>
 <section id="id8">
-<h3>3.3 验收方法<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3>3.3 验收方法<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>按照官方套件的代码贡献指南，提交代码，提供PR链接，由Paddle官方同学review，选手根据review意见进行修改与完善。代码合入后即认为验收通过。</p>
 </section>
 </section>
 <section id="id9">
-<h2>4. 模型工程落地赛<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<h2>4. 模型工程落地赛<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <section id="tipc">
-<h3>4.1 增加TIPC基础链条支持<a class="headerlink" href="#tipc" title="Permalink to this heading">#</a></h3>
+<h3>4.1 增加TIPC基础链条支持<a class="headerlink" href="#tipc" title="Link to this heading">#</a></h3>
 <section id="id10">
-<h4>4.1.1 简介<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h4>
+<h4>4.1.1 简介<a class="headerlink" href="#id10" title="Link to this heading">#</a></h4>
 <p>飞桨除了基本的模型训练和预测，还提供了支持多端多平台的高性能推理部署工具。本文档以Arcface为例，展示了 PaddlePaddle 模型的飞桨训推一体认证 (Training and Inference Pipeline Certification(TIPC)) 信息和测试工具，方便用户查阅每种模型的训练推理部署打通情况，并可以进行一键测试。</p>
 </section>
 <section id="id11">
-<h4>4.1.2 具体内容<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<h4>4.1.2 具体内容<a class="headerlink" href="#id11" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>完成模型的模型动转静、Inference推理过程的文档与代码。参考链接：</p>
 <ul>
@@ -586,18 +620,18 @@ document.write(`
 </ul>
 </section>
 <section id="id12">
-<h4>4.1.3 验收方法<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<h4>4.1.3 验收方法<a class="headerlink" href="#id12" title="Link to this heading">#</a></h4>
 <p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/tipc/train_infer_python/README.md">Linux GPU/CPU 基础训练推理开发文档</a>中<code class="docutils literal notranslate"><span class="pre">第3章</span></code>和<code class="docutils literal notranslate"><span class="pre">第4章</span></code>的所有核验点满足要求。</p>
 </section>
 </section>
 <section id="paddle-serving">
-<h3>4.2 Paddle Serving服务化部署<a class="headerlink" href="#paddle-serving" title="Permalink to this heading">#</a></h3>
+<h3>4.2 Paddle Serving服务化部署<a class="headerlink" href="#paddle-serving" title="Link to this heading">#</a></h3>
 <section id="id13">
-<h4>4.2.1 简介<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<h4>4.2.1 简介<a class="headerlink" href="#id13" title="Link to this heading">#</a></h4>
 <p>Paddle Serving 旨在帮助深度学习开发者轻易部署在线预测服务。目标是：当用户使用 Paddle 训练了一个深度神经网络，就同时拥有了该模型的预测服务。</p>
 </section>
 <section id="id14">
-<h4>4.2.2 具体内容<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h4>
+<h4>4.2.2 具体内容<a class="headerlink" href="#id14" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>完成基于该模型的Serving服务化部署，提供相应的说明文档。参考链接：</p>
 <ul>
@@ -612,25 +646,25 @@ document.write(`
 </ul>
 </section>
 <section id="id15">
-<h4>4.2.3 验收方法<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
+<h4>4.2.3 验收方法<a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
 <p><a class="reference external" href="https://github.com/PaddlePaddle/models/blob/tipc/docs/tipc/serving/README.md">Linux GPU/CPU 服务化部署开发文档</a>中<code class="docutils literal notranslate"><span class="pre">第2章</span></code>和<code class="docutils literal notranslate"><span class="pre">第3章</span></code>的所有核验点满足要求。</p>
 </section>
 </section>
 <section id="id16">
-<h3>4.3 模型轻量化骨干网络验证<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<h3>4.3 模型轻量化骨干网络验证<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <section id="id17">
-<h4>4.3.1 简介<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
+<h4>4.3.1 简介<a class="headerlink" href="#id17" title="Link to this heading">#</a></h4>
 <p>作为产业结合的深度学习框架，PaddlePaddle希望被更多用户在实际的场景中应用，但是大部分论文都是基于相对较大的骨干网络进行实验，如VGG、ResNet等，本部分希望通过更换骨干网络，让模型轻量化，方便实际部署过程。</p>
 </section>
 <section id="id18">
-<h4>4.3.2 具体内容<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h4>
+<h4>4.3.2 具体内容<a class="headerlink" href="#id18" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>分别更换模型的骨干网络为MobileNetV1_x1_0，MobileNetV3_large_x1_0，MobileNetV3_small_x1_0，ShuffleNetV2_x1_0并进行训练，记录精度、训练结果模型，保存日志文件。</p></li>
 <li><p>将更换骨干网络产出的4个模型接入<code class="docutils literal notranslate"><span class="pre">TIPC基础训练推理测试链条</span></code>，并将测试文档和测试脚本放置在<code class="docutils literal notranslate"><span class="pre">test_tipc</span></code>目录中。</p></li>
 </ul>
 </section>
 <section id="id19">
-<h4>4.3.3 轻量化网络选型和特征抽取选型<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h4>
+<h4>4.3.3 轻量化网络选型和特征抽取选型<a class="headerlink" href="#id19" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>网络选型：本期工程落地赛中，选取的轻量化骨干网络在ImageNet1k验证集上的精度以及模型大小如下所示。</p></li>
 </ul>
@@ -706,7 +740,7 @@ document.write(`
 <p>示例代码：<a class="reference external" href="https://github.com/PaddlePaddle/PaddleDetection/blob/develop/configs/centernet/README_cn.md">PaddleDetection CenterNet文档和配置</a></p>
 </section>
 <section id="id20">
-<h4>4.3.4 验收方法<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h4>
+<h4>4.3.4 验收方法<a class="headerlink" href="#id20" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>更换骨干网络，填写上表中详细内容，提交训练代码、不同骨干网络下的训练日志以及结果表格。</p></li>
 </ul>
@@ -747,27 +781,27 @@ document.write(`
 </section>
 </section>
 <section id="faq">
-<h2>5. 模型工程落地赛注意事项与FAQ<a class="headerlink" href="#faq" title="Permalink to this heading">#</a></h2>
+<h2>5. 模型工程落地赛注意事项与FAQ<a class="headerlink" href="#faq" title="Link to this heading">#</a></h2>
 <section id="id21">
-<h3>5.1 通用问题<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
+<h3>5.1 通用问题<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>如果在任何阶段，报错信息提示为Paddle导致，可以给Paddle提<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/new/choose">ISSUE</a>，获得研发同学高优支持。</p></li>
 </ul>
 </section>
 <section id="id22">
-<h3>5.2 模型合入官方套件<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h3>
+<h3>5.2 模型合入官方套件<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>合入的过程中，如果有代码方面的问题，可以在对应模型套件的repo下面新建ISSUE，注明目前的具体问题，标题中补充<code class="docutils literal notranslate"><span class="pre">【工程落地赛】</span></code>。</p></li>
 </ul>
 </section>
 <section id="id23">
-<h3>5.3 TIPC基础链条预测<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h3>
+<h3>5.3 TIPC基础链条预测<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>动转静遇到问题时的调试方法：<a class="reference external" href="https://www.paddlepaddle.org.cn/documentation/docs/zh/develop/guides/04_dygraph_to_static/debugging_cn.html">动态图转静态图调试方法教程</a></p></li>
 </ul>
 </section>
 <section id="id24">
-<h3>5.4 Paddle Serving服务化部署<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h3>
+<h3>5.4 Paddle Serving服务化部署<a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>如果发送请求后没有结果返回或者提示输出解码报错，可能是因为：</p>
 <ul class="simple">
@@ -781,7 +815,7 @@ document.write(`
 </ul>
 </section>
 <section id="id25">
-<h3>5.5 轻量化骨干网络验证<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h3>
+<h3>5.5 轻量化骨干网络验证<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>该工程落地项主要是为验证CV任务中的骨干网络，下面一些任务不需要验证该项。</p>
 <ul>
@@ -804,8 +838,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -815,6 +851,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -871,7 +908,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -884,6 +921,7 @@ By isLinXu
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022, isLinXu.
@@ -901,7 +939,7 @@ By isLinXu
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -910,8 +948,8 @@ By isLinXu
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

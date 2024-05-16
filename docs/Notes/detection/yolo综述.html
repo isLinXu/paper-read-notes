@@ -1,0 +1,983 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>YOLO的全面综述：从YOLOv1到YOLOv8及未来 &#8212; 论文阅读笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/detection/yolo综述';</script>
+    <link rel="icon" href="../../_static/panda.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/how_to_read_paper.html">如何阅读论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/paper_10_question.html">论文速读十问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/read_important_tips.html">读论文与口头报告的几项重点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/reference.html">参考材料</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../List/index.html">论文阅读清单</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../List/basis.html">神经网络基础(basis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/attention.html">注意力部分(attention)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/batch_normalization.html">批量&amp;正则化(batch&amp;normalization)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/classification.html">图像分类(CLAS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/convolutional.html">高级卷积网络知识(Convolutional)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/gan.html">AI合成部分(GAN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/nlp.html">自然语言处理(NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/objectdetection.html">目标检测(OBJ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/rnn.html">循环神经网络(RNN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/segementation.html">目标分割(SEG)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/transformer.html">Transformer</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/multimodal.html">多模态(MultiModal Learning)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/llm.html">大语言模型(Large Language Models)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v3.html">GPT-v3:Language Models are Few-Shot Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/detection/yolo综述.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/detection/yolo综述.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Notes/detection/yolo综述.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>YOLO的全面综述：从YOLOv1到YOLOv8及未来</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>摘要</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>1 引言</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolo"><strong>2 YOLO在不同领域的应用</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nms"><strong>3 目标检测指标和非最大值抑制（NMS）</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ap"><strong>3.1 AP如何工作？</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>3.2 计算AP</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>3.3 非最大值抑制（NMS）</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>4 YOLO：只看一次</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov1"><strong>4.1 YOLOv1如何工作？</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>4.2 YOLOv1 架构</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>4.3 YOLOv1 训练</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>4.4 YOLOv1 的优势和局限性</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov2"><strong>5 YOLOv2：更好、更快、更强</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><strong>5.1 YOLOv2 架构</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yolo9000-yolov2"><strong>5.2 YOLO9000 是一个更强大的 YOLOv2</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov3"><strong>6 YOLOv3</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><strong>6.1 YOLOv3 架构</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><strong>6.2 YOLOv3 多尺度预测</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>6.3 YOLOv3 结果</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><strong>7 骨干、颈部和头部</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov4"><strong>8 YOLOv4</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><strong>8.1 YOLOv4 结果</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov5"><strong>9 YOLOv5</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><strong>9.1 YOLOv5 结果</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scaled-yolov4"><strong>10 Scaled-YOLOv4</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolor"><strong>11 YOLOR</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolox"><strong>12 YOLOX</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov6"><strong>13 YOLOv6</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><strong>13.1 YOLOv6 结果</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov7"><strong>14 YOLOv7</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov4-yolor"><strong>14.1 与 YOLOv4 和 YOLOR 的比较</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17"><strong>14.2 YOLOv7 结果</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#damo-yolo"><strong>15 DAMO-YOLO</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov8"><strong>16 YOLOv8</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18"><strong>16.1 YOLOv8 结果</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pp-yolo-pp-yolov2-pp-yoloe"><strong>17 PP-YOLO, PP-YOLOv2, 和 PP-YOLOE</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pp-yolo"><strong>17.1 PP-YOLO 增强和预处理</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19"><strong>17.2 PP-YOLO 结果</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pp-yolov2"><strong>17.3 PP-YOLOv2</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pp-yoloe"><strong>17.4 PP-YOLOE</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20"><strong>18 讨论</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id21"><strong>19 YOLO 的未来</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id22"><strong>20.1 速度和准确性之间的权衡</strong></a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="yolo-yolov1yolov8">
+<h1><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong><a class="headerlink" href="#yolo-yolov1yolov8" title="Link to this heading">#</a></h1>
+<hr class="docutils" />
+<p><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></p>
+</section>
+<section id="id1">
+<h1><strong>摘要</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>YOLO已成为机器人、无人驾驶汽车和视频监控应用中的核心实时目标检测系统。本文全面分析了YOLO的演变，检查了从原始YOLO到YOLOv8的每次迭代中的创新和贡献。我们首先描述了标准指标和后处理；然后，我们讨论了每个模型在网络架构和训练技巧方面的重大变化。最后，我们总结了YOLO发展中的重要教训，并提供了对其未来的展望，强调了增强实时目标检测系统的潜在研究方向。</p>
+<p><strong>关键词</strong> YOLO · 目标检测 · 深度学习 · 计算机视觉</p>
+</section>
+<section id="id2">
+<h1><strong>1 引言</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<p>实时目标检测已成为众多应用中的关键组成部分，涵盖自动驾驶车辆、机器人、视频监控和增强现实等多个领域。在各种目标检测算法中，YOLO框架因其显著的速度和准确性平衡而脱颖而出，能够快速可靠地在图像中识别对象。自从YOLO问世以来，该家族已经经历了多次迭代，每个版本都在前一个版本的基础上进行改进，以解决限制并提高性能（见图1）。本文旨在提供从原始YOLOv1到最新YOLOv8的YOLO框架发展的全面回顾，阐明每个版本的关键创新、差异和改进。</p>
+</section>
+<section id="yolo">
+<h1><strong>2 YOLO在不同领域的应用</strong><a class="headerlink" href="#yolo" title="Link to this heading">#</a></h1>
+<p>YOLO的实时目标检测能力在自动驾驶车辆系统中非常宝贵，能够快速识别和跟踪各种对象，如车辆、行人、自行车和其他障碍物。这些能力已应用于多个领域，包括视频序列中的动作识别、监控、体育分析和人机交互。</p>
+<p>YOLO模型已在农业中用于检测和分类作物、害虫和疾病，有助于精准农业技术和自动化农业过程。它们还适用于生物识别、安全和面部识别系统中的面部检测任务。</p>
+<p>在医疗领域，YOLO已被用于癌症检测、皮肤分割和药片识别，从而提高了诊断准确性和更高效的治疗过程。在遥感领域，它已被用于卫星和航空图像中的对象检测和分类，有助于土地利用制图、城市规划和环境监测。</p>
+<p>安全系统已将YOLO模型集成到实时监控和分析视频源中，允许快速检测可疑活动、社交距离和口罩检测。这些模型还应用于表面检查，以检测缺陷和异常，增强制造和生产过程的质量控制。</p>
+<p>在交通应用中，YOLO模型已被用于车牌检测和交通标志识别等任务，有助于智能交通系统和交通管理解决方案的发展。它们被用于野生动物检测和监测，以识别濒危物种，用于生物多样性保护和生态系统管理。最后，YOLO已广泛用于机器人应用和无人机中的目标检测。</p>
+</section>
+<section id="nms">
+<h1><strong>3 目标检测指标和非最大值抑制（NMS）</strong><a class="headerlink" href="#nms" title="Link to this heading">#</a></h1>
+<p>平均精度（AP），传统上称为平均精度（mAP），是评估目标检测模型性能的常用指标。它衡量所有类别的平均精度，提供单一值以比较不同模型。COCO数据集在AP和AP之间没有区别。在本文的其余部分中，我们将称此指标为AP。</p>
+<p>在YOLOv1和YOLOv2中，用于训练和基准测试的数据集是PASCAL VOC 2007和VOC 2012。然而，从YOLOv3开始，使用的数据集是Microsoft COCO（Context中的常见对象）。这些数据集对AP的计算方式不同。以下各节将讨论AP背后的原理以及如何计算它。</p>
+<section id="ap">
+<h2><strong>3.1 AP如何工作？</strong><a class="headerlink" href="#ap" title="Link to this heading">#</a></h2>
+<p>AP指标基于精确度-召回率指标，处理多个目标类别，并使用交并比（IoU）定义正预测。</p>
+<p>精确度和召回率：精确度衡量模型正面预测的准确性，而召回率衡量模型正确识别的实际正面案例的比例。精确度和召回率之间通常存在权衡；例如，增加检测到的对象数量（更高的召回率）可能导致更多的误报（更低的精确度）。为了考虑这种权衡，AP指标结合了不同置信度阈值下绘制精确度与召回率的精确度-召回率曲线。该指标通过考虑精确度-召回率曲线下的面积，平衡了精确度和召回率的评估。</p>
+<p>处理多个目标类别：目标检测模型必须在图像中识别和定位多个目标类别。AP指标通过分别计算每个类别的平均精度（AP），然后计算所有类别的这些AP的平均值来解决这个问题（这就是它也被称为平均平均精度的原因）。这种方法确保了模型的性能对每个类别都进行了评估，提供了对模型整体性能的更全面评估。</p>
+<p>交并比（IoU）：目标检测旨在通过预测边界框来准确定位图像中的对象。AP指标结合了IoU度量来评估预测边界框的质量。IoU是预测边界框与真实边界框的交集面积与并集面积的比率（见图2）。它衡量了真实边界框和预测边界框之间的重叠。COCO基准测试考虑多个IoU阈值来评估模型在不同定位精度水平上的性能。</p>
+</section>
+<section id="id3">
+<h2><strong>3.2 计算AP</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>在VOC和COCO数据集上计算AP的方式不同。
+本节描述了在每个数据集上如何计算它。</p>
+<p>VOC数据集 该数据集包括20个对象类别。在VOC上计算AP，我们遵循以下步骤：</p>
+<ol class="arabic simple">
+<li><p>对于每个类别，通过改变模型预测的置信度阈值来计算精确度-召回率曲线。</p></li>
+<li><p>使用精确度-召回率曲线的11点插值采样计算每个类别的平均精度（AP）。</p></li>
+<li><p>通过计算所有20个类别的AP的平均值来计算最终的平均精度（AP）。</p></li>
+</ol>
+<p>Microsoft COCO数据集 该数据集包括80个对象类别，并使用更复杂的方法计算AP。它不是使用11点插值，而是使用101点插值，即它计算从0到1的101个召回阈值的精确度，以0.01的增量。此外，AP是通过在多个IoU值上平均而不是仅仅一个上获得的，除了一个常见的AP度量称为AP50，它是单个IoU阈值为0.5的AP。</p>
+<p>在COCO上计算AP的步骤如下：</p>
+<ol class="arabic simple">
+<li><p>对于每个类别，通过改变模型预测的置信度阈值来计算精确度-召回率曲线。</p></li>
+<li><p>使用101个召回阈值计算每个类别的平均精度（AP）。</p></li>
+<li><p>在不同的交并比（IoU）阈值下计算AP，通常从0.5到0.95，步长为0.05。更高的IoU阈值需要更准确的预测才能被视为真正阳性。</p></li>
+<li><p>对于每个IoU阈值，取所有80个类别的AP的平均值。</p></li>
+<li><p>最后，通过在每个IoU阈值计算的AP值上平均来计算整体AP。</p></li>
+</ol>
+<p>AP计算的差异使得很难直接比较两个数据集上目标检测模型的性能。当前标准使用COCO AP，因为它更细粒度地评估了模型在不同IoU阈值下的性能。</p>
+</section>
+<section id="id4">
+<h2><strong>3.3 非最大值抑制（NMS）</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>非最大值抑制（NMS）是目标检测算法中用于减少重叠边界框数量并提高整体检测质量的后处理技术。目标检测算法通常在同一对象周围生成多个具有不同置信度分数的边界框。NMS 过滤掉冗余和无关的边界框，只保留最准确的边界框。算法1描述了程序。图3显示了典型的目标检测模型输出，其中包含多个重叠的边界框，以及NMS后的输出。</p>
+</section>
+</section>
+<section id="id5">
+<h1><strong>4 YOLO：只看一次</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h1>
+<p>由 Joseph Redmon 等人在 CVPR 2016 [38] 提出的 YOLO 首次提出了一种实时端到端的目标检测方法。YOLO 的名称代表 “You Only Look Once”，指的是它能够通过网络的单次传递完成检测任务，与之前的方法不同，之前的方法要么使用滑动窗口后跟需要对每张图像运行数百或数千次的分类器，要么使用更先进的方法将任务分为两步，第一步检测可能包含对象的区域或区域提议，第二步在提议上运行分类器。此外，YOLO 使用了一种更直接的输出，只基于回归来预测检测输出，与 Fast R-CNN [39] 不同，后者使用了两个单独的输出，一个用于类别概率的分类和另一个用于边界框坐标的回归。</p>
+<section id="yolov1">
+<h2><strong>4.1 YOLOv1如何工作？</strong><a class="headerlink" href="#yolov1" title="Link to this heading">#</a></h2>
+<p>YOLOv1通过同时检测所有边界框来统一目标检测步骤。为了实现这一点，YOLO将输入图像划分为S×S的网格，并预测每个网格元素的B个边界框和C个不同类别的置信度。每个边界框预测由五个值组成：Pc、bx、by、bh、bw，其中Pc是边界框的置信度分数，反映了模型对边界框包含对象的置信度以及边界框的准确性。bx和by坐标是相对于网格单元的边界框中心，bh和bw是相对于完整图像的边界框的高度和宽度。YOLO的输出是一个张量S×S×(B×5+C)，可选择性地跟随非最大值抑制（NMS）以去除重复检测。</p>
+<p>在原始的 YOLO 论文中，作者使用了包含 20 个类别（C = 20）的 PASCAL VOC 数据集 [36]；一个 7 × 7（S = 7）的网格，并且每个网格元素最多有 2 个类别（B = 2），得到一个 7 × 7 × 30 的输出预测。</p>
+<p>图 4 显示了一个简化的输出向量，考虑了一个三乘三的网格、三个类别和每个网格单个类别的预测，以产生一个包含八个值的向量。在这个简化的情况下，YOLO 的输出将是 3 × 3 × 8。</p>
+<p>YOLOv1 在 PASCAL VOC2007 数据集上达到了 63.4 的平均精度（AP）。</p>
+</section>
+<section id="id6">
+<h2><strong>4.2 YOLOv1 架构</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>YOLOv1 架构由 24 个卷积层组成，后面跟着两个全连接层，用于预测边界框坐标和概率。所有层都使用了泄漏的整流线性单元激活[40]，除了最后一层使用线性激活函数。受 GoogLeNet [41] 和 Network in Network [42] 的启发，YOLO 使用 1 × 1 的卷积层来减少特征图的数量，并保持参数数量相对较低。如表 1 所述，激活层描述了 YOLOv1 架构。作者还介绍了一个更轻量级的模型，称为 Fast YOLO，由九个卷积层组成。</p>
+</section>
+<section id="id7">
+<h2><strong>4.3 YOLOv1 训练</strong><a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>作者使用 ImageNet 数据集 [43] 以 224 × 224 的分辨率预训练了 YOLO 的前 20 层。然后，他们添加了最后四层，使用随机初始化的权重，并使用 PASCAL VOC 2007 和 VOC 2012 数据集 [36] 在 448 × 448 的分辨率下对模型进行了微调，以增加细节，实现更准确的目的检测。</p>
+<p>对于增强，作者使用了最多输入图像大小的 20% 的随机缩放和平移，以及随机曝光和饱和度，HSV 色彩空间的上端因子为 1.5。</p>
+<p>YOLOv1 使用了由多个平方误差组成的损失函数，如图 5 所示。在损失函数中，λcoord = 5 是一个比例因子，使边界框预测更加重要，而 λnoobj = 0.5 是一个比例因子，减少了不包含对象的框的重要性。</p>
+<p>损失函数的前两项代表定位损失；它计算预测边界框位置（x, y）和大小（w, h）的误差。请注意，这些误差仅在包含对象的框中计算（由 1obj_ij 表示），只有在该网格单元中存在对象时才进行惩罚。损失函数的第三项和第四项代表置信度损失；第三项衡量在框中检测到对象时的置信度误差（1obj_ij），第四项衡量在框中未检测到对象时的置信度误差（1noobj_ij）。由于大多数框是空的，因此这个损失通过 λnoobj 项被加权。最后的损失组件是分类损失，它衡量每个类别的类条件概率的平方误差，仅当对象出现在单元中时才计算（1obj_i）。</p>
+</section>
+<section id="id8">
+<h2><strong>4.4 YOLOv1 的优势和局限性</strong><a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>YOLO 的简单架构以及其新颖的全图像一次性回归使其比现有的目标检测器快得多，允许实时性能。 然而，尽管 YOLO 的性能超过了任何目标检测器，但与 Fast R-CNN [39] 等最先进方法相比，其定位误差较大。这种局限性有三个主要原因：</p>
+<ol class="arabic simple">
+<li><p>它在网格单元中最多只能检测到两个相同类别的对象，限制了它预测附近对象的能力。</p></li>
+<li><p>它在预测训练数据中未见过的纵横比的对象时存在困难。</p></li>
+<li><p>由于下采样层，它从粗糙的对象特征中学习。</p></li>
+</ol>
+</section>
+</section>
+<section id="yolov2">
+<h1><strong>5 YOLOv2：更好、更快、更强</strong><a class="headerlink" href="#yolov2" title="Link to this heading">#</a></h1>
+<p>由 Joseph Redmon 和 Ali Farhadi 在 CVPR 2017 [44] 中发表的 YOLOv2 包含了对原始 YOLO 的几项改进，使其更好，保持相同的速度，并且更强大 —— 能够检测 9000 个类别！改进如下：</p>
+<ol class="arabic simple">
+<li><p>所有卷积层上的批量归一化提高了收敛性，并作为正则化器减少过拟合。</p></li>
+<li><p>高分辨率分类器。像 YOLOv1 一样，他们使用 ImageNet 在 224 × 224 的分辨率下预训练了模型。然而，这一次，他们在 448 × 448 的分辨率下对 ImageNet 进行了十轮微调，提高了网络对更高分辨率输入的性能。</p></li>
+<li><p>全卷积。他们去除了密集层，并使用全卷积架构。</p></li>
+<li><p>使用锚框预测边界框。他们使用一组先验框或锚框，这些框具有预定义的形状，用于匹配对象的原型形状，如图 6 所示。每个网格单元定义了多个锚框，系统预测每个锚框的坐标和类别。网络输出的大小与每个网格单元的锚框数量成正比。</p></li>
+<li><p>尺寸聚类。选择良好的先验框有助于网络学习预测更准确的边界框。作者对训练边界框运行 k-means 聚类，以找到良好的先验。他们选择了五个先验框，在召回率和模型复杂性之间提供了良好的折衷。</p></li>
+<li><p>直接位置预测。与其他预测偏移的方法不同，YOLOv2 遵循相同的理念，预测相对于网格单元的位置坐标。网络预测每个单元的五个边界框，每个边界框有五个值 tx, ty, tw, th 和 to，其中 to 等同于 YOLOv1 中的 Pc，最终的边界框坐标如图 7 所示。</p></li>
+<li><p>更细粒度的特征。与 YOLOv1 相比，YOLOv2 去除了一层池化层，以获得 416 × 416 输入图像的 13 × 13 输出特征图或网格。YOLOv2 还使用 passthrough 层，将 26 × 26 × 512 的特征图通过将相邻特征堆叠到不同的通道中重新组织，而不是通过空间子采样丢失它们。这产生了 13 × 13 × 2048 的特征图，与较低分辨率的 13 × 13 × 1024 特征图在通道维度上连接，以获得 13 × 13 × 3072 的特征图。见表 2 了解架构细节。</p></li>
+<li><p>多尺度训练。由于 YOLOv2 不使用全连接层，输入可以有不同的大小。为了使 YOLOv2 对不同的输入大小具有鲁棒性，作者每十个批次随机更改输入大小 —— 从 320 × 320 到 608 × 608。</p></li>
+</ol>
+<p>凭借所有这些改进，YOLOv2 在 PASCAL VOC2007 数据集上达到了 78.6% 的平均精度（AP），而 YOLOv1 获得的是 63.4%。</p>
+<section id="id9">
+<h2><strong>5.1 YOLOv2 架构</strong><a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>YOLOv2 使用的骨干架构称为 Darknet-19，包含 19 个卷积层和五个最大池化层。与 YOLOv1 的架构类似，它受到 Network in Network [42] 的启发，使用 1 × 1 卷积层在 3 × 3 卷积之间减少参数数量。此外，如上所述，他们使用批量归一化来规范化和帮助收敛。</p>
+<p>表 2 显示了 Darknet-19 主干和目标检测头部的整个结构。YOLOv2 预测五个边界框，每个边界框有五个值和 20 个类别，当使用 PASCAL VOC 数据集时。</p>
+</section>
+<section id="yolo9000-yolov2">
+<h2><strong>5.2 YOLO9000 是一个更强大的 YOLOv2</strong><a class="headerlink" href="#yolo9000-yolov2" title="Link to this heading">#</a></h2>
+<p>作者在同一篇论文中介绍了一种联合训练分类和检测的方法。它使用来自 COCO [37] 的检测标记数据学习边界框坐标，使用 ImageNet 的分类数据增加它可以检测的类别数量。在训练过程中，他们将两个数据集合并，以便当使用检测训练图像时，它反向传播检测网络；当使用分类训练图像时，它反向传播架构的分类部分。结果是能够检测超过 9000 个类别的 YOLO 模型，因此得名 YOLO9000。</p>
+</section>
+</section>
+<section id="yolov3">
+<h1><strong>6 YOLOv3</strong><a class="headerlink" href="#yolov3" title="Link to this heading">#</a></h1>
+<p>由 Joseph Redmon 和 Ali Farhadi 在 2018 年的 ArXiv 中发表的 YOLOv3 [46] 包括重大变化和一个更大的架构，以保持实时性能的同时达到最先进的水平。以下，我们描述了与 YOLOv2 相比的变化。</p>
+<ol class="arabic simple">
+<li><p>边界框预测。像 YOLOv2 一样，网络为每个边界框预测四个坐标 tx, ty, tw, 和 th；然而，这一次，YOLOv3 使用逻辑回归为每个边界框预测一个对象分数。这个分数对于与真实情况重叠度最高的锚框是 1，对于其余的锚框是 0。与 Faster R-CNN [45] 相反，YOLOv3 只为每个真实对象分配一个锚框。此外，如果没有锚框被分配到一个对象上，它只会产生分类损失，而不会产生定位损失或置信度损失。</p></li>
+<li><p>类别预测。他们没有使用 softmax 进行分类，而是使用二元交叉熵来训练独立的逻辑分类器，并将问题表述为多标签分类。这种变化允许将多个标签分配给同一个框，这可能在一些具有重叠标签的复杂数据集 [47] 中发生。例如，同一个对象可以是“人”和“男人”。</p></li>
+<li><p>新的骨干网络。YOLOv3 功能更大的特征提取器，由 53 个卷积层组成，具有残差连接。6.1 节更详细地描述了架构。</p></li>
+<li><p>空间金字塔池化（SPP）虽然在论文中没有提及，但作者还在骨干网络中添加了一个修改版的 SPP 块 [48]，它在不进行子采样（步长 = 1）的情况下连接多个最大池化输出，每个输出具有不同的内核大小 k × k，其中 k = 1, 5, 9, 13，允许更大的接受场。这个版本被称为 YOLOv3-spp，并且是最好的性能版本，提高了 AP50 2.7%。</p></li>
+<li><p>多尺度预测。类似于特征金字塔网络 [49]，YOLOv3 在三个不同的尺度上预测三个框。6.2 节更详细地描述了多尺度预测机制。</p></li>
+<li><p>边界框先验。像 YOLOv2 一样，作者也使用 k-means 来确定锚框的边界框先验。不同之处在于，在 YOLOv2 中，他们每个单元格使用了总共五个先验框，而在 YOLOv3 中，他们在三个不同的尺度上使用了三个先验框。</p></li>
+</ol>
+<section id="id10">
+<h2><strong>6.1 YOLOv3 架构</strong><a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>YOLOv3 呈现的架构骨干称为 Darknet-53。它将所有最大池化层替换为步幅卷积，并添加了残差连接。总共包含 53 个卷积层。图 8 显示了架构细节。</p>
+<p>Darknet-53 骨干网络获得了与 ResNet-152 相当的 Top-1 和 Top-5 准确率，但几乎快了 2 倍。</p>
+</section>
+<section id="id11">
+<h2><strong>6.2 YOLOv3 多尺度预测</strong><a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>除了更大的架构，YOLOv3 的一个重要特性是多尺度预测，即在多个网格大小上进行预测。这有助于获得更详细的框，并显著提高了小目标的预测，这是以前 YOLO 版本的主要弱点之一。</p>
+<p>图 9 显示的多尺度检测架构的工作方式如下：第一个输出 y1 等同于 YOLOv2 输出，其中 13 × 13 网格定义了输出。第二个输出 y2 由 Darknet-53 的 (Res × 4) 输出与 (Res × 8) 后的输出连接组成。特征图的大小不同，即 13 × 13 和 26 × 26，因此在连接之前有一个上采样操作。最后，使用上采样操作，第三个输出 y3 将 26 × 26 特征图与 52 × 52 特征图连接。</p>
+<p>对于包含 80 个类别的 COCO 数据集，每个尺度提供了一个形状为 N × N × [3 × (4 + 1 + 80)] 的输出张量，其中 N × N 是特征图（或网格单元）的大小，3 表示每个单元格的框数，4 + 1 包括四个坐标和对象分数。</p>
+</section>
+<section id="id12">
+<h2><strong>6.3 YOLOv3 结果</strong><a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p>当 YOLOv3 发布时，目标检测的基准已经从 PASCAL VOC 变为 Microsoft COCO [37]。因此，从这里开始，所有的 YOLO 都在 MS COCO 数据集上评估。YOLOv3-spp 实现了 36.2% 的平均精度 AP 和 60.6% 的 AP50，在 20 FPS 下实现了当时的最先进水平，速度是原来的 2 倍。</p>
+</section>
+</section>
+<section id="id13">
+<h1><strong>7 骨干、颈部和头部</strong><a class="headerlink" href="#id13" title="Link to this heading">#</a></h1>
+<p>在这个时候，目标检测器的架构开始被描述为三个部分：骨干、颈部和头部。图 10 显示了一个高层次的骨干、颈部和头部图。</p>
+<p>骨干负责从输入图像中提取有用特征。它通常是在大规模图像分类任务（如 ImageNet）上训练的卷积神经网络（CNN）。骨干在不同尺度上捕获层次特征，较低级特征（例如边缘和纹理）在早期层中提取，较高级别特征（例如对象部分和语义信息）在更深层中提取。</p>
+<p>颈部是连接骨干和头部的中间组件。它聚合并提炼骨干提取的特征，通常专注于增强不同尺度上的空间和语义信息。颈部可能包括额外的卷积层、特征金字塔网络（FPN）[49] 或其他机制，以改善特征的表示。</p>
+<p>头部是目标检测器的最终组件；它负责根据骨干和颈部提供的特征进行预测。它通常由一个或多个特定任务的子网络组成，执行分类、定位，以及最近的实例分割和姿态估计。头部处理颈部提供的特征，为每个对象候选项生成预测。最后，后处理步骤，如非最大值抑制（NMS），过滤掉重叠预测，并仅保留最有信心的检测。</p>
+<p>在其余的 YOLO 模型中，我们将使用骨干、颈部和头部来描述架构。</p>
+</section>
+<section id="yolov4">
+<h1><strong>8 YOLOv4</strong><a class="headerlink" href="#yolov4" title="Link to this heading">#</a></h1>
+<p>两年过去了，没有 YOLO 的新版本。直到 2020 年 4 月，Alexey Bochkovskiy、Chien-Yao Wang 和 Hong-Yuan Mark Liao 在 ArXiv 上发布了 YOLOv4 [50] 的论文。起初，不同的作者介绍了一个新的“官方”版本的 YOLO 似乎很奇怪；然而，YOLOv4 保持了相同的 YOLO 哲学 —— 实时、开源、单次拍摄和 darknet 框架 —— 并且改进是如此的令人满意，以至于社区迅速将这个版本接受为官方的 YOLOv4。</p>
+<p>YOLOv4 尝试通过尝试许多变化来寻找最佳平衡，这些变化被归类为“免费工具包”和“特殊工具包”。免费工具包是只改变训练策略并增加训练成本但不增加推理时间的方法，最常见的是数据增强。另一方面，特殊工具包是那些略微增加推理成本但显著提高准确性的方法。这些方法的示例包括扩大接受场[48, 51, 52]、组合特征[53, 49, 54, 55] 和后处理[56, 40, 57, 58] 等。</p>
+<p>我们将 YOLOv4 的主要变化总结如下：</p>
+<p>• 通过集成特殊工具包（BoS）增强架构。作者尝试了多种架构作为骨干，如 ResNeXt50 [59]、EfficientNet-B3 [60] 和 Darknet-53。表现最好的架构是带有跨阶段部分连接（CSPNet）[61] 和 Mish 激活函数[57] 的 Darknet-53 修改版，作为骨干（见图 11）。对于颈部，他们使用了 YOLOv3-spp 中的空间金字塔池化（SPP）[48] 的修改版本和 YOLOv3 中的多尺度预测，但是使用了修改版的路径聚合网络（PANet）[62] 而不是 FPN，以及修改版的空间注意力模块（SAM）[63]。最后，对于检测头部，他们使用 YOLOv3 中的锚点。因此，该模型被称为 CSPDarknet53-PANet-SPP。添加到 Darknet-53 中的跨阶段部分连接（CSP）有助于在保持相同准确性的同时减少模型的计算量。像 YOLOv3-spp 中的 SPP 块增加了接受场，而不影响推理速度。修改版的 PANet 将特征连接起来，而不是像原始 PANet 论文中那样添加它们。</p>
+<p>• 集成免费工具包（BoF）进行高级训练方法。除了常规的增强，如随机亮度、对比度、缩放、裁剪、翻转和旋转外，作者还实现了将四张图像合并为一张的镶嵌增强，这允许在它们通常的上下文之外检测对象，并且还减少了批量归一化所需的大批量大小。为了正则化，他们使用了 DropBlock [64]，它是 Dropout [65] 的替代品，但也适用于卷积神经网络，以及类别标签平滑 [66, 67]。对于检测器，他们添加了 CIoU 损失 [68] 和交叉小批量归一化（CmBN），用于从整个批次而不是单个小批量收集统计信息，就像常规的批量归一化一样 [69]。</p>
+<p>• 自对抗训练（SAT）。为了使模型对扰动更加鲁棒，对输入图像执行对抗性攻击，以创建一个欺骗，即使原始标签保持不变，也使地面真实对象不在图像中，但保持原始标签以检测正确的对象。</p>
+<p>• 使用遗传算法进行超参数优化。为了找到用于训练的最佳超参数，他们在前 10% 的周期上使用遗传算法，并使用余弦退火调度器 [70] 在训练期间改变学习率。它开始缓慢降低学习率，然后在训练过程的一半快速降低，最后稍微降低。</p>
+<p>表 3 列出了骨干和检测器的最终选择的 BoF 和 BoS。</p>
+<section id="id14">
+<h2><strong>8.1 YOLOv4 结果</strong><a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<p>在 MS COCO 数据集 test-dev 2017 上评估，YOLOv4 在 NVIDIA V100 上以超过 50 FPS 的速度实现了 43.5% 的 AP 和 65.7% 的 AP50。</p>
+</section>
+<section id="yolov5">
+<h2><strong>9 YOLOv5</strong><a class="headerlink" href="#yolov5" title="Link to this heading">#</a></h2>
+<p>YOLOv5 [72] 是在 YOLOv4 发布几个月后，由 Glenn Jocher 在 2020 年发布的。在撰写本文时，关于 YOLOv5 还没有科学论文，但从代码中我们知道，它使用了许多在 YOLOv4 部分描述的改进，主要的区别是它是在 Pytorch 而不是 Darknet 中开发的。YOLOv5 是开源的，并且由 Ultralytics 积极维护，有超过 250 个贡献者和频繁的新改进。YOLOv5 易于使用、训练和部署。Ultraalytics 提供 iOS 和 Android 的移动版本以及许多用于标记、训练和部署的集成。</p>
+<p>YOLOv5 提供了五个缩放版本：YOLOv5n（纳米）、YOLOv5s（小型）、YOLOv5m（中型）、YOLOv5l（大型）和 YOLOv5x（特大型）。</p>
+<p>在撰写本文时发布的 YOLOv5 版本是 v7.0，包括能够进行分类和实例分割的 YOLOv5 版本。</p>
+</section>
+<section id="id15">
+<h2><strong>9.1 YOLOv5 结果</strong><a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<p>在 MS COCO 数据集 test-dev 2017 上评估，YOLOv5x 以 640 像素的图像大小实现了 50.7% 的 AP，并在 NVIDIA V100 上以 200 FPS 的速度运行。使用更大的输入大小 1536 像素，YOLOv5 实现了 55.8% 的 AP。</p>
+</section>
+</section>
+<section id="scaled-yolov4">
+<h1><strong>10 Scaled-YOLOv4</strong><a class="headerlink" href="#scaled-yolov4" title="Link to this heading">#</a></h1>
+<p>在 YOLOv4 一年后，同一组作者在 CVPR 2021 上展示了 Scaled-YOLOv4 [73]。与 YOLOv4 不同的是，Scaled YOLOv4 是在 Pytorch 而不是 Darknet 中开发的。主要的创新是引入了放大和缩小技术。放大意味着产生一个在牺牲速度的情况下提高准确性的模型；另一方面，缩小意味着产生一个提高速度但牺牲准确性的模型。此外，缩小模型需要的计算能力较少，可以在嵌入式系统上运行。</p>
+<p>缩小的架构被称为 YOLOv4-tiny；它为低端 GPU 设计，可以在 Jetson TX2 上以 46 FPS 运行，或在 RTX2080Ti 上以 440 FPS 运行，在 MS COCO 上实现了 22% 的 AP。</p>
+<p>放大的模型架构被称为 YOLOv4-large，它包括三种不同大小的 P5、P6 和 P7。这个架构是为云 GPU 设计的，并以 56% 的 AP 在 MS COCO 上超越了所有以前的模型，实现了最先进的性能。</p>
+</section>
+<section id="yolor">
+<h1><strong>11 YOLOR</strong><a class="headerlink" href="#yolor" title="Link to this heading">#</a></h1>
+<p>YOLOR [77] 由 YOLOv4 的同一研究团队在 2021 年 5 月的 ArXiv 上发表。它代表 “You Only Learn One Representation”。在这篇论文中，作者采取了不同的方法；他们开发了一种多任务学习方法，旨在通过学习一般表示并使用子网络创建特定任务的表示，来创建一个用于各种任务（例如，分类、检测、姿态估计）的单一模型。由于传统的联合学习方法通常导致次优特征生成，YOLOR 旨在通过编码神经网络的隐含知识来克服这个问题，以便应用于多个任务，类似于人类如何使用过去的经验来解决新问题。结果表明，将隐含知识引入神经网络对所有任务都有益。</p>
+<p>在 MS COCO 数据集 test-dev 2017 上评估，YOLOR 在 NVIDIA V100 上以 30 FPS 运行，实现了 55.4% 的 AP 和 73.3% 的 AP50。</p>
+</section>
+<section id="yolox">
+<h1><strong>12 YOLOX</strong><a class="headerlink" href="#yolox" title="Link to this heading">#</a></h1>
+<p>YOLOX [78] 由 Megvii Technology 的研究团队在 2021 年 7 月的 ArXiv 上发表。它是在 Pytorch 中开发的，并以 Ultralytics 的 YOLOV3 为起点，有五个主要变化：无锚点架构、多个正样本、解耦头部、先进的标签分配和强大的增强。它在 2021 年实现了最先进的结果，以速度和准确性之间的最佳平衡，在 Tesla V100 上以 68.9% FPS 运行，实现了 50.1% 的 AP。</p>
+<p>以下，我们描述了 YOLOX 相对于 YOLOv3 的五个主要变化：</p>
+<ol class="arabic simple">
+<li><p>无锚点。自从 YOLOv2 以来，所有随后的 YOLO 版本都是基于锚点的检测器。YOLOX 受到无锚点的最新先进目标检测器的启发，例如 CornerNet [79]、CenterNet [80] 和 FCOS [81]，回归到无锚点架构，简化了训练和解码过程。无锚点将 AP 提高了 0.9 个百分点，相对于 YOLOv3 的基线。</p></li>
+<li><p>多个正样本。为了弥补缺乏锚点所产生的大量不平衡，作者使用中心采样 [81]，将中心 3 × 3 区域分配为正样本。这种方法将 AP 提高了 2.1 个百分点。</p></li>
+<li><p>解耦头部。在 [82, 83] 中表明，分类置信度和定位准确性之间可能存在不一致性。由于这个原因，YOLOX 将这两个部分分离成两个头部（如图 12 所示），一个用于分类任务，另一个用于回归任务，提高了 AP 1.1 个百分点，并加快了模型收敛速度。</p></li>
+<li><p>高级标签分配。在 [84] 中表明，当多个对象的框重叠时，真实标签分配可能存在模糊性，并将分配过程表述为最优运输（OT）问题。受此工作的启发，YOLOX 提出了一个简化版本，称为 simOTA。这个变化将 AP 提高了 2.3 个百分点。</p></li>
+<li><p>强大的增强。YOLOX 使用 MixUP [85] 和 Mosaic 增强。作者发现，在使用了这些增强之后，ImageNet 预训练不再有益。强大的增强将 AP 提高了 2.4 个百分点。</p></li>
+</ol>
+<p>图 12：YOLOv3 头部和 YOLOX 解耦头部之间的差异。对于 FPN 的每个级别，他们使用 1 × 1 卷积层将特征通道减少到 256，然后添加两个并行分支，每个分支都有两个 3 × 3 卷积层，用于类别置信度（分类）和定位（回归）任务。IoU 分支被添加到回归头部。</p>
+</section>
+<section id="yolov6">
+<h1><strong>13 YOLOv6</strong><a class="headerlink" href="#yolov6" title="Link to this heading">#</a></h1>
+<p>YOLOv6 [86] 由美团视觉人工智能部门在 2022 年 9 月的 ArXiv 上发表。与 YOLOv4 和 YOLOv5 类似，它为工业应用提供了不同大小的各种模型。遵循基于锚点方法 [78, 81] 的趋势，YOLOv6 采用了无锚点检测器。这个模型的主要创新如下：</p>
+<ol class="arabic simple">
+<li><p>一个新的基于 RepVGG [87] 的骨干，称为 EfﬁcientRep，比以前的 YOLO 骨干使用更高的并行性。对于颈部，他们使用 PAN [62]，增强了 RepBlocks [87] 或 CSPStackRep[61] 块，用于更大的模型。受到 YOLOX 的启发，他们开发了一个高效的解耦头部。</p></li>
+<li><p>使用 TOOD [88] 中引入的任务对齐学习方法进行标签分配。</p></li>
+<li><p>新的分类和回归损失。他们使用了分类 VariFocal 损失 [89] 和 SIoU [90]/GIoU [91] 回归损失。</p></li>
+<li><p>回归和分类任务的自蒸馏策略。</p></li>
+<li><p>使用 RepOptimizer[92] 和通道级蒸馏 [93] 的检测量化方案，有助于实现更快的检测器。</p></li>
+</ol>
+</section>
+<section id="id16">
+<h1><strong>13.1 YOLOv6 结果</strong><a class="headerlink" href="#id16" title="Link to this heading">#</a></h1>
+<p>在 MS COCO 数据集 test-dev 2017 上评估，YOLOv6-L 在 NVIDIA Tesla T4 上以大约 50 FPS 的速度实现了 52.5% 的 AP 和 70% 的 AP50。</p>
+</section>
+<section id="yolov7">
+<h1><strong>14 YOLOv7</strong><a class="headerlink" href="#yolov7" title="Link to this heading">#</a></h1>
+<p>YOLOv7 [94] 由 YOLOv4 和 YOLOR 的同一作者团队在 2022 年 7 月的 ArXiv 上发表。当时，它在 5 FPS 到 160 FPS 的范围内超过了所有已知的目标检测器的速度和准确性。像 YOLOv4 一样，它仅使用 MS COCO 数据集进行训练，而不使用预训练的骨干。YOLOv7 提出了几个架构变化和一系列免费工具包，这些工具包在不影响推理速度的情况下提高了准确性，只影响了训练时间。</p>
+<p>YOLOv7 的架构变化是：</p>
+<p>• 扩展的高效层聚合网络（E-ELAN）。ELAN [95] 是一种策略，允许深度模型通过控制最短的最长梯度路径来更有效地学习和收敛。YOLOv7 提出了 E-ELAN，适用于具有无限堆叠计算块的模型。E-ELAN 通过洗牌和合并基数来增强网络的学习，而不会破坏原始的梯度路径。</p>
+<p>• 基于连接的模型的模型扩展。扩展通过调整一些模型属性来生成不同大小的模型。YOLOv7 的架构是一种基于连接的架构，其中标准的扩展技术，如深度扩展，会导致过渡层的输入通道和输出通道之间的比例变化，进而导致模型的硬件使用率下降。YOLOv7 提出了一种新的策略，用于扩展基于连接的模型，其中块的深度和宽度以相同的因子进行扩展，以保持模型的最优结构。</p>
+<p>YOLOv7 使用的免费工具包包括：
+• 计划的重新参数化卷积。像 YOLOv6 一样，YOLOv7 的架构也受到重新参数化卷积（RepConv）[87] 的启发。然而，他们发现 RepConv 中的身份连接破坏了 ResNet [53] 中的残差和 DenseNet [96] 中的连接。因此，他们去除了身份连接，并称之为 RepConvN。
+• 辅助头部的粗标签分配和主头部的细标签分配。主头部负责最终输出，而辅助头部协助训练。
+• conv-bn-activation 中的批量归一化。这将批量归一化的平均值和方差集成到卷积层的偏置和权重中，在推理阶段。
+• 受 YOLOR [77] 启发的隐含知识。
+• 作为最终推理模型的指数移动平均值。</p>
+<section id="yolov4-yolor">
+<h2><strong>14.1 与 YOLOv4 和 YOLOR 的比较</strong><a class="headerlink" href="#yolov4-yolor" title="Link to this heading">#</a></h2>
+<p>在本节中，我们强调了 YOLOv7 与同一位作者开发的先前 YOLO 模型相比的改进。</p>
+<p>与 YOLOv4 相比，YOLOv7 实现了参数减少 75% 和计算减少 36%，同时平均精度（AP）提高了 1.5%。</p>
+<p>与 YOLOv4-tiny 相比，YOLOv7-tiny 在保持相同 AP 的情况下，实现了参数和计算分别减少 39% 和 49%。</p>
+<p>最后，与 YOLOR 相比，YOLOv7 减少了参数和计算的数量，分别减少了 43% 和 15%，并且 AP 略有提高了 0.4%。</p>
+</section>
+<section id="id17">
+<h2><strong>14.2 YOLOv7 结果</strong><a class="headerlink" href="#id17" title="Link to this heading">#</a></h2>
+<p>在 MS COCO 数据集 test-dev 2017 上评估，YOLOv7-E6 在 NVIDIA V100 上以 50 FPS 的速度运行，输入尺寸为 1280 像素，实现了 55.9% 的 AP 和 73.5% 的 AP50。</p>
+</section>
+</section>
+<section id="damo-yolo">
+<h1><strong>15 DAMO-YOLO</strong><a class="headerlink" href="#damo-yolo" title="Link to this heading">#</a></h1>
+<p>DAMO-YOLO [97] 由阿里巴巴集团在 2022 年 11 月的 ArXiv 上发表。受当前技术的启发，DAMO-YOLO 包括以下内容：</p>
+<ol class="arabic simple">
+<li><p>神经架构搜索（NAS）。他们使用了阿里巴巴开发的一种称为 MAE-NAS [98] 的方法，自动找到高效的架构。</p></li>
+<li><p>大型颈部。受 GiraffeDet [99]、CSPNet [61] 和 ELAN [95] 的启发，作者设计了一个可以实时工作的颈部，称为 Efﬁcient-RepGFPN。</p></li>
+<li><p>小型头部。作者发现大颈部和小颈部产生更好的性能，他们只留下了一个用于分类的线性层和一个用于回归的线性层。他们将这种方法称为 ZeroHead。</p></li>
+<li><p>对齐的 OTA 标签分配。动态标签分配方法，如 OTA[84] 和 TOOD[88]，由于它们对静态方法的显著改进而受到欢迎。然而，分类和回归之间的错位仍然是一个问题，部分原因是分类和回归损失之间的不平衡。为了解决这个问题，他们的 AlignOTA 方法将焦点损失 [75] 引入到分类成本中，并使用预测和真实边界框的 IoU 作为软标签，从而能够为每个目标选择对齐的样本，并从全局角度解决问题。</p></li>
+<li><p>知识蒸馏。他们提出的战略包括两个阶段：第一阶段老师指导学生，第二阶段学生独立微调。此外，他们在蒸馏方法中加入了两个增强：Align 模块，将学生特征适应到与老师相同的分辨率；通道级动态温度，归一化老师和学生特征以减少实数值差异的影响。</p></li>
+</ol>
+<p>作者生成了名为 DAMO-YOLO-Tiny/Small/Medium 的缩放模型，最佳模型在 NVIDIA V100 上以 233 FPS 的速度实现了 50.0% 的 AP。</p>
+</section>
+<section id="yolov8">
+<h1><strong>16 YOLOv8</strong><a class="headerlink" href="#yolov8" title="Link to this heading">#</a></h1>
+<p>YOLOv8 [100] 由 Ultralytics 公司在 2023 年 1 月发布，该公司开发了 YOLOv5。由于在撰写本文时还没有关于 YOLOv8 的论文，我们需要对与其余 YOLO 版本相比的架构决策有所了解。遵循当前趋势，YOLOv8 是无锚点的，减少了盒子预测的数量，并加快了非最大值抑制（NMS）的速度。此外，YOLOv8 在训练期间使用镶嵌增强；然而，因为发现如果在整个训练过程中使用这种增强可能会有害，所以在最后十个周期内禁用了它。</p>
+<p>YOLOv8 可以从命令行界面（CLI）运行，也可以作为 PIP 包安装。此外，它还带有用于标记、训练和部署的多个集成。</p>
+<p>YOLOv8 提供了五个缩放版本：YOLOv8n（纳米）、YOLOv8s（小型）、YOLOv8m（中型）、YOLOv8l（大型）和 YOLOv8x（特大型）。</p>
+<section id="id18">
+<h2><strong>16.1 YOLOv8 结果</strong><a class="headerlink" href="#id18" title="Link to this heading">#</a></h2>
+<p>在 MS COCO 数据集 test-dev 2017 上评估，YOLOv8x 在 NVIDIA A100 和 TensorRT 上以 280 FPS 的速度实现了 53.9% 的 AP，与相同输入尺寸下的 YOLOv5 的 50.7% 相比。</p>
+</section>
+<section id="pp-yolo-pp-yolov2-pp-yoloe">
+<h2><strong>17 PP-YOLO, PP-YOLOv2, 和 PP-YOLOE</strong><a class="headerlink" href="#pp-yolo-pp-yolov2-pp-yoloe" title="Link to this heading">#</a></h2>
+<p>PP-YOLO 模型与我们描述的 YOLO 模型并行发展。然而，我们决定将它们归为一节，因为它们从 YOLOv3 开始，并逐渐改进了以前的 PP-YOLO 版本。尽管如此，这些模型对 YOLO 的演变产生了影响。PP-YOLO [76] 与 YOLOv4 和 YOLOv5 类似，基于 YOLOv3。它由百度公司的研究人员在 2020 年 7 月的 ArXiv 上发表。作者使用了 PaddlePaddle [101] 深度学习平台，因此得名 PP。按照从 YOLOv4 开始我们看到的趋势，PP-YOLO 添加了十个现有的技巧来提高检测器的准确性，同时保持速度不变。根据作者的说法，这篇论文的目的不是介绍一种新的物体检测器，而是展示如何一步一步构建更好的检测器。PP-YOLO 使用的大多数技巧与 YOLOv4 中使用的技巧不同，而且重叠的技巧使用了不同的实现。PP-YOLO 相对于 YOLOv3 的变化是：</p>
+<ol class="arabic simple">
+<li><p>使用 ResNet50-vd 骨干替换了 DarkNet-53 骨干，该架构在最后阶段增强了可变形卷积 [102]，并使用了蒸馏预训练模型，该模型在 ImageNet 上具有更高的分类准确性。这种架构被称为 ResNet5-vd-dcn。</p></li>
+<li><p>更大的批量大小以提高训练稳定性，他们从 64 增加到 192，并更新了训练计划和学习率。</p></li>
+<li><p>维护了训练参数的移动平均值，并在训练结束时使用它们，而不是最终训练值。</p></li>
+<li><p>DropBlock 仅应用于 FPN。</p></li>
+<li><p>在另一个分支中添加了 IoU 损失，以及用于边界框回归的 L1 损失。</p></li>
+<li><p>添加了 IoU 预测分支以测量定位准确性，以及一个 IoU 感知损失。在推理过程中，YOLOv3 将分类概率和目标性分数相乘以计算最终检测，PP-YOLO 也将预测的 IoU 相乘以考虑定位准确性。</p></li>
+<li><p>类似于 YOLOv4 的网格敏感方法用于改进网格边界的边界框中心预测。</p></li>
+<li><p>使用可以并行运行的 Matrix NMS [103]，比传统 NMS 更快。</p></li>
+<li><p>在 FPN 的 1 × 1 卷积中使用 CoordConv [104]，以及在检测头部的第一层卷积中使用。CoordConv 允许网络学习平移不变性，改善检测定位。</p></li>
+<li><p>仅在顶部特征图上使用空间金字塔池化，以增加骨干的接受场。</p></li>
+</ol>
+</section>
+<section id="pp-yolo">
+<h2><strong>17.1 PP-YOLO 增强和预处理</strong><a class="headerlink" href="#pp-yolo" title="Link to this heading">#</a></h2>
+<p>PP-YOLO 使用了以下增强和预处理：</p>
+<ol class="arabic simple">
+<li><p>Mixup 训练 [85]，权重从 Beta(α, β) 分布中采样，其中 α = 1.5 和 β = 1.5。</p></li>
+<li><p>随机颜色失真。</p></li>
+<li><p>随机扩展</p></li>
+<li><p>随机裁剪和随机翻转，概率为 0.5。</p></li>
+<li><p>RGB 通道 z 分数标准化，均值为 [0.485, 0.456, 0.406]，标准差为 [0.229, 0.224, 0.225]。</p></li>
+<li><p>从 [320, 352, 384, 416, 448, 480, 512, 544, 576, 608] 中均匀抽取多个图像大小。</p></li>
+</ol>
+</section>
+<section id="id19">
+<h2><strong>17.2 PP-YOLO 结果</strong><a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<p>在 MS COCO 数据集 test-dev 2017 上评估，PP-YOLO 在 NVIDIA V100 上以 73 FPS 的速度实现了 45.9% 的 AP 和 65.2% 的 AP50。</p>
+</section>
+<section id="pp-yolov2">
+<h2><strong>17.3 PP-YOLOv2</strong><a class="headerlink" href="#pp-yolov2" title="Link to this heading">#</a></h2>
+<p>PP-YOLOv2 [105] 于 2021 年 4 月在 ArXiv 上发表，并在 PP-YOLO 的基础上增加了四个改进，将性能从 45.9% AP 提高到 NVIDIA V100 上的 69 FPS 的 49.5% AP。
+PP-YOLOv2 相对于 PP-YOLO 的变化如下：</p>
+<ol class="arabic simple">
+<li><p>骨干从 ResNet50 更改为 ResNet101。</p></li>
+<li><p>类似于 YOLOv4，使用路径聚合网络（PAN）而不是 FPN。</p></li>
+<li><p>Mish 激活函数。与 YOLOv4 和 YOLOv5 不同，他们只在检测颈部应用了 mish 激活函数，以保持骨干不变，使用 ReLU。</p></li>
+<li><p>更大的输入尺寸有助于提高小物体的性能。他们将最大输入尺寸从 608 扩展到 768，并将每个 GPU 的批量大小从 24 减少到 12 图像。输入尺寸均匀地从 [320, 352, 384, 416, 448, 480, 512, 544, 576, 608, 640, 672, 704, 736, 768] 中抽取。</p></li>
+<li><p>修改后的 IoU 感知分支。他们修改了 IoU 感知损失计算，使用软标签格式而不是软权重格式。</p></li>
+</ol>
+</section>
+<section id="pp-yoloe">
+<h2><strong>17.4 PP-YOLOE</strong><a class="headerlink" href="#pp-yoloe" title="Link to this heading">#</a></h2>
+<p>PP-YOLOE [106] 于 2022 年 3 月在 ArXiv 发表。它在 PP-YOLOv2 的基础上增加了改进，实现了在 NVIDIA V100 上以 78.1 FPS 的速度运行的 51.4% AP。PP-YOLOE 相对于 PP-YOLOv2 的主要变化是：</p>
+<ol class="arabic simple">
+<li><p>无锚点。遵循当时的潮流，PP-YOLOE 使用了无锚点架构。</p></li>
+<li><p>新的骨干和颈部。受 TreeNet [107] 的启发，作者使用 RepResBlocks 结合残差和密集连接修改了骨干和颈部的架构。</p></li>
+<li><p>任务对齐学习（TAL）。YOLOX 是第一个提出任务错位问题的人，即分类置信度和位置准确性并不总是一致的。为了减少这个问题，PP-YOLOE 实施了 TOOD [88] 提出的任务对齐损失，其中包括动态标签分配。</p></li>
+<li><p>高效任务对齐头部（ET-head）。与 YOLOX 不同，YOLOX 将分类和位置头部解耦，PP-YOLOE 反而使用了一个基于 TOOD 的单一头部来提高速度和准确性。</p></li>
+<li><p>Varifocal（VFL）和分布焦点损失（DFL）。VFL [89] 使用目标分数对正样本的损失进行加权，给予 IoU 高的样本更高的权重。这在训练期间优先考虑高质量样本。类似地，两者都使用 IoU 感知的分类分数（IACS）作为目标，允许分类和定位质量的联合学习，从而在训练和推理之间保持一致性。另一方面，DFL [108] 将焦点损失从离散标签扩展到连续标签，使得改进的表示能够成功优化，结合了质量估计和类别预测。这允许对真实数据中灵活分布的准确描述，消除了不一致的风险。</p></li>
+</ol>
+<p>像以前的 YOLO 版本一样，作者通过改变骨干和颈部的宽度和深度生成了多个缩放模型。这些模型被称为 PP-YOLOE-s（小型）、PP-YOLOE-m（中型）、PP-YOLOE-l（大型）和 PP-YOLOE-x（特大型）。</p>
+</section>
+</section>
+<section id="id20">
+<h1><strong>18 讨论</strong><a class="headerlink" href="#id20" title="Link to this heading">#</a></h1>
+<p>本文检查了从原始 YOLO 模型到最新 YOLOv8 的 15 个 YOLO 版本。表 4 提供了讨论的 YOLO 版本的概述。从这个表中，我们可以识别出几个关键模式：</p>
+<p>• 锚点：最初的 YOLO 模型相对简单，没有使用锚点，而最先进的模型依赖于带有锚点的两阶段检测器。YOLOv2 引入了锚点，导致边界框预测准确性的提高。这一趋势持续了五年，直到 YOLOX 引入了无锚点方法，取得了最先进的结果。从那时起，后续的 YOLO 版本放弃了锚点的使用。</p>
+<p>• 框架：最初，YOLO 是使用 Darknet 框架开发的，后续版本也遵循了这一做法。然而，当 Ultralytics 将 YOLOv3 移植到 PyTorch 时，其余的 YOLO 版本都使用 PyTorch 进行开发，导致了改进的激增。另一种使用的深度学习语言是 PaddlePaddle，这是由百度最初开发的开源框架。</p>
+<p>• 骨干：YOLO 模型的骨干架构随着时间的推移经历了显著的变化。从包含简单卷积和最大池化层的 Darknet 架构开始，后来的模型在 YOLOv4 中引入了跨阶段部分连接（CSP），在 YOLOv6 和 YOLOv7 中引入了重新参数化，以及在 DAMO-YOLO 中引入了神经架构搜索。</p>
+<p>• 性能：虽然 YOLO 模型的性能随着时间的推移有所提高，但值得注意的是，它们通常优先平衡速度和准确性，而不是只关注准确性。这种权衡是 YOLO 框架的一个重要方面，允许在各种应用中进行实时目标检测。</p>
+</section>
+<section id="id21">
+<h1><strong>19 YOLO 的未来</strong><a class="headerlink" href="#id21" title="Link to this heading">#</a></h1>
+<p>随着 YOLO 框架的不断发展，我们预计以下趋势和可能性将塑造未来的发展方向：</p>
+<p>• 融合最新技术。研究人员和开发人员将继续通过利用深度学习、数据增强和训练技术中的最新方法来完善 YOLO 架构。这种持续的创新过程可能会提高模型的性能、鲁棒性和效率。</p>
+<p>• 基准测试的演变。当前用于评估目标检测模型的基准测试，COCO 2017，最终可能会被更先进和更具挑战性的基准测试所取代。这反映了从最初两个 YOLO 版本使用的 VOC 2007 基准测试的转变，因为随着模型变得更加复杂和准确，需要更具挑战性的基准测试。</p>
+<p>• YOLO 模型和应用的激增。随着 YOLO 框架的进步，我们预计将看到每年发布的 YOLO 模型数量增加，以及应用范围的相应扩大。随着框架变得更加多功能和强大，它可能会被用于更多不同的领域，从家用电器设备到自动驾驶汽车。</p>
+<p>• 扩展到新领域。YOLO 模型有潜力扩展其能力，超越目标检测和分割，进入视频和 3D 关键点估计等领域。随着这些模型的发展，它们可能成为解决更广泛计算机视觉任务的新解决方案的基础。</p>
+<p>• 适应多样化硬件。YOLO 模型将进一步跨越硬件平台，从物联网设备到高性能计算集群。这种适应性将使 YOLO 模型能够在各种环境中部署，取决于应用程序的要求和限制。此外，通过根据不同的硬件规格定制模型，YOLO 可以为更多的用户和行业提供易于访问和有效的解决方案。</p>
+</section>
+<section id="id22">
+<h1><strong>20.1 速度和准确性之间的权衡</strong><a class="headerlink" href="#id22" title="Link to this heading">#</a></h1>
+<p>YOLO 目标检测模型家族一直专注于平衡速度和准确性，旨在在不牺牲检测结果质量的情况下实现实时性能。随着 YOLO 框架通过各种迭代不断发展，这种权衡一直是一个反复出现的主题，每个版本都寻求以不同的方式优化这些相互竞争的目标。在原始的 YOLO 模型中，主要关注点是实现高速目标检测。该模型使用单个卷积神经网络（CNN）直接从输入图像预测对象位置和类别，实现了实时处理。然而，这种对速度的强调导致了准确性上的妥协，主要在处理小物体或具有重叠边界框的对象时。</p>
+<p>随后的 YOLO 版本引入了改进和增强，以解决这些限制，同时保持框架的实时能力。例如，YOLOv2（YOLO9000）引入了锚框和 passthrough 层来改善对象定位，从而提高了准确性。此外，YOLOv3 通过采用多尺度特征提取架构来增强模型性能，允许在各种尺度上更好地检测对象。</p>
+<p>随着 YOLO 框架的演变，速度和准确性之间的权衡变得更加微妙。像 YOLOv4 和 YOLOv5 这样的模型引入了创新，例如新的网络骨干、改进的数据增强技术和优化的训练策略。这些发展在不显著影响模型的实时性能的情况下，显著提高了准确性。</p>
+<p>从 Scaled YOLOv4 开始，所有官方 YOLO 模型都微调了速度和准确性之间的权衡，提供了不同的模型规模以适应特定的应用程序和硬件要求。例如，这些版本通常提供针对边缘设备优化的轻量级模型，为了降低计算复杂性并加快处理时间，牺牲了准确性。</p>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>摘要</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>1 引言</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolo"><strong>2 YOLO在不同领域的应用</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nms"><strong>3 目标检测指标和非最大值抑制（NMS）</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ap"><strong>3.1 AP如何工作？</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>3.2 计算AP</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>3.3 非最大值抑制（NMS）</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>4 YOLO：只看一次</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov1"><strong>4.1 YOLOv1如何工作？</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>4.2 YOLOv1 架构</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>4.3 YOLOv1 训练</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>4.4 YOLOv1 的优势和局限性</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov2"><strong>5 YOLOv2：更好、更快、更强</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><strong>5.1 YOLOv2 架构</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yolo9000-yolov2"><strong>5.2 YOLO9000 是一个更强大的 YOLOv2</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov3"><strong>6 YOLOv3</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><strong>6.1 YOLOv3 架构</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><strong>6.2 YOLOv3 多尺度预测</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>6.3 YOLOv3 结果</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><strong>7 骨干、颈部和头部</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov4"><strong>8 YOLOv4</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><strong>8.1 YOLOv4 结果</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov5"><strong>9 YOLOv5</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><strong>9.1 YOLOv5 结果</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scaled-yolov4"><strong>10 Scaled-YOLOv4</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolor"><strong>11 YOLOR</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolox"><strong>12 YOLOX</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov6"><strong>13 YOLOv6</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><strong>13.1 YOLOv6 结果</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov7"><strong>14 YOLOv7</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov4-yolor"><strong>14.1 与 YOLOv4 和 YOLOR 的比较</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id17"><strong>14.2 YOLOv7 结果</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#damo-yolo"><strong>15 DAMO-YOLO</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#yolov8"><strong>16 YOLOv8</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18"><strong>16.1 YOLOv8 结果</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pp-yolo-pp-yolov2-pp-yoloe"><strong>17 PP-YOLO, PP-YOLOv2, 和 PP-YOLOE</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pp-yolo"><strong>17.1 PP-YOLO 增强和预处理</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19"><strong>17.2 PP-YOLO 结果</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pp-yolov2"><strong>17.3 PP-YOLOv2</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pp-yoloe"><strong>17.4 PP-YOLOE</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id20"><strong>18 讨论</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id21"><strong>19 YOLO 的未来</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id22"><strong>20.1 速度和准确性之间的权衡</strong></a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By isLinXu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022, isLinXu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -2,6 +2,8 @@
 
 ---
 
+<<<<<<< HEAD
+=======
 ![](https://user-images.githubusercontent.com/59380685/241779758-59f7cecd-f4e1-43c6-8abb-5644dbd46bc5.png)
 
 ![](https://user-images.githubusercontent.com/59380685/241779802-b8dcf17a-8b1f-4996-bd82-4ddb98770f0a.png)
@@ -76,3 +78,4 @@
 
 
 
+>>>>>>> 7b836a65d7c41e1df6fc628370e438002f3bd83e

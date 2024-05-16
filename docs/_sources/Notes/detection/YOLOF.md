@@ -1,5 +1,4 @@
 # YOLOF
-### 论文阅读笔记
 
 **标题**: You Only Look One-level Feature
 

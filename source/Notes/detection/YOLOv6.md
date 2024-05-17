@@ -1,4 +1,4 @@
-# YOLOv6: A Single-Stage Object Detection Framework for Industrial Applications
+# YOLOv6
 
 作者：Chuyi Li, Lulu Li, Hongliang Jiang, Kaiheng Weng, Yifei Geng, Liang Li, Zaidan Ke, Qingyuan Li, Meng Cheng, Weiqiang Nie, Yiduo Li, Bo Zhang, Yufei Liang, Linyuan Zhou, Xiaoming Xu, Xiangxiang Chu, Xiaoming Wei, Xiaolin Wei, Meituan Inc.
 

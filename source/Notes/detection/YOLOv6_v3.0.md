@@ -1,4 +1,4 @@
-# YOLOv6 v3.0: A Full-Scale Reloading
+# YOLOv6
 
 作者：Chuyi Li, Lulu Li, Yifei Geng, Hongliang Jiang, MengCheng, Bo Zhang, Zaidan Ke, Xiaoming Xu, Xiangxiang Chu, Meituan Inc.
 
@@ -47,7 +47,7 @@ YOLOv6 v3.0 是 YOLO 系列的最新版本，它在网络架构和训练策略�
 - 探索更高级的数据增强和训练策略以进一步提升模型性能。
 - 将 YOLOv6 应用于更广泛的视觉任务，如视频理解、多目标跟踪等。
 
-### 回答问题：
+回答问题：
 
 1. 解决的问题：提升实时目标检测的准确性和推理速度。
 2. 新问题：不是新问题，但提供了新的解决方案。

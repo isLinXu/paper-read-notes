@@ -1,7 +1,5 @@
 # Mobilenet-SSDv2
 
-### 论文阅读笔记
-
 **标题：** Mobilenet-SSDv2: An Improved Object Detection Model for Embedded Systems
 
 **作者：** Yu-Chen Chiu, Chi-Yi Tsai, Mind-Da Ruan, Guan-Yu Shen, Tsu-Tian Lee

@@ -1,6 +1,4 @@
 # OWLv2
-### 论文阅读笔记：
-
 **标题：** Scaling Open-Vocabulary Object Detection
 
 **作者：** Matthias Minderer, Alexey Gritsenko, Neil Houlsby

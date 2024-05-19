@@ -593,6 +593,232 @@ document.write(`
 <li><p>下一步的工作可以包括进一步优化EfficientDet架构，探索在不同应用场景中的性能，或者将EfficientDet应用于其他计算机视觉任务，如语义分割或实例分割。
 此外，还可以研究如何将EfficientDet与其他先进的技术（如注意力机制、元学习等）结合，以进一步提高性能。</p></li>
 </ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>模型</p></th>
+<th class="head"><p>COCO AP</p></th>
+<th class="head"><p>FLOPs (Billions)</p></th>
+<th class="head"><p>FLOPs (ratio)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>EfficientDet-D0</p></td>
+<td><p>33.8</p></td>
+<td><p>2.5B</p></td>
+<td><p>1.0x</p></td>
+</tr>
+<tr class="row-odd"><td><p>YOLOv3</p></td>
+<td><p>33.0</p></td>
+<td><p>71B</p></td>
+<td><p>28x</p></td>
+</tr>
+<tr class="row-even"><td><p>EfficientDet-D1</p></td>
+<td><p>39.6</p></td>
+<td><p>6.1B</p></td>
+<td><p>2.5x</p></td>
+</tr>
+<tr class="row-odd"><td><p>RetinaNet</p></td>
+<td><p>39.1</p></td>
+<td><p>97B</p></td>
+<td><p>16x</p></td>
+</tr>
+<tr class="row-even"><td><p>EfficientDet-D7</p></td>
+<td><p>52.2</p></td>
+<td><p>410B</p></td>
+<td><p>164x</p></td>
+</tr>
+<tr class="row-odd"><td><p>AmoebaNet + NAS-FPN + AA</p></td>
+<td><p>55.7</p></td>
+<td><p>3048B</p></td>
+<td><p>13x</p></td>
+</tr>
+</tbody>
+</table>
+<p>总结：</p>
+<ul class="simple">
+<li><p>EfficientDet系列在性能和计算复杂度之间取得了较好的平衡，特别是EfficientDet-D7在COCO AP和FLOPs方面表现出色。</p></li>
+<li><p>YOLOv3的计算复杂度较低，但性能也相对较低。</p></li>
+<li><p>AmoebaNet + NAS-FPN + AA虽然性能最好，但计算复杂度非常高，不适合计算资源有限的场景。</p></li>
+</ul>
+<hr class="docutils" />
+<p>这个图表展示了四种不同的特征网络设计：FPN、PANet、NAS-FPN和BiFPN。以下是对每种网络模型结构及其输入输出流程的分析：</p>
+<p>(a) FPN (Feature Pyramid Network)</p>
+<ul class="simple">
+<li><p><strong>结构</strong>：</p>
+<ul>
+<li><p>FPN引入了一个自上而下的路径，用于融合从第3层到第7层（P3到P7）的多尺度特征。</p></li>
+<li><p>自上而下的路径通过跳跃连接（skip connections）将高层特征逐步传递到低层特征。</p></li>
+</ul>
+</li>
+<li><p><strong>输入输出流程</strong>：</p>
+<ol class="arabic simple">
+<li><p>输入图像经过主干网络（如ResNet）提取多尺度特征（C3到C7）。</p></li>
+<li><p>自上而下路径从最高层（C7）开始，通过上采样和跳跃连接将特征传递到低层。</p></li>
+<li><p>最终输出多尺度特征图（P3到P7），用于后续的目标检测任务。</p></li>
+</ol>
+</li>
+</ul>
+<p>(b) PANet (Path Aggregation Network)</p>
+<ul class="simple">
+<li><p><strong>结构</strong>：</p>
+<ul>
+<li><p>PANet在FPN的基础上增加了一个自下而上的路径。</p></li>
+<li><p>自下而上的路径通过跳跃连接将低层特征逐步传递到高层特征。</p></li>
+</ul>
+</li>
+<li><p><strong>输入输出流程</strong>：</p>
+<ol class="arabic simple">
+<li><p>输入图像经过主干网络提取多尺度特征（C3到C7）。</p></li>
+<li><p>自上而下路径从最高层（C7）开始，通过上采样和跳跃连接将特征传递到低层。</p></li>
+<li><p>自下而上路径从最低层（P3）开始，通过下采样和跳跃连接将特征传递到高层。</p></li>
+<li><p>最终输出多尺度特征图（P3到P7），用于后续的目标检测任务。</p></li>
+</ol>
+</li>
+</ul>
+<p>(c) NAS-FPN (Neural Architecture Search Feature Pyramid Network)</p>
+<ul class="simple">
+<li><p><strong>结构</strong>：</p>
+<ul>
+<li><p>NAS-FPN使用神经架构搜索（NAS）找到一个不规则的特征网络拓扑结构。</p></li>
+<li><p>该拓扑结构通过重复应用相同的块来构建。</p></li>
+</ul>
+</li>
+<li><p><strong>输入输出流程</strong>：</p>
+<ol class="arabic simple">
+<li><p>输入图像经过主干网络提取多尺度特征。</p></li>
+<li><p>特征通过NAS找到的拓扑结构进行处理，重复应用相同的块。</p></li>
+<li><p>最终输出多尺度特征图，用于后续的目标检测任务。</p></li>
+</ol>
+</li>
+</ul>
+<p>(d) BiFPN (Bidirectional Feature Pyramid Network)</p>
+<ul class="simple">
+<li><p><strong>结构</strong>：</p>
+<ul>
+<li><p>BiFPN在PANet的基础上进行了改进，具有更好的准确性和效率权衡。</p></li>
+<li><p>BiFPN通过重复应用相同的块来构建，具有双向特征融合路径。</p></li>
+</ul>
+</li>
+<li><p><strong>输入输出流程</strong>：</p>
+<ol class="arabic simple">
+<li><p>输入图像经过主干网络提取多尺度特征。</p></li>
+<li><p>特征通过双向路径进行融合，重复应用相同的块。</p></li>
+<li><p>最终输出多尺度特征图，用于后续的目标检测任务。</p></li>
+</ol>
+</li>
+</ul>
+<p>总结</p>
+<ul class="simple">
+<li><p><strong>FPN</strong>：通过自上而下路径融合多尺度特征。</p></li>
+<li><p><strong>PANet</strong>：在FPN基础上增加自下而上路径，进一步融合特征。</p></li>
+<li><p><strong>NAS-FPN</strong>：使用NAS找到不规则拓扑结构，重复应用相同的块。</p></li>
+<li><p><strong>BiFPN</strong>：改进的双向特征融合路径，具有更好的准确性和效率权衡。</p></li>
+</ul>
+<p>这些特征网络设计旨在提高目标检测任务中的特征融合效果，从而提升检测性能。</p>
+<hr class="docutils" />
+<p>这个图表展示了不同网络模型在COCO数据集上的性能（COCO AP）与模型大小、GPU延迟和CPU延迟的关系。以下是对每个子图的分析：</p>
+<p>(a) Model Size</p>
+<ul class="simple">
+<li><p><strong>结构</strong>：</p>
+<ul>
+<li><p>该子图展示了不同模型的COCO AP与模型大小（参数数量，单位为百万）的关系。</p></li>
+<li><p>EfficientDet系列（D0-D6）用红色曲线表示，其他模型如RetinaNet、Mask R-CNN、AmoebaNet + NAS-FPN等用不同颜色表示。</p></li>
+</ul>
+</li>
+<li><p><strong>输入输出流程</strong>：</p>
+<ol class="arabic simple">
+<li><p>输入图像经过主干网络和特征网络提取多尺度特征。</p></li>
+<li><p>特征通过检测头进行目标检测，输出检测结果。</p></li>
+<li><p>EfficientDet系列在模型大小和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和参数数量方面表现出色。</p></li>
+</ol>
+</li>
+</ul>
+<p>(b) GPU Latency</p>
+<ul class="simple">
+<li><p><strong>结构</strong>：</p>
+<ul>
+<li><p>该子图展示了不同模型的COCO AP与GPU延迟（单位为毫秒）的关系。</p></li>
+<li><p>EfficientDet系列（D0-D6）用红色曲线表示，其他模型如RetinaNet、Mask R-CNN、AmoebaNet + NAS-FPN等用不同颜色表示。</p></li>
+</ul>
+</li>
+<li><p><strong>输入输出流程</strong>：</p>
+<ol class="arabic simple">
+<li><p>输入图像经过主干网络和特征网络提取多尺度特征。</p></li>
+<li><p>特征通过检测头进行目标检测，输出检测结果。</p></li>
+<li><p>EfficientDet系列在GPU延迟和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和GPU延迟方面表现出色。</p></li>
+</ol>
+</li>
+</ul>
+<p>(c) CPU Latency</p>
+<ul class="simple">
+<li><p><strong>结构</strong>：</p>
+<ul>
+<li><p>该子图展示了不同模型的COCO AP与CPU延迟（单位为毫秒）的关系。</p></li>
+<li><p>EfficientDet系列（D0-D6）用红色曲线表示，其他模型如RetinaNet、Mask R-CNN、AmoebaNet + NAS-FPN等用不同颜色表示。</p></li>
+</ul>
+</li>
+<li><p><strong>输入输出流程</strong>：</p>
+<ol class="arabic simple">
+<li><p>输入图像经过主干网络和特征网络提取多尺度特征。</p></li>
+<li><p>特征通过检测头进行目标检测，输出检测结果。</p></li>
+<li><p>EfficientDet系列在CPU延迟和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和CPU延迟方面表现出色。</p></li>
+</ol>
+</li>
+</ul>
+<p>总结</p>
+<ul class="simple">
+<li><p><strong>Model Size</strong>：EfficientDet系列在模型大小和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和参数数量方面表现出色。</p></li>
+<li><p><strong>GPU Latency</strong>：EfficientDet系列在GPU延迟和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和GPU延迟方面表现出色。</p></li>
+<li><p><strong>CPU Latency</strong>：EfficientDet系列在CPU延迟和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和CPU延迟方面表现出色。</p></li>
+</ul>
+<p>这些图表展示了EfficientDet系列在不同方面的优势，特别是在模型大小、GPU延迟和CPU延迟方面都表现出色，适合在资源受限的环境中使用。</p>
+<hr class="docutils" />
+<p>这个图表展示了不同缩放方法在COCO数据集上的性能（COCO AP）与计算量（FLOPs，单位为十亿次操作）的关系。图表中比较了四种不同的缩放方法：复合缩放（Compound Scaling）、按图像大小缩放、按通道数缩放、按BiFPN层数缩放和按检测头层数缩放。以下是对图表中关键信息的提取和结论：</p>
+<p>关键信息提取</p>
+<ol class="arabic simple">
+<li><p><strong>复合缩放（Compound Scaling）</strong>：</p>
+<ul class="simple">
+<li><p>用红色圆点表示。</p></li>
+<li><p>在所有FLOPs范围内，复合缩放方法的COCO AP始终高于其他缩放方法。</p></li>
+<li><p>在FLOPs约为55B时，复合缩放方法的COCO AP达到了46.2。</p></li>
+</ul>
+</li>
+<li><p><strong>按图像大小缩放（Scale by image size）</strong>：</p>
+<ul class="simple">
+<li><p>用绿色三角形表示。</p></li>
+<li><p>在FLOPs较低时（约10B以下），按图像大小缩放方法的COCO AP增长较快，但在FLOPs增加后，增长趋于平缓。</p></li>
+<li><p>在FLOPs约为55B时，COCO AP约为42.5。</p></li>
+</ul>
+</li>
+<li><p><strong>按通道数缩放（Scale by #channels）</strong>：</p>
+<ul class="simple">
+<li><p>用蓝色叉号表示。</p></li>
+<li><p>在整个FLOPs范围内，按通道数缩放方法的COCO AP增长较为平缓。</p></li>
+<li><p>在FLOPs约为55B时，COCO AP约为41.5。</p></li>
+</ul>
+</li>
+<li><p><strong>按BiFPN层数缩放（Scale by #BiFPN layers）</strong>：</p>
+<ul class="simple">
+<li><p>用青色菱形表示。</p></li>
+<li><p>在FLOPs较低时（约10B以下），按BiFPN层数缩放方法的COCO AP增长较快，但在FLOPs增加后，增长趋于平缓。</p></li>
+<li><p>在FLOPs约为55B时，COCO AP约为42.0。</p></li>
+</ul>
+</li>
+<li><p><strong>按检测头层数缩放（Scale by #box/class layers）</strong>：</p>
+<ul class="simple">
+<li><p>用紫色五角星表示。</p></li>
+<li><p>在整个FLOPs范围内，按检测头层数缩放方法的COCO AP增长较为平缓。</p></li>
+<li><p>在FLOPs约为55B时，COCO AP约为41.0。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<ul class="simple">
+<li><p><strong>复合缩放方法（Compound Scaling)</strong> 在所有FLOPs范围内都表现出最佳的性能，显著优于其他缩放方法。这表明复合缩放方法在准确性和效率之间取得了更好的平衡。</p></li>
+<li><p><strong>按图像大小缩放</strong>和<strong>按BiFPN层数缩放</strong>在FLOPs较低时表现较好，但在FLOPs增加后，性能提升趋于平缓。</p></li>
+<li><p><strong>按通道数缩放</strong>和<strong>按检测头层数缩放</strong>在整个FLOPs范围内的性能提升都较为有限，表现不如复合缩放方法。</p></li>
+</ul>
+<p>综上所述，复合缩放方法在提升模型性能的同时，保持了较高的计算效率，是最优的缩放策略。</p>
 
 
                 </article>

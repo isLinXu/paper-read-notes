@@ -219,6 +219,7 @@
 <li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
@@ -226,7 +227,6 @@
 <li class="toctree-l3"><a class="reference internal" href="TSD.html">TSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
@@ -473,9 +473,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -491,17 +489,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">解决方案关键</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">实验设计</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">实验结果</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">结论</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -563,15 +550,12 @@ YOLOv9在MS COCO数据集上取得了优异的性能，超过了现有的实时�
 <li><p><strong>贡献：</strong> 提出了PGI和GELAN，设计了YOLOv9。</p></li>
 <li><p><strong>下一步工作：</strong> 探索PGI和GELAN在其他任务中的应用，测试更大数据集上的性能。</p></li>
 </ol>
-<section id="id1">
-<h2>解决方案关键<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>解决方案关键</p>
 <p><strong>可编程梯度信息（PGI）：</strong>
 PGI是本文提出的一个新概念，旨在解决深度神经网络在训练过程中由于信息瓶颈导致的信息丢失问题。PGI通过辅助可逆分支生成可靠的梯度信息，这些信息用于更新网络参数，确保深度特征能够保持对执行目标任务至关重要的特征。PGI的可逆架构建立在辅助分支上，不增加额外的推理成本。PGI还允许自由选择适合目标任务的损失函数，克服了掩码建模中的问题。</p>
 <p><strong>通用高效层聚合网络（GELAN）：</strong>
 GELAN是本文提出的一个新的轻量级网络架构，基于梯度路径规划设计。GELAN的设计考虑了参数数量、计算复杂性、准确性和推理速度，使用户可以为不同的推理设备选择适当的计算块。GELAN的架构证明了PGI在轻量级模型上能够获得优越的结果。</p>
-</section>
-<section id="id2">
-<h2>实验设计<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>实验设计</p>
 <p><strong>数据集：</strong>
 实验使用了MS COCO数据集，这是目标检测领域广泛使用的标准数据集，包含多种类别的对象。</p>
 <p><strong>训练设置：</strong>
@@ -580,9 +564,7 @@ GELAN是本文提出的一个新的轻量级网络架构，基于梯度路径规
 实验中使用了包括随机水平翻转、颜色抖动、多尺度增强和马赛克增强在内的数据增强技术。在训练的最后15个epoch中关闭了马赛克数据增强。</p>
 <p><strong>评估：</strong>
 在Tesla V100 GPU上，使用FP16精度和批量大小为1进行评估。报告的FPS（帧每秒）和延迟都是在这个设置下测量的。</p>
-</section>
-<section id="id3">
-<h2>实验结果<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>实验结果</p>
 <p><strong>性能提升：</strong>
 实验结果表明，YOLOv9在不同模型尺寸上均取得了优异的性能。例如，YOLOv9-S在参数和计算量较少的情况下，相比YOLOv7 AF，有显著的性能提升。YOLOv9-E在保持准确性的同时，相比于YOLOv8减少了参数数量和计算量。</p>
 <p><strong>与其他方法的比较：</strong>
@@ -591,9 +573,7 @@ YOLOv9在与其他实时目标检测器的比较中表现出色，包括与基�
 YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识蒸馏和复杂设置）中都展现了优越的性能，证明了其在参数利用效率和计算复杂性与准确性之间取得了良好的平衡。</p>
 <p><strong>可视化：</strong>
 通过可视化特征图，展示了不同架构在不同深度下保留信息的能力。GELAN和YOLOv9（GELAN + PGI）在较深的层次上仍能保留足够的信息，而其他架构则随着层数的增加逐渐丢失了重要信息。</p>
-</section>
-<section id="id4">
-<h2>结论<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>结论</p>
 <p>YOLOv9通过PGI和GELAN的结合，解决了深度学习中的信息瓶颈问题，特别是在轻量级神经网络中。YOLOv9在目标检测任务上显示出强大的竞争力，其设计使得深度模型在减少参数数量和计算量的同时，仍然提高了准确性。</p>
 <p>关闭马赛克增强的好处是什么？
 马赛克增强（Mosaic Augmentation）是一种数据增强技术，它通过将四个随机选择的训练图像切割并重新排列成一个新的图像来增加数据的多样性，从而提高模型的泛化能力。这种技术可以模拟更多的场景变化，帮助模型学习到更加鲁棒的特征表示。 在论文中提到的实验设计里，作者在训练的最后15个epoch关闭了马赛克数据增强，这可能是基于以下几点考虑：</p>
@@ -604,7 +584,6 @@ YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识
 <li><p><strong>计算效率</strong>：数据增强会增加训练的计算负担。在训练后期关闭某些数据增强方法可以提高训练的效率，尤其是在资源有限的情况下。</p></li>
 <li><p><strong>超参数调整</strong>：关闭马赛克增强可能是超参数调整的一部分，作者可能通过实验发现，在训练后期关闭马赛克增强能够获得更好的性能表现。 需要注意的是，这些好处并不是绝对的，它们可能依赖于具体的应用场景、数据集特性以及模型的当前状态。在实际应用中，是否关闭数据增强以及何时关闭，需要根据具体情况和实验结果来决定。</p></li>
 </ol>
-</section>
 </section>
 
 
@@ -643,23 +622,7 @@ YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">解决方案关键</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">实验设计</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">实验结果</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">结论</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

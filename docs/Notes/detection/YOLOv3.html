@@ -561,6 +561,8 @@ document.write(`
 <li><p><strong>贡献：</strong> 提出了改进的YOLOv3系统，提高了目标检测的性能。</p></li>
 <li><p><strong>下一步工作：</strong> 优化小目标检测，探索新的损失函数，考虑伦理问题。</p></li>
 </ol>
+<hr class="docutils" />
+<img width="573" alt="yolov3-fig1" src="https://github.com/isLinXu/issues/assets/59380685/31694067-13dc-400c-bcc7-c395b15801e1">
 <p>图表内容分析</p>
 <ol class="arabic simple">
 <li><p><strong>坐标轴</strong></p></li>
@@ -674,6 +676,8 @@ document.write(`
 </ul>
 <p>结论</p>
 <p>图表展示了YOLOv3与其他目标检测模型在COCO数据集上的性能对比。YOLOv3在推理时间和准确性之间表现出色，适合实时目标检测任务。RetinaNet在准确性上表现更好，但推理时间较长，适合对实时性要求不高但对准确性要求较高的应用场景。选择合适的目标检测模型需要综合考虑速度和准确性等因素。</p>
+<hr class="docutils" />
+<img width="536" alt="yolov3-fig2" src="https://github.com/isLinXu/issues/assets/59380685/918ee65a-ce46-4dd0-b104-d0363c2385b6">
 <p>图中的结构展示了目标检测中的边界框（bounding box）预测方法，具体包括维度先验（dimension priors）和位置预测（location prediction）。以下是对该结构的详细描述、工作原理和实现方式的介绍。</p>
 <p>结构描述</p>
 <p>图中展示了一个边界框的预测过程，主要包括以下几个部分：</p>
@@ -740,6 +744,8 @@ $[b_w = p_w e^{t_w}]$</p>
 </ol>
 <p>总结</p>
 <p>图中的结构展示了目标检测中的边界框预测方法，主要包括中心坐标的预测和宽度高度的预测。通过使用sigmoid函数和指数函数，将网络输出的预测值转换为实际的边界框坐标和尺寸。这种方法结合了维度先验和位置预测，能够有效地提高边界框预测的准确性。</p>
+<hr class="docutils" />
+<img width="340" alt="yolov3-table1" src="https://github.com/isLinXu/issues/assets/59380685/79a2f999-5af8-45a1-9138-eea183dbcf87">
 <p>darknet</p>
 <p>图表展示了Darknet-53网络的结构细节。Darknet-53是YOLOv3的骨干网络，主要由卷积层和残差块组成。以下是对图表内容的详细分析和总结。</p>
 <ol class="arabic simple">
@@ -841,6 +847,36 @@ $[b_w = p_w e^{t_w}]$</p>
 </ul>
 <p>结论</p>
 <p>Darknet-53是一个深度卷积神经网络，主要由卷积层和残差块组成。通过重复使用卷积层和残差块，Darknet-53实现了较深的网络结构，增强了特征提取能力。全局平均池化层和全连接层用于分类任务，输出分类概率。Darknet-53在YOLOv3中作为骨干网络，提供了强大的特征提取能力。</p>
+<hr class="docutils" />
+<img width="884" alt="yolov3-fig4" src="https://github.com/isLinXu/issues/assets/59380685/de365327-32b4-4697-bb01-3480646cc369">
+<p>总结分析</p>
+<ol class="arabic simple">
+<li><p><strong>YOLOv3的性能</strong>：</p>
+<ul class="simple">
+<li><p>在执行时间和帧率方面，YOLOv3表现出色。其执行时间较短（约35ms），帧率较高（约28 FPS），同时保持了较高的mAP 50（约55）。</p></li>
+<li><p>这表明YOLOv3在速度和精度之间取得了较好的平衡，适合实时应用。</p></li>
+</ul>
+</li>
+<li><p><strong>其他较慢的模型</strong>：</p>
+<ul class="simple">
+<li><p>这些模型的执行时间普遍较长（50ms到200ms），帧率较低（5 FPS到20 FPS），且mAP 50的分布较为分散（25到75）。</p></li>
+<li><p>这表明这些模型在速度和精度之间的平衡较差，可能不适合实时应用。</p></li>
+</ul>
+</li>
+<li><p><strong>图表的零轴对比</strong>：</p>
+<ul class="simple">
+<li><p>图表使用了零轴（Zero-axis）来展示数据，这种方式更直观地展示了不同模型在执行时间和帧率上的差异。</p></li>
+<li><p>通过零轴对比，可以更清晰地看到YOLOv3在执行时间和帧率上的优势。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<ul class="simple">
+<li><p><strong>YOLOv3</strong>在执行时间和帧率方面表现出色，同时保持了较高的mAP 50，适合需要实时处理的应用场景。</p></li>
+<li><p><strong>其他较慢的模型</strong>在执行时间和帧率方面表现较差，虽然有些模型在mAP 50上表现不错，但由于速度较慢，不适合实时应用。</p></li>
+<li><p><strong>零轴图表</strong>提供了一种更直观的方式来比较不同模型的性能，清晰地展示了YOLOv3在速度和精度上的优势。</p></li>
+</ul>
+<p>综上所述，YOLOv3在速度和精度之间取得了较好的平衡，是实时目标检测任务的优选模型。</p>
 </section>
 
 

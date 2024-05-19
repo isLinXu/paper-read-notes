@@ -219,6 +219,7 @@
 <li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
@@ -226,7 +227,6 @@
 <li class="toctree-l3"><a class="reference internal" href="TSD.html">TSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
@@ -473,9 +473,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -491,14 +489,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">论文阅读笔记</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -510,8 +500,6 @@ document.write(`
                   
   <section id="pp-yolov2">
 <h1>PP-YOLOv2<a class="headerlink" href="#pp-yolov2" title="Link to this heading">#</a></h1>
-<section id="id1">
-<h2>论文阅读笔记<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p><strong>标题：</strong> PP-YOLOv2: A Practical Object Detector</p>
 <p><strong>作者：</strong> Xin Huang, Xinxin Wang, Wenyu Lv, Xiaying Bai, Xiang Long, Kaipeng Deng, Qingqing Dang, Shumin Han, Qiwen Liu, Xiaoguang Hu, Dianhai Yu, Yanjun Ma, Osamu Yoshie (百度公司和早稻田大学)</p>
 <p><strong>摘要：</strong> PP-YOLOv2是一个高效且实用的目标检测器，旨在提高PP-YOLO的性能，同时几乎保持推理时间不变。本文通过增量消融研究，分析和实证评估了一系列改进措施对最终模型性能的影响。通过结合有效的改进措施，PP-YOLOv2在COCO2017 test-dev上的性能从45.9% mAP提高到49.5% mAP。PP-YOLOv2在640x640输入尺寸下以68.9FPS运行，使用Paddle推理引擎、TensorRT、FP16精度和批量大小=1，推理速度可进一步提高到106.5 FPS。性能超越了参数量相近的现有目标检测器（例如YOLOv4-CSP、YOLOv5l）。此外，使用ResNet101作为骨干网络的PP-YOLOv2在COCO2017 test-dev上达到了50.3% mAP。源代码可在https://github.com/PaddlePaddle/PaddleDetection上找到。</p>
@@ -631,7 +619,6 @@ document.write(`
 </li>
 </ol>
 </section>
-</section>
 
 
                 </article>
@@ -669,20 +656,7 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">论文阅读笔记</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

@@ -1,7 +1,5 @@
 # PP-YOLOv2
 
-### 论文阅读笔记
-
 **标题：** PP-YOLOv2: A Practical Object Detector
 
 **作者：** Xin Huang, Xinxin Wang, Wenyu Lv, Xiaying Bai, Xiang Long, Kaipeng Deng, Qingqing Dang, Shumin Han, Qiwen Liu, Xiaoguang Hu, Dianhai Yu, Yanjun Ma, Osamu Yoshie (百度公司和早稻田大学)

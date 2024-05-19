@@ -18,6 +18,16 @@ YOLOv1
 YOLOv2
 YOLOv3
 YOLOv4
+ASFF
+ATSS
+SABL
+SM-NAS
+TSD
+RDSNet
+CenterMask
+EfficientDet
+Scaled-YOLOv4
+Simple Multi-dataset Detection
 YOLOX
 YOLOv6
 PP-YOLOv1

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>YOLOv6 v3.0: A Full-Scale Reloading &#8212; 论文阅读笔记</title>
+    <title>YOLOv6 &#8212; 论文阅读笔记</title>
   
   
   
@@ -30,8 +30,8 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -46,6 +46,8 @@
     <link rel="icon" href="../../_static/panda.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DAMO-YOLO" href="DAMO-YOLO.html" />
+    <link rel="prev" title="YOLOv7" href="YOLOv7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -107,8 +109,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -155,7 +155,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Method/how_to_read_paper.html">如何阅读论文</a></li>
@@ -188,20 +188,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../List/llm.html">大语言模型(Large Language Models)</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
-
-
-
-
-
-
-
-
-
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
-
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -212,12 +202,74 @@
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
 </ul>
 </li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FPN.html">FPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv1.html">PP-YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv2.html">PP-YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOF.html">YOLOF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOP.html">YOLOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RTMDet.html">回答问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -409,9 +461,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -422,19 +472,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>YOLOv6 v3.0: A Full-Scale Reloading</h1>
+    <h1>YOLOv6</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题：</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -444,8 +486,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="yolov6-v3-0-a-full-scale-reloading">
-<h1>YOLOv6 v3.0: A Full-Scale Reloading<a class="headerlink" href="#yolov6-v3-0-a-full-scale-reloading" title="Link to this heading">#</a></h1>
+  <section id="yolov6">
+<h1>YOLOv6<a class="headerlink" href="#yolov6" title="Link to this heading">#</a></h1>
 <p>作者：Chuyi Li, Lulu Li, Yifei Geng, Hongliang Jiang, MengCheng, Bo Zhang, Zaidan Ke, Xiaoming Xu, Xiangxiang Chu, Meituan Inc.</p>
 <p><strong>摘要：</strong>
 YOLOv6 v3.0 是 YOLO 系列的最新版本，它在网络架构和训练策略上进行了全面改进。该版本在 COCO 数据集上取得了显著的性能提升，同时保持了高效的推理速度。YOLOv6 v3.0 的关键特性包括 Bi-directional Concatenation (BiC) 模块、锚点辅助训练 (AAT) 策略、更深的网络设计以及新的自蒸馏策略。</p>
@@ -489,8 +531,7 @@ YOLOv6 v3.0 是 YOLO 系列的最新版本，它在网络架构和训练策略�
 <li><p>探索更高级的数据增强和训练策略以进一步提升模型性能。</p></li>
 <li><p>将 YOLOv6 应用于更广泛的视觉任务，如视频理解、多目标跟踪等。</p></li>
 </ul>
-<section id="id1">
-<h2>回答问题：<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>回答问题：</p>
 <ol class="arabic simple">
 <li><p>解决的问题：提升实时目标检测的准确性和推理速度。</p></li>
 <li><p>新问题：不是新问题，但提供了新的解决方案。</p></li>
@@ -503,7 +544,236 @@ YOLOv6 v3.0 是 YOLO 系列的最新版本，它在网络架构和训练策略�
 <li><p>论文贡献：提出了改进的 YOLOv6 框架，提高了目标检测性能，并开源了代码。</p></li>
 <li><p>下一步工作：优化 YOLOv6，探索新的训练策略，并将 YOLOv6 应用于更多视觉任务。</p></li>
 </ol>
-</section>
+<hr class="docutils" />
+<img width="901" alt="yolov6 30-fig1" src="https://github.com/isLinXu/issues/assets/59380685/bb3203f5-72f8-47d3-b0fc-9f0748a824f1">
+这张图表展示了YOLOv6与其他模型在COCO数据集上的性能对比，具体包括吞吐量（Throughput）和延迟（Latency）两个方面的表现。图表中使用了Tesla T4 GPU和TensorRT 7进行测试，分别在FP16精度下测量。
+<p>图表描述</p>
+<ul class="simple">
+<li><p><strong>左图</strong>：展示了不同模型在不同吞吐量（FPS）下的COCO AP（平均精度）。</p>
+<ul>
+<li><p>横轴表示吞吐量（FPS），即每秒处理的帧数。</p>
+<ul>
+<li><p>纵轴表示COCO AP（%），即在COCO数据集上的平均精度。</p></li>
+<li><p>各条曲线代表不同的模型（YOLOv6、YOLOv5、YOLOX、PPYOLOE等）。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>右图</strong>：展示了不同模型在不同延迟（Latency）下的COCO AP（平均精度）。</p>
+<ul>
+<li><p>横轴表示延迟时间（毫秒）。</p></li>
+<li><p>纵轴表示COCO AP（%）。</p></li>
+<li><p>各条曲线代表不同的模型（YOLOv6、YOLOv5、YOLOX、PPYOLOE等）。</p></li>
+</ul>
+</li>
+</ul>
+<p>性能分析</p>
+<ul class="simple">
+<li><p><strong>吞吐量（Throughput）</strong>：</p>
+<ul>
+<li><p>在左图中，YOLOv6系列模型在高吞吐量下表现出色，尤其是YOLOv6-N和YOLOv6-S在保持较高FPS的同时，达到了较高的COCO AP。</p></li>
+<li><p>YOLOv6-L在较低的FPS下也能保持较高的精度，显示出其在高精度任务中的优势。</p></li>
+<li><p>相比之下，YOLOv5和YOLOX系列模型在高吞吐量下的精度略低。</p></li>
+</ul>
+</li>
+<li><p><strong>延迟（Latency）</strong>：</p>
+<ul>
+<li><p>在右图中，YOLOv6系列模型在低延迟下表现出色，尤其是YOLOv6-N和YOLOv6-S在保持较低延迟的同时，达到了较高的COCO AP。</p></li>
+<li><p>YOLOv6-L在较高延迟下也能保持较高的精度，显示出其在高精度任务中的优势。</p></li>
+<li><p>相比之下，YOLOv5和YOLOX系列模型在低延迟下的精度略低。</p></li>
+</ul>
+</li>
+</ul>
+<p>总结</p>
+<ul class="simple">
+<li><p><strong>综合性能</strong>：</p>
+<ul>
+<li><p>YOLOv6系列模型在吞吐量和延迟两个方面都表现出色，尤其是YOLOv6-N和YOLOv6-S在保持高吞吐量和低延迟的同时，达到了较高的COCO AP。</p></li>
+<li><p>YOLOv6-L在需要高精度的任务中表现尤为突出，能够在较低吞吐量和较高延迟下保持高精度。</p></li>
+</ul>
+</li>
+<li><p><strong>模型选择</strong>：</p>
+<ul>
+<li><p>根据具体应用需求，可以选择不同版本的YOLOv6模型。例如，对于需要高吞吐量和低延迟的应用，可以选择YOLOv6-N或YOLOv6-S；对于需要更高精度的应用，可以选择YOLOv6-L。</p></li>
+</ul>
+</li>
+</ul>
+<p>通过这些对比和分析，可以看出YOLOv6系列模型在目标检测任务中具有显著的优势，能够在不同应用场景中提供高效且高精度的检测性能。</p>
+<hr class="docutils" />
+<img width="862" alt="yolov6 30-fig2" src="https://github.com/isLinXu/issues/assets/59380685/c79e2c8f-4f32-4e3f-bfbf-e7597d3d55d6">
+<p>这张图展示了YOLOv6模型的结构，具体包括三个部分：RepBi-PAN、BiC模块和SimCSPSPPF模块。以下是对每个部分的描述以及输入输出流程的分析。</p>
+<p>(a) RepBi-PAN</p>
+<ul class="simple">
+<li><p><strong>结构描述</strong>：</p>
+<ul>
+<li><p>RepBi-PAN是YOLOv6模型的颈部结构，主要用于特征融合和增强。</p></li>
+<li><p>该结构包含多个RepBlock和卷积层（Conv），通过不同尺度的特征图进行融合。</p></li>
+<li><p>特征图通过上采样（Upsample）和下采样（Downsample）操作进行多尺度融合。</p></li>
+<li><p>最终的特征图通过通道维度进行连接（Concatenate）。</p></li>
+</ul>
+</li>
+<li><p><strong>输入输出流程</strong>：</p>
+<ol class="arabic simple">
+<li><p>输入特征图通过多个RepBlock进行处理。</p></li>
+<li><p>处理后的特征图通过上采样和下采样操作进行多尺度融合。</p></li>
+<li><p>多尺度特征图通过通道维度进行连接，输出融合后的特征图。</p></li>
+</ol>
+</li>
+</ul>
+<p>(b) BiC Module</p>
+<ul class="simple">
+<li><p><strong>结构描述</strong>：</p>
+<ul>
+<li><p>BiC模块用于特征图的上采样和下采样操作。</p></li>
+<li><p>该模块包含一个上采样层（Upsample）和一个下采样层（Downsample），以及两个卷积层（Conv）。</p></li>
+</ul>
+</li>
+<li><p><strong>输入输出流程</strong>：</p>
+<ol class="arabic simple">
+<li><p>输入特征图通过上采样层进行上采样操作。</p></li>
+<li><p>上采样后的特征图通过卷积层进行处理。</p></li>
+<li><p>处理后的特征图通过下采样层进行下采样操作。</p></li>
+<li><p>下采样后的特征图通过另一个卷积层进行处理，输出最终特征图。</p></li>
+</ol>
+</li>
+</ul>
+<p>(c) SimCSPSPPF Block</p>
+<ul class="simple">
+<li><p><strong>结构描述</strong>：</p>
+<ul>
+<li><p>SimCSPSPPF模块用于特征图的空间金字塔池化（SPP）和跨阶段部分连接（CSP）。</p></li>
+<li><p>该模块包含多个卷积层（Conv）、池化层（Pooling）和连接操作（Concatenate）。</p></li>
+<li><p>特征图通过不同尺度的池化操作进行多尺度特征提取，并通过CSP结构进行融合。</p></li>
+</ul>
+</li>
+<li><p><strong>输入输出流程</strong>：</p>
+<ol class="arabic simple">
+<li><p>输入特征图通过多个卷积层进行初步处理。</p></li>
+<li><p>处理后的特征图通过不同尺度的池化层进行多尺度特征提取。</p></li>
+<li><p>多尺度特征图通过连接操作进行融合。</p></li>
+<li><p>融合后的特征图通过CSP结构进行进一步处理，输出最终特征图。</p></li>
+</ol>
+</li>
+</ul>
+<p>总结</p>
+<ul class="simple">
+<li><p><strong>RepBi-PAN</strong>：用于特征融合和增强，通过多尺度特征图的上采样和下采样操作进行融合。</p></li>
+<li><p><strong>BiC Module</strong>：用于特征图的上采样和下采样操作，通过卷积层进行处理。</p></li>
+<li><p><strong>SimCSPSPPF Block</strong>：用于多尺度特征提取和融合，通过SPP和CSP结构进行处理。</p></li>
+</ul>
+<p>这些模块共同构成了YOLOv6模型的颈部结构，能够有效地进行特征融合和增强，提高目标检测的精度和效率。</p>
+<hr class="docutils" />
+<img width="514" alt="yolov6 3 0-fig3" src="https://github.com/isLinXu/issues/assets/59380685/7177adbf-0cc8-4398-8feb-820e036bd29a">
+<p>这张图展示了YOLOv6模型的检测头（Detection Head）结构，包含分类头（Classification Head）和回归头（Regression Head），并在训练期间使用了基于锚点的辅助分支。以下是对每个部分的描述以及输入输出流程的分析。</p>
+<p><strong>结构描述</strong></p>
+<ul class="simple">
+<li><p><strong>分类头（Classification Head）</strong>：</p>
+<ul>
+<li><p>包含一个卷积层（Conv）和两个线性层（Linear）。</p></li>
+<li><p>线性层分为主分支（用于无锚点的分类）和辅助分支（用于基于锚点的分类）。</p></li>
+</ul>
+</li>
+<li><p><strong>回归头（Regression Head）</strong>：</p>
+<ul>
+<li><p>包含一个卷积层（Conv）和两个线性层（Linear）。</p></li>
+<li><p>线性层分为主分支（用于无锚点的回归）和辅助分支（用于基于锚点的回归）。</p></li>
+</ul>
+</li>
+<li><p><strong>标签分配（Label Assignment）</strong>：</p>
+<ul>
+<li><p>无锚点标签分配（Anchor-free Label Assignment）和基于锚点的标签分配（Anchor-based Label Assignment）分别用于计算无锚点和基于锚点的损失（Loss）。</p></li>
+</ul>
+</li>
+</ul>
+<p>输入输出流程</p>
+<ol class="arabic simple">
+<li><p><strong>输入特征图</strong>：</p>
+<ul class="simple">
+<li><p>输入特征图首先进入分类头和回归头的卷积层进行初步处理。</p></li>
+</ul>
+</li>
+<li><p><strong>分类头处理</strong>：</p>
+<ul class="simple">
+<li><p>经过卷积层处理后的特征图进入两个线性层。</p></li>
+<li><p>主分支线性层（Linear）输出无锚点的分类结果（Cls<sub>af</sub>）。</p></li>
+<li><p>辅助分支线性层（Auxiliary Linear）输出基于锚点的分类结果（Cls<sub>ab</sub>）。</p></li>
+</ul>
+</li>
+<li><p><strong>回归头处理</strong>：</p>
+<ul class="simple">
+<li><p>经过卷积层处理后的特征图进入两个线性层。</p></li>
+<li><p>主分支线性层（Linear）输出无锚点的回归结果（Reg<sub>af</sub>）。</p></li>
+<li><p>辅助分支线性层（Auxiliary Linear）输出基于锚点的回归结果（Reg<sub>ab</sub>）。</p></li>
+</ul>
+</li>
+<li><p><strong>标签分配和损失计算</strong>：</p>
+<ul class="simple">
+<li><p>无锚点的分类结果（Cls<sub>af</sub>）和回归结果（Reg<sub>af</sub>）通过无锚点标签分配模块进行处理，计算无锚点的损失（Loss<sub>af</sub>）。</p></li>
+<li><p>基于锚点的分类结果（Cls<sub>ab</sub>）和回归结果（Reg<sub>ab</sub>）通过基于锚点标签分配模块进行处理，计算基于锚点的损失（Loss<sub>ab</sub>）。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ul class="simple">
+<li><p><strong>分类头和回归头</strong>：分别用于目标的分类和边界框回归，包含主分支和辅助分支。</p></li>
+<li><p><strong>标签分配和损失计算</strong>：在训练期间，使用无锚点和基于锚点的标签分配模块分别计算对应的损失。</p></li>
+</ul>
+<p>在推理阶段，辅助分支会被移除，只保留主分支进行无锚点的分类和回归。
+这种设计在训练期间利用了基于锚点的辅助信息，提高了模型的训练效果和最终的检测性能。</p>
+<hr class="docutils" />
+<img width="541" alt="yolov6 3 0-table2" src="https://github.com/isLinXu/issues/assets/59380685/7d4c6417-521d-43ce-9a41-b8b6985f0e21">
+<p>这张表格展示了不同YOLO系列检测器在COCO 2017验证集上的性能对比，包括精度、速度、参数量和计算量等多个指标。以下是对表格的详细分析和总结。</p>
+<p><strong>表格描述</strong></p>
+<ul class="simple">
+<li><p><strong>Method</strong>：表示使用的模型名称。</p></li>
+<li><p><strong>Input Size</strong>：输入图像的尺寸。</p></li>
+<li><p><strong>AP<sup>val</sup></strong>：在COCO验证集上的平均精度（Average Precision）。</p></li>
+<li><p><strong>AP<sub>50</sub></strong>：在IoU阈值为0.5时的平均精度。</p></li>
+<li><p><strong>AP<sub>75</sub></strong>：在IoU阈值为0.75时的平均精度。</p></li>
+<li><p><strong>FPS</strong>：每秒处理的帧数（Frames Per Second）。</p></li>
+<li><p><strong>Latency</strong>：延迟时间（毫秒）。</p></li>
+<li><p><strong>Params</strong>：模型的参数量（百万）。</p></li>
+<li><p><strong>FLOPs</strong>：每秒浮点运算次数（Giga Floating Point Operations）。</p></li>
+</ul>
+<p><strong>性能分析</strong></p>
+<ol class="arabic simple">
+<li><p><strong>精度（AP）</strong>：</p>
+<ul class="simple">
+<li><p>YOLOv6系列模型在不同输入尺寸下的AP表现优异，尤其是YOLOv6-L和YOLOv6-X在640x640输入尺寸下的AP分别达到了52.3%和52.8%。</p></li>
+<li><p>相比之下，YOLOv5和YOLOX系列模型的AP略低，但仍然表现出色。</p></li>
+</ul>
+</li>
+<li><p><strong>速度（FPS和Latency）</strong>：</p>
+<ul class="simple">
+<li><p>YOLOv6系列模型在速度上也表现出色，YOLOv6-N和YOLOv6-S在640x640输入尺寸下的FPS分别达到了177和142，延迟时间分别为5.7ms和7.1ms。</p></li>
+<li><p>YOLOv5和YOLOX系列模型的速度也较快，但在相同输入尺寸下，YOLOv6系列模型的速度更具优势。</p></li>
+</ul>
+</li>
+<li><p><strong>参数量（Params）和计算量（FLOPs）</strong>：</p>
+<ul class="simple">
+<li><p>YOLOv6系列模型的参数量和计算量在同类模型中相对较低，尤其是YOLOv6-N和YOLOv6-S，参数量分别为4.4M和9.0M，计算量分别为4.5G和13.0G。</p></li>
+<li><p>YOLOv5和YOLOX系列模型的参数量和计算量相对较高，但在精度和速度上仍然表现出色。</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>总结</strong></p>
+<ul class="simple">
+<li><p><strong>综合性能</strong>：</p>
+<ul>
+<li><p>YOLOv6系列模型在精度、速度、参数量和计算量等多个方面表现出色，尤其是在640x640输入尺寸下，YOLOv6-L和YOLOv6-X的AP分别达到了52.3%和52.8%，同时保持了较高的FPS和较低的延迟。</p>
+<ul>
+<li><p>相比之下，YOLOv5和YOLOX系列模型在精度和速度上也表现出色，但在参数量和计算量上略高。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>模型选择</strong>：</p>
+<ul>
+<li><p>根据具体应用需求，可以选择不同版本的YOLOv6模型。例如，对于需要高精度和高速度的应用，可以选择YOLOv6-L或YOLOv6-X；对于需要低参数量和低计算量的应用，可以选择YOLOv6-N或YOLOv6-S。</p></li>
+</ul>
+</li>
+</ul>
+<p>通过这些对比和分析，可以看出YOLOv6系列模型在目标检测任务中具有显著的优势，能够在不同应用场景中提供高效且高精度的检测性能。</p>
 </section>
 
 
@@ -517,6 +787,24 @@ YOLOv6 v3.0 是 YOLO 系列的最新版本，它在网络架构和训练策略�
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="YOLOv7.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">YOLOv7</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="DAMO-YOLO.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DAMO-YOLO</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -524,20 +812,7 @@ YOLOv6 v3.0 是 YOLO 系列的最新版本，它在网络架构和训练策略�
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题：</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

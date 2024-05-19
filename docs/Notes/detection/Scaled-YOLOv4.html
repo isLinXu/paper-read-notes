@@ -1,0 +1,996 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Scaled-YOLOv4 &#8212; 论文阅读笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/detection/Scaled-YOLOv4';</script>
+    <link rel="icon" href="../../_static/panda.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Simple Multi-dataset Detection" href="Simple%20Multi-dataset%20Detection.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="EfficientDet.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/how_to_read_paper.html">如何阅读论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/paper_10_question.html">论文速读十问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/read_important_tips.html">读论文与口头报告的几项重点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/reference.html">参考材料</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../List/index.html">论文阅读清单</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../List/basis.html">神经网络基础(basis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/attention.html">注意力部分(attention)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/batch_normalization.html">批量&amp;正则化(batch&amp;normalization)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/classification.html">图像分类(CLAS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/convolutional.html">高级卷积网络知识(Convolutional)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/gan.html">AI合成部分(GAN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/nlp.html">自然语言处理(NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/objectdetection.html">目标检测(OBJ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/rnn.html">循环神经网络(RNN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/segementation.html">目标分割(SEG)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/transformer.html">Transformer</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/multimodal.html">多模态(MultiModal Learning)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/llm.html">大语言模型(Large Language Models)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v3.html">GPT-v3:Language Models are Few-Shot Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="survey_all.html">survey_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FPN.html">FPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SSD.html">SSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SM-NAS.html">SM-NAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TSD.html">TSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Scaled-YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv1.html">PP-YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv2.html">PP-YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOF.html">YOLOF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOP.html">YOLOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RTMDet.html">RTMDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/detection/Scaled-YOLOv4.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/detection/Scaled-YOLOv4.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Notes/detection/Scaled-YOLOv4.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Scaled-YOLOv4</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="scaled-yolov4">
+<h1>Scaled-YOLOv4<a class="headerlink" href="#scaled-yolov4" title="Link to this heading">#</a></h1>
+<p><strong>标题：</strong> Scaled-YOLOv4: Scaling Cross Stage Partial Network</p>
+<p><strong>作者：</strong> Chien-Yao Wang, Alexey Bochkovskiy, Hong-Yuan Mark Liao</p>
+<p><strong>摘要：</strong> 本文提出了一种新的网络扩展方法，用于YOLOv4目标检测神经网络，使其能够扩展至不同大小的网络，同时保持最优的速度和准确性。作者提出了一种不仅考虑深度、宽度、分辨率，还考虑网络结构的网络扩展方法。YOLOv4-large模型在MS COCO数据集上达到了55.5% AP（73.4% AP50）的准确率，速度约为16 FPS。而YOLOv4-tiny模型在RTX 2080Ti上的速度约为443 FPS。这些成果在COCO数据集上达到了目前最高的准确率。</p>
+<p><strong>1. 工作内容与动机：</strong></p>
+<ul class="simple">
+<li><p>提出了Scaled-YOLOv4，一种新的网络扩展方法，用于提高YOLOv4目标检测神经网络的可扩展性。</p></li>
+<li><p>动机是为了设计一个有效的目标检测器，能够适应不同类型的设备，如云计算设施、通用GPU、IoT集群或单个嵌入式设备。</p></li>
+</ul>
+<p><strong>2. 试图解决的问题：</strong></p>
+<ul class="simple">
+<li><p>如何在保持目标检测器的速度和准确性的同时，对网络进行有效扩展。</p></li>
+</ul>
+<p><strong>3. 是否是新问题：</strong></p>
+<ul class="simple">
+<li><p>不是新问题，但提供了新的解决方案。</p></li>
+</ul>
+<p><strong>4. 科学假设：</strong></p>
+<ul class="simple">
+<li><p>YOLOv4基于CSP方法的网络可以通过修改深度、宽度、分辨率和结构来实现有效的扩展。</p></li>
+</ul>
+<p><strong>5. 相关研究：</strong></p>
+<ul class="simple">
+<li><p>相关工作包括各种目标检测器的研究，如SSD、RetinaNet、EfficientNet、NASFPN等。</p></li>
+<li><p>主要归类为实时目标检测器、模型扩展技术和网络架构搜索。</p></li>
+<li><p>领域内值得关注的研究员包括Joseph Redmon、Kaiming He、Tsung-Yi Lin等。</p></li>
+</ul>
+<p><strong>6. 解决方案的关键：</strong></p>
+<ul class="simple">
+<li><p>提出了一种新的网络扩展方法，包括对YOLOv4的重新设计，以及对CSP方法的改进。</p></li>
+</ul>
+<p><strong>7. 实验设计：</strong></p>
+<ul class="simple">
+<li><p>在COCO数据集上进行实验，使用不同的YOLOv4模型变种进行训练和测试。</p></li>
+</ul>
+<p><strong>8. 数据集与代码开源：</strong></p>
+<ul class="simple">
+<li><p>使用了MS COCO 2017对象检测数据集进行验证。</p></li>
+<li><p>代码已在GitHub上开源。</p></li>
+</ul>
+<p><strong>9. 实验结果与假设支持：</strong></p>
+<ul class="simple">
+<li><p>实验结果表明，Scaled-YOLOv4在不同大小的模型上都取得了优异的性能，支持了提出的科学假设。</p></li>
+</ul>
+<p><strong>10. 论文贡献：</strong></p>
+<ul class="simple">
+<li><p>提出了一种新的YOLOv4网络扩展方法，能够实现在不同设备上的高效目标检测。</p></li>
+<li><p>在COCO数据集上达到了目前最高的准确率。</p></li>
+</ul>
+<p><strong>11. 下一步工作：</strong></p>
+<ul class="simple">
+<li><p>可以探索Scaled-YOLOv4在其他数据集上的性能，以及在实际应用中的部署效果。</p></li>
+<li><p>进一步研究如何优化网络结构以提高检测速度和准确性。</p></li>
+</ul>
+<p>回答问题</p>
+<ol class="arabic simple">
+<li><p><strong>这篇论文做了什么工作，它的动机是什么？</strong></p>
+<ul class="simple">
+<li><p>论文提出了Scaled-YOLOv4，一种新的网络扩展方法，用于提高YOLOv4目标检测神经网络的可扩展性。动机是为了设计一个有效的目标检测器，能够适应不同类型的设备。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇论文试图解决什么问题？</strong></p>
+<ul class="simple">
+<li><p>论文试图解决如何在保持目标检测器的速度和准确性的同时，对网络进行有效扩展的问题。</p></li>
+</ul>
+</li>
+<li><p><strong>这是否是一个新的问题？</strong></p>
+<ul class="simple">
+<li><p>不是新问题，但提供了新的解决方案。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇文章要验证一个什么科学假设？</strong></p>
+<ul class="simple">
+<li><p>验证的科学假设是YOLOv4基于CSP方法的网络可以通过修改深度、宽度、分辨率和结构来实现有效的扩展。</p></li>
+</ul>
+</li>
+<li><p><strong>有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</strong></p>
+<ul class="simple">
+<li><p>相关工作包括SSD、RetinaNet、EfficientNet、NASFPN等。归类为实时目标检测器、模型扩展技术和网络架构搜索。领域内值得关注的研究员包括Joseph Redmon、Kaiming He、Tsung-Yi Lin等。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中提到的解决方案之关键是什么？</strong></p>
+<ul class="simple">
+<li><p>解决方案的关键是提出了一种新的网络扩展方法，包括对YOLOv4的重新设计，以及对CSP方法的改进。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中的实验是如何设计的？</strong></p>
+<ul class="simple">
+<li><p>实验在COCO数据集上进行，使用不同的YOLOv4模型变种进行训练和测试。</p></li>
+</ul>
+</li>
+<li><p><strong>用于定量评估的数据集上什么？代码有没有开源？</strong></p>
+<ul class="simple">
+<li><p>使用了MS COCO 2017对象检测数据集进行验证。代码已在GitHub上开源。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></p>
+<ul class="simple">
+<li><p>是的，实验结果表明，Scaled-YOLOv4在不同大小的模型上都取得了优异的性能，支持了提出的科学假设。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇论文到底有什么贡献？</strong></p>
+<ul class="simple">
+<li><p>提出了一种新的YOLOv4网络扩展方法，能够实现在不同设备上的高效目标检测。在COCO数据集上达到了目前最高的准确率。</p></li>
+</ul>
+</li>
+<li><p><strong>下一步呢？有什么工作可以继续深入？</strong></p>
+<ul class="simple">
+<li><p>下一步可以探索Scaled-YOLOv4在其他数据集上的性能，以及在实际应用中的部署效果。进一步研究如何优化网络结构以提高检测速度和准确性。</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+<img width="775" alt="scale-yolov4-fig1" src="https://github.com/isLinXu/issues/assets/59380685/86486a19-20da-400d-b840-3b81889574b6">
+这张图展示了在MS COCO数据集上的目标检测性能比较，横轴是V100单批次延迟（毫秒），纵轴是平均精度（AP）。图中比较了Scaled-YOLOv4、EfficientDet、SpineNet、YOLOv4、YOLOv3和PP-YOLO模型的性能表现。
+<p>从图中可以看出：</p>
+<ol class="arabic simple">
+<li><p><strong>Scaled-YOLOv4</strong>（绿色）在不同延迟下的AP值都较高，尤其是在低延迟（20-40ms）时表现尤为突出，AP值超过55，显示了其在高效性和准确性上的优势。</p></li>
+<li><p><strong>EfficientDet</strong>（蓝色）在延迟较高时（40-160ms）表现出色，AP值逐渐上升并在高延迟时达到接近55的AP值，显示了其在高延迟下的高准确性。</p></li>
+<li><p><strong>SpineNet</strong>（橙色虚线）在中等延迟（40-100ms）时表现较好，AP值在45-50之间，显示了其在中等延迟下的平衡性能。</p></li>
+<li><p><strong>YOLOv4</strong>（灰色虚线）在低延迟（20-40ms）时表现较好，AP值在45左右，但在高延迟时性能提升有限。</p></li>
+<li><p><strong>YOLOv3</strong>（黄色虚线）在低延迟（20-40ms）时AP值较低，约为35，显示了其在准确性上的不足。</p></li>
+<li><p><strong>PP-YOLO</strong>（蓝色虚线）在中等延迟（40-100ms）时表现较好，AP值在45-50之间，显示了其在中等延迟下的平衡性能。</p></li>
+</ol>
+<p>总体来看，Scaled-YOLOv4在低延迟下表现最佳，EfficientDet在高延迟下表现出色，而其他模型在不同延迟下有各自的优势和不足。</p>
+<hr class="docutils" />
+<img width="578" alt="scale-yolov4-fig2" src="https://github.com/isLinXu/issues/assets/59380685/03c51211-4611-4ed0-a41c-0e5c157279fd">
+这张图展示了两种计算模块的结构：反向Dark层（SPP）和反向CSP Dark层（SPP）。
+图中每个模块的具体结构如下：
+<p>(a) 反向Dark层（SPP）</p>
+<ol class="arabic simple">
+<li><p><strong>conv k=1, b/2</strong>: 1x1卷积层，输出通道数为输入通道数的一半（b/2）。</p></li>
+<li><p><strong>conv k=3, b</strong>: 3x3卷积层，输出通道数为b。</p></li>
+<li><p><strong>conv k=1, b/2</strong>: 1x1卷积层，输出通道数为b/2。</p></li>
+<li><p><strong>SPP</strong>: 空间金字塔池化（Spatial Pyramid Pooling）层，用于增强特征提取。</p></li>
+<li><p><strong>conv k=3, b</strong>: 3x3卷积层，输出通道数为b。</p></li>
+<li><p><strong>conv k=1, b/2</strong>: 1x1卷积层，输出通道数为b/2。</p></li>
+</ol>
+<p>(b) 反向CSP Dark层（SPP）</p>
+<ol class="arabic simple">
+<li><p><strong>conv k=1, b</strong>: 1x1卷积层，输出通道数为b。</p></li>
+<li><p><strong>分支</strong>: 将输出通道数为b的特征图分成两部分，每部分的通道数为b/2。</p></li>
+<li><p><strong>conv k=3, b/2</strong>: 3x3卷积层，作用于其中一部分特征图，输出通道数为b/2。</p></li>
+<li><p><strong>conv k=1, b/2</strong>: 1x1卷积层，作用于上述卷积层的输出，输出通道数为b/2。</p></li>
+<li><p><strong>SPP</strong>: 空间金字塔池化层，用于增强特征提取。</p></li>
+<li><p><strong>conv k=3, b/2</strong>: 3x3卷积层，作用于SPP层的输出，输出通道数为b/2。</p></li>
+<li><p><strong>conv k=1, b/2</strong>: 1x1卷积层，作用于上述卷积层的输出，输出通道数为b/2。</p></li>
+<li><p><strong>concat</strong>: 将两部分特征图（原始分支和经过卷积处理的分支）进行拼接，形成最终输出。</p></li>
+</ol>
+<p>分析</p>
+<ol class="arabic simple">
+<li><p><strong>反向Dark层（SPP）</strong>:</p>
+<ul class="simple">
+<li><p>该结构通过多层卷积和SPP层来提取特征，具有较高的特征提取能力。</p></li>
+<li><p>1x1卷积层用于减少通道数，3x3卷积层用于增加感受野和特征提取能力。</p></li>
+<li><p>SPP层通过多尺度池化增强特征表示能力。</p></li>
+</ul>
+</li>
+<li><p><strong>反向CSP Dark层（SPP）</strong>:</p>
+<ul class="simple">
+<li><p>该结构在反向Dark层的基础上引入了CSP（Cross Stage Partial）机制，通过分支和拼接操作来减少计算量和参数量，同时保持特征表示能力。</p></li>
+<li><p>CSP机制通过将特征图分成两部分，一部分直接传递，另一部分经过卷积处理后再拼接，能够有效减少冗余计算。</p></li>
+<li><p>SPP层同样用于增强特征表示能力。</p></li>
+</ul>
+</li>
+</ol>
+<p>总体来看，反向CSP Dark层（SPP）在保持高效特征提取的同时，通过CSP机制减少了计算量和参数量，具有更高的计算效率和更好的特征表示能力。</p>
+<hr class="docutils" />
+<img width="552" alt="scale-yolov4-fig3" src="https://github.com/isLinXu/issues/assets/59380685/5c3df1f2-4a00-42fb-a828-c751aa5d22a1">
+<p>这张图展示了YOLOv4-tiny模型的计算模块结构。该模块通过多分支和拼接操作来实现高效的特征提取。具体结构如下：</p>
+<p>模块结构</p>
+<ol class="arabic simple">
+<li><p><strong>conv k=3, b=2g</strong>: 3x3卷积层，输出通道数为2g。</p></li>
+<li><p><strong>分支</strong>: 将输出通道数为2g的特征图分成两部分，每部分的通道数为g。</p></li>
+<li><p><strong>第一分支</strong>:</p>
+<ul class="simple">
+<li><p>直接传递特征图，通道数为g。</p></li>
+</ul>
+</li>
+<li><p><strong>第二分支</strong>:</p>
+<ul class="simple">
+<li><p><strong>conv k=3, g</strong>: 3x3卷积层，作用于第二部分特征图，输出通道数为g。</p></li>
+<li><p><strong>conv k=3, g</strong>: 3x3卷积层，作用于上述卷积层的输出，输出通道数为g。</p></li>
+</ul>
+</li>
+<li><p><strong>concat, 2g</strong>: 将第一分支和第二分支的特征图进行拼接，形成通道数为2g的特征图。</p></li>
+<li><p><strong>conv k=1, 2g</strong>: 1x1卷积层，作用于拼接后的特征图，输出通道数为2g。</p></li>
+<li><p><strong>concat, b+2g=4g</strong>: 将初始输入特征图（通道数为b=2g）与上述1x1卷积层的输出特征图（通道数为2g）进行拼接，形成最终输出特征图，通道数为4g。</p></li>
+</ol>
+<p>分析</p>
+<ol class="arabic simple">
+<li><p><strong>多分支结构</strong>:</p>
+<ul class="simple">
+<li><p>该模块通过将特征图分成两部分，并对其中一部分进行进一步的卷积处理，能够有效地提取多尺度特征。</p></li>
+<li><p>第一分支直接传递特征图，保留了原始特征信息。</p></li>
+<li><p>第二分支通过两层3x3卷积层进一步提取特征，增加了特征的多样性和表达能力。</p></li>
+</ul>
+</li>
+<li><p><strong>拼接操作</strong>:</p>
+<ul class="simple">
+<li><p>多次拼接操作（concat）将不同分支的特征图进行融合，形成更丰富的特征表示。</p></li>
+<li><p>最终的拼接操作将初始输入特征图与经过处理的特征图进行融合，形成通道数为4g的特征图，增强了特征的表达能力。</p></li>
+</ul>
+</li>
+<li><p><strong>1x1卷积层</strong>:</p>
+<ul class="simple">
+<li><p>1x1卷积层用于调整通道数，减少计算量，同时保留重要的特征信息。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结
+YOLOv4-tiny的计算模块通过多分支和拼接操作，实现了高效的特征提取和融合。该结构在保持较低计算量的同时，能够提取多尺度特征，增强了特征表示能力，适合在资源受限的环境中进行高效的目标检测。</p>
+<hr class="docutils" />
+<img width="1160" alt="scale-yolov4-fig4" src="https://github.com/isLinXu/issues/assets/59380685/3e8da47e-ba1c-4fc6-8242-e06f832c665f">
+<p>这张图展示了YOLOv4-large模型的网络结构，包括YOLOv4-P5、YOLOv4-P6和YOLOv4-P7。图中展示了各个层次的特征提取和融合过程。以下是对该网络结构的详细描述、输入输出流程以及分析：</p>
+<p>网络结构描述</p>
+<ol class="arabic simple">
+<li><p><strong>输入层</strong>:</p>
+<ul class="simple">
+<li><p>输入图像经过一系列卷积和下采样操作，生成不同尺度的特征图。</p></li>
+</ul>
+</li>
+<li><p><strong>CSP Block</strong>:</p>
+<ul class="simple">
+<li><p>CSP（Cross Stage Partial）块用于特征提取和融合，包含多个卷积层和拼接操作。</p></li>
+</ul>
+</li>
+<li><p><strong>YOLOv4-P5</strong>:</p>
+<ul class="simple">
+<li><p>16x特征图经过3个CSP块（3xCSPblk, 512）处理后，生成特征图。</p></li>
+<li><p>该特征图经过1xCSPSPP（空间金字塔池化）块处理，生成特征图。</p></li>
+<li><p>该特征图经过3xCSPDown（下采样）块处理，生成特征图。</p></li>
+<li><p>最终特征图用于Detection-P5（检测层）。</p></li>
+</ul>
+</li>
+<li><p><strong>YOLOv4-P6</strong>:</p>
+<ul class="simple">
+<li><p>32x特征图经过3个CSP块（3xCSPblk, 512）处理后，生成特征图。</p></li>
+<li><p>该特征图经过1xCSPSPP块处理，生成特征图。</p></li>
+<li><p>该特征图经过3xCSPDown块处理，生成特征图。</p></li>
+<li><p>最终特征图用于Detection-P6（检测层）。</p></li>
+</ul>
+</li>
+<li><p><strong>YOLOv4-P7</strong>:</p>
+<ul class="simple">
+<li><p>64x特征图经过3个CSP块（3xCSPblk, 1024）处理后，生成特征图。</p></li>
+<li><p>该特征图经过1xCSPSPP块处理，生成特征图。</p></li>
+<li><p>该特征图经过3xCSPDown块处理，生成特征图。</p></li>
+<li><p>最终特征图用于Detection-P7（检测层）。</p></li>
+</ul>
+</li>
+</ol>
+<p>输入输出流程</p>
+<ol class="arabic simple">
+<li><p><strong>输入</strong>:</p>
+<ul class="simple">
+<li><p>输入图像经过初始的卷积和下采样操作，生成不同尺度的特征图（1x, 8x, 16x, 32x, 64x, 128x）。</p></li>
+</ul>
+</li>
+<li><p><strong>特征提取</strong>:</p>
+<ul class="simple">
+<li><p>不同尺度的特征图分别经过CSP块和CSPSPP块处理，提取多尺度特征。</p></li>
+<li><p>特征图经过下采样操作，进一步提取高层次特征。</p></li>
+</ul>
+</li>
+<li><p><strong>特征融合</strong>:</p>
+<ul class="simple">
+<li><p>不同尺度的特征图通过拼接操作进行融合，形成更丰富的特征表示。</p></li>
+</ul>
+</li>
+<li><p><strong>输出</strong>:</p>
+<ul class="simple">
+<li><p>最终的特征图分别用于不同尺度的检测层（Detection-P3, P4, P5, P6, P7），进行目标检测。</p></li>
+</ul>
+</li>
+</ol>
+<p>分析</p>
+<ol class="arabic simple">
+<li><p><strong>多尺度特征提取</strong>:</p>
+<ul class="simple">
+<li><p>该网络结构通过多层次的CSP块和CSPSPP块，能够有效提取多尺度特征，增强了特征表示能力。</p></li>
+</ul>
+</li>
+<li><p><strong>特征融合</strong>:</p>
+<ul class="simple">
+<li><p>通过拼接操作将不同尺度的特征图进行融合，形成更丰富的特征表示，有助于提高检测精度。</p></li>
+</ul>
+</li>
+<li><p><strong>高效性</strong>:</p>
+<ul class="simple">
+<li><p>CSP块通过分支和拼接操作，减少了计算量和参数量，同时保持了高效的特征提取能力。</p></li>
+</ul>
+</li>
+<li><p><strong>检测层</strong>:</p>
+<ul class="simple">
+<li><p>不同尺度的检测层能够检测不同大小的目标，提高了检测的全面性和准确性。</p></li>
+</ul>
+</li>
+</ol>
+<p>总体来看，YOLOv4-large模型通过多尺度特征提取和融合，结合高效的CSP块和CSPSPP块，实现了高效且准确的目标检测。</p>
+<hr class="docutils" />
+<img width="577" alt="scale-yolov4-fig5" src="https://github.com/isLinXu/issues/assets/59380685/e31af0e6-7535-4649-b478-10b53f4d6608">
+<p>这张图表展示了不同YOLOv4模型在MS COCO目标检测任务中的性能表现，具体是YOLOv4-P7、YOLOv4-P7/P6和YOLOv4-P7/P6/P5模型在不同输入分辨率下的平均精度（AP）差异。图表的横轴表示输入分辨率，纵轴表示与原始模型相比的AP差异。</p>
+<p>图表描述</p>
+<ol class="arabic simple">
+<li><p><strong>横轴（Input Resolution）</strong>:</p>
+<ul class="simple">
+<li><p>输入分辨率从300到1600不等，表示输入图像的大小。</p></li>
+</ul>
+</li>
+<li><p><strong>纵轴（AP difference from the original）</strong>:</p>
+<ul class="simple">
+<li><p>表示与原始模型相比的平均精度（AP）差异。正值表示性能提升，负值表示性能下降。</p></li>
+</ul>
+</li>
+<li><p><strong>曲线</strong>:</p>
+<ul class="simple">
+<li><p><strong>绿色曲线（YOLOv4-P7）</strong>: 表示YOLOv4-P7模型在不同输入分辨率下的AP差异。</p></li>
+<li><p><strong>蓝色曲线（YOLOv4-P7/P6）</strong>: 表示YOLOv4-P7/P6模型</p></li>
+<li><p><strong>橙色曲线（YOLOv4-P7/P6/P5）</strong>: 表YOLOv4-P7/P6/P5模型
+好的，继续描述图表中模型的性能表现：</p></li>
+</ul>
+</li>
+</ol>
+<p>曲线描述</p>
+<ol class="arabic simple">
+<li><p><strong>绿色曲线（YOLOv4-P7）</strong>:</p>
+<ul class="simple">
+<li><p>这条曲线在整个输入分辨率范围内几乎保持水平，AP差异接近于零。这表明YOLOv4-P7模型在不同输入分辨率下的性能相对稳定，几乎没有显著的性能提升或下降。</p></li>
+</ul>
+</li>
+<li><p><strong>蓝色曲线（YOLOv4-P7/P6）</strong>:</p>
+<ul class="simple">
+<li><p>这条曲线在输入分辨率从300到800时，AP差异逐渐增加，达到一个峰值（大约在800分辨率处），然后随着分辨率的增加，AP差异逐渐下降。</p></li>
+<li><p>这表明YOLOv4-P7/P6模型在中等分辨率（大约800）下表现最佳，而在更高或更低的分辨率下性能有所下降。</p></li>
+</ul>
+</li>
+<li><p><strong>橙色曲线（YOLOv4-P7/P6/P5）</strong>:</p>
+<ul class="simple">
+<li><p>这条曲线在输入分辨率从300到600时，AP差异逐渐增加，达到一个峰值（大约在600分辨率处），然后迅速下降，在大约700分辨率处AP差异变为负值，并且在更高的分辨率下继续下降。</p></li>
+<li><p>这表明YOLOv4-P7/P6/P5模型在较低分辨率（大约600）下表现最佳，而在更高的分辨率下性能显著下降。</p></li>
+</ul>
+</li>
+</ol>
+<p>分析</p>
+<ol class="arabic simple">
+<li><p><strong>YOLOv4-P7模型</strong>:</p>
+<ul class="simple">
+<li><p>该模型在不同输入分辨率下性能稳定，适用于各种分辨率的输入图像。</p></li>
+<li><p>适合需要处理多种分辨率输入的应用场景。</p></li>
+</ul>
+</li>
+<li><p><strong>YOLOv4-P7/P6模型</strong>:</p>
+<ul class="simple">
+<li><p>该模型在中等分辨率下表现最佳，适合在特定分辨率范围内进行优化。</p></li>
+<li><p>在高分辨率下性能有所下降，可能需要进一步优化以适应高分辨率输入。</p></li>
+</ul>
+</li>
+<li><p><strong>YOLOv4-P7/P6/P5模型</strong>:</p>
+<ul class="simple">
+<li><p>该模型在较低分辨率下表现最佳，但在高分辨率下性能显著下降。</p></li>
+<li><p>适合在低分辨率输入的应用场景，但不适合高分辨率输入。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ul class="simple">
+<li><p><strong>YOLOv4-P7</strong>模型在不同分辨率下性能稳定，适应性强。</p></li>
+<li><p><strong>YOLOv4-P7/P6</strong>模型在中等分辨率下表现最佳，适合特定分辨率范围的优化。</p></li>
+<li><p><strong>YOLOv4-P7/P6/P5</strong>模型在低分辨率下表现最佳，但在高分辨率下性能下降显著。</p></li>
+</ul>
+<p>根据具体应用场景和输入图像的分辨率需求，可以选择合适的YOLOv4模型以获得最佳的目标检测性能。</p>
+<hr class="docutils" />
+<img width="862" alt="scale-yolov4-table1" src="https://github.com/isLinXu/issues/assets/59380685/157203b6-c3e7-42e2-92f8-fa2190d2fef4">
+<p>分析</p>
+<ol class="arabic simple">
+<li><p><strong>性能与速度权衡</strong>:</p>
+<ul class="simple">
+<li><p>EfficientDet-D0在速度（FPS）上表现最佳，但在AP上相对较低。</p></li>
+<li><p>YOLOv4系列模型在AP上表现较好，但随着模型复杂度增加，FPS逐渐降低。</p></li>
+</ul>
+</li>
+<li><p><strong>不同模型的适用场景</strong>:</p>
+<ul class="simple">
+<li><p>如果需要高实时性（高FPS），可以选择EfficientDet-D0。</p></li>
+<li><p>如果需要高精度（高AP），可以选择YOLOv4-P7，但需要接受较低的FPS。</p></li>
+</ul>
+</li>
+<li><p><strong>小目标检测</strong>:</p>
+<ul class="simple">
+<li><p>YOLOv4系列模型在小目标检测（$AP_S​$）上表现较好，尤其是YOLOv4-P7。</p></li>
+</ul>
+</li>
+<li><p><strong>中等和大目标检测</strong>:</p>
+<ul class="simple">
+<li><p>YOLOv4系列模型在中等（$AP_M$​）和大目标（$AP_L$​）检测上也表现出色，尤其是YOLOv4-P7。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ul class="simple">
+<li><p><strong>EfficientDet-D0</strong>适合需要高实时性的应用。</p></li>
+<li><p><strong>YOLOv4系列模型</strong>（尤其是YOLOv4-P7）适合需要高精度的应用，特别是在小目标、中等目标和大目标检测方面表现出色。</p></li>
+<li><p>根据具体应用需求，可以在速度和精度之间进行权衡，选择合适的模型。</p></li>
+</ul>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="EfficientDet.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Simple%20Multi-dataset%20Detection.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Simple Multi-dataset Detection</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By isLinXu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022, isLinXu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

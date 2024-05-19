@@ -30,8 +30,8 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -46,6 +46,8 @@
     <link rel="icon" href="../../_static/panda.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery" href="YOLOOC.html" />
+    <link rel="prev" title="DAMO-YOLO" href="DAMO-YOLO.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -107,8 +109,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -155,7 +155,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Method/how_to_read_paper.html">如何阅读论文</a></li>
@@ -188,20 +188,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../List/llm.html">大语言模型(Large Language Models)</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
-
-
-
-
-
-
-
-
-
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
-
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -212,12 +202,86 @@
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
 </ul>
 </li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="survey_all.html">survey_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FPN.html">FPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SSD.html">SSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SM-NAS.html">SM-NAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TSD.html">TSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv1.html">PP-YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv2.html">PP-YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOF.html">YOLOF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOP.html">YOLOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">YOLOv9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RTMDet.html">RTMDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -432,11 +496,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">解决方案关键</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">实验设计</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">实验结果</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">结论</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">解决方案关键</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">实验设计</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">实验结果</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">结论</a></li>
 </ul>
             </nav>
         </div>
@@ -487,8 +550,7 @@ YOLOv9在MS COCO数据集上取得了优异的性能，超过了现有的实时�
 <li><p>在更大的数据集上测试YOLOv9的性能。</p></li>
 <li><p>探索更多可逆架构和辅助监督技术以提高模型性能。</p></li>
 </ul>
-<section id="id1">
-<h2>回答问题<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>回答问题</p>
 <ol class="arabic simple">
 <li><p><strong>问题：</strong> 解决深度学习模型在目标检测中因信息瓶颈导致的问题。</p></li>
 <li><p><strong>新问题：</strong> 不是新问题，但提供了新的解决方案。</p></li>
@@ -501,16 +563,15 @@ YOLOv9在MS COCO数据集上取得了优异的性能，超过了现有的实时�
 <li><p><strong>贡献：</strong> 提出了PGI和GELAN，设计了YOLOv9。</p></li>
 <li><p><strong>下一步工作：</strong> 探索PGI和GELAN在其他任务中的应用，测试更大数据集上的性能。</p></li>
 </ol>
-</section>
-<section id="id2">
-<h2>解决方案关键<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h2>解决方案关键<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p><strong>可编程梯度信息（PGI）：</strong>
 PGI是本文提出的一个新概念，旨在解决深度神经网络在训练过程中由于信息瓶颈导致的信息丢失问题。PGI通过辅助可逆分支生成可靠的梯度信息，这些信息用于更新网络参数，确保深度特征能够保持对执行目标任务至关重要的特征。PGI的可逆架构建立在辅助分支上，不增加额外的推理成本。PGI还允许自由选择适合目标任务的损失函数，克服了掩码建模中的问题。</p>
 <p><strong>通用高效层聚合网络（GELAN）：</strong>
 GELAN是本文提出的一个新的轻量级网络架构，基于梯度路径规划设计。GELAN的设计考虑了参数数量、计算复杂性、准确性和推理速度，使用户可以为不同的推理设备选择适当的计算块。GELAN的架构证明了PGI在轻量级模型上能够获得优越的结果。</p>
 </section>
-<section id="id3">
-<h2>实验设计<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h2>实验设计<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><strong>数据集：</strong>
 实验使用了MS COCO数据集，这是目标检测领域广泛使用的标准数据集，包含多种类别的对象。</p>
 <p><strong>训练设置：</strong>
@@ -520,8 +581,8 @@ GELAN是本文提出的一个新的轻量级网络架构，基于梯度路径规
 <p><strong>评估：</strong>
 在Tesla V100 GPU上，使用FP16精度和批量大小为1进行评估。报告的FPS（帧每秒）和延迟都是在这个设置下测量的。</p>
 </section>
-<section id="id4">
-<h2>实验结果<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h2>实验结果<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p><strong>性能提升：</strong>
 实验结果表明，YOLOv9在不同模型尺寸上均取得了优异的性能。例如，YOLOv9-S在参数和计算量较少的情况下，相比YOLOv7 AF，有显著的性能提升。YOLOv9-E在保持准确性的同时，相比于YOLOv8减少了参数数量和计算量。</p>
 <p><strong>与其他方法的比较：</strong>
@@ -531,8 +592,8 @@ YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识
 <p><strong>可视化：</strong>
 通过可视化特征图，展示了不同架构在不同深度下保留信息的能力。GELAN和YOLOv9（GELAN + PGI）在较深的层次上仍能保留足够的信息，而其他架构则随着层数的增加逐渐丢失了重要信息。</p>
 </section>
-<section id="id5">
-<h2>结论<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h2>结论<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>YOLOv9通过PGI和GELAN的结合，解决了深度学习中的信息瓶颈问题，特别是在轻量级神经网络中。YOLOv9在目标检测任务上显示出强大的竞争力，其设计使得深度模型在减少参数数量和计算量的同时，仍然提高了准确性。</p>
 <p>关闭马赛克增强的好处是什么？
 马赛克增强（Mosaic Augmentation）是一种数据增强技术，它通过将四个随机选择的训练图像切割并重新排列成一个新的图像来增加数据的多样性，从而提高模型的泛化能力。这种技术可以模拟更多的场景变化，帮助模型学习到更加鲁棒的特征表示。 在论文中提到的实验设计里，作者在训练的最后15个epoch关闭了马赛克数据增强，这可能是基于以下几点考虑：</p>
@@ -557,6 +618,24 @@ YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="DAMO-YOLO.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DAMO-YOLO</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="YOLOOC.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -573,11 +652,10 @@ YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">解决方案关键</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">实验设计</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">实验结果</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">结论</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">解决方案关键</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">实验设计</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">实验结果</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">结论</a></li>
 </ul>
   </nav></div>
 

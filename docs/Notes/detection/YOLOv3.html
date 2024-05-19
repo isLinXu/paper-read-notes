@@ -30,8 +30,8 @@
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -46,6 +46,8 @@
     <link rel="icon" href="../../_static/panda.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="YOLOv4" href="YOLOv4.html" />
+    <link rel="prev" title="YOLOv2" href="YOLOv2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -107,8 +109,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -155,7 +155,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Method/how_to_read_paper.html">如何阅读论文</a></li>
@@ -188,20 +188,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../List/llm.html">大语言模型(Large Language Models)</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
-
-
-
-
-
-
-
-
-
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
-
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -212,12 +202,86 @@
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
 </ul>
 </li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="survey_all.html">survey_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FPN.html">FPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SSD.html">SSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">YOLOv3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SM-NAS.html">SM-NAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TSD.html">TSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv1.html">PP-YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv2.html">PP-YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOF.html">YOLOF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOP.html">YOLOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RTMDet.html">RTMDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -409,9 +473,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -427,14 +489,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -494,8 +548,7 @@ document.write(`
 <li><p>探索新的损失函数，如焦点损失（Focal Loss），以提高模型性能。</p></li>
 <li><p>考虑目标检测在实际应用中的伦理问题，如隐私保护和军事用途。</p></li>
 </ul>
-<section id="id1">
-<h2>回答问题<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>回答问题</p>
 <ol class="arabic simple">
 <li><p><strong>问题：</strong> 提高目标检测的速度和准确性。</p></li>
 <li><p><strong>新问题：</strong> 不是新问题，是对YOLO系统的改进。</p></li>
@@ -508,7 +561,286 @@ document.write(`
 <li><p><strong>贡献：</strong> 提出了改进的YOLOv3系统，提高了目标检测的性能。</p></li>
 <li><p><strong>下一步工作：</strong> 优化小目标检测，探索新的损失函数，考虑伦理问题。</p></li>
 </ol>
-</section>
+<p>图表内容分析</p>
+<ol class="arabic simple">
+<li><p><strong>坐标轴</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>横轴（X轴）</strong>：表示推理时间（inference time），单位为毫秒（ms），反映了模型处理一张图像所需的时间。</p></li>
+<li><p><strong>纵轴（Y轴）</strong>：表示COCO平均精度（AP），反映了模型在目标检测任务中的准确性。</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>数据点</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>紫色星形</strong>：表示YOLOv3模型的性能。</p></li>
+<li><p><strong>橙色菱形</strong>：表示RetinaNet-50模型的性能。</p></li>
+<li><p><strong>蓝色圆形</strong>：表示RetinaNet-101模型的性能。</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>标注</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>图表中标注了不同模型的具体性能数据，包括SSD系列、D-R-FCN、FPN FRCN等。</p></li>
+</ul>
+<p>详细分析</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>模型</p></th>
+<th class="head"><p>推理时间（ms）</p></th>
+<th class="head"><p>mAP</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>YOLOv3-320</p></td>
+<td><p>22</p></td>
+<td><p>28.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>YOLOv3-416</p></td>
+<td><p>29</p></td>
+<td><p>31.0</p></td>
+</tr>
+<tr class="row-even"><td><p>YOLOv3-608</p></td>
+<td><p>51</p></td>
+<td><p>33.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>RetinaNet-50-500</p></td>
+<td><p>32.5</p></td>
+<td><p>32.5</p></td>
+</tr>
+<tr class="row-even"><td><p>RetinaNet-101-500</p></td>
+<td><p>44.6</p></td>
+<td><p>34.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>RetinaNet-101-800</p></td>
+<td><p>90</p></td>
+<td><p>37.8</p></td>
+</tr>
+<tr class="row-even"><td><p>SSD321</p></td>
+<td><p>61</p></td>
+<td><p>28.0</p></td>
+</tr>
+<tr class="row-odd"><td><p>D-R-FCN</p></td>
+<td><p>85</p></td>
+<td><p>29.9</p></td>
+</tr>
+<tr class="row-even"><td><p>FPN FRCN</p></td>
+<td><p>172</p></td>
+<td><p>36.2</p></td>
+</tr>
+</tbody>
+</table>
+<p>性能对比</p>
+<ol class="arabic simple">
+<li><p><strong>速度与准确性的权衡</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>YOLOv3</strong>：在推理时间和准确性之间表现出色。YOLOv3-320在推理时间上非常快（22毫秒），但mAP较低（28.2）。YOLOv3-608在推理时间稍长（51毫秒），但mAP较高（33.0）。</p></li>
+<li><p><strong>RetinaNet</strong>：在准确性上表现更好，但推理时间较长。RetinaNet-101-800的mAP最高（37.8），但推理时间也最长（90毫秒）。</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>YOLOv3与RetinaNet的对比</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>速度</strong>：YOLOv3在所有配置下的推理时间都显著短于RetinaNet，尤其是YOLOv3-320和YOLOv3-416。</p></li>
+<li><p><strong>准确性</strong>：RetinaNet在高配置下（如RetinaNet-101-800）的mAP高于YOLOv3，但推理时间也显著增加。YOLOv3在较短的推理时间内提供了较为平衡的mAP。</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>与其他模型的对比</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>SSD系列</strong>：YOLOv3在推理时间和mAP上均优于SSD系列模型。</p></li>
+<li><p><strong>D-R-FCN和FPN FRCN</strong>：YOLOv3在推理时间上显著优于这些模型，且在mAP上也表现较为接近。</p></li>
+</ul>
+<p>总结</p>
+<ol class="arabic simple">
+<li><p><strong>YOLOv3的优势</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>速度</strong>：YOLOv3在推理时间上表现出色，适合实时目标检测任务。</p></li>
+<li><p><strong>准确性</strong>：在较短的推理时间内，YOLOv3提供了较为平衡的mAP，尤其是YOLOv3-416和YOLOv3-608。</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>RetinaNet的优势</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>准确性</strong>：RetinaNet在高配置下（如RetinaNet-101-800）提供了最高的mAP，但推理时间较长，适合对实时性要求不高但对准确性要求较高的应用场景。</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>综合考虑</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>选择合适的目标检测模型需要综合考虑速度和准确性。YOLOv3在速度和准确性之间表现出色，适合实时性要求高的应用场景。RetinaNet在准确性上表现更好，但推理时间较长，适合对准确性要求高的应用场景。</p></li>
+</ul>
+<p>结论</p>
+<p>图表展示了YOLOv3与其他目标检测模型在COCO数据集上的性能对比。YOLOv3在推理时间和准确性之间表现出色，适合实时目标检测任务。RetinaNet在准确性上表现更好，但推理时间较长，适合对实时性要求不高但对准确性要求较高的应用场景。选择合适的目标检测模型需要综合考虑速度和准确性等因素。</p>
+<p>图中的结构展示了目标检测中的边界框（bounding box）预测方法，具体包括维度先验（dimension priors）和位置预测（location prediction）。以下是对该结构的详细描述、工作原理和实现方式的介绍。</p>
+<p>结构描述</p>
+<p>图中展示了一个边界框的预测过程，主要包括以下几个部分：</p>
+<ol class="arabic simple">
+<li><p><strong>中心坐标预测</strong>：</p>
+<ul class="simple">
+<li><p>使用一个sigmoid函数来预测边界框的中心坐标（(b_x)和(b_y)）。</p></li>
+<li><p>预测的中心坐标是相对于滤波器应用位置的偏移量。</p></li>
+</ul>
+</li>
+<li><p><strong>宽度和高度预测</strong>：</p>
+<ul class="simple">
+<li><p>使用指数函数来预测边界框的宽度（(b_w)）和高度（(b_h)）。</p></li>
+<li><p>预测的宽度和高度是相对于先验维度（(p_w)和(p_h)）的缩放。</p></li>
+</ul>
+</li>
+</ol>
+<p>工作原理</p>
+<ol class="arabic">
+<li><p><strong>中心坐标预测</strong>：</p>
+<ul class="simple">
+<li><p>中心坐标的预测公式为：
+$[b_x = \sigma(t_x) + c_x]$
+$[b_y = \sigma(t_y) + c_y]$</p></li>
+<li><p>其中，($\sigma$)表示sigmoid函数，($t_x$)和($t_y$)是网络输出的预测值，($c_x$)和($c_y$)是网格单元的坐标。</p></li>
+<li><p>通过sigmoid函数将预测值限制在0到1之间，然后加上网格单元的坐标，得到相对于整个图像的中心坐标。</p></li>
+</ul>
+</li>
+<li><p><strong>宽度和高度预测</strong>：</p>
+<ul>
+<li><p>宽度和高度的预测公式为：
+$[b_w = p_w e^{t_w}]$</p>
+<p>$[b_h = p_h e^{t_h}]$</p>
+</li>
+<li><p>其中，($p_w$)和($p_h$)是先验维度（通常是通过聚类分析得到的），($t_w$)和($t_h$)是网络输出的预测值。</p></li>
+<li><p>通过指数函数将预测值转换为正数，然后乘以先验维度，得到边界框的宽度和高度。</p></li>
+</ul>
+</li>
+</ol>
+<p>实现方式</p>
+<ol class="arabic simple">
+<li><p><strong>网络输出</strong>：</p>
+<ul class="simple">
+<li><p>神经网络的输出包括中心坐标的偏移量（$(t_x$)和($t_y$)）以及宽度和高度的缩放因子（($t_w$)和($t_h$)）。</p></li>
+</ul>
+</li>
+<li><p><strong>位置预测</strong>：</p>
+<ul class="simple">
+<li><p>使用sigmoid函数对中心坐标的偏移量进行处理，将其限制在0到1之间。</p></li>
+<li><p>将处理后的偏移量加上网格单元的坐标，得到相对于整个图像的中心坐标。</p></li>
+</ul>
+</li>
+<li><p><strong>维度预测</strong>：</p>
+<ul class="simple">
+<li><p>使用指数函数对宽度和高度的缩放因子进行处理，将其转换为正数。</p></li>
+<li><p>将处理后的缩放因子乘以先验维度，得到边界框的宽度和高度。</p></li>
+</ul>
+</li>
+<li><p><strong>边界框生成</strong>：</p>
+<ul class="simple">
+<li><p>根据预测的中心坐标、宽度和高度，生成最终的边界框。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>图中的结构展示了目标检测中的边界框预测方法，主要包括中心坐标的预测和宽度高度的预测。通过使用sigmoid函数和指数函数，将网络输出的预测值转换为实际的边界框坐标和尺寸。这种方法结合了维度先验和位置预测，能够有效地提高边界框预测的准确性。</p>
+<p>darknet</p>
+<p>图表展示了Darknet-53网络的结构细节。Darknet-53是YOLOv3的骨干网络，主要由卷积层和残差块组成。以下是对图表内容的详细分析和总结。</p>
+<ol class="arabic simple">
+<li><p><strong>网络层次结构</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>卷积层（Convolutional）</strong>：每个卷积层的参数包括滤波器数量（Filters）、卷积核大小（Size）和输出特征图的尺寸（Output）。</p></li>
+<li><p><strong>残差块（Residual）</strong>：由两个卷积层组成，通过跳跃连接（skip connection）实现。</p></li>
+<li><p><strong>全局平均池化层（Avgpool）</strong>：用于将特征图的空间维度降为1。</p></li>
+<li><p><strong>全连接层（Connected）</strong>：用于分类任务。</p></li>
+<li><p><strong>Softmax层</strong>：用于输出分类概率。</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>网络结构细节</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>1x</strong>：表示重复1次的模块。</p></li>
+<li><p><strong>2x</strong>：表示重复2次的模块。</p></li>
+<li><p><strong>8x</strong>：表示重复8次的模块。</p></li>
+<li><p><strong>4x</strong>：表示重复4次的模块。</p></li>
+</ul>
+<p>详细分析</p>
+<ol class="arabic simple">
+<li><p><strong>初始卷积层</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>第一个卷积层</strong>：32个3x3的滤波器，输出尺寸为256x256。</p></li>
+<li><p><strong>第二个卷积层</strong>：64个3x3的滤波器，步长为2，输出尺寸为128x128。</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>残差块</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>1x模块</strong>：</p>
+<ul>
+<li><p>第一个卷积层：32个1x1的滤波器。</p></li>
+<li><p>第二个卷积层：64个3x3的滤波器。</p></li>
+<li><p>输出尺寸为128x128。</p></li>
+</ul>
+</li>
+<li><p><strong>2x模块</strong>：</p>
+<ul>
+<li><p>第一个卷积层：64个1x1的滤波器。</p></li>
+<li><p>第二个卷积层：128个3x3的滤波器，步长为2。</p></li>
+<li><p>输出尺寸为64x64。</p></li>
+</ul>
+</li>
+<li><p><strong>8x模块</strong>：</p>
+<ul>
+<li><p>第一个卷积层：128个1x1的滤波器。</p></li>
+<li><p>第二个卷积层：256个3x3的滤波器，步长为2。</p></li>
+<li><p>输出尺寸为32x32。</p></li>
+</ul>
+</li>
+<li><p><strong>8x模块</strong>：</p>
+<ul>
+<li><p>第一个卷积层：256个1x1的滤波器。</p></li>
+<li><p>第二个卷积层：512个3x3的滤波器，步长为2。</p></li>
+<li><p>输出尺寸为16x16。</p></li>
+</ul>
+</li>
+<li><p><strong>4x模块</strong>：</p>
+<ul>
+<li><p>第一个卷积层：512个1x1的滤波器。</p></li>
+<li><p>第二个卷积层：1024个3x3的滤波器，步长为2。</p></li>
+<li><p>输出尺寸为8x8。</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>全局平均池化和全连接层</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>全局平均池化层</strong>：将8x8的特征图降为1x1。</p></li>
+<li><p><strong>全连接层</strong>：用于分类任务，输出1000个类别。</p></li>
+<li><p><strong>Softmax层</strong>：用于输出分类概率。</p></li>
+</ul>
+<p>总结</p>
+<ol class="arabic simple">
+<li><p><strong>网络结构</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>卷积层</strong>：Darknet-53由多个卷积层组成，每个卷积层的滤波器数量和卷积核大小不同。</p></li>
+<li><p><strong>残差块</strong>：通过跳跃连接（skip connection）实现，增强了网络的深度和性能。</p></li>
+<li><p><strong>全局平均池化层</strong>：用于将特征图的空间维度降为1，减少参数数量。</p></li>
+<li><p><strong>全连接层和Softmax层</strong>：用于分类任务，输出分类概率。</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>模块重复</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>1x、2x、8x、4x模块</strong>：表示不同模块的重复次数，通过重复模块增加网络的深度。</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>输出特征图尺寸</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>逐层减小</strong>：随着网络的深入，特征图的尺寸逐渐减小，从256x256减小到8x8。</p></li>
+</ul>
+<p>结论</p>
+<p>Darknet-53是一个深度卷积神经网络，主要由卷积层和残差块组成。通过重复使用卷积层和残差块，Darknet-53实现了较深的网络结构，增强了特征提取能力。全局平均池化层和全连接层用于分类任务，输出分类概率。Darknet-53在YOLOv3中作为骨干网络，提供了强大的特征提取能力。</p>
 </section>
 
 
@@ -522,6 +854,24 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="YOLOv2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">YOLOv2</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="YOLOv4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">YOLOv4</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -529,20 +879,7 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

@@ -1,4 +1,4 @@
-RTMDet: An Empirical Study of Designing Real-Time Object Detectors
+# RTMDet
 
 **标题：** RTMDet: An Empirical Study of Designing Real-Time Object Detectors
 
@@ -61,7 +61,7 @@ RTMDet: An Empirical Study of Designing Real-Time Object Detectors
 - 在更广泛的数据集和应用场景中验证RTMDet的性能。
 - 研究如何将RTMDet部署到不同的硬件平台上，以实现实时性。
 
-### 回答问题
+回答问题
 
 1. **这篇论文做了什么工作，它的动机是什么？**
     

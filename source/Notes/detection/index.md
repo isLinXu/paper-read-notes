@@ -18,6 +18,7 @@ YOLOv1
 YOLOv2
 YOLOv3
 YOLOv4
+Scaled-YOLOv4
 ASFF
 ATSS
 SABL
@@ -26,7 +27,6 @@ TSD
 RDSNet
 CenterMask
 EfficientDet
-Scaled-YOLOv4
 Simple Multi-dataset Detection
 YOLOX
 YOLOv6

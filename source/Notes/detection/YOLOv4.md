@@ -68,7 +68,7 @@ YOLOv4的关键技术包括WRC、CSP、CmBN、SAT、Mish激活函数、Mosaic数
 - **纵轴（Y轴）**：平均精度（AP），表示模型的检测精度。
 - **数据点**：不同模型在MS COCO数据集上的性能表现，包括YOLOv4、YOLOv3、EfficientDet、ATSS、ASFF和CenterMask。
 
-图表和结构分析
+**图表和结构分析**
 
 1. 批量归一化（BN）
 

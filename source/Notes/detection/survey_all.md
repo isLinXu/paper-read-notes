@@ -1,4 +1,5 @@
 # survey_all
+
 - YOLOv1
 <img width="794" alt="yolov1-fig1" src="https://github.com/isLinXu/issues/assets/59380685/ff203269-cdc9-47cc-8102-fd247c158a3c">
 <img width="1359" alt="yolov1-fig3" src="https://github.com/isLinXu/issues/assets/59380685/d36948d1-d32b-483d-ae78-1029c73d7080">
@@ -19,6 +20,8 @@
 - Scaled-YOLOv4
 
 <img width="1160" alt="scale-yolov4-fig4" src="https://github.com/isLinXu/issues/assets/59380685/3e8da47e-ba1c-4fc6-8242-e06f832c665f">
+- YOLOX
+<img width="1061" alt="yolox-fig2" src="https://github.com/isLinXu/issues/assets/59380685/e4abbf4b-e6e2-4552-afe1-385c8a055797">
 
 - YOLOv5
 

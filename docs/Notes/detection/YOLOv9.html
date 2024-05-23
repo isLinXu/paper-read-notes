@@ -47,7 +47,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery" href="YOLOOC.html" />
-    <link rel="prev" title="DAMO-YOLO" href="DAMO-YOLO.html" />
+    <link rel="prev" title="RT-DETR" href="RT-DETR.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -237,8 +237,13 @@
 <li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dy-yolov7.html">DY-yolov7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Gold-YOLO.html">Gold-YOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ViT-YOLO.html">ViT-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RT-DETR.html">RT-DETR</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">YOLOv9</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
@@ -473,7 +478,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -489,6 +496,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. <strong>结论</strong></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -584,6 +599,39 @@ YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识
 <li><p><strong>计算效率</strong>：数据增强会增加训练的计算负担。在训练后期关闭某些数据增强方法可以提高训练的效率，尤其是在资源有限的情况下。</p></li>
 <li><p><strong>超参数调整</strong>：关闭马赛克增强可能是超参数调整的一部分，作者可能通过实验发现，在训练后期关闭马赛克增强能够获得更好的性能表现。 需要注意的是，这些好处并不是绝对的，它们可能依赖于具体的应用场景、数据集特性以及模型的当前状态。在实际应用中，是否关闭数据增强以及何时关闭，需要根据具体情况和实验结果来决定。</p></li>
 </ol>
+<p>1. <strong>总体趋势</strong></p>
+<ul class="simple">
+<li><p><strong>参数数量与性能</strong>：总体来看，随着参数数量的增加，模型的平均精度（AP）也在提升。这表明更复杂的模型（参数更多）通常能够捕捉到更多的特征，从而提高检测性能。</p></li>
+<li><p><strong>性能瓶颈</strong>：在参数数量达到一定程度后，性能提升的幅度开始减小，出现性能瓶颈。这意味着在某个点之后，增加参数数量对性能的提升效果有限。</p></li>
+</ul>
+<p>2. <strong>不同网络的性能对比</strong></p>
+<ul class="simple">
+<li><p><strong>YOLOv9 (Ours)</strong>：红色曲线表示的YOLOv9在不同参数数量下的性能表现。可以看到，YOLOv9在参数数量较少时（10M左右）就已经达到了较高的AP，且在参数数量增加时，性能提升显著，最终在参数数量较多时（接近100M）达到了最高的AP。</p></li>
+<li><p><strong>GELAN (Ours)</strong>：橙色曲线表示的GELAN在参数数量较少时（10M左右）表现出色，且在参数数量增加时，性能提升也较为显著。</p></li>
+<li><p><strong>YOLOv5</strong>：蓝色曲线表示的YOLOv5在参数数量较少时（10M左右）表现一般，但在参数数量增加时，性能提升显著，最终在参数数量较多时（接近100M）达到了较高的AP。</p></li>
+<li><p><strong>YOLOv6</strong>：黄色曲线表示的YOLOv6在参数数量较少时（10M左右）表现一般，但在参数数量增加时，性能提升显著，最终在参数数量较多时（接近100M）达到了较高的AP。</p></li>
+<li><p><strong>YOLOv8</strong>：绿色曲线表示的YOLOv8在参数数量较少时（10M左右）表现一般，但在参数数量增加时，性能提升显著，最终在参数数量较多时（接近100M）达到了较高的AP。</p></li>
+<li><p><strong>其他网络</strong>：其他网络如PPYOLOE、DAMO YOLO、RTMDet等在参数数量较少时表现一般，但在参数数量增加时，性能提升显著。</p></li>
+</ul>
+<p>3. <strong>训练方式的影响</strong></p>
+<ul class="simple">
+<li><p><strong>从头训练（Train from scratch）</strong>：红色和橙色曲线表示的YOLOv9和GELAN是从头训练的，表现出色，表明从头训练的模型在参数数量较少时也能达到较高的AP。</p></li>
+<li><p><strong>预训练模型（ImageNet pretrained SOTA）</strong>：绿色曲线表示的RT DETR是使用ImageNet预训练的模型，表现出色，表明预训练模型在参数数量较多时能够达到较高的AP。</p></li>
+</ul>
+<p>4. <strong>特定网络的性能</strong></p>
+<ul class="simple">
+<li><p><strong>YOLO MS</strong>：灰色曲线表示的YOLO MS在参数数量较少时表现一般，但在参数数量增加时，性能提升显著。</p></li>
+<li><p><strong>Gold YOLO</strong>：紫色曲线表示的Gold YOLO在参数数量较少时表现一般，但在参数数量增加时，性能提升显著。</p></li>
+</ul>
+<section id="id1">
+<h2>5. <strong>结论</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>高效模型</strong>：YOLOv9和GELAN在参数数量较少时就能达到较高的AP，表明这些模型在参数效率上表现出色。</p></li>
+<li><p><strong>性能提升</strong>：随着参数数量的增加，大多数模型的性能都有显著提升，但在达到一定参数数量后，性能提升的幅度减小，出现性能瓶颈。</p></li>
+<li><p><strong>训练方式</strong>：从头训练的模型在参数数量较少时表现出色，而预训练模型在参数数量较多时表现出色。</p></li>
+</ul>
+<p>总体来说，这个图表展示了不同目标检测网络在MS COCO数据集上的性能表现，提供了对比不同网络结构和训练方式的有效参考。</p>
+</section>
 </section>
 
 
@@ -598,12 +646,12 @@ YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="DAMO-YOLO.html"
+       href="RT-DETR.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">DAMO-YOLO</p>
+        <p class="prev-next-title">RT-DETR</p>
       </div>
     </a>
     <a class="right-next"
@@ -622,7 +670,20 @@ YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. <strong>结论</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

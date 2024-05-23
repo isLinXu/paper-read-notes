@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>detection &#8212; 论文阅读笔记</title>
+    <title>YOLO-MS &#8212; 论文阅读笔记</title>
   
   
   
@@ -42,12 +42,12 @@
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/detection/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/detection/YOLO-MS';</script>
     <link rel="icon" href="../../_static/panda.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="survey_all" href="survey_all.html" />
-    <link rel="prev" title="GPT-v4:GPT-4 Technical Report" href="../llm/gpt-v4.html" />
+    <link rel="next" title="RT-DETR" href="RT-DETR.html" />
+    <link rel="prev" title="ViT-YOLO" href="ViT-YOLO.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -202,7 +202,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="survey_all.html">survey_all</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
@@ -242,7 +242,7 @@
 <li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ViT-YOLO.html">ViT-YOLO</a></li>
-<li class="toctree-l3"><a class="reference internal" href="YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">YOLO-MS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RT-DETR.html">RT-DETR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
@@ -360,7 +360,7 @@
       
       
       
-      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/detection/index.md" target="_blank"
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/detection/YOLO-MS.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -377,7 +377,7 @@
       
       
       
-      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/detection/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/detection/YOLO-MS.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -407,7 +407,7 @@
       
       
       
-      <li><a href="../../_sources/Notes/detection/index.md" target="_blank"
+      <li><a href="../../_sources/Notes/detection/YOLO-MS.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -489,7 +489,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>detection</h1>
+    <h1>YOLO-MS</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -503,164 +503,70 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="detection">
-<h1>detection<a class="headerlink" href="#detection" title="Link to this heading">#</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="survey_all.html">survey_all</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RCNN.html">RCNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FCN.html">FCN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FPN.html">FPN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SSD.html">SSD</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RetinaNet.html">RetinaNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ASFF.html">ASFF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ATSS.html">ATSS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SABL.html">SABL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SM-NAS.html">SM-NAS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TSD.html">TSD</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PP-YOLOv1.html">PP-YOLOv1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="PP-YOLOv2.html">PP-YOLOv2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOF.html">YOLOF</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOP.html">YOLOP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Dy-yolov7.html">DY-yolov7</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Dy-yolov7.html#id1">论文阅读笔记</a></li>
+  <section id="yolo-ms">
+<h1>YOLO-MS<a class="headerlink" href="#yolo-ms" title="Link to this heading">#</a></h1>
+<p><strong>标题：</strong> YOLO-MS: Rethinking Multi-Scale Representation Learning for Real-time Object Detection</p>
+<p><strong>作者：</strong> Yuming Chen, Xinbin Yuan, Ruiqi Wu, Jiabao Wang, Qibin Hou, Ming-Ming Cheng</p>
+<p><strong>机构：</strong> VCIP, School of Computer Science, Nankai University</p>
+<p><strong>摘要：</strong></p>
+<ul class="simple">
+<li><p>提出了一个高效且性能优异的目标检测器YOLO-MS。</p></li>
+<li><p>核心设计基于对不同卷积核尺寸如何影响不同尺寸目标检测性能的研究。</p></li>
+<li><p>通过新策略显著增强实时目标检测器的多尺度特征表示。</p></li>
+<li><p>在MS COCO数据集上训练，不依赖其他大规模数据集或预训练权重。</p></li>
+<li><p>YOLO-MS在参数和FLOPs数量相当的情况下，性能超过最新的实时目标检测器。</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Gold-YOLO.html">Gold-YOLO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ViT-YOLO.html">ViT-YOLO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLO-MS.html">YOLO-MS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RT-DETR.html">RT-DETR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOv9.html">YOLOv9</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="YOLOv9.html#id1">5. <strong>结论</strong></a></li>
+<p><strong>引言：</strong></p>
+<ul class="simple">
+<li><p>实时目标检测在工业中尤其对边缘设备（如无人机和机器人）有重要应用。</p></li>
+<li><p>实时目标检测器旨在追求速度和准确性之间的最佳权衡。</p></li>
+<li><p>作者提出了一种新的编码器架构，用于学习表达性的多尺度特征表示。</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="RTMDet.html">RTMDet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MDETR.html">MDETR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id2"><strong>摘要</strong></a></li>
+<p><strong>相关工作：</strong></p>
+<ul class="simple">
+<li><p>目标检测任务的相关工作，包括多阶段检测器和端到端检测器。</p></li>
+<li><p>YOLO系列作为实时目标检测网络的最典型代表。</p></li>
+<li><p>多尺度特征表示学习在计算机视觉中有长期的研究历史。</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id3"><strong>1 引言</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id4"><strong>2 目标检测二十年</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id5"><strong>2.1 目标检测的路线图</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id7"><strong>2.2 目标检测数据集和评价指标</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id9"><strong>2.3 目标检测中的技术演变</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id15"><strong>3 加速检测</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id16"><strong>3.1 特征图共享计算</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id19"><strong>3.2 加速分类器</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id20"><strong>3.3 级联检测</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id21"><strong>3.4 网络剪枝和量化</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id25"><strong>3.5 轻量级网络设计</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id31"><strong>3.6 数值加速</strong></a></li>
+<p><strong>方法：</strong></p>
+<ul class="simple">
+<li><p>设计了MS-Block，具有简单但有效的层次特征融合策略。</p></li>
+<li><p>提出了一种异构内核选择协议（HKS），在网络深入时逐渐增加卷积核的大小。</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id36"><strong>4 最近目标检测的进展</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id37"><strong>4.1 使用更好的引擎进行检测</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id38"><strong>4.2 使用更好的特征进行检测</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id42"><strong>4.3 非滑动窗口检测</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id43"><strong>4.4 提高定位的改进</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id46"><strong>4.5 与分割结合的学习</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id49"><strong>4.6 旋转和平移变化的鲁棒检测</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id52"><strong>4.7 从头开始训练</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id53"><strong>4.8 对抗性训练</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id54"><strong>4.9 弱监督目标检测</strong></a></li>
+<p><strong>实验：</strong></p>
+<ul class="simple">
+<li><p>在MS COCO数据集上进行了全面实验，与其他最先进方法进行了定量比较。</p></li>
+<li><p>提供了不同变体的YOLO-MS，并展示了它们的性能。</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id55"><strong>5 应用</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id56"><strong>5.1 行人检测</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id59"><strong>5.2 面部检测</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id62"><strong>5.3 文本检测</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id65"><strong>5.4 交通标志和交通信号检测</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id68"><strong>5.5 遥感目标检测</strong></a></li>
+<p><strong>结论：</strong></p>
+<ul class="simple">
+<li><p>YOLO-MS以合理的计算成本提供了高性能的实时目标检测。</p></li>
+<li><p>提出的方法显著提高了检测器的速度-准确性权衡，并超过了其他实时检测器。</p></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id71"><strong>6 结论和未来方向</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id1"><strong>摘要</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id2"><strong>1 引言</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolo"><strong>2 YOLO在不同领域的应用</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#nms"><strong>3 目标检测指标和非最大值抑制（NMS）</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#ap"><strong>3.1 AP如何工作？</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id3"><strong>3.2 计算AP</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id4"><strong>3.3 非最大值抑制（NMS）</strong></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id5"><strong>4 YOLO：只看一次</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov1"><strong>4.1 YOLOv1如何工作？</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id6"><strong>4.2 YOLOv1 架构</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id7"><strong>4.3 YOLOv1 训练</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id8"><strong>4.4 YOLOv1 的优势和局限性</strong></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov2"><strong>5 YOLOv2：更好、更快、更强</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id9"><strong>5.1 YOLOv2 架构</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolo9000-yolov2"><strong>5.2 YOLO9000 是一个更强大的 YOLOv2</strong></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov3"><strong>6 YOLOv3</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id10"><strong>6.1 YOLOv3 架构</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id11"><strong>6.2 YOLOv3 多尺度预测</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id12"><strong>6.3 YOLOv3 结果</strong></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id13"><strong>7 骨干、颈部和头部</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov4"><strong>8 YOLOv4</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id14"><strong>8.1 YOLOv4 结果</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov5"><strong>9 YOLOv5</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id15"><strong>9.1 YOLOv5 结果</strong></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#scaled-yolov4"><strong>10 Scaled-YOLOv4</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolor"><strong>11 YOLOR</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolox"><strong>12 YOLOX</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov6"><strong>13 YOLOv6</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id16"><strong>13.1 YOLOv6 结果</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov7"><strong>14 YOLOv7</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov4-yolor"><strong>14.1 与 YOLOv4 和 YOLOR 的比较</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id17"><strong>14.2 YOLOv7 结果</strong></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#damo-yolo"><strong>15 DAMO-YOLO</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#yolov8"><strong>16 YOLOv8</strong></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id18"><strong>16.1 YOLOv8 结果</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#pp-yolo-pp-yolov2-pp-yoloe"><strong>17 PP-YOLO, PP-YOLOv2, 和 PP-YOLOE</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#pp-yolo"><strong>17.1 PP-YOLO 增强和预处理</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id19"><strong>17.2 PP-YOLO 结果</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#pp-yolov2"><strong>17.3 PP-YOLOv2</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#pp-yoloe"><strong>17.4 PP-YOLOE</strong></a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id20"><strong>18 讨论</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id21"><strong>19 YOLO 的未来</strong></a></li>
-<li class="toctree-l1"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html#id22"><strong>20.1 速度和准确性之间的权衡</strong></a></li>
-</ul>
-</div>
+<p>回答问题</p>
+<p><strong>1. 这篇论文做了什么工作，它的动机是什么？</strong>
+这篇论文提出了YOLO-MS，一种新的实时目标检测网络。
+动机是提高实时目标检测器的多尺度特征表示能力，以实现更优的速度和准确性之间的权衡。</p>
+<p><strong>2. 这篇论文试图解决什么问题？</strong>
+论文试图解决实时目标检测中不同尺寸目标的多尺度特征表示问题。</p>
+<p><strong>3. 这是否是一个新的问题？</strong>
+这是一个持续发展的问题，在实时目标检测领域中，随着技术的进步，对更高效的多尺度特征学习的需求不断增长。</p>
+<p><strong>4. 这篇文章要验证一个什么科学假设？</strong>
+文章要验证的科学假设是：通过特定的网络设计（如MS-Block和HKS协议），可以显著提高实时目标检测器在多尺度特征表示方面的表现。</p>
+<p><strong>5. 有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</strong>
+相关研究包括多阶段检测器、端到端检测器、YOLO系列等。归类为实时目标检测和多尺度特征表示学习。领域内值得关注的研究员包括YOLO系列的作者Joseph Redmon和Ali Farhadi，以及其他在目标检测领域有重要贡献的研究者。</p>
+<p><strong>6. 论文中提到的解决方案之关键是什么？</strong>
+解决方案的关键在于MS-Block的设计和异构内核选择协议（HKS），它们共同增强了多尺度特征的表示。</p>
+<p><strong>7. 论文中的实验是如何设计的？</strong>
+实验设计包括在MS COCO数据集上的训练和验证，以及与其他实时目标检测方法的比较。实验评估了YOLO-MS不同变体的性能。</p>
+<p><strong>8. 用于定量评估的数据集上什么？代码有没有开源？</strong>
+用于定量评估的数据集是MS COCO。论文提供了GitHub链接，代码已经开源。</p>
+<p><strong>9. 论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong>
+是的，实验结果表明YOLO-MS在多尺度特征表示方面取得了显著的性能提升，支持了论文的科学假设。</p>
+<p><strong>10. 这篇论文到底有什么贡献？</strong>
+论文的贡献在于提出了一种新的实时目标检测网络YOLO-MS，它通过创新的网络结构设计，提高了目标检测的速度和准确性，特别是在多尺度特征表示方面。</p>
+<p><strong>11. 下一步呢？有什么工作可以继续深入？</strong>
+下一步的工作可以包括进一步优化网络结构，提高检测速度，减少计算成本，或者将YOLO-MS应用于其他相关领域，如视频目标检测、多目标跟踪等。此外，可以探索如何将YOLO-MS与其他先进的目标检测方法结合，以实现更全面的性能提升。</p>
 </section>
 
 
@@ -675,20 +581,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../llm/gpt-v4.html"
+       href="ViT-YOLO.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">GPT-v4:GPT-4 Technical Report</p>
+        <p class="prev-next-title">ViT-YOLO</p>
       </div>
     </a>
     <a class="right-next"
-       href="survey_all.html"
+       href="RT-DETR.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">survey_all</p>
+        <p class="prev-next-title">RT-DETR</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

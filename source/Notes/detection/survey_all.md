@@ -20,12 +20,20 @@
 
 <img width="1160" alt="scale-yolov4-fig4" src="https://github.com/isLinXu/issues/assets/59380685/3e8da47e-ba1c-4fc6-8242-e06f832c665f">
 
+- YOLOv5
+
+<img width="319" alt="yolov5-arch" src="https://github.com/isLinXu/issues/assets/59380685/8b10e165-2ffa-4bf5-a5f8-2d0aca279b80">
+
 - YOLOv6
 <img width="1080" alt="yolov6-fig2" src="https://github.com/isLinXu/issues/assets/59380685/22c872de-da17-4078-9819-876a490837a3">
 - YOLOV6-3.0
 <img width="862" alt="yolov6 30-fig2" src="https://github.com/isLinXu/issues/assets/59380685/c79e2c8f-4f32-4e3f-bfbf-e7597d3d55d6">
 - YOLOv7
 <img width="1375" alt="yolov7-fig5" src="https://github.com/isLinXu/issues/assets/59380685/9c599859-73a0-4e64-9544-a94867a49eec">
+
+- YOLOv8
+
+<img width="593" alt="yolov8-arch" src="https://github.com/isLinXu/issues/assets/59380685/630fc262-d644-43d7-b9d4-4f282c7ef222">
 
 - YOLOv9
 

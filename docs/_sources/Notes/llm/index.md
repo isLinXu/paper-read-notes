@@ -1,4 +1,4 @@
-# 大语言模型(Large Language Models)
+# Large Language Models
 ```{toctree}
 :maxdepth: 2
 opt.md

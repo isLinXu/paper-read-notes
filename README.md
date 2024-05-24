@@ -19,3 +19,17 @@ Paper reading notes
 
 
 - https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap
+
+## build
+```
+make html
+```
+
+## update
+```
+make html
+mv build/html/* docs
+git add docs
+git commit -m "update docs"
+git push
+```

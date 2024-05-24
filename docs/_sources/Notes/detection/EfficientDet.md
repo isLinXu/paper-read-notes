@@ -87,7 +87,7 @@
 - 下一步的工作可以包括进一步优化EfficientDet架构，探索在不同应用场景中的性能，或者将EfficientDet应用于其他计算机视觉任务，如语义分割或实例分割。
   此外，还可以研究如何将EfficientDet与其他先进的技术（如注意力机制、元学习等）结合，以进一步提高性能。
 
-
+---
 
 
 | 模型                        | COCO AP | FLOPs (Billions) | FLOPs (ratio) |

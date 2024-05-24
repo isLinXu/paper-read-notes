@@ -1,0 +1,916 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; 论文阅读笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'IDEA/YOLOv11';</script>
+    <link rel="icon" href="../_static/panda.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/how_to_read_paper.html">如何阅读论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/paper_10_question.html">论文速读十问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/read_important_tips.html">读论文与口头报告的几项重点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Method/reference.html">参考材料</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../List/index.html">论文阅读清单</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../List/basis.html">神经网络基础(basis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../List/attention.html">注意力部分(attention)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/batch_normalization.html">批量&amp;正则化(batch&amp;normalization)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/classification.html">图像分类(CLAS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../List/convolutional.html">高级卷积网络知识(Convolutional)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/gan.html">AI合成部分(GAN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/nlp.html">自然语言处理(NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../List/objectdetection.html">目标检测(OBJ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../List/rnn.html">循环神经网络(RNN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/segementation.html">目标分割(SEG)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/transformer.html">Transformer</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/multimodal.html">多模态(MultiModal Learning)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../List/llm.html">大语言模型(Large Language Models)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Notes/index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v3.html">GPT-v3:Language Models are Few-Shot Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/detection/index.html">detection</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/summary.html">summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/RCNN.html">RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Fast%20R-CNN.html">Fast R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Faster%20R-CNN.html">Faster R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/FPN.html">FPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/SSD.html">SSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Cascade-RCNN.html">Cascade-RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv1.html">YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv2.html">YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv3.html">YOLOv3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/ASFF.html">ASFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/ATSS.html">ATSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/SABL.html">SABL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/SM-NAS.html">SM-NAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/TSD.html">TSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/RDSNet.html">RDSNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/CenterMask.html">CenterMask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOX.html">YOLOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv6.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/PP-YOLOv1.html">PP-YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/PP-YOLOv2.html">PP-YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOF.html">YOLOF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOP.html">YOLOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOR.html">YOLOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOS.html">YOLOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Dy-yolov7.html">DY-yolov7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Gold-YOLO.html">Gold-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv6_v3.0.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/ViT-YOLO.html">ViT-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/RT-DETR.html">RT-DETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv9.html">YOLOv9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/OWL-ViT.html">OWL-ViT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/OWLv2.html">OWLv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/RTMDet.html">RTMDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLO-World.html">YOLO-World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv10.html">YOLOv10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/IDEA/YOLOv11.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FIDEA/YOLOv11.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/IDEA/YOLOv11.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>基于以上的工作，作为研究者我可以从中的得到什么启示，以及还有哪些待改进和优化的工作，我需要设计实现一个yolov11</p>
+<p>启示</p>
+<ol class="arabic simple">
+<li><p><strong>标签分配策略的重要性</strong>：</p>
+<ul class="simple">
+<li><p>一对一和一对多标签分配策略的结合可以显著提高模型的检测精度和效率。研究者可以进一步探索和优化标签分配策略，以适应不同的应用场景。</p></li>
+</ul>
+</li>
+<li><p><strong>一致性匹配度量的有效性</strong>：</p>
+<ul class="simple">
+<li><p>一致性匹配度量通过综合考虑置信度、类别概率和IoU，能够有效减少冗余检测框。这表明在设计新的目标检测模型时，考虑多种因素的综合度量是提高模型性能的关键。</p></li>
+</ul>
+</li>
+<li><p><strong>减少后处理步骤的可能性</strong>：</p>
+<ul class="simple">
+<li><p>通过改进模型的内部机制，可以减少甚至消除后处理步骤（如NMS）的需求，从而简化模型架构并提高推理速度。</p></li>
+</ul>
+</li>
+</ol>
+<p>待改进和优化的工作</p>
+<ol class="arabic simple">
+<li><p><strong>标签分配策略的进一步优化</strong>：</p>
+<ul class="simple">
+<li><p>尽管一对一和一对多标签分配策略已经取得了显著效果，但仍有改进空间。可以探索更多的标签分配策略，如动态标签分配、自适应标签分配等，以进一步提高模型的检测性能。</p></li>
+</ul>
+</li>
+<li><p><strong>一致性匹配度量的改进</strong>：</p>
+<ul class="simple">
+<li><p>当前的一致性匹配度量主要考虑置信度、类别概率和IoU，可以尝试引入更多的度量因素，如边界框的形状、目标的上下文信息等，以提高匹配的准确性。</p></li>
+</ul>
+</li>
+<li><p><strong>特征提取和聚合的优化</strong>：</p>
+<ul class="simple">
+<li><p>Backbone和PAN的设计对模型的性能有重要影响。可以尝试使用更强大的特征提取网络（如Transformer-based架构）和更高效的特征聚合方法（如FPN、BiFPN等）来提升模型的特征表示能力。</p></li>
+</ul>
+</li>
+<li><p><strong>轻量化和高效化</strong>：</p>
+<ul class="simple">
+<li><p>在保证检测精度的前提下，进一步优化模型的计算效率和参数量，使其能够在资源受限的环境中运行，如移动设备和嵌入式系统。</p></li>
+</ul>
+</li>
+<li><p><strong>数据增强和训练策略</strong>：</p>
+<ul class="simple">
+<li><p>通过改进数据增强方法（如Mosaic、MixUp等）和训练策略（如自监督学习、对比学习等），可以进一步提升模型的泛化能力和鲁棒性。</p></li>
+</ul>
+</li>
+</ol>
+<p>设计YOLOv11的思路</p>
+<ol class="arabic simple">
+<li><p><strong>改进的标签分配策略</strong>：</p>
+<ul class="simple">
+<li><p>设计一种自适应的标签分配策略，根据目标的密集程度和类别分布动态调整一对一和一对多的比例。</p></li>
+</ul>
+</li>
+<li><p><strong>增强的一致性匹配度量</strong>：</p>
+<ul class="simple">
+<li><p>引入更多的度量因素，如边界框的形状、目标的上下文信息等，设计一种更全面的一致性匹配度量方法。</p></li>
+</ul>
+</li>
+<li><p><strong>更强大的特征提取网络</strong>：</p>
+<ul class="simple">
+<li><p>使用最新的特征提取网络（如Transformer-based架构）作为Backbone，以提高特征提取的能力。</p></li>
+</ul>
+</li>
+<li><p><strong>高效的特征聚合方法</strong>：</p>
+<ul class="simple">
+<li><p>采用更高效的特征聚合方法（如BiFPN），以增强多尺度特征的融合效果。</p></li>
+</ul>
+</li>
+<li><p><strong>轻量化设计</strong>：</p>
+<ul class="simple">
+<li><p>通过模型剪枝、量化等技术，优化模型的计算效率和参数量，使其能够在资源受限的环境中运行。</p></li>
+</ul>
+</li>
+<li><p><strong>改进的数据增强和训练策略</strong>：</p>
+<ul class="simple">
+<li><p>采用最新的数据增强方法和训练策略，如自监督学习、对比学习等，提升模型的泛化能力和鲁棒性。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>通过改进标签分配策略、一致性匹配度量、特征提取和聚合方法，以及优化模型的轻量化设计和训练策略，可以设计出更高效、更准确的YOLOv11模型。这些改进不仅能够提升模型的检测性能，还能减少后处理步骤的需求，从而简化模型架构并提高推理速度。</p>
+<p>设计YOLOv11的网络结构图需要结合前面提到的改进思路，包括改进的标签分配策略、增强的一致性匹配度量、更强大的特征提取网络、高效的特征聚合方法、轻量化设计以及改进的数据增强和训练策略。以下是一个可能的YOLOv11网络结构图的示意图：</p>
+<p>YOLOv11 网络结构图</p>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>Input Image
+     |
+     v
++------------------+
+|  Enhanced Backbone  |  (e.g., Transformer-based)
++------------------+
+     |
+     v
++------------------+
+|  Feature Pyramid Network (FPN)  |
++------------------+
+     |
+     v
++------------------+
+|  BiFPN (Bidirectional FPN)  |
++------------------+
+     |
+     v
++------------------+
+|  Compact Inverted Block (CIB)  |
++------------------+
+     |
+     v
++------------------+
+|  Partial Self-Attention (PSA)  |
++------------------+
+     |
+     v
++------------------+
+|  Detection Heads  |
+|  (One-to-One and One-to-Many)  |
++------------------+
+     |
+     v
+Output: Bounding Boxes, Class Probabilities, Confidence Scores
+</pre></div>
+</div>
+<p>详细说明</p>
+<ol class="arabic simple">
+<li><p><strong>Enhanced Backbone</strong>:</p>
+<ul class="simple">
+<li><p>使用更强大的特征提取网络，例如基于Transformer的架构，以提高特征提取的能力。</p></li>
+</ul>
+</li>
+<li><p><strong>Feature Pyramid Network (FPN)</strong>:</p>
+<ul class="simple">
+<li><p>通过多尺度特征融合，增强特征表示的多样性和鲁棒性。</p></li>
+</ul>
+</li>
+<li><p><strong>BiFPN (Bidirectional FPN)</strong>:</p>
+<ul class="simple">
+<li><p>采用双向特征金字塔网络，进一步提高特征融合的效率和效果。</p></li>
+</ul>
+</li>
+<li><p><strong>Compact Inverted Block (CIB)</strong>:</p>
+<ul class="simple">
+<li><p>通过一系列卷积操作（1x1卷积、3x3深度卷积、1x1卷积），提高特征表示的紧凑性和有效性，减少计算量和参数量。</p></li>
+</ul>
+</li>
+<li><p><strong>Partial Self-Attention (PSA)</strong>:</p>
+<ul class="simple">
+<li><p>通过自注意力机制捕捉特征图中的长距离依赖关系，增强特征表示的全局性。</p></li>
+</ul>
+</li>
+<li><p><strong>Detection Heads</strong>:</p>
+<ul class="simple">
+<li><p>结合一对一和一对多的标签分配策略，适应不同类型的目标检测需求。</p></li>
+<li><p>输出包括边界框、类别概率和置信度分数。</p></li>
+</ul>
+</li>
+</ol>
+<p>设计思路总结</p>
+<ul class="simple">
+<li><p><strong>改进的标签分配策略</strong>：在检测头中结合一对一和一对多的标签分配策略，适应不同类型的目标检测需求。</p></li>
+<li><p><strong>增强的一致性匹配度量</strong>：在训练过程中引入更多的度量因素，如边界框的形状、目标的上下文信息等，提高匹配的准确性。</p></li>
+<li><p><strong>更强大的特征提取网络</strong>：使用基于Transformer的架构作为Backbone，以提高特征提取的能力。</p></li>
+<li><p><strong>高效的特征聚合方法</strong>：采用FPN和BiFPN，增强多尺度特征的融合效果。</p></li>
+<li><p><strong>轻量化设计</strong>：通过CIB模块减少计算量和参数量，使模型能够在资源受限的环境中运行。</p></li>
+<li><p><strong>改进的数据增强和训练策略</strong>：采用最新的数据增强方法和训练策略，如自监督学习、对比学习等，提升模型的泛化能力和鲁棒性。</p></li>
+</ul>
+<p>通过这些改进，YOLOv11模型将能够在保持高精度的同时，进一步提高计算效率和适应性。</p>
+<p>如何在YOLOv11的基础上进行改进的详细设计和实现步骤。</p>
+<p>设计思路</p>
+<ol class="arabic simple">
+<li><p><strong>集成预训练的视觉-语言模型</strong>：</p>
+<ul class="simple">
+<li><p>在YOLOv11的特征提取部分集成预训练的视觉-语言模型（如CLIP），以增强模型对新类别的理解能力。</p></li>
+</ul>
+</li>
+<li><p><strong>多模态特征融合</strong>：</p>
+<ul class="simple">
+<li><p>在YOLOv11的特征金字塔网络（FPN）或BiFPN中加入多模态特征融合模块，将视觉特征和语言特征进行融合。</p></li>
+</ul>
+</li>
+<li><p><strong>开放词汇检测头</strong>：</p>
+<ul class="simple">
+<li><p>修改YOLOv11的检测头，使其能够处理多模态特征并输出检测结果。</p></li>
+</ul>
+</li>
+<li><p><strong>自监督学习和对比学习</strong>：</p>
+<ul class="simple">
+<li><p>在训练过程中引入自监督学习和对比学习策略，增强模型的泛化能力。</p></li>
+</ul>
+</li>
+<li><p><strong>数据增强和多样化训练数据</strong>：</p>
+<ul class="simple">
+<li><p>使用多样化的数据增强方法和包含丰富类别的训练数据，提升模型的鲁棒性和泛化能力。</p></li>
+</ul>
+</li>
+</ol>
+<p>实现步骤</p>
+<ol class="arabic simple">
+<li><p>集成预训练的视觉-语言模型</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>选择模型</strong>：选择一个预训练的视觉-语言模型，如CLIP（Contrastive Language-Image Pre-Training）。</p></li>
+<li><p><strong>提取特征</strong>：使用预训练模型提取图像和文本的特征。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">clip</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="c1"># 加载预训练的CLIP模型</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">preprocess</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;ViT-B/32&quot;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+
+<span class="c1"># 提取图像特征</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">image</span><span class="p">)</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">image_features</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode_image</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+
+<span class="c1"># 提取文本特征</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">tokenize</span><span class="p">([</span><span class="s2">&quot;a photo of a cat&quot;</span><span class="p">,</span> <span class="s2">&quot;a photo of a dog&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">text_features</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode_text</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>多模态特征融合</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>设计融合模块</strong>：设计一个多模态特征融合模块，将视觉特征和语言特征进行融合。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="k">class</span> <span class="nc">MultiModalFusion</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visual_dim</span><span class="p">,</span> <span class="n">text_dim</span><span class="p">,</span> <span class="n">fusion_dim</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MultiModalFusion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">visual_fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">visual_dim</span><span class="p">,</span> <span class="n">fusion_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">text_dim</span><span class="p">,</span> <span class="n">fusion_dim</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fusion_fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">fusion_dim</span><span class="p">,</span> <span class="n">fusion_dim</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visual_features</span><span class="p">,</span> <span class="n">text_features</span><span class="p">):</span>
+        <span class="n">visual_emb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">visual_fc</span><span class="p">(</span><span class="n">visual_features</span><span class="p">)</span>
+        <span class="n">text_emb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">text_fc</span><span class="p">(</span><span class="n">text_features</span><span class="p">)</span>
+        <span class="n">fusion_emb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">visual_emb</span> <span class="o">+</span> <span class="n">text_emb</span><span class="p">)</span>
+        <span class="n">fusion_emb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fusion_fc</span><span class="p">(</span><span class="n">fusion_emb</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fusion_emb</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>开放词汇检测头</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>设计检测头</strong>：设计一个开放词汇检测头，能够处理多模态特征并输出检测结果。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OpenVocabularyDetectionHead</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fusion_dim</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">OpenVocabularyDetectionHead</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cls_head</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">fusion_dim</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reg_head</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">fusion_dim</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 4 for bounding box coordinates</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fusion_features</span><span class="p">):</span>
+        <span class="n">cls_logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cls_head</span><span class="p">(</span><span class="n">fusion_features</span><span class="p">)</span>
+        <span class="n">bbox_preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reg_head</span><span class="p">(</span><span class="n">fusion_features</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cls_logits</span><span class="p">,</span> <span class="n">bbox_preds</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>自监督学习和对比学习</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>自监督学习</strong>：使用自监督学习方法，如SimCLR、BYOL等，增强模型的特征表示能力。</p></li>
+<li><p><strong>对比学习</strong>：使用对比学习方法，如对比损失（Contrastive Loss），增强模型的泛化能力。</p></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li><p>数据增强和多样化训练数据</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>数据增强</strong>：使用多样化的数据增强方法，如Mosaic、MixUp等，提升模型的鲁棒性。</p></li>
+<li><p><strong>多样化训练数据</strong>：使用包含丰富类别的训练数据，提升模型的泛化能力。</p></li>
+</ul>
+<p>综合网络结构图</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Input</span> <span class="n">Image</span>
+     <span class="o">|</span>
+     <span class="n">v</span>
+<span class="o">+------------------+</span>
+<span class="o">|</span>  <span class="n">Enhanced</span> <span class="n">Backbone</span>  <span class="o">|</span>  <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span><span class="p">,</span> <span class="n">Transformer</span><span class="o">-</span><span class="n">based</span><span class="p">)</span>
+<span class="o">+------------------+</span>
+     <span class="o">|</span>
+     <span class="n">v</span>
+<span class="o">+------------------+</span>
+<span class="o">|</span>  <span class="n">Feature</span> <span class="n">Pyramid</span> <span class="n">Network</span> <span class="p">(</span><span class="n">FPN</span><span class="p">)</span>  <span class="o">|</span>
+<span class="o">+------------------+</span>
+     <span class="o">|</span>
+     <span class="n">v</span>
+<span class="o">+------------------+</span>
+<span class="o">|</span>  <span class="n">BiFPN</span> <span class="p">(</span><span class="n">Bidirectional</span> <span class="n">FPN</span><span class="p">)</span>  <span class="o">|</span>
+<span class="o">+------------------+</span>
+     <span class="o">|</span>
+     <span class="n">v</span>
+<span class="o">+------------------+</span>
+<span class="o">|</span>  <span class="n">Compact</span> <span class="n">Inverted</span> <span class="n">Block</span> <span class="p">(</span><span class="n">CIB</span><span class="p">)</span>  <span class="o">|</span>
+<span class="o">+------------------+</span>
+     <span class="o">|</span>
+     <span class="n">v</span>
+<span class="o">+------------------+</span>
+<span class="o">|</span>  <span class="n">Partial</span> <span class="n">Self</span><span class="o">-</span><span class="n">Attention</span> <span class="p">(</span><span class="n">PSA</span><span class="p">)</span>  <span class="o">|</span>
+<span class="o">+------------------+</span>
+     <span class="o">|</span>
+     <span class="n">v</span>
+<span class="o">+------------------+</span>
+<span class="o">|</span>  <span class="n">Multi</span><span class="o">-</span><span class="n">Modal</span> <span class="n">Fusion</span> <span class="n">Module</span>  <span class="o">|</span>
+<span class="o">+------------------+</span>
+     <span class="o">|</span>
+     <span class="n">v</span>
+<span class="o">+------------------+</span>
+<span class="o">|</span>  <span class="n">Open</span> <span class="n">Vocabulary</span> <span class="n">Detection</span> <span class="n">Head</span>  <span class="o">|</span>
+<span class="o">+------------------+</span>
+     <span class="o">|</span>
+     <span class="n">v</span>
+<span class="n">Output</span><span class="p">:</span> <span class="n">Bounding</span> <span class="n">Boxes</span><span class="p">,</span> <span class="n">Class</span> <span class="n">Probabilities</span><span class="p">,</span> <span class="n">Confidence</span> <span class="n">Scores</span>
+</pre></div>
+</div>
+<p>总结
+通过在YOLOv11的基础上集成预训练的视觉-语言模型、设计多模态特征融合模块、修改检测头、引入自监督学习和对比学习策略，以及使用多样化的数据增强和训练数据，可以实现开放词汇的目标检测。这个改进后的YOLOv11模型将能够在训练集中未见过的类别上表现出色，具备更强的泛化能力和对新类别的理解能力。</p>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By isLinXu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022, isLinXu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

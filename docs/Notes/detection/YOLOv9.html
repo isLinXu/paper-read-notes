@@ -203,7 +203,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="survey_all.html">survey_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary.html">summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
@@ -252,6 +252,7 @@
 <li class="toctree-l3"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv10.html">YOLOv10</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
 
 
@@ -478,9 +479,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -496,14 +495,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. <strong>结论</strong></a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -599,6 +590,7 @@ YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识
 <li><p><strong>计算效率</strong>：数据增强会增加训练的计算负担。在训练后期关闭某些数据增强方法可以提高训练的效率，尤其是在资源有限的情况下。</p></li>
 <li><p><strong>超参数调整</strong>：关闭马赛克增强可能是超参数调整的一部分，作者可能通过实验发现，在训练后期关闭马赛克增强能够获得更好的性能表现。 需要注意的是，这些好处并不是绝对的，它们可能依赖于具体的应用场景、数据集特性以及模型的当前状态。在实际应用中，是否关闭数据增强以及何时关闭，需要根据具体情况和实验结果来决定。</p></li>
 </ol>
+<hr class="docutils" />
 <p>1. <strong>总体趋势</strong></p>
 <ul class="simple">
 <li><p><strong>参数数量与性能</strong>：总体来看，随着参数数量的增加，模型的平均精度（AP）也在提升。这表明更复杂的模型（参数更多）通常能够捕捉到更多的特征，从而提高检测性能。</p></li>
@@ -623,15 +615,13 @@ YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识
 <li><p><strong>YOLO MS</strong>：灰色曲线表示的YOLO MS在参数数量较少时表现一般，但在参数数量增加时，性能提升显著。</p></li>
 <li><p><strong>Gold YOLO</strong>：紫色曲线表示的Gold YOLO在参数数量较少时表现一般，但在参数数量增加时，性能提升显著。</p></li>
 </ul>
-<section id="id1">
-<h2>5. <strong>结论</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>5. <strong>结论</strong></p>
 <ul class="simple">
 <li><p><strong>高效模型</strong>：YOLOv9和GELAN在参数数量较少时就能达到较高的AP，表明这些模型在参数效率上表现出色。</p></li>
 <li><p><strong>性能提升</strong>：随着参数数量的增加，大多数模型的性能都有显著提升，但在达到一定参数数量后，性能提升的幅度减小，出现性能瓶颈。</p></li>
 <li><p><strong>训练方式</strong>：从头训练的模型在参数数量较少时表现出色，而预训练模型在参数数量较多时表现出色。</p></li>
 </ul>
 <p>总体来说，这个图表展示了不同目标检测网络在MS COCO数据集上的性能表现，提供了对比不同网络结构和训练方式的有效参考。</p>
-</section>
 </section>
 
 
@@ -670,20 +660,7 @@ YOLOv9在不同的训练方法（包括从头训练、ImageNet预训练、知识
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5. <strong>结论</strong></a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

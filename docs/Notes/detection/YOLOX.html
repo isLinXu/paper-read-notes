@@ -203,7 +203,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="survey_all.html">survey_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary.html">summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
@@ -219,6 +219,7 @@
 <li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
@@ -226,7 +227,6 @@
 <li class="toctree-l3"><a class="reference internal" href="TSD.html">TSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">YOLOX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
@@ -237,8 +237,13 @@
 <li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dy-yolov7.html">DY-yolov7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Gold-YOLO.html">Gold-YOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ViT-YOLO.html">ViT-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RT-DETR.html">RT-DETR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
@@ -247,6 +252,7 @@
 <li class="toctree-l3"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv10.html">YOLOv10</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
 
 
@@ -557,6 +563,173 @@ YOLOX的关键技术包括：</p>
 <li><p><strong>贡献：</strong> 提出了YOLOX模型，提供了多种部署版本，并在比赛中获奖。</p></li>
 <li><p><strong>下一步工作：</strong> 提高小目标检测能力，测试更多数据集，探索应用场景。</p></li>
 </ol>
+<hr class="docutils" />
+<img width="1070" alt="yolox-fig1" src="https://github.com/isLinXu/issues/assets/59380685/5b89c893-1cfb-4ab7-98ea-ce87298d71e8">
+<p>图表展示了YOLOX模型与其他先进目标检测器在速度-准确性和尺寸-准确性方面的性能对比。以下是对图表的分析和总结：</p>
+<p>左图：速度-准确性权衡</p>
+<ul class="simple">
+<li><p><strong>横轴</strong>：VL100批次延迟（ms），表示模型处理一批次数据所需的时间，数值越小表示速度越快。</p></li>
+<li><p><strong>纵轴</strong>：COCO AP（%），表示在COCO数据集上的平均精度，数值越大表示准确性越高。</p></li>
+<li><p><strong>标记</strong>：不同颜色和形状的标记代表不同的模型。</p></li>
+</ul>
+<p>从左图可以看出：</p>
+<ul class="simple">
+<li><p><strong>YOLOX系列模型</strong>（红色标记）在速度和准确性之间表现出良好的平衡。特别是YOLOX-L和YOLOX-S在保持较高准确性的同时，延迟相对较低。</p></li>
+<li><p><strong>YOLOX-DarkNet53</strong>和<strong>YOLOX-S</strong>的性能优于其他模型，显示出较高的COCO AP和较低的延迟。</p></li>
+<li><p><strong>EfficientDet</strong>系列（蓝色标记）在准确性上表现较好，但延迟较高。</p></li>
+</ul>
+<p>右图：尺寸-准确性曲线</p>
+<ul class="simple">
+<li><p><strong>横轴</strong>：参数数量（M），表示模型的参数量，数值越大表示模型越复杂。</p></li>
+<li><p><strong>纵轴</strong>：COCO AP（%），表示在COCO数据集上的平均精度，数值越大表示准确性越高。</p></li>
+<li><p><strong>标记</strong>：不同颜色和形状的标记代表不同的模型。</p></li>
+</ul>
+<p>从右图可以看出：</p>
+<ul class="simple">
+<li><p><strong>YOLOX系列模型</strong>（红色标记）在参数数量和准确性之间表现出良好的平衡。特别是YOLOX-Tiny和YOLOX-Nano在保持较高准确性的同时，参数数量较少。</p></li>
+<li><p><strong>EfficientDet</strong>系列（蓝色标记）在参数数量和准确性上也表现出色，但与YOLOX相比，参数数量相对较多。</p></li>
+<li><p><strong>PPYOLO-Tiny</strong>和<strong>NanoDet</strong>（绿色标记）在参数数量上有优势，但准确性较低。</p></li>
+</ul>
+<p>总结</p>
+<ul class="simple">
+<li><p><strong>YOLOX模型</strong>在速度、准确性和参数数量之间表现出良好的平衡，特别是在移动设备上具有较高的实用性。</p></li>
+<li><p><strong>EfficientDet模型</strong>在准确性上表现出色，但在速度和参数数量上相对劣势。</p></li>
+<li><p><strong>PPYOLO-Tiny</strong>和<strong>NanoDet</strong>在参数数量上有优势，但准确性较低。</p></li>
+</ul>
+<p>总体而言，YOLOX系列模型在多个维度上表现优异，适合需要高效且准确的目标检测任务。</p>
+<hr class="docutils" />
+<img width="1061" alt="yolox-fig2" src="https://github.com/isLinXu/issues/assets/59380685/e4abbf4b-e6e2-4552-afe1-385c8a055797">
+<p>以下是对YOLOv3和YOLOX模型头部结构的更详细分析，以及输入输出流程的详细描述：</p>
+<p>输入输出流程</p>
+<p>输入特征</p>
+<ul class="simple">
+<li><p><strong>FPN特征</strong>：输入特征来自特征金字塔网络（FPN），包括不同尺度的特征图（如P3, P4, P5）。</p></li>
+<li><p><strong>特征图尺寸</strong>：特征图的尺寸为 (H \times W)，通道数为512或256。</p></li>
+</ul>
+<p>YOLOv3的耦合头部（Coupled Head）</p>
+<ol class="arabic simple">
+<li><p><strong>输入特征图</strong>：</p>
+<ul class="simple">
+<li><p>输入特征图的尺寸为 (H \times W \times 512) 或 (H \times W \times 256)。</p></li>
+</ul>
+</li>
+<li><p><strong>1x1卷积层</strong>：</p>
+<ul class="simple">
+<li><p>通过一个 (1 \times 1) 卷积层，保持特征图的空间尺寸不变，但调整通道数。</p></li>
+<li><p>输出特征图的尺寸为 (H \times W \times 256)。</p></li>
+</ul>
+</li>
+<li><p><strong>3x3卷积层</strong>：</p>
+<ul class="simple">
+<li><p>通过一个 (3 \times 3) 卷积层，进一步提取特征。</p></li>
+<li><p>输出特征图的尺寸为 (H \times W \times 256)。</p></li>
+</ul>
+</li>
+<li><p><strong>输出层</strong>：</p>
+<ul class="simple">
+<li><p>最后通过一个卷积层，输出包含分类（Cls.）、回归（Reg.）和目标（Obj.）信息的特征图。</p></li>
+<li><p>输出通道数为 ((#anchor \times C) + (#anchor \times 4) + (#anchor \times 1))，其中：</p>
+<ul>
+<li><p>(#anchor) 是每个网格单元的锚框数量。</p></li>
+<li><p>(C) 是类别数量。</p></li>
+<li><p>4 是边界框的回归参数（x, y, w, h）。</p></li>
+<li><p>1 是目标置信度。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>YOLOX的解耦头部（Decoupled Head）</p>
+<ol class="arabic">
+<li><p><strong>输入特征图</strong>：</p>
+<ul class="simple">
+<li><p>输入特征图的尺寸为 (H \times W \times 512) 或 (H \times W \times 256)。</p></li>
+</ul>
+</li>
+<li><p><strong>1x1卷积层</strong>：</p>
+<ul class="simple">
+<li><p>通过一个 (1 \times 1) 卷积层，将特征通道数减少到256。</p></li>
+<li><p>输出特征图的尺寸为 (H \times W \times 256)。</p></li>
+</ul>
+</li>
+<li><p><strong>分支处理</strong>：</p>
+<ul class="simple">
+<li><p>将特征图分成两条并行分支，分别处理分类和回归任务。</p></li>
+</ul>
+<p><strong>分类分支</strong>：</p>
+<ul class="simple">
+<li><p><strong>第一个3x3卷积层</strong>：提取分类特征。</p>
+<ul>
+<li><p>输出特征图的尺寸为 (H \times W \times 256)。</p></li>
+</ul>
+</li>
+<li><p><strong>第二个3x3卷积层</strong>：进一步提取分类特征。</p>
+<ul>
+<li><p>输出特征图的尺寸为 (H \times W \times C)。</p></li>
+</ul>
+</li>
+<li><p><strong>分类输出层</strong>：输出分类结果。</p>
+<ul>
+<li><p>输出特征图的尺寸为 (H \times W \times C)。</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>回归分支</strong>：</p>
+<ul class="simple">
+<li><p><strong>第一个3x3卷积层</strong>：提取回归特征。</p>
+<ul>
+<li><p>输出特征图的尺寸为 (H \times W \times 256)。</p></li>
+</ul>
+</li>
+<li><p><strong>第二个3x3卷积层</strong>：进一步提取回归特征。</p>
+<ul>
+<li><p>输出特征图的尺寸为 (H \times W \times 4)。</p></li>
+</ul>
+</li>
+<li><p><strong>回归输出层</strong>：输出回归结果。</p>
+<ul>
+<li><p>输出特征图的尺寸为 (H \times W \times 4)。</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>IoU分支</strong>：</p>
+<ul class="simple">
+<li><p>在回归分支上增加一个IoU分支，输出IoU特征图。</p>
+<ul>
+<li><p>输出特征图的尺寸为 (H \times W \times 1)。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ul class="simple">
+<li><p><strong>YOLOv3的耦合头部</strong>：将分类、回归和目标信息耦合在一起，通过一个卷积层同时输出。这种结构简单，但可能在分类和回归任务之间产生干扰。</p></li>
+<li><p><strong>YOLOX的解耦头部</strong>：将分类和回归任务分离，通过两个并行分支分别处理。这种结构可以减少任务之间的干扰，提高模型的性能。此外，增加了IoU分支，有助于提高定位精度。</p></li>
+</ul>
+<p>通过解耦头部结构，YOLOX模型在分类和回归任务上能够更好地优化，从而提高整体性能。</p>
+<hr class="docutils" />
+<img width="511" alt="yolox-fig3" src="https://github.com/isLinXu/issues/assets/59380685/d34234cc-99c0-4f65-9276-40dc8bf6e6ed">
+<ol class="arabic simple">
+<li><p><strong>收敛速度</strong>：</p>
+<ul class="simple">
+<li><p>解耦头部的检测器在训练初期收敛速度明显快于YOLOv3头部的检测器。这表明解耦头部在优化过程中更高效，能够更快地达到较高的性能。</p></li>
+</ul>
+</li>
+<li><p><strong>最终性能</strong>：</p>
+<ul class="simple">
+<li><p>解耦头部的检测器在训练结束时的AP明显高于YOLOv3头部的检测器。这表明解耦头部在最终性能上优于YOLOv3头部。</p></li>
+</ul>
+</li>
+<li><p><strong>稳定性</strong>：</p>
+<ul class="simple">
+<li><p>解耦头部的检测器在达到较高AP后，性能保持稳定，显示出较好的训练稳定性。</p></li>
+<li><p>YOLOv3头部的检测器在训练过程中AP逐渐上升，但最终未能达到解耦头部的性能水平。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>解耦头部（Decoupled head）在训练过程中表现出更快的收敛速度和更高的最终性能，且在达到较高AP后保持稳定。相比之下，YOLOv3头部（YOLO head）在训练初期收敛较慢，最终性能也低于解耦头部。因此，解耦头部在目标检测任务中具有明显的优势。</p>
 </section>
 
 

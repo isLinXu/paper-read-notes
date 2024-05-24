@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>&lt;no title&gt; &#8212; 论文阅读笔记</title>
+    <title>Edge-YOLO &#8212; 论文阅读笔记</title>
   
   
   
@@ -42,12 +42,10 @@
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/detection/EfficientDet';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/detection/Edge-YOLO';</script>
     <link rel="icon" href="../../_static/panda.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Simple Multi-dataset Detection" href="Simple%20Multi-dataset%20Detection.html" />
-    <link rel="prev" title="CenterMask" href="CenterMask.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -108,6 +106,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -361,7 +361,7 @@
       
       
       
-      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/detection/EfficientDet.md" target="_blank"
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/detection/Edge-YOLO.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -378,7 +378,7 @@
       
       
       
-      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/detection/EfficientDet.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/detection/Edge-YOLO.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -408,7 +408,7 @@
       
       
       
-      <li><a href="../../_sources/Notes/detection/EfficientDet.md" target="_blank"
+      <li><a href="../../_sources/Notes/detection/Edge-YOLO.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -479,9 +479,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -492,19 +490,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>Edge-YOLO</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -514,318 +504,101 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><strong>标题：</strong> EfficientDet: Scalable and Efficient Object Detection</p>
-<p><strong>作者：</strong> Mingxing Tan, Ruoming Pang, Quoc V. Le (Google Research, Brain Team)</p>
+  <section id="edge-yolo">
+<h1>Edge-YOLO<a class="headerlink" href="#edge-yolo" title="Link to this heading">#</a></h1>
+<p>**标题：**Edge YOLO: Real-Time Intelligent Object Detection System Based on Edge-Cloud Cooperation in Autonomous Vehicles</p>
+<p>**作者：**Siyuan Liang, Hao Wu, Li Zhen, Qiaozhi Hua, Sahil Garg, Georges Kaddoum, Mohammad Mehedi Hassan, Keping Yu</p>
 <p><strong>摘要：</strong></p>
 <ul class="simple">
-<li><p>提出了一种新的对象检测网络架构，称为EfficientDet。</p></li>
-<li><p>动机是提高模型效率，特别是在资源受限的环境中（如机器人和自动驾驶汽车）。</p></li>
-<li><p>提出了加权双向特征金字塔网络（BiFPN）和复合缩放方法，用于统一缩放所有网络组件。</p></li>
-<li><p>通过系统地研究神经网络架构设计选择，提出了几个关键优化以提高效率。主要优化包括加权双向特征金字塔网络（BiFPN）和复合缩放方法，这些方法统一地缩放所有背景、特征网络和盒子/类别预测网络的分辨率、深度和宽度。</p></li>
+<li><p>论文提出了一个基于边缘云计算和重构卷积神经网络的实时智能目标检测系统，称为Edge YOLO。</p></li>
+<li><p>该系统旨在解决自动驾驶车辆中目标检测的高时效性和低能耗需求，同时避免对计算能力的过度依赖和云计算资源的不均衡分布。</p></li>
+<li><p>Edge YOLO通过结合剪枝特征提取网络和压缩特征融合网络来增强多尺度预测的效率。</p></li>
+<li><p>通过在NVIDIA Jetson平台上的系统级验证，展示了Edge YOLO在COCO2017和KITTI数据集上的可靠性和效率。</p></li>
 </ul>
-<p><strong>1. 引言：</strong></p>
+<p><strong>引言：</strong></p>
 <ul class="simple">
-<li><p>近年来，对象检测模型的准确性不断提高，但模型大小和计算成本也随之增加。</p></li>
-<li><p>现实世界的应用（如移动设备和数据中心）对资源有不同限制，需要同时考虑准确性和效率。</p></li>
+<li><p>介绍了5G技术在物联网(IoT)和智能交通系统(ITS)中的应用，以及边缘计算在处理大量数据流中的潜力。</p></li>
+<li><p>讨论了现有深度学习目标检测(DL-OD)方案在实时性和能耗方面的局限性。</p></li>
 </ul>
-<p><strong>2. 相关工作：</strong></p>
+<p><strong>相关工作：</strong></p>
 <ul class="simple">
-<li><p>讨论了单阶段和双阶段检测器，多尺度特征表示，以及模型缩放的相关研究。</p></li>
+<li><p>概述了边缘云计算(E-CC)在ITS中的应用，AI在不同计算架构中的作用，以及目标检测深度学习算法的发展。</p></li>
 </ul>
-<p><strong>3. BiFPN（双向特征金字塔网络）：</strong></p>
+<p><strong>系统平台和算法：</strong></p>
 <ul class="simple">
-<li><p>提出了一种新的多尺度特征融合方法，具有高效的双向跨尺度连接和加权特征融合。</p></li>
+<li><p>详细阐述了基于YOLOV4的Edge YOLO系统设计和算法，包括系统组件、工作流程，以及与云计算方案的比较。</p></li>
+<li><p>介绍了Edge YOLO的网络结构，包括修剪的Backbone、改进的特征融合网络Neck，以及引入的激活函数Leaky_ReLU。</p></li>
 </ul>
-<p><strong>4. EfficientDet架构：</strong></p>
+<p><strong>实验结果与讨论：</strong></p>
 <ul class="simple">
-<li><p>基于BiFPN，提出了EfficientDet，遵循单阶段检测器范式，并使用了预训练的EfficientNet作为主干网络。</p></li>
+<li><p>使用COCO2017和KITTI数据集对Edge YOLO进行训练和评估，并与其他目标检测网络进行比较。</p></li>
+<li><p>分析了模型性能，包括精确度、召回率、帧率(FPS)和平均精度均值(mAP)。</p></li>
+<li><p>与传统云计算方案进行了比较，展示了边缘云计算在深度学习和边缘计算中的优势。</p></li>
 </ul>
-<p><strong>5. 实验：</strong></p>
+<p><strong>结论：</strong></p>
 <ul class="simple">
-<li><p>在COCO数据集上评估EfficientDet，并与其他对象检测器进行比较。</p></li>
+<li><p>Edge YOLO为边缘计算设备提供了一个高效的目标检测系统，能够在有限的计算能力和资源条件下保证高精度。</p></li>
+<li><p>系统通过边缘云计算架构上传边缘收集的数据，并持续更新网络模型，提供了实时检测能力。</p></li>
 </ul>
-<p><strong>6. 消融研究：</strong></p>
-<ul class="simple">
-<li><p>分析了EfficientDet中不同设计选择的影响。</p></li>
-</ul>
-<p><strong>7. 结论：</strong></p>
-<ul class="simple">
-<li><p>EfficientDet在各种资源限制下都能实现比现有技术更好的准确性和效率。</p></li>
-</ul>
-<hr class="docutils" />
-<p>回答问题：</p>
-<p><strong>1. 这篇论文做了什么工作，它的动机是什么？</strong></p>
-<ul class="simple">
-<li><p>论文提出了EfficientDet，一种新的可扩展且高效的对象检测网络架构。动机是在资源受限的环境中（如机器人和自动驾驶汽车）提高对象检测的模型效率。</p></li>
-</ul>
-<p><strong>2. 这篇论文试图解决什么问题？</strong></p>
-<ul class="simple">
-<li><p>论文试图解决现有对象检测模型在准确性和效率之间平衡的问题，尤其是在资源受限的应用场景中。</p></li>
-</ul>
-<p><strong>3. 这是否是一个新的问题？</strong></p>
-<ul class="simple">
-<li><p>这不是一个全新的问题，但论文提出了一种新的解决方案来改善现有问题。</p></li>
-</ul>
-<p>**4. 这篇文章要验证一个什么科学假设？</p>
-<ul class="simple">
-<li><p>论文的科学假设是，通过提出加权双向特征金字塔网络（BiFPN）和复合缩放方法，可以开发出同时具有高准确性和高效率的对象检测模型。</p></li>
-</ul>
-<p>**5. 有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</p>
-<ul class="simple">
-<li><p>相关研究包括单阶段和双阶段检测器、多尺度特征表示和模型缩放的研究。归类为对象检测和神经网络架构设计。领域内值得关注的研究员包括Kaiming He、Ross Girshick、Tsung-Yi Lin等。</p></li>
-</ul>
-<p>**6. 论文中提到的解决方案之关键是什么？</p>
-<ul class="simple">
-<li><p>解决方案的关键是提出加权双向特征金字塔网络（BiFPN）和复合缩放方法，这些方法可以有效地融合多尺度特征并统一缩放网络的所有组件。</p></li>
-</ul>
-<p>**7. 论文中的实验是如何设计的？</p>
-<ul class="simple">
-<li><p>实验设计包括在COCO数据集上训练和评估EfficientDet模型，并与其他对象检测模型进行比较。实验还包括消融研究来分析不同设计选择的影响。</p></li>
-</ul>
-<p>**8. 用于定量评估的数据集上什么？代码有没有开源？</p>
-<ul class="simple">
-<li><p>用于定量评估的数据集是COCO数据集。代码已经在GitHub上开源：<a class="github reference external" href="https://github.com/google/automl/tree/master/efficientdet">google/automl</a></p></li>
-</ul>
-<p>**9. 论文中的实验及结果有没有很好地支持需要验证的科学假设？</p>
-<ul class="simple">
-<li><p>是的，实验结果表明EfficientDet在保持高准确性的同时显著减少了参数数量和计算量，从而很好地支持了论文的科学假设。</p></li>
-</ul>
-<p>**10. 这篇论文到底有什么贡献？</p>
-<ul class="simple">
-<li><p>论文的主要贡献是提出了EfficientDet，这是一种新的、在资源受限环境中具有高效率和准确性的对象检测模型。</p></li>
-</ul>
-<p>**11. 下一步呢？有什么工作可以继续深入？</p>
-<ul class="simple">
-<li><p>下一步的工作可以包括进一步优化EfficientDet架构，探索在不同应用场景中的性能，或者将EfficientDet应用于其他计算机视觉任务，如语义分割或实例分割。
-此外，还可以研究如何将EfficientDet与其他先进的技术（如注意力机制、元学习等）结合，以进一步提高性能。</p></li>
-</ul>
-<hr class="docutils" />
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>模型</p></th>
-<th class="head"><p>COCO AP</p></th>
-<th class="head"><p>FLOPs (Billions)</p></th>
-<th class="head"><p>FLOPs (ratio)</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>EfficientDet-D0</p></td>
-<td><p>33.8</p></td>
-<td><p>2.5B</p></td>
-<td><p>1.0x</p></td>
-</tr>
-<tr class="row-odd"><td><p>YOLOv3</p></td>
-<td><p>33.0</p></td>
-<td><p>71B</p></td>
-<td><p>28x</p></td>
-</tr>
-<tr class="row-even"><td><p>EfficientDet-D1</p></td>
-<td><p>39.6</p></td>
-<td><p>6.1B</p></td>
-<td><p>2.5x</p></td>
-</tr>
-<tr class="row-odd"><td><p>RetinaNet</p></td>
-<td><p>39.1</p></td>
-<td><p>97B</p></td>
-<td><p>16x</p></td>
-</tr>
-<tr class="row-even"><td><p>EfficientDet-D7</p></td>
-<td><p>52.2</p></td>
-<td><p>410B</p></td>
-<td><p>164x</p></td>
-</tr>
-<tr class="row-odd"><td><p>AmoebaNet + NAS-FPN + AA</p></td>
-<td><p>55.7</p></td>
-<td><p>3048B</p></td>
-<td><p>13x</p></td>
-</tr>
-</tbody>
-</table>
-<p>总结：</p>
-<ul class="simple">
-<li><p>EfficientDet系列在性能和计算复杂度之间取得了较好的平衡，特别是EfficientDet-D7在COCO AP和FLOPs方面表现出色。</p></li>
-<li><p>YOLOv3的计算复杂度较低，但性能也相对较低。</p></li>
-<li><p>AmoebaNet + NAS-FPN + AA虽然性能最好，但计算复杂度非常高，不适合计算资源有限的场景。</p></li>
-</ul>
-<hr class="docutils" />
-<p>这个图表展示了四种不同的特征网络设计：FPN、PANet、NAS-FPN和BiFPN。以下是对每种网络模型结构及其输入输出流程的分析：</p>
-<p>(a) FPN (Feature Pyramid Network)</p>
-<ul class="simple">
-<li><p><strong>结构</strong>：</p>
-<ul>
-<li><p>FPN引入了一个自上而下的路径，用于融合从第3层到第7层（P3到P7）的多尺度特征。</p></li>
-<li><p>自上而下的路径通过跳跃连接（skip connections）将高层特征逐步传递到低层特征。</p></li>
-</ul>
-</li>
-<li><p><strong>输入输出流程</strong>：</p>
+<p>回答问题</p>
 <ol class="arabic simple">
-<li><p>输入图像经过主干网络（如ResNet）提取多尺度特征（C3到C7）。</p></li>
-<li><p>自上而下路径从最高层（C7）开始，通过上采样和跳跃连接将特征传递到低层。</p></li>
-<li><p>最终输出多尺度特征图（P3到P7），用于后续的目标检测任务。</p></li>
-</ol>
-</li>
-</ul>
-<p>(b) PANet (Path Aggregation Network)</p>
+<li><p><strong>这篇论文做了什么工作，它的动机是什么？</strong></p>
 <ul class="simple">
-<li><p><strong>结构</strong>：</p>
-<ul>
-<li><p>PANet在FPN的基础上增加了一个自下而上的路径。</p></li>
-<li><p>自下而上的路径通过跳跃连接将低层特征逐步传递到高层特征。</p></li>
+<li><p>论文提出了Edge YOLO，一个基于边缘云计算的实时智能目标检测系统，旨在解决自动驾驶车辆中目标检测的高时效性和低能耗需求。</p></li>
 </ul>
 </li>
-<li><p><strong>输入输出流程</strong>：</p>
-<ol class="arabic simple">
-<li><p>输入图像经过主干网络提取多尺度特征（C3到C7）。</p></li>
-<li><p>自上而下路径从最高层（C7）开始，通过上采样和跳跃连接将特征传递到低层。</p></li>
-<li><p>自下而上路径从最低层（P3）开始，通过下采样和跳跃连接将特征传递到高层。</p></li>
-<li><p>最终输出多尺度特征图（P3到P7），用于后续的目标检测任务。</p></li>
-</ol>
-</li>
-</ul>
-<p>(c) NAS-FPN (Neural Architecture Search Feature Pyramid Network)</p>
+<li><p><strong>这篇论文试图解决什么问题？</strong></p>
 <ul class="simple">
-<li><p><strong>结构</strong>：</p>
-<ul>
-<li><p>NAS-FPN使用神经架构搜索（NAS）找到一个不规则的特征网络拓扑结构。</p></li>
-<li><p>该拓扑结构通过重复应用相同的块来构建。</p></li>
+<li><p>论文试图解决现有深度学习目标检测方案在自动驾驶车辆应用中的实时性和能耗问题。</p></li>
 </ul>
 </li>
-<li><p><strong>输入输出流程</strong>：</p>
-<ol class="arabic simple">
-<li><p>输入图像经过主干网络提取多尺度特征。</p></li>
-<li><p>特征通过NAS找到的拓扑结构进行处理，重复应用相同的块。</p></li>
-<li><p>最终输出多尺度特征图，用于后续的目标检测任务。</p></li>
-</ol>
-</li>
-</ul>
-<p>(d) BiFPN (Bidirectional Feature Pyramid Network)</p>
+<li><p><strong>这是否是一个新的问题？</strong></p>
 <ul class="simple">
-<li><p><strong>结构</strong>：</p>
-<ul>
-<li><p>BiFPN在PANet的基础上进行了改进，具有更好的准确性和效率权衡。</p></li>
-<li><p>BiFPN通过重复应用相同的块来构建，具有双向特征融合路径。</p></li>
+<li><p>在自动驾驶车辆的背景下，这是一个持续发展的问题，随着技术进步，对实时性和能耗的要求越来越高。</p></li>
 </ul>
 </li>
-<li><p><strong>输入输出流程</strong>：</p>
-<ol class="arabic simple">
-<li><p>输入图像经过主干网络提取多尺度特征。</p></li>
-<li><p>特征通过双向路径进行融合，重复应用相同的块。</p></li>
-<li><p>最终输出多尺度特征图，用于后续的目标检测任务。</p></li>
-</ol>
-</li>
-</ul>
-<p>总结</p>
+<li><p><strong>这篇文章要验证一个什么科学假设？</strong></p>
 <ul class="simple">
-<li><p><strong>FPN</strong>：通过自上而下路径融合多尺度特征。</p></li>
-<li><p><strong>PANet</strong>：在FPN基础上增加自下而上路径，进一步融合特征。</p></li>
-<li><p><strong>NAS-FPN</strong>：使用NAS找到不规则拓扑结构，重复应用相同的块。</p></li>
-<li><p><strong>BiFPN</strong>：改进的双向特征融合路径，具有更好的准确性和效率权衡。</p></li>
+<li><p>文章没有明确提出一个科学假设，而是提出了一个基于边缘云计算的目标检测系统，以提高效率和降低能耗。</p></li>
 </ul>
-<p>这些特征网络设计旨在提高目标检测任务中的特征融合效果，从而提升检测性能。</p>
-<hr class="docutils" />
-<p>这个图表展示了不同网络模型在COCO数据集上的性能（COCO AP）与模型大小、GPU延迟和CPU延迟的关系。以下是对每个子图的分析：</p>
-<p>(a) Model Size</p>
+</li>
+<li><p><strong>有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</strong></p>
 <ul class="simple">
-<li><p><strong>结构</strong>：</p>
-<ul>
-<li><p>该子图展示了不同模型的COCO AP与模型大小（参数数量，单位为百万）的关系。</p></li>
-<li><p>EfficientDet系列（D0-D6）用红色曲线表示，其他模型如RetinaNet、Mask R-CNN、AmoebaNet + NAS-FPN等用不同颜色表示。</p></li>
+<li><p>相关研究包括目标检测深度学习算法的发展，如YOLO系列、SSD、R-CNN等，以及边缘云计算在ITS中的应用。值得关注的研究员包括在论文作者列表中的各位专家。</p></li>
 </ul>
 </li>
-<li><p><strong>输入输出流程</strong>：</p>
-<ol class="arabic simple">
-<li><p>输入图像经过主干网络和特征网络提取多尺度特征。</p></li>
-<li><p>特征通过检测头进行目标检测，输出检测结果。</p></li>
-<li><p>EfficientDet系列在模型大小和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和参数数量方面表现出色。</p></li>
-</ol>
-</li>
-</ul>
-<p>(b) GPU Latency</p>
+<li><p><strong>论文中提到的解决方案之关键是什么？</strong></p>
 <ul class="simple">
-<li><p><strong>结构</strong>：</p>
-<ul>
-<li><p>该子图展示了不同模型的COCO AP与GPU延迟（单位为毫秒）的关系。</p></li>
-<li><p>EfficientDet系列（D0-D6）用红色曲线表示，其他模型如RetinaNet、Mask R-CNN、AmoebaNet + NAS-FPN等用不同颜色表示。</p></li>
+<li><p>解决方案的关键是结合剪枝特征提取网络和压缩特征融合网络来增强多尺度预测的效率，并利用边缘云计算架构。</p></li>
 </ul>
 </li>
-<li><p><strong>输入输出流程</strong>：</p>
-<ol class="arabic simple">
-<li><p>输入图像经过主干网络和特征网络提取多尺度特征。</p></li>
-<li><p>特征通过检测头进行目标检测，输出检测结果。</p></li>
-<li><p>EfficientDet系列在GPU延迟和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和GPU延迟方面表现出色。</p></li>
-</ol>
-</li>
-</ul>
-<p>(c) CPU Latency</p>
+<li><p><strong>论文中的实验是如何设计的？</strong></p>
 <ul class="simple">
-<li><p><strong>结构</strong>：</p>
-<ul>
-<li><p>该子图展示了不同模型的COCO AP与CPU延迟（单位为毫秒）的关系。</p></li>
-<li><p>EfficientDet系列（D0-D6）用红色曲线表示，其他模型如RetinaNet、Mask R-CNN、AmoebaNet + NAS-FPN等用不同颜色表示。</p></li>
+<li><p>实验设计包括使用COCO2017和KITTI数据集对Edge YOLO进行训练和评估，并与其他目标检测网络进行比较。</p></li>
 </ul>
 </li>
-<li><p><strong>输入输出流程</strong>：</p>
-<ol class="arabic simple">
-<li><p>输入图像经过主干网络和特征网络提取多尺度特征。</p></li>
-<li><p>特征通过检测头进行目标检测，输出检测结果。</p></li>
-<li><p>EfficientDet系列在CPU延迟和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和CPU延迟方面表现出色。</p></li>
-</ol>
-</li>
-</ul>
-<p>总结</p>
+<li><p><strong>用于定量评估的数据集上什么？代码有没有开源？</strong></p>
 <ul class="simple">
-<li><p><strong>Model Size</strong>：EfficientDet系列在模型大小和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和参数数量方面表现出色。</p></li>
-<li><p><strong>GPU Latency</strong>：EfficientDet系列在GPU延迟和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和GPU延迟方面表现出色。</p></li>
-<li><p><strong>CPU Latency</strong>：EfficientDet系列在CPU延迟和性能之间取得了较好的平衡，特别是EfficientDet-D6在COCO AP和CPU延迟方面表现出色。</p></li>
-</ul>
-<p>这些图表展示了EfficientDet系列在不同方面的优势，特别是在模型大小、GPU延迟和CPU延迟方面都表现出色，适合在资源受限的环境中使用。</p>
-<hr class="docutils" />
-<p>这个图表展示了不同缩放方法在COCO数据集上的性能（COCO AP）与计算量（FLOPs，单位为十亿次操作）的关系。图表中比较了四种不同的缩放方法：复合缩放（Compound Scaling）、按图像大小缩放、按通道数缩放、按BiFPN层数缩放和按检测头层数缩放。以下是对图表中关键信息的提取和结论：</p>
-<p>关键信息提取</p>
-<ol class="arabic simple">
-<li><p><strong>复合缩放（Compound Scaling）</strong>：</p>
-<ul class="simple">
-<li><p>用红色圆点表示。</p></li>
-<li><p>在所有FLOPs范围内，复合缩放方法的COCO AP始终高于其他缩放方法。</p></li>
-<li><p>在FLOPs约为55B时，复合缩放方法的COCO AP达到了46.2。</p></li>
+<li><p>使用了COCO2017和KITTI数据集进行定量评估。论文提到了GitHub链接，但未明确指出是否开源。</p></li>
 </ul>
 </li>
-<li><p><strong>按图像大小缩放（Scale by image size）</strong>：</p>
+<li><p><strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></p>
 <ul class="simple">
-<li><p>用绿色三角形表示。</p></li>
-<li><p>在FLOPs较低时（约10B以下），按图像大小缩放方法的COCO AP增长较快，但在FLOPs增加后，增长趋于平缓。</p></li>
-<li><p>在FLOPs约为55B时，COCO AP约为42.5。</p></li>
+<li><p>实验结果支持了Edge YOLO在提高效率和降低能耗方面的性能，虽然没有明确的科学假设，但实验结果与研究目标一致。</p></li>
 </ul>
 </li>
-<li><p><strong>按通道数缩放（Scale by #channels）</strong>：</p>
+<li><p><strong>这篇论文到底有什么贡献？</strong></p>
 <ul class="simple">
-<li><p>用蓝色叉号表示。</p></li>
-<li><p>在整个FLOPs范围内，按通道数缩放方法的COCO AP增长较为平缓。</p></li>
-<li><p>在FLOPs约为55B时，COCO AP约为41.5。</p></li>
+<li><p>论文贡献了一个适用于边缘计算设备的实时智能目标检测系统，提高了目标检测的效率和降低了能耗，同时利用边缘云计算架构实现了模型的持续更新。</p></li>
 </ul>
 </li>
-<li><p><strong>按BiFPN层数缩放（Scale by #BiFPN layers）</strong>：</p>
+<li><p><strong>下一步呢？有什么工作可以继续深入？</strong></p>
 <ul class="simple">
-<li><p>用青色菱形表示。</p></li>
-<li><p>在FLOPs较低时（约10B以下），按BiFPN层数缩放方法的COCO AP增长较快，但在FLOPs增加后，增长趋于平缓。</p></li>
-<li><p>在FLOPs约为55B时，COCO AP约为42.0。</p></li>
-</ul>
-</li>
-<li><p><strong>按检测头层数缩放（Scale by #box/class layers）</strong>：</p>
-<ul class="simple">
-<li><p>用紫色五角星表示。</p></li>
-<li><p>在整个FLOPs范围内，按检测头层数缩放方法的COCO AP增长较为平缓。</p></li>
-<li><p>在FLOPs约为55B时，COCO AP约为41.0。</p></li>
+<li><p>下一步的工作可以包括进一步优化Edge YOLO的性能，探索在不同场景和数据集中的应用，以及将系统扩展到更多的边缘计算设备和ITS平台。</p></li>
 </ul>
 </li>
 </ol>
-<p>结论</p>
-<ul class="simple">
-<li><p><strong>复合缩放方法（Compound Scaling)</strong> 在所有FLOPs范围内都表现出最佳的性能，显著优于其他缩放方法。这表明复合缩放方法在准确性和效率之间取得了更好的平衡。</p></li>
-<li><p><strong>按图像大小缩放</strong>和<strong>按BiFPN层数缩放</strong>在FLOPs较低时表现较好，但在FLOPs增加后，性能提升趋于平缓。</p></li>
-<li><p><strong>按通道数缩放</strong>和<strong>按检测头层数缩放</strong>在整个FLOPs范围内的性能提升都较为有限，表现不如复合缩放方法。</p></li>
-</ul>
-<p>综上所述，复合缩放方法在提升模型性能的同时，保持了较高的计算效率，是最优的缩放策略。</p>
+</section>
 
 
                 </article>
@@ -838,24 +611,6 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="CenterMask.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">CenterMask</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="Simple%20Multi-dataset%20Detection.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Simple Multi-dataset Detection</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -863,20 +618,7 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
-</ul>
-
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

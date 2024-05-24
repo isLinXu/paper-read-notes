@@ -46,7 +46,7 @@
     <link rel="icon" href="../../_static/panda.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="survey_all" href="survey_all.html" />
+    <link rel="next" title="summary" href="summary.html" />
     <link rel="prev" title="GPT-v4:GPT-4 Technical Report" href="../llm/gpt-v4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -203,7 +203,7 @@
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="survey_all.html">survey_all</a></li>
+<li class="toctree-l3"><a class="reference internal" href="summary.html">summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
@@ -252,6 +252,7 @@
 <li class="toctree-l3"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv10.html">YOLOv10</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
 
 
@@ -507,7 +508,7 @@ document.write(`
 <h1>detection<a class="headerlink" href="#detection" title="Link to this heading">#</a></h1>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="survey_all.html">survey_all</a></li>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">summary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RCNN.html">RCNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
@@ -551,10 +552,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="ViT-YOLO.html">ViT-YOLO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="YOLO-MS.html">YOLO-MS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="RT-DETR.html">RT-DETR</a></li>
-<li class="toctree-l1"><a class="reference internal" href="YOLOv9.html">YOLOv9</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="YOLOv9.html#id1">5. <strong>结论</strong></a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
 <li class="toctree-l1"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
@@ -562,6 +560,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
 <li class="toctree-l1"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
 <li class="toctree-l1"><a class="reference internal" href="MDETR.html">MDETR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="YOLOv10.html">YOLOv10</a></li>
 <li class="toctree-l1"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html#id2"><strong>摘要</strong></a></li>
 </ul>
@@ -684,11 +683,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="survey_all.html"
+       href="summary.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">survey_all</p>
+        <p class="prev-next-title">summary</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

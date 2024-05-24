@@ -2,7 +2,7 @@
 
 ```{toctree}
 :maxdepth: 2
-survey_all
+summary
 RCNN
 Fast R-CNN
 Faster R-CNN
@@ -55,6 +55,7 @@ RTMDet
 YOLO-World
 YOLOOC
 MDETR
+YOLOv10
 目标检测综述20年
 yolo综述
 ```

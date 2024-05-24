@@ -20,8 +20,10 @@
 - Scaled-YOLOv4
 
 <img width="1160" alt="scale-yolov4-fig4" src="https://github.com/isLinXu/issues/assets/59380685/3e8da47e-ba1c-4fc6-8242-e06f832c665f">
+
 - YOLOX
 <img width="1061" alt="yolox-fig2" src="https://github.com/isLinXu/issues/assets/59380685/e4abbf4b-e6e2-4552-afe1-385c8a055797">
+
 ![yolox-arch-l](https://github.com/isLinXu/issues/assets/59380685/a4128409-8398-4b6b-bbb0-56b5aebdde4e)
 
 - YOLOv5

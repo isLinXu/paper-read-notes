@@ -1,7 +1,5 @@
 # DY-yolov7
 
-### 论文阅读笔记
-
 **标题：** DynamicDet: A Unified Dynamic Architecture for Object Detection
 
 **作者：** Zhihao Lin, Yongtao Wang, Jinhe Zhang, Xiaojie Chu

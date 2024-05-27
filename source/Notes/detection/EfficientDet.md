@@ -88,7 +88,7 @@
   此外，还可以研究如何将EfficientDet与其他先进的技术（如注意力机制、元学习等）结合，以进一步提高性能。
 
 ---
-
+![efficientdet-fig1](https://github.com/isLinXu/issues/assets/59380685/e343e099-152f-4b4e-9923-1d2137e380fc)
 
 | 模型                        | COCO AP | FLOPs (Billions) | FLOPs (ratio) |
 |-----------------------------|---------|------------------|---------------|
@@ -107,6 +107,7 @@
 
 ---
 
+![efficientdet-fig2](https://github.com/isLinXu/issues/assets/59380685/8b1ea27d-b728-4db6-9c6f-310012196c7b)
 
 这个图表展示了四种不同的特征网络设计：FPN、PANet、NAS-FPN和BiFPN。以下是对每种网络模型结构及其输入输出流程的分析：
 
@@ -158,9 +159,37 @@
 
 ---
 
+![efficientdet-fig3](https://github.com/isLinXu/issues/assets/59380685/eef67219-32b9-4b8a-a47e-e596421b8d3c)
+
+这个图表描述的是EfficientDet架构，EfficientDet是一种用于目标检测的深度学习模型。从图表中可以看出，EfficientDet架构包括以下几个主要部分：
+
+1. **EfficientNet backbone**：EfficientNet是一种轻量级的卷积神经网络，用于提取图像特征。它是EfficientDet的基础，负责生成初始的特征图（feature maps）。
+
+2. **BiFPN (Bidirectional Feature Pyramid Network)**：BiFPN是一种特征金字塔网络，用于进一步增强特征图。它通过双向连接的方式，将不同分辨率的特征图进行融合，以获取更丰富的特征表示。
+
+3. **Class prediction net**：类别预测网络，用于预测图像中每个候选区域的类别。
+
+4. **Box prediction net**：边界框预测网络，用于预测图像中每个候选区域的位置（即边界框的坐标）。
+
+5. **Input**：输入图像。
+
+6. **Output**：输出包括类别预测和边界框预测。
+
+从图表中可以看出，输入图像首先通过EfficientNet backbone进行处理，生成不同分辨率的特征图（P0, P1, P2, P3, P4, P5, P6, P7）。然后，这些特征图通过BiFPN层进行多次迭代，以增强特征表示。BiFPN层的输出（P/128, P/64, Ps/32, P4/16, Pa/8, P2/4, P1/2）将被送入共享的类别预测网络和边界框预测网络。
+
+类别预测网络和边界框预测网络是共享的，这意味着它们使用相同的网络结构，但可能有不同的参数。这些网络将对BiFPN层的输出进行处理，以预测每个候选区域的类别和位置。
+
+输出结果将包括：
+- 类别预测：每个候选区域可能属于的类别。
+- 边界框预测：每个候选区域的位置，通常表示为四个坐标值（x_min, y_min, x_max, y_max），分别代表边界框的左上角和右下角。
+
+EfficientDet的设计允许根据不同的资源限制调整网络的深度和复杂度，这在图表中提到的Table 1中有所体现。通过调整BiFPN层和预测网络的重复次数，EfficientDet可以适应不同的计算资源和性能要求。
+
+---
+
+![efficientdet-fig4](https://github.com/isLinXu/issues/assets/59380685/0ca78bb3-bc85-480a-9abe-734cadfaaf2a)
 
 这个图表展示了不同网络模型在COCO数据集上的性能（COCO AP）与模型大小、GPU延迟和CPU延迟的关系。以下是对每个子图的分析：
-
 
 (a) Model Size
 
@@ -200,9 +229,29 @@
 
 这些图表展示了EfficientDet系列在不同方面的优势，特别是在模型大小、GPU延迟和CPU延迟方面都表现出色，适合在资源受限的环境中使用。
 
+---
 
+![efficientdet-fig5](https://github.com/isLinXu/issues/assets/59380685/294cc9a1-17e1-44b2-812f-2d106f780017)
+
+这个图表（Figure 5）展示了在EfficientDet架构中用于特征融合的两种方法：Softmax和fast normalized feature fusion（快速归一化特征融合）。图表通过三个示例节点（Example Node 1, Example Node 2, Example Node 3）来比较这两种方法在训练过程中的归一化权重（即特征的重要性）。
+
+**Softmax**：Softmax是一种常用的归一化方法，它可以将输入的任意实数值转换成一个概率分布，使得所有输出值的和为1。在特征融合中，Softmax可以确保来自不同输入的特征权重总和为1，从而实现特征的平衡融合。
+
+**Fast normalized feature fusion**：这是一种快速的特征融合方法，它通过一种简化的方式对特征权重进行归一化，使得不同输入的特征权重总和也为1。这种方法可能在计算上比Softmax更高效，但可能在特征融合的精度上有所折衷。
+
+图表中的三个子图（a, b, c）分别展示了三个节点在训练过程中Softmax和fast normalized feature fusion的归一化权重变化情况。每个节点有两个输入（input1 & input2），它们的归一化权重总和始终为1。
+
+- **(a) Example Node 1**：展示了第一个节点在训练过程中，Softmax和fast normalized feature fusion方法的权重变化。Softmax的权重在0.525和0.50之间变化，而fast normalized feature fusion的权重在0.500和0.500之间变化，这表明在该节点上，两种方法的权重分配非常接近。
+
+- **(b) Example Node 2**：展示了第二个节点的权重变化，Softmax的权重在0.5和0.4之间变化，而fast normalized feature fusion的权重在0.175和0.150之间变化。这表明在该节点上，fast normalized feature fusion方法可能更倾向于分配更多的权重给input1。
+
+- **(c) Example Node 3**：展示了第三个节点的权重变化，Softmax的权重在0.3和0.175之间变化，而fast normalized feature fusion的权重在0.150和0.150之间变化。这表明在该节点上，fast normalized feature fusion方法分配给两个输入的权重是相等的，而Softmax则根据特征的重要性进行了不同的权重分配。
+
+总体而言，这个图表说明了在EfficientDet架构中，Softmax和fast normalized feature fusion方法在特征融合过程中如何根据特征的重要性动态调整权重分配。Softmax提供了一种更精细的权重分配方式，而fast normalized feature fusion则提供了一种计算上更高效的替代方案。通过比较这两种方法，研究人员可以更好地理解它们在不同训练阶段的表现，并根据具体需求选择合适的特征融合策略。
 
 ---
+
+![efficientdet-fig6](https://github.com/isLinXu/issues/assets/59380685/419c02f2-81ec-4799-abc1-b65d8eda8ea3)
 
 这个图表展示了不同缩放方法在COCO数据集上的性能（COCO AP）与计算量（FLOPs，单位为十亿次操作）的关系。图表中比较了四种不同的缩放方法：复合缩放（Compound Scaling）、按图像大小缩放、按通道数缩放、按BiFPN层数缩放和按检测头层数缩放。以下是对图表中关键信息的提取和结论：
 

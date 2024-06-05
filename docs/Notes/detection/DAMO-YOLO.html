@@ -46,7 +46,7 @@
     <link rel="icon" href="../../_static/panda.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="YOLOv9" href="YOLOv9.html" />
+    <link rel="next" title="ViT-YOLO" href="ViT-YOLO.html" />
     <link rel="prev" title="YOLOv6" href="YOLOv6_v3.0.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -189,12 +189,12 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">MultiModal Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">Large Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
@@ -202,13 +202,16 @@
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Object Detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="summary.html">summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FCN.html">FCN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FPN.html">FPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FCOS.html">FCOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SSD.html">SSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
@@ -217,24 +220,42 @@
 <li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Edge-YOLO.html">Edge-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SM-NAS.html">SM-NAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TSD.html">TSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PP-YOLOv1.html">PP-YOLOv1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PP-YOLOv2.html">PP-YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOE.html">PP-YOLOE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOF.html">YOLOF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOP.html">YOLOP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dy-yolov7.html">DY-yolov7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Gold-YOLO.html">Gold-YOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ViT-YOLO.html">ViT-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RT-DETR.html">RT-DETR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
-<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="RTMDet.html">回答问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RTMDet.html">RTMDet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
-<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv10.html">YOLOv10</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
 
 
@@ -606,6 +627,177 @@ document.write(`
 </ul>
 </li>
 </ol>
+<hr class="docutils" />
+<img width="1037" alt="damo-yolo-fig1" src="https://github.com/isLinXu/issues/assets/59380685/dc844224-3900-4419-8749-4245e24fee39">
+<p>这张图展示了DAMO-YOLO与其他先进目标检测器在延迟和准确性之间的权衡。图表分为两个部分：(a) 在T4-GPU上的比较，(b) 在x86-CPU上的比较。以下是对图表的详细分析：</p>
+<p>主要特点</p>
+<ul class="simple">
+<li><p><strong>延迟（Latency）</strong>：表示模型处理一张图像所需的时间，延迟越低，模型越快。</p></li>
+<li><p><strong>mAP</strong>：表示模型在COCO数据集上的平均精度，mAP越高，模型越准确。</p></li>
+<li><p><strong>权衡</strong>：延迟和mAP之间的权衡，理想情况下，模型应具有较低的延迟和较高的mAP。</p></li>
+</ul>
+<p>观察与分析
+(a) T4-GPU上的比较</p>
+<ul class="simple">
+<li><p><strong>YOLOv5、YOLOv6、YOLOv7、YOLOv8、YOLOX</strong>：这些模型在延迟和mAP之间表现出不同的权衡。总体上，随着延迟的增加，mAP也有所提高。</p></li>
+<li><p><strong>DAMO-YOLO（T/S/M/L）</strong>：DAMO-YOLO的不同版本在延迟和mAP之间表现出较好的权衡。特别是DAMO-YOLO-L在较低延迟下达到了较高的mAP，显示出其在T4-GPU上的优越性能。</p></li>
+</ul>
+<p>(b) x86-CPU上的比较</p>
+<ul class="simple">
+<li><p><strong>Nanodet-plus、YOLOv5-N、YOLOv6-N、YOLOv7-N、YOLOv8-N</strong>：这些轻量级模型在延迟和mAP之间表现出不同的权衡。总体上，随着延迟的增加，mAP也有所提高。</p></li>
+<li><p><strong>DAMO-YOLO（N/Nm/Nl）</strong>：DAMO-YOLO的轻量级版本在延迟和mAP之间表现出较好的权衡。特别是DAMO-YOLO-Nl在较低延迟下达到了较高的mAP，显示出其在x86-CPU上的优越性能。</p></li>
+</ul>
+<p>结论</p>
+<ul class="simple">
+<li><p><strong>DAMO-YOLO</strong>：在T4-GPU和x86-CPU上的表现均优于其他模型，显示出其在延迟和mAP之间的良好权衡。特别是DAMO-YOLO-L和DAMO-YOLO-Nl在各自平台上表现出色，具有较低的延迟和较高的mAP。</p></li>
+<li><p><strong>其他模型</strong>：虽然其他模型在延迟和mAP之间也表现出一定的权衡，但总体上不如DAMO-YOLO的表现优越。</p></li>
+</ul>
+<p>总结
+这张图通过延迟和mAP的权衡展示了DAMO-YOLO与其他先进目标检测器在T4-GPU和x86-CPU上的性能比较。DAMO-YOLO在两个平台上均表现出色，显示出其在延迟和准确性之间的良好平衡，优于其他模型。通过这种比较，可以直观地评估不同模型在不同平台上的性能，从而选择最适合特定应用场景的模型。</p>
+<hr class="docutils" />
+<img width="1059" alt="damo-yolo-fig2" src="https://github.com/isLinXu/issues/assets/59380685/5d8557e7-c573-4ab7-acff-7a4155a6d7e2">
+<p>这张图展示了MAE-NAS（Model Architecture Evolution - Neural Architecture Search）中使用的三种不同的基本构建块（building block），分别是MobBlock、ResBlock和CSPBlock。以下是对图表的详细分析：</p>
+<p>图表内容</p>
+<p>(a) MobBlock</p>
+<ul class="simple">
+<li><p><strong>结构</strong>：MobBlock是MobileNetV3块的变体，作为DAMO-YOLO轻量级模型的基本构建块。</p></li>
+<li><p><strong>组件</strong>：</p>
+<ul>
+<li><p><strong>Conv, K=1, G=1</strong>：1x1卷积，组数为1。</p></li>
+<li><p><strong>Conv, K=3, G=N</strong>：3x3卷积，组数为N。</p></li>
+<li><p><strong>Conv, K=1, G=1</strong>：1x1卷积，组数为1。</p></li>
+</ul>
+</li>
+<li><p><strong>特点</strong>：MobBlock通过深度可分离卷积（Depthwise Separable Convolution）来减少计算量和参数量，适用于轻量级模型。</p></li>
+</ul>
+<p>(b) ResBlock</p>
+<ul class="simple">
+<li><p><strong>结构</strong>：ResBlock源自ResNet，DAMO-YOLO-S和DAMO-YOLO-T基于此构建。</p></li>
+<li><p><strong>组件</strong>：</p>
+<ul>
+<li><p><strong>Conv, K=1, G=1</strong>：1x1卷积，组数为1。</p></li>
+<li><p><strong>Conv, K=3, G=1</strong>：3x3卷积，组数为1。</p></li>
+<li><p><strong>Conv, K=1, G=1</strong>：1x1卷积，组数为1。</p></li>
+</ul>
+</li>
+<li><p><strong>特点</strong>：ResBlock通过残差连接（Residual Connection）来缓解深层网络中的梯度消失问题，适用于中等复杂度的模型。</p></li>
+</ul>
+<p>(c) CSPBlock</p>
+<ul class="simple">
+<li><p><strong>结构</strong>：CSPBlock源自CSPNet，由于其在深度网络中的优异表现，被用作DAMO-YOLO-M和DAMO-YOLO-L模型的基本构建块。</p></li>
+<li><p><strong>组件</strong>：</p>
+<ul>
+<li><p><strong>Conv, K=1, G=1</strong>：1x1卷积，组数为1。</p></li>
+<li><p><strong>Conv, K=3, G=1</strong>：3x3卷积，组数为1。</p></li>
+<li><p><strong>Conv, K=1, G=1</strong>：1x1卷积，组数为1。</p></li>
+<li><p><strong>Conv, K=3, G=1</strong>：3x3卷积，组数为1。</p></li>
+<li><p><strong>Conv, K=1, G=1</strong>：1x1卷积，组数为1。</p></li>
+</ul>
+</li>
+<li><p><strong>特点</strong>：CSPBlock通过跨阶段部分网络（Cross Stage Partial Network）来分割特征图并融合，减少计算量和内存使用，同时提高模型的表示能力，适用于高复杂度的模型。</p></li>
+</ul>
+<p>主要特点</p>
+<ul class="simple">
+<li><p><strong>MobBlock</strong>：适用于轻量级模型，通过深度可分离卷积减少计算量和参数量。</p></li>
+<li><p><strong>ResBlock</strong>：适用于中等复杂度的模型，通过残差连接缓解梯度消失问题。</p></li>
+<li><p><strong>CSPBlock</strong>：适用于高复杂度的模型，通过跨阶段部分网络提高表示能力并减少计算量和内存使用。</p></li>
+</ul>
+<p>结论</p>
+<ul class="simple">
+<li><p><strong>MobBlock</strong>：适用于需要高效计算和低参数量的轻量级模型，如DAMO-YOLO轻量级模型。</p></li>
+<li><p><strong>ResBlock</strong>：适用于需要平衡计算效率和模型复杂度的中等复杂度模型，如DAMO-YOLO-S和DAMO-YOLO-T。</p></li>
+<li><p><strong>CSPBlock</strong>：适用于需要高表示能力和高性能的复杂模型，如DAMO-YOLO-M和DAMO-YOLO-L。</p></li>
+</ul>
+<p>总结
+这张图展示了MAE-NAS中使用的三种不同的基本构建块（MobBlock、ResBlock和CSPBlock）的结构和特点。每种构建块适用于不同复杂度的模型，通过选择合适的构建块，可以在计算效率和模型性能之间取得良好的平衡。MobBlock适用于轻量级模型，ResBlock适用于中等复杂度模型，而CSPBlock适用于高复杂度模型。通过这种方式，MAE-NAS能够灵活地构建适应不同需求的目标检测模型。</p>
+<hr class="docutils" />
+<img width="731" alt="damo-yolo-fig3" src="https://github.com/isLinXu/issues/assets/59380685/8f24df7e-e0c2-495d-801a-4382154d0366">
+<p>这张图展示了DAMO-YOLO的网络架构，包括其主要组件和数据流。以下是对图表的详细分析：</p>
+<ol class="arabic simple">
+<li><p>Backbone（主干网络）</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>MAE-NAS</strong>：使用MAE-NAS（Model Architecture Evolution - Neural Architecture Search）作为主干网络，用于提取多尺度特征图。</p></li>
+<li><p><strong>功能</strong>：从输入图像中提取多尺度特征图，为后续的特征融合和任务投影提供基础。</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Efficient RepGFPN（高效特征金字塔网络）</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>F Fusion Block</strong>：特征融合块，用于融合高层语义特征和低层空间特征。</p>
+<ul>
+<li><p><strong>结构</strong>：</p>
+<ul>
+<li><p><strong>1x1卷积</strong>：用于调整通道数。</p></li>
+<li><p><strong>Simplify Rep 3x3</strong>：简化的Rep 3x3模块，用于特征提取和融合。</p></li>
+<li><p><strong>1x1卷积</strong>：用于进一步调整通道数。</p></li>
+</ul>
+</li>
+<li><p><strong>Simplify Rep 3x3</strong>：简化的Rep 3x3模块，包含两个3x3卷积层、批归一化（BN）和激活函数（Act），用于训练和推理。</p></li>
+</ul>
+</li>
+<li><p><strong>功能</strong>：高效的特征金字塔网络，用于细化和融合高层语义特征和低层空间特征。</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Zero Head（零头部）</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>任务投影层</strong>：每个任务（分类和回归）包含一个任务投影层。</p>
+<ul>
+<li><p><strong>cls</strong>：分类任务投影层。</p></li>
+<li><p><strong>reg</strong>：回归任务投影层。</p></li>
+</ul>
+</li>
+<li><p><strong>功能</strong>：仅包含任务投影层，用于将融合后的特征映射到具体的任务输出（分类和回归）。</p></li>
+</ul>
+<p>数据流</p>
+<ol class="arabic simple">
+<li><p><strong>输入图像</strong>：通过MAE-NAS主干网络提取多尺度特征图。</p></li>
+<li><p><strong>特征融合</strong>：通过Efficient RepGFPN中的F Fusion Block进行特征融合，细化和融合高层语义特征和低层空间特征。</p></li>
+<li><p><strong>任务投影</strong>：通过Zero Head中的任务投影层，将融合后的特征映射到具体的任务输出（分类和回归）。</p></li>
+</ol>
+<p>主要特点</p>
+<ul class="simple">
+<li><p><strong>MAE-NAS</strong>：作为主干网络，提供多尺度特征图。</p></li>
+<li><p><strong>Efficient RepGFPN</strong>：高效的特征金字塔网络，通过F Fusion Block进行特征融合和细化。</p></li>
+<li><p><strong>Zero Head</strong>：简化的头部结构，仅包含任务投影层，用于分类和回归任务。</p></li>
+</ul>
+<p>结论</p>
+<ul class="simple">
+<li><p><strong>高效性</strong>：DAMO-YOLO通过使用MAE-NAS主干网络和Efficient RepGFPN，实现了高效的特征提取和融合。</p></li>
+<li><p><strong>简化结构</strong>：Zero Head的设计简化了头部结构，仅包含任务投影层，减少了计算复杂度。</p></li>
+<li><p><strong>多任务处理</strong>：通过任务投影层，DAMO-YOLO能够同时处理分类和回归任务，适用于目标检测任务。</p></li>
+</ul>
+<p>总结</p>
+<p>这张图展示了DAMO-YOLO的网络架构，包括MAE-NAS主干网络、Efficient RepGFPN和Zero Head。MAE-NAS用于提取多尺度特征图，Efficient RepGFPN通过F Fusion Block进行特征融合和细化，Zero Head通过任务投影层将融合后的特征映射到具体的任务输出。通过这种设计，DAMO-YOLO实现了高效的特征提取和融合，简化了头部结构，并能够同时处理分类和回归任务。</p>
+<hr class="docutils" />
+<img width="666" alt="damo-yolo-fig4" src="https://github.com/isLinXu/issues/assets/59380685/fc8ebf93-c07f-4735-a286-7da7e0ad0dde">
+<p>这张图展示了在不同蒸馏损失权重（distillation loss weight）下，分类损失（classification loss）和准确率（accuracy）的变化曲线。蒸馏损失权重分别设置为0.5、2和10。以下是对图表的详细分析：
+主要观察</p>
+<ol class="arabic simple">
+<li><p><strong>分类损失（classification loss）</strong>：</p>
+<ul class="simple">
+<li><p><strong>蒸馏损失权重为0.5（蓝色虚线）</strong>：分类损失快速收敛，并且在整个训练过程中保持在较低水平。</p></li>
+<li><p><strong>蒸馏损失权重为2（绿色虚线）</strong>：分类损失在初期波动较大，但逐渐收敛。</p></li>
+<li><p><strong>蒸馏损失权重为10（红色虚线）</strong>：分类损失在整个训练过程中波动较大，收敛速度较慢。</p></li>
+</ul>
+</li>
+<li><p><strong>准确率（accuracy）</strong>：</p>
+<ul class="simple">
+<li><p><strong>蒸馏损失权重为0.5（蓝色实线）</strong>：准确率快速上升，并在整个训练过程中保持在较高水平。</p></li>
+<li><p><strong>蒸馏损失权重为2（绿色实线）</strong>：准确率在初期波动较大，但逐渐上升并趋于稳定。</p></li>
+<li><p><strong>蒸馏损失权重为10（红色实线）</strong>：准确率在整个训练过程中波动较大，最终准确率较低。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<ul class="simple">
+<li><p><strong>蒸馏损失权重为0.5</strong>：分类损失快速收敛，准确率快速上升并保持在较高水平，表现最佳。</p></li>
+<li><p><strong>蒸馏损失权重为2</strong>：分类损失和准确率在初期波动较大，但最终趋于稳定，表现中等。</p></li>
+<li><p><strong>蒸馏损失权重为10</strong>：分类损失和准确率在整个训练过程中波动较大，最终准确率较低，表现最差。</p></li>
+</ul>
+<p>总结
+这张图展示了在不同蒸馏损失权重下，分类损失和准确率的变化情况。结果表明，当蒸馏损失权重设置为0.5时，分类损失收敛最快，准确率最高，表现最佳。较高的蒸馏损失权重（如2和10）会导致分类损失和准确率的波动较大，收敛速度较慢，最终准确率较低。因此，选择合适的蒸馏损失权重对于模型的快速收敛和高准确率至关重要。</p>
 </section>
 
 
@@ -629,11 +821,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="YOLOv9.html"
+       href="ViT-YOLO.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">YOLOv9</p>
+        <p class="prev-next-title">ViT-YOLO</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

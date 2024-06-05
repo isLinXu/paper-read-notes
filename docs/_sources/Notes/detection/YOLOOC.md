@@ -1,4 +1,4 @@
-# YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery
+# YOLOOC
 
 作者：Qian Wan, Xiang Xiang, Qinhao Zhou, 华中科技大学
 

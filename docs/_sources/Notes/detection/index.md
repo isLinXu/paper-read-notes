@@ -8,13 +8,18 @@ Fast R-CNN
 Faster R-CNN
 Mask R-CNN
 FCN
+R-FCN
 FPN
 FCOS
 SSD
 Mobilenet-SSDv2
+VarifocalNet
+OneNet
 Mask R-CNN
 Cascade-RCNN
 RetinaNet
+FemtoDet
+SparseInst
 YOLOv1
 YOLOv2
 YOLOv3
@@ -22,6 +27,7 @@ YOLOv4
 Scaled-YOLOv4
 YOLOv5
 Edge-YOLO
+MS-DAYOLO
 ASFF
 ATSS
 SABL
@@ -49,9 +55,15 @@ YOLOv6_v3.0
 DAMO-YOLO
 ViT-YOLO
 YOLO-MS
+Detr
 RT-DETR
 YOLOv9
 YOLOOC
+FemtoDet
+MS-DAYOLO
+OneNet
+Sparse R-CNN
+SparseInst
 OWL-ViT
 OWLv2
 RTMDet

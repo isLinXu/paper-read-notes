@@ -1,9 +1,9 @@
 # Edge-YOLO
 
 
-**标题：**Edge YOLO: Real-Time Intelligent Object Detection System Based on Edge-Cloud Cooperation in Autonomous Vehicles
+**标题：** Edge YOLO: Real-Time Intelligent Object Detection System Based on Edge-Cloud Cooperation in Autonomous Vehicles
 
-**作者：**Siyuan Liang, Hao Wu, Li Zhen, Qiaozhi Hua, Sahil Garg, Georges Kaddoum, Mohammad Mehedi Hassan, Keping Yu
+**作者：** Siyuan Liang, Hao Wu, Li Zhen, Qiaozhi Hua, Sahil Garg, Georges Kaddoum, Mohammad Mehedi Hassan, Keping Yu
 
 **摘要：**
 - 论文提出了一个基于边缘云计算和重构卷积神经网络的实时智能目标检测系统，称为Edge YOLO。

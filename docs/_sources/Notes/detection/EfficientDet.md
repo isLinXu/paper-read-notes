@@ -256,8 +256,9 @@ EfficientDet的设计允许根据不同的资源限制调整网络的深度和�
 
 ![efficientdet-fig6](https://github.com/isLinXu/issues/assets/59380685/419c02f2-81ec-4799-abc1-b65d8eda8ea3)
 
-这个图表展示了不同缩放方法在COCO数据集上的性能（COCO AP）与计算量（FLOPs，单位为十亿次操作）的关系。图表中比较了四种不同的缩放方法：复合缩放（Compound Scaling）、按图像大小缩放、按通道数缩放、按BiFPN层数缩放和按检测头层数缩放。以下是对图表中关键信息的提取和结论：
+这个图表展示了不同缩放方法在COCO数据集上的性能（COCO AP）与计算量（FLOPs，单位为十亿次操作）的关系。图表中比较了四种不同的缩放方法：复合缩放（Compound Scaling）、按图像大小缩放、按通道数缩放、按BiFPN层数缩放和按检测头层数缩放。
 
+以下是对图表中关键信息的提取和结论：
 关键信息提取
 
 1. **复合缩放（Compound Scaling）**：

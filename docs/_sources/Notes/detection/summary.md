@@ -12,6 +12,9 @@
 
 <img width="340" alt="yolov3-table1" src="https://github.com/isLinXu/issues/assets/59380685/09ae00e3-6922-40e3-8e7b-4f1f7d84392b">
 
+- EfficientDet
+![efficientdet-fig3](https://github.com/isLinXu/issues/assets/59380685/eef67219-32b9-4b8a-a47e-e596421b8d3c)
+
 - YOLOv4
 <img width="1091" alt="yolov4-fig2" src="https://github.com/isLinXu/issues/assets/59380685/2f80780a-3da7-4df0-8f59-bb55ff3e344c">
 <img width="457" alt="yolov4-fig5" src="https://github.com/isLinXu/issues/assets/59380685/5c8b85d0-da44-425a-a647-918697c6b546">
@@ -34,9 +37,17 @@
 
 ![yolov5-arch-p6](https://github.com/isLinXu/issues/assets/59380685/3ab2f462-9670-41e7-ab95-71d3ecda423e)
 
+- PPYOLO v1
+
+<img width="898" alt="ppyolov1_fig2" src="https://github.com/isLinXu/issues/assets/59380685/4e7775a9-1799-4269-9792-9734ecf0b849">
+- PPYOLO v2
+
+<img width="1044" alt="ppyolov2-fig2" src="https://github.com/isLinXu/issues/assets/59380685/d4ae9758-8e70-4ff6-b410-3cc7f2b8e28a">
 
 - PPYOLOE
 ![ppyoloe-arch](https://github.com/isLinXu/issues/assets/59380685/082a67b8-5749-4055-819c-c4e86c1a6b79)
+
+<img width="917" alt="ppyoloe-fig2" src="https://github.com/isLinXu/issues/assets/59380685/f14b1fbc-c83f-487e-8654-7f6738c0519b">
 
 - YOLOv6
 <img width="1080" alt="yolov6-fig2" src="https://github.com/isLinXu/issues/assets/59380685/22c872de-da17-4078-9819-876a490837a3">
@@ -50,6 +61,9 @@
 
 ![rtmdet-arch](https://github.com/isLinXu/issues/assets/59380685/c6b3c423-44c6-4d6e-bf43-286ee4c0dbea)
 
+- Gold-yolo
+
+<img width="815" alt="gold-yolo-fig2" src="https://github.com/isLinXu/issues/assets/59380685/06d84664-46a0-4bc5-b1cc-6a9a8f9d176f">
 
 - YOLOv7
 <img width="1375" alt="yolov7-fig5" src="https://github.com/isLinXu/issues/assets/59380685/9c599859-73a0-4e64-9544-a94867a49eec">
@@ -66,3 +80,4 @@
 <img width="1375" alt="yolov9-fig4" src="https://github.com/isLinXu/issues/assets/59380685/bff0263a-a456-4502-93a8-8cea20a6a6c7">
 - YOLOv10
 <img width="1032" alt="yolov10-fig2" src="https://github.com/isLinXu/issues/assets/59380685/57471038-cb4c-43f6-b638-545d36ba08d4">
+

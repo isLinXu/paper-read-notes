@@ -1,3 +1,5 @@
+# EfficientDet
+
 **标题：** EfficientDet: Scalable and Efficient Object Detection
 
 **作者：** Mingxing Tan, Ruoming Pang, Quoc V. Le (Google Research, Brain Team)
@@ -232,6 +234,7 @@ EfficientDet的设计允许根据不同的资源限制调整网络的深度和�
 ---
 
 ![efficientdet-fig5](https://github.com/isLinXu/issues/assets/59380685/294cc9a1-17e1-44b2-812f-2d106f780017)
+
 
 这个图表（Figure 5）展示了在EfficientDet架构中用于特征融合的两种方法：Softmax和fast normalized feature fusion（快速归一化特征融合）。图表通过三个示例节点（Example Node 1, Example Node 2, Example Node 3）来比较这两种方法在训练过程中的归一化权重（即特征的重要性）。
 

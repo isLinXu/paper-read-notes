@@ -59,6 +59,11 @@ Detr
 RT-DETR
 YOLOv9
 YOLOOC
+FemtoDet
+MS-DAYOLO
+OneNet
+Sparse R-CNN
+SparseInst
 OWL-ViT
 OWLv2
 RTMDet

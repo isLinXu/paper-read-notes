@@ -1,4 +1,5 @@
 
+- YOLOv3
 
 | Model                                                        | APval | APtest | AP50 | SpeedGPU | FPSGPU |      | params | FLOPS  |
 | ------------------------------------------------------------ | ----- | ------ | ---- | -------- | ------ | ---- | ------ | ------ |
@@ -6,7 +7,7 @@
 | [YOLOv3-SPP](https://github.com/ultralytics/yolov3/releases) | 44.3  | 44.3   | 64.6 | 4.9ms    | 204    |      | 63.0M  | 157.0B |
 | [YOLOv3-tiny](https://github.com/ultralytics/yolov3/releases) | 17.6  | 34.9   | 34.9 | 1.7ms    | 588    |      | 8.9M   | 13.3B  |
 
-
+- YOLOv5
 
 | Model                                                        | size (pixels) | mAPval 50-95 | mAPval 50 | Speed CPU b1 (ms) | Speed V100 b1 (ms) | Speed V100 b32 (ms) | params (M) | FLOPs @640 (B) |
 | ------------------------------------------------------------ | ------------- | ------------ | --------- | ----------------- | ------------------ | ------------------- | ---------- | -------------- |
@@ -22,7 +23,7 @@
 | [YOLOv5l6](https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5l6.pt) | 1280          | 53.7         | 71.3      | 1784              | 15.8               | 10.5                | 76.8       | 111.4          |
 | [YOLOv5x6](https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5x6.pt) + [TTA](https://docs.ultralytics.com/yolov5/tutorials/test_time_augmentation) | 1280 1536     | 55.0 55.8    | 72.7 72.7 | 3136 -            | 26.2 -             | 19.4 -              | 140.7 -    | 209.8 -        |
 
-
+- YOLOv8
 
 | Model                                                        | size (pixels) | mAPval 50-95 |      |      | Speed CPU ONNX (ms) | Speed A100 TensorRT (ms) | params (M) | FLOPs (B) |
 | ------------------------------------------------------------ | ------------- | ------------ | ---- | ---- | ------------------- | ------------------------ | ---------- | --------- |
@@ -32,7 +33,7 @@
 | [YOLOv8l](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8l.pt) | 640           | 52.9         |      |      | 375.2               | 2.39                     | 43.7       | 165.2     |
 | [YOLOv8x](https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8x.pt) | 640           | 53.9         |      |      | 479.1               | 3.53                     | 68.2       | 257.8     |
 
-
+- YOLOv6
 
 | Model                                                        | Size | mAPval 0.5:0.95 |      |      | SpeedT4 trt fp16 b1 (fps) | SpeedT4 trt fp16 b32 (fps) | Params (M) | FLOPs (G) |
 | ------------------------------------------------------------ | ---- | --------------- | ---- | ---- | ------------------------- | -------------------------- | ---------- | --------- |
@@ -46,7 +47,7 @@
 | [YOLOv6-M6](https://github.com/meituan/YOLOv6/releases/download/0.4.0/yolov6m6.pt) | 1280 | 55.2            |      |      | 47                        | 55                         | 79.6       | 379.5     |
 | [YOLOv6-L6](https://github.com/meituan/YOLOv6/releases/download/0.4.0/yolov6l6.pt) | 1280 | 57.2            |      |      | 26                        | 29                         | 140.4      | 673.4     |
 
-
+- YOLOv7
 
 | Model                                                        | Test Size | APtest | AP50test | AP75test | batch 1 fps | batch 32  average time |
 | ------------------------------------------------------------ | --------- | ------ | -------- | -------- | ----------- | ---------------------- |
@@ -58,9 +59,7 @@
 | [YOLOv7-D6](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-d6.pt) | 1280      | 56.60% | 74.00%   | 61.80%   | 44 fps      | 15.0 ms                |
 | [YOLOv7-E6E](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt) | 1280      | 56.80% | 74.40%   | 62.10%   | 36 fps      | 18.7 ms                |
 
-
-
-
+- YOLOv9
 
 | Model                                                        | Test Size | APval  | AP50val | AP75val | Param. | FLOPs  |
 | ------------------------------------------------------------ | --------- | ------ | ------- | ------- | ------ | ------ |
@@ -70,7 +69,7 @@
 | [YOLOv9-C](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-c-converted.pt) | 640       | 53.00% | 70.20%  | 57.80%  | 25.3M  | 102.1G |
 | [YOLOv9-E](https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-e-converted.pt) | 640       | 55.60% | 72.80%  | 60.60%  | 57.3M  | 189.0G |
 
-
+- YOLOv10
 
 | Model                                                  | Test Size | APval  |      |      | #Params | FLOPs  | Latency |
 | ------------------------------------------------------ | --------- | ------ | ---- | ---- | ------- | ------ | ------- |
@@ -81,7 +80,7 @@
 | [YOLOv10-L](https://huggingface.co/jameslahm/yolov10l) | 640       | 53.20% |      |      | 24.4M   | 120.3G | 7.28ms  |
 | [YOLOv10-X](https://huggingface.co/jameslahm/yolov10x) | 640       | 54.40% |      |      | 29.5M   | 160.4G | 10.70ms |
 
-
+- PP-YOLO
 
 | Model      | GPU number | images/GPU | backbone    | input shape | Box  APval | Box  APtest | V100  FP32(FPS) | V100  TensorRT FP16(FPS) |
 | ---------- | ---------- | ---------- | ----------- | ----------- | ---------- | ----------- | --------------- | ------------------------ |
@@ -99,7 +98,7 @@
 | PP-YOLOv2  | 8          | 12         | ResNet50vd  | 640         | 49.1       | 49.5        | 68.9            | 106.5                    |
 | PP-YOLOv2  | 8          | 12         | ResNet101vd | 640         | 49.7       | 50.3        | 49.5            | 87                       |
 
-
+- PP-YOLOE
 
 | Model       | Epoch | GPU number | images/GPU | backbone    | input shape | Box APval 0.5:0.95 | Box APtest 0.5:0.95 | Params(M) | FLOPs(G) | V100 FP32(FPS) | V100 TensorRT FP16(FPS) |
 | ----------- | ----- | ---------- | ---------- | ----------- | ----------- | ------------------ | ------------------- | --------- | -------- | -------------- | ----------------------- |

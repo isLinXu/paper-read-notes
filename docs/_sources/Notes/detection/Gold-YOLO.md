@@ -192,7 +192,6 @@ Gold-YOLO网络模型通过多尺度特征融合、全局描述符和注入模�
 ---
 
 <img width="842" alt="gold-yolo-fig4" src="https://github.com/isLinXu/issues/assets/59380685/e7e41ba2-b928-4a22-b38a-164f6948d9fb">
-
 这张图展示了Gold-YOLO网络中的低级和高级“Gather-and-Distribute”结构。以下是对网络结构和输入输出流程的详细分析：
 
 图表内容

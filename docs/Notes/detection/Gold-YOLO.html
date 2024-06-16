@@ -209,19 +209,26 @@
 <li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="R-FCN.html">R-FCN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FPN.html">FPN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FCOS.html">FCOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SSD.html">SSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VarifocalNet.html">论文阅读笔记</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="OneNet.html">OneNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SparseInst.html">SparseInst</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Edge-YOLO.html">Edge-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MS-DAYOLO.html">MS-DAYOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
@@ -229,6 +236,7 @@
 <li class="toctree-l3"><a class="reference internal" href="TSD.html">TSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EfficientDet.html">EfficientDet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
@@ -246,9 +254,15 @@
 <li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ViT-YOLO.html">ViT-YOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Detr.html">DETR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RT-DETR.html">RT-DETR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MS-DAYOLO.html">MS-DAYOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OneNet.html">OneNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sparse%20R-CNN.html">Sparse R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SparseInst.html">SparseInst</a></li>
 <li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RTMDet.html">RTMDet</a></li>
@@ -703,7 +717,7 @@ Gold-YOLO网络模型通过多尺度特征融合、全局描述符和注入模�
 这张图通过对比传统Neck结构和改进Neck结构的AblationCAM可视化结果，展示了改进Neck结构在特征表达能力和检测性能上的显著提升。改进Neck结构通过更复杂的特征处理和融合机制，使得模型对输入图像的关注区域更加集中，适用于对检测精度要求较高的应用场景。</p>
 <hr class="docutils" />
 <img width="842" alt="gold-yolo-fig4" src="https://github.com/isLinXu/issues/assets/59380685/e7e41ba2-b928-4a22-b38a-164f6948d9fb">
-<p>这张图展示了Gold-YOLO网络中的低级和高级“Gather-and-Distribute”结构。以下是对网络结构和输入输出流程的详细分析：</p>
+这张图展示了Gold-YOLO网络中的低级和高级“Gather-and-Distribute”结构。以下是对网络结构和输入输出流程的详细分析：
 <p>图表内容</p>
 <p>(a) 低级“Gather-and-Distribute”分支</p>
 <ul class="simple">

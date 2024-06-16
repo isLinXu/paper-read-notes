@@ -209,19 +209,26 @@
 <li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="R-FCN.html">R-FCN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FPN.html">FPN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FCOS.html">FCOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SSD.html">SSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VarifocalNet.html">论文阅读笔记</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="OneNet.html">OneNet</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SparseInst.html">SparseInst</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Edge-YOLO.html">Edge-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MS-DAYOLO.html">MS-DAYOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
@@ -247,10 +254,15 @@
 <li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ViT-YOLO.html">ViT-YOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Detr.html">DETR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RT-DETR.html">RT-DETR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MS-DAYOLO.html">MS-DAYOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OneNet.html">OneNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Sparse%20R-CNN.html">Sparse R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SparseInst.html">SparseInst</a></li>
 <li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RTMDet.html">RTMDet</a></li>
@@ -547,6 +559,159 @@ document.write(`
 <li><p>利用深度学习和数据增强技术来提高模型的泛化能力。</p></li>
 </ul>
 <hr class="docutils" />
+<img width="541" alt="maskrcnn-fig1" src="https://github.com/isLinXu/issues/assets/59380685/88db5b55-ee61-4e92-85fe-052cc4339625">
+<p>图表展示了Mask R-CNN框架用于实例分割的网络结构和输入输出流程。以下是对该图表的分析：</p>
+<ol class="arabic simple">
+<li><p><strong>输入图像</strong>：</p>
+<ul class="simple">
+<li><p>左侧的输入图像包含多个对象（例如人）。</p></li>
+</ul>
+</li>
+<li><p><strong>RoIAlign</strong>：</p>
+<ul class="simple">
+<li><p>输入图像经过卷积神经网络（CNN）提取特征后，使用RoIAlign（Region of Interest Align）操作。这一步骤的目的是从特征图中提取出感兴趣区域（RoIs），并对这些区域进行对齐和采样，以确保特征图的空间对齐。</p></li>
+</ul>
+</li>
+<li><p><strong>分类和边界框回归</strong>：</p>
+<ul class="simple">
+<li><p>RoIAlign后的特征图被送入两个并行的分支：</p>
+<ul>
+<li><p><strong>分类分支</strong>：用于预测每个RoI的类别（例如人、车等）。</p></li>
+<li><p><strong>边界框回归分支</strong>：用于预测每个RoI的精确边界框位置。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>掩码分支</strong>：</p>
+<ul class="simple">
+<li><p>另一个并行分支是掩码分支，它通过卷积层（conv）处理RoIAlign后的特征图，生成每个RoI的二进制掩码。这个掩码表示对象的像素级分割结果。</p></li>
+</ul>
+</li>
+<li><p><strong>输出</strong>：</p>
+<ul class="simple">
+<li><p>最终输出包括：</p>
+<ul>
+<li><p>每个RoI的类别标签和边界框位置。</p></li>
+<li><p>每个RoI的像素级分割掩码。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>通过这个流程，Mask R-CNN不仅能够进行对象检测（即识别对象类别和边界框），还能够进行实例分割（即为每个对象生成像素级的分割掩码）。这使得Mask R-CNN在计算机视觉任务中非常强大，特别是在需要精确分割对象的应用场景中。</p>
+<hr class="docutils" />
+<img width="1368" alt="maskrcnn-fig2" src="https://github.com/isLinXu/issues/assets/59380685/bbed1a3f-cc71-45ce-b4a9-9e53e44a9afe">
+<p>图表展示了Mask R-CNN在COCO测试集上的结果。以下是对该图表的分析：</p>
+<ol class="arabic simple">
+<li><p><strong>图像内容</strong>：</p>
+<ul class="simple">
+<li><p>图表包含了多个示例图像，每个图像中都有多个对象。这些对象被Mask R-CNN检测并分割出来。</p></li>
+</ul>
+</li>
+<li><p><strong>实例分割结果</strong>：</p>
+<ul class="simple">
+<li><p>每个对象都被分配了一个彩色掩码，这些掩码覆盖了对象的像素区域。不同的颜色表示不同的对象类别。</p></li>
+<li><p>除了彩色掩码，每个对象还被标注了边界框、类别标签和置信度分数。</p></li>
+</ul>
+</li>
+<li><p><strong>模型和性能</strong>：</p>
+<ul class="simple">
+<li><p>这些结果是基于ResNet-101模型的Mask R-CNN框架实现的。</p></li>
+<li><p>在COCO测试集上，Mask R-CNN达到了35.7的mask AP（平均精度）。</p></li>
+<li><p>模型的运行速度为5帧每秒（fps）。</p></li>
+</ul>
+</li>
+<li><p><strong>具体示例</strong>：</p>
+<ul class="simple">
+<li><p>左上角的图像展示了一个室内场景，有多个行人被检测和分割。</p></li>
+<li><p>右上角的图像展示了一个街道场景，有车辆和行人被检测和分割。</p></li>
+<li><p>中间的图像展示了一个自然场景，有动物和人被检测和分割。</p></li>
+<li><p>右下角的图像展示了一个室内餐厅场景，有桌子、椅子和人被检测和分割。</p></li>
+</ul>
+</li>
+<li><p><strong>总结</strong>：</p>
+<ul class="simple">
+<li><p>这些示例图像展示了Mask R-CNN在不同场景下的强大实例分割能力。无论是室内还是室外，无论是人、动物还是物体，Mask R-CNN都能准确地检测和分割出对象。</p></li>
+<li><p>通过这些结果，可以看出Mask R-CNN在复杂场景中的应用潜力，特别是在需要精确分割和识别多个对象的任务中。</p></li>
+</ul>
+</li>
+</ol>
+<p>总的来说，图表展示了Mask R-CNN在实例分割任务中的优异表现，证明了其在计算机视觉领域的有效性和实用性。</p>
+<hr class="docutils" />
+<img width="667" alt="maskrcnn-fig3" src="https://github.com/isLinXu/issues/assets/59380685/9728ec66-2489-47c2-b8a0-5dd50a98b70f">
+<p>图表展示了RoIAlign（Region of Interest Align）操作的细节。以下是对该图表的分析和结合图中摘要的总结：</p>
+<ol class="arabic simple">
+<li><p><strong>图表内容</strong>：</p>
+<ul class="simple">
+<li><p>图表中的虚线网格表示一个特征图。</p></li>
+<li><p>实线框表示一个感兴趣区域（RoI），在这个例子中，RoI被划分为2x2的网格。</p></li>
+<li><p>每个网格中的点表示采样点，每个网格有4个采样点。</p></li>
+</ul>
+</li>
+<li><p><strong>RoIAlign操作</strong>：</p>
+<ul class="simple">
+<li><p>RoIAlign通过双线性插值（bilinear interpolation）从特征图上的附近网格点计算每个采样点的值。</p></li>
+<li><p>这种方法避免了对RoI、网格或采样点的任何坐标进行量化，从而保持了更高的精度。</p></li>
+</ul>
+</li>
+<li><p><strong>摘要内容</strong>：</p>
+<ul class="simple">
+<li><p>RoIAlign的主要目的是在特征图上对齐和采样感兴趣区域（RoIs），以确保特征图的空间对齐。</p></li>
+<li><p>通过双线性插值计算采样点的值，RoIAlign避免了量化误差，从而提高了特征提取的精度。</p></li>
+</ul>
+</li>
+<li><p><strong>总结</strong>：</p>
+<ul class="simple">
+<li><p>RoIAlign是Mask R-CNN中的一个关键组件，它通过精确对齐和采样感兴趣区域，解决了传统RoIPool操作中的量化误差问题。</p></li>
+<li><p>这种精确的对齐和采样方法使得Mask R-CNN在实例分割任务中能够更准确地提取对象特征，从而提高了分割和检测的性能。</p></li>
+<li><p>图表和摘要共同展示了RoIAlign的工作原理和优势，强调了其在保持高精度特征提取中的重要性。</p></li>
+</ul>
+</li>
+</ol>
+<p>通过RoIAlign，Mask R-CNN能够在特征图上更精确地对齐和采样感兴趣区域，从而提高了实例分割的精度和效果。这种方法在处理复杂场景和多对象检测时尤为重要。</p>
+<hr class="docutils" />
+<img width="670" alt="maskrcnn-fig4" src="https://github.com/isLinXu/issues/assets/59380685/e1d8e802-c869-493f-9463-d40f3c6ef27d">
+<p>图表展示了Mask R-CNN的头部架构（Head Architecture），并结合了两种现有的Faster R-CNN头部架构的扩展。以下是对该图表的分析和结合图中摘要的总结：</p>
+<ol class="arabic simple">
+<li><p><strong>图表内容</strong>：</p>
+<ul class="simple">
+<li><p>图表分为左右两部分，分别展示了基于ResNet C4和FPN（Feature Pyramid Network）骨干网络的头部架构。</p></li>
+<li><p>每个部分都展示了RoI（Region of Interest）经过一系列卷积层（conv）、反卷积层（deconv）和全连接层（fc）后的处理流程。</p></li>
+<li><p>数字表示空间分辨率和通道数。</p></li>
+<li><p>箭头表示卷积层、反卷积层或全连接层。</p></li>
+</ul>
+</li>
+<li><p><strong>左侧（ResNet C4）</strong>：</p>
+<ul class="simple">
+<li><p>头部架构基于ResNet的C4层。</p></li>
+<li><p>RoI的初始尺寸为7x7x1024，经过一系列卷积层和全连接层处理，最终输出类别（class）和边界框（box）。</p></li>
+<li><p>添加了一个掩码分支，经过反卷积层处理，生成14x14x256的特征图，最终输出14x14的掩码。</p></li>
+</ul>
+</li>
+<li><p><strong>右侧（FPN）</strong>：</p>
+<ul class="simple">
+<li><p>头部架构基于FPN。</p></li>
+<li><p>RoI的初始尺寸为14x14x256，经过一系列卷积层处理，最终输出类别（class）和边界框（box）。</p></li>
+<li><p>掩码分支经过一系列卷积层和反卷积层处理，生成28x28x80的特征图，最终输出28x28的掩码。</p></li>
+</ul>
+</li>
+<li><p><strong>摘要内容</strong>：</p>
+<ul class="simple">
+<li><p>头部架构扩展了两种现有的Faster R-CNN头部架构（ResNet C4和FPN），并添加了一个掩码分支。</p></li>
+<li><p>所有卷积层的尺寸为3x3，除了输出卷积层为1x1，反卷积层为2x2，使用ReLU作为激活函数。</p></li>
+<li><p>左侧的架构基于ResNet的第五阶段，初始操作在7x7的RoI上进行。</p></li>
+<li><p>右侧的架构展示了四个连续卷积层的堆叠。</p></li>
+</ul>
+</li>
+<li><p><strong>总结</strong>：</p>
+<ul class="simple">
+<li><p>图表展示了Mask R-CNN头部架构的详细设计，结合了两种现有的Faster R-CNN头部架构，并添加了一个掩码分支以实现实例分割。</p></li>
+<li><p>左侧的架构基于ResNet C4层，右侧的架构基于FPN，两者都通过一系列卷积和反卷积操作生成最终的类别、边界框和掩码输出。</p></li>
+<li><p>这种设计使得Mask R-CNN能够在保持高精度检测的同时，实现像素级的实例分割，适用于复杂的计算机视觉任务。</p></li>
+</ul>
+</li>
+</ol>
+<p>通过这种头部架构的设计，Mask R-CNN能够有效地结合对象检测和实例分割，提供更精确和详细的视觉分析结果。</p>
 </section>
 
 

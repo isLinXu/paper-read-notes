@@ -3,6 +3,7 @@
 ```{toctree}
 :maxdepth: 2
 summary
+leaderboard
 RCNN
 Fast R-CNN
 Faster R-CNN

@@ -46,6 +46,8 @@
     <link rel="icon" href="../../_static/panda.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MDETR" href="MDETR.html" />
+    <link rel="prev" title="RTMDet" href="RTMDet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -107,8 +109,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -155,7 +155,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../Method/how_to_read_paper.html">如何阅读论文</a></li>
@@ -188,13 +188,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../List/llm.html">大语言模型(Large Language Models)</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">MultiModal Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">Large Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
@@ -202,29 +202,74 @@
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="index.html">detection</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Object Detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="summary.html">summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="R-FCN.html">R-FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FPN.html">FPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FCOS.html">FCOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SSD.html">SSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VarifocalNet.html">论文阅读笔记</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="OneNet.html">OneNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SparseInst.html">SparseInst</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Edge-YOLO.html">Edge-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MS-DAYOLO.html">MS-DAYOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SM-NAS.html">SM-NAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TSD.html">TSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EfficientDet.html">EfficientDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
-<li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6: A Single-Stage Object Detection Framework for Industrial Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv1.html">PP-YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv2.html">PP-YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOE.html">PP-YOLOE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOF.html">YOLOF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOP.html">YOLOP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
-<li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6 v3.0: A Full-Scale Reloading</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dy-yolov7.html">DY-yolov7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Gold-YOLO.html">Gold-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ViT-YOLO.html">ViT-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Detr.html">DETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RT-DETR.html">RT-DETR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
-<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MS-DAYOLO.html">MS-DAYOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OneNet.html">OneNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sparse%20R-CNN.html">Sparse R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SparseInst.html">SparseInst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RTMDet.html">RTMDet</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">YOLO-World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv10.html">YOLOv10</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
 
 
@@ -516,6 +561,138 @@ document.write(`
 <li><p>将YOLO-World应用于更多样化的实际场景，如视频监控、机器人视觉等。</p></li>
 <li><p>进一步研究如何优化模型结构，以适应不同的计算资源和实时性要求。</p></li>
 </ul>
+<hr class="docutils" />
+<p>这个模型的架构和输入输出流程可以分为以下几个部分：</p>
+<ol class="arabic simple">
+<li><p>输入图像处理</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>输入图像</strong>：模型的输入是一个图像。</p></li>
+<li><p><strong>YOLO Backbone</strong>：输入图像首先通过YOLO（You Only Look Once）骨干网络，提取多尺度的图像特征。</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>词汇嵌入</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>训练阶段：在线词汇</strong>：</p>
+<ul>
+<li><p><strong>文本编码器</strong>：从句子中提取名词。例如，句子 “A man and a woman are skiing with a dog” 中提取出 “man”, “woman”, “dog”。</p></li>
+<li><p><strong>词汇嵌入</strong>：将提取的名词通过词汇嵌入层转换为词汇嵌入向量。</p></li>
+</ul>
+</li>
+<li><p><strong>部署阶段：离线词汇</strong>：</p>
+<ul>
+<li><p><strong>用户词汇</strong>：用户可以提供自己的词汇表，这些词汇通过词汇嵌入层转换为词汇嵌入向量。</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>图像-词汇匹配</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>视觉-语言 PAN</strong>：将多尺度图像特征和词汇嵌入向量输入到视觉-语言 PAN（可能是指一种特定的注意力网络）中，生成对象嵌入向量。</p></li>
+<li><p><strong>区域-文本匹配</strong>：通过区域-文本匹配模块，将对象嵌入向量与词汇嵌入向量进行匹配，生成匹配结果。</p></li>
+</ul>
+<ol class="arabic simple" start="4">
+<li><p>输出处理</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>文本对比头</strong>：用于对比文本和图像特征，确保匹配的准确性。</p></li>
+<li><p><strong>框头</strong>：用于生成边界框，标注图像中的对象。</p></li>
+</ul>
+<p>实现逻辑</p>
+<ol class="arabic simple">
+<li><p><strong>图像输入</strong>：图像通过YOLO骨干网络提取特征。</p></li>
+<li><p><strong>词汇提取和嵌入</strong>：在训练阶段，通过文本编码器提取名词并生成词汇嵌入；在部署阶段，用户提供词汇表并生成词汇嵌入。</p></li>
+<li><p><strong>特征融合</strong>：多尺度图像特征和词汇嵌入通过视觉-语言 PAN 进行融合，生成对象嵌入。</p></li>
+<li><p><strong>匹配和输出</strong>：通过区域-文本匹配模块进行匹配，生成匹配结果，并通过文本对比头和框头生成最终的输出，包括对象的边界框和标签。</p></li>
+</ol>
+<p>总结</p>
+<p>这个模型通过结合图像特征和文本特征，实现了图像中对象的检测和标注。它利用YOLO骨干网络提取图像特征，通过文本编码器提取名词并生成词汇嵌入，最终通过视觉-语言 PAN 进行特征融合和匹配，生成对象的边界框和标签。</p>
+<hr class="docutils" />
+<p>这篇论文中提出的Vision-Language Path Aggregation Network（RepVL-PAN）是一个关键组件，用于实现视觉和语言信息之间的交互。下面是RepVL-PAN模块的主要实现细节：</p>
+<ol class="arabic simple">
+<li><p><strong>结构</strong>: RepVL-PAN遵循自顶向下和自底向上的路径来建立特征金字塔{P3, P4, P5}，这些特征金字塔由多尺度图像特征{C3, C4, C5}构成。</p></li>
+<li><p><strong>Text-guided CSPLayer (T-CSPLayer)</strong>: 这是RepVL-PAN的一个组成部分，用于将文本引导融入多尺度图像特征中。具体来说，给定文本嵌入W和图像特征Xl，通过在最后一个dark bottleneck块后使用max-sigmoid注意力机制来聚合文本特征到图像特征中。</p></li>
+<li><p><strong>Image-Pooling Attention (I-Pooling Attention)</strong>: 为了增强文本嵌入的图像意识信息，通过在多尺度特征上使用最大池化来获取3x3区域，生成27个patch tokens，然后使用多头注意力机制更新文本嵌入。</p></li>
+<li><p><strong>推理时的重参数化</strong>: 在推理阶段，可以采用重参数化技术将文本嵌入转换为卷积层或线性层的权重，以实现高效的部署。</p></li>
+<li><p><strong>跨模态融合</strong>: RepVL-PAN利用跨模态融合来增强文本和图像表示，通过Text-guided CSPLayer和Image-Pooling Attention实现。</p></li>
+<li><p><strong>训练与推理的差异</strong>: 在训练期间，模型使用在线词汇表，而在推理阶段，采用离线词汇表策略，用户可以定义一系列自定义提示，这些提示随后被编码成离线词汇表嵌入。</p></li>
+<li><p><strong>Region-Text Contrastive Loss</strong>: 在训练阶段，使用区域-文本对比损失来学习区域-文本对，通过交叉熵损失实现对象-文本相似度和对象-文本分配之间的对比。</p></li>
+<li><p><strong>伪标签方法</strong>: 为了生成区域-文本对，提出了一种自动标注方法，包括使用n-gram算法提取名词短语、使用预训练的开放词汇表检测器生成伪框，以及使用预训练的CLIP模型评估图像-文本对的相关性并过滤低相关性标注。</p></li>
+</ol>
+<p>RepVL-PAN的设计允许模型在保持高推理速度的同时，有效地处理开放词汇表检测任务。通过这种方式，YOLO-World能够在零样本（zero-shot）情况下检测出广泛的对象类别。</p>
+<hr class="docutils" />
+<p>RepVL-PAN（Re-parameterizable Vision-Language Path Aggregation Network）是YOLO-World中的一个关键组件，它负责加强视觉信息和语言信息之间的交互。以下是该结构的细节描述：</p>
+<ol class="arabic simple">
+<li><p><strong>特征金字塔建立</strong>：RepVL-PAN通过自顶向下和自底向上的路径建立特征金字塔，这些路径由不同层级的多尺度图像特征构成，即{C3, C4, C5}分别对应于P3, P4, P5。</p></li>
+<li><p><strong>Text-guided CSPLayer (T-CSPLayer)</strong>：</p>
+<ul class="simple">
+<li><p>这是RepVL-PAN中用于将文本嵌入信息注入到图像特征中的一个层。</p></li>
+<li><p>给定文本嵌入W和图像特征Xl，T-CSPLayer在CSPLayer（跨阶段部分层）后使用max-sigmoid注意力机制，将文本特征聚合到图像特征中。</p></li>
+<li><p>公式表示为 $𝑋𝑙′=𝑋𝑙⋅𝛿(max⁡𝑗∈{1..𝐶}(𝑋_𝑙𝑊^𝑗_𝑇)$，其中$𝑋𝑙′$​是更新后的图像特征，$𝛿$表示sigmoid函数。</p></li>
+</ul>
+</li>
+<li><p><strong>Image-Pooling Attention (I-Pooling Attention)</strong>：</p></li>
+<li></li>
+</ol>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- 该组件旨在通过图像特征增强文本嵌入。
+- 使用最大池化在多尺度特征上获取3x3区域，生成27个patch tokens 𝑋~X~。
+- 文本嵌入W通过多头注意力机制更新：$$𝑊′=𝑊+MultiHead-Attention(𝑊,𝑋~,𝑋~)$$
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>推理时的重参数化</strong>：</p>
+<ul class="simple">
+<li><p>在模型部署阶段，为了提高效率，文本嵌入W可以被重参数化为卷积层或线性层的权重。</p></li>
+<li><p>T-CSPLayer和I-Pooling Attention都可以简化为使用1x1卷积或线性变换。</p></li>
+</ul>
+</li>
+<li><p><strong>跨模态融合</strong>：</p>
+<ul class="simple">
+<li><p>RepVL-PAN通过T-CSPLayer和I-Pooling Attention实现了图像和文本特征的深度融合，增强了模型对视觉-语义信息的表示能力。</p></li>
+</ul>
+</li>
+<li><p><strong>训练与推理的差异</strong>：</p>
+<ul class="simple">
+<li><p>训练时，模型使用在线词汇表构建每个样本的词汇表，包含正样本和负样本。</p></li>
+<li><p>推理时，采用离线词汇表策略，用户定义的提示被编码成离线词汇表嵌入，避免了对每个输入重新计算。</p></li>
+</ul>
+</li>
+<li><p><strong>Region-Text Contrastive Loss</strong>：</p>
+<ul class="simple">
+<li><p>在训练阶段，使用区域-文本对比损失来优化模型，通过比较预测的对象-文本相似度和实际的分配来计算损失。</p></li>
+</ul>
+</li>
+<li><p><strong>伪标签方法</strong>：</p>
+<ul class="simple">
+<li><p>为了生成训练数据，使用了一个自动标注流程，包括名词短语提取、伪框生成和使用CLIP模型的过滤步骤。</p></li>
+</ul>
+</li>
+</ol>
+<p>RepVL-PAN的设计允许YOLO-World在保持高效率的同时，具备处理开放词汇表检测任务的能力。这种设计使得YOLO-World能够在没有见过的类别上也表现出色，即所谓的零样本学习能力。</p>
+<ul class="simple">
+<li><p>CLIP模型在其中是起到一个什么作用</p></li>
+</ul>
+<p>在YOLO-World中，CLIP模型主要起到了两个关键作用：</p>
+<ol class="arabic simple">
+<li><p><strong>文本嵌入</strong>：CLIP模型的文本编码器被用来将输入文本转换成文本嵌入（text embeddings）。这些嵌入捕获了文本的语义信息，并且能够与图像特征进行交互。在YOLO-World中，这些文本嵌入与图像特征相结合，以增强模型对视觉对象的理解和识别能力。</p></li>
+<li><p><strong>评估和过滤</strong>：在自动标注流程中，CLIP模型被用来评估和过滤生成的伪标签（pseudo labels）。具体步骤如下：</p>
+<ul class="simple">
+<li><p><strong>计算图像-文本相似度</strong>：CLIP模型将整个图像和相应的文本描述作为输入，计算它们之间的相似度分数，这反映了图像内容与文本描述的一致性。</p></li>
+<li><p><strong>计算区域-文本相似度</strong>：对于每个由预训练的开放词汇表检测器生成的伪框，CLIP模型将裁剪后的区域图像与对应的文本一起输入，计算它们之间的相似度分数。</p></li>
+<li><p><strong>重分派和过滤</strong>：使用CLIP计算得到的区域-文本相似度来调整伪框的置信度分数，并进行过滤。这包括：</p>
+<ul>
+<li><p>可选的<strong>重新标注</strong>：对于每个裁剪后的图像区域，可以将其与所有名词一起输入CLIP，选择相似度最高的名词进行标注，以纠正可能的错误标注。</p></li>
+<li><p><strong>重分派</strong>：使用区域-文本相似度来调整伪框的置信度分数。</p></li>
+<li><p><strong>区域级别过滤</strong>：对具有相同文本的区域-文本提案进行分组，并执行非极大值抑制（NMS）来过滤重复的预测，然后过滤掉置信度分数低的提案。</p></li>
+<li><p><strong>图像级别过滤</strong>：计算图像级别的区域-文本分数，并保留分数高于某个阈值的图像。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>通过这种方式，CLIP模型帮助YOLO-World提高了训练数据的质量，尤其是在使用大规模图像-文本数据进行预训练时，确保了模型能够学习到更准确的视觉-语言对齐。这对于实现开放词汇表对象检测的性能至关重要，因为它允许模型在没有明确训练过的情况下识别和检测新的类别。</p>
 </section>
 
 
@@ -529,6 +706,24 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="RTMDet.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">RTMDet</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="MDETR.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MDETR</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

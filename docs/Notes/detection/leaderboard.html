@@ -1,0 +1,1416 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; 论文阅读笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/detection/leaderboard';</script>
+    <link rel="icon" href="../../_static/panda.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="RCNN" href="RCNN.html" />
+    <link rel="prev" title="summary" href="summary.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/how_to_read_paper.html">如何阅读论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/paper_10_question.html">论文速读十问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/read_important_tips.html">读论文与口头报告的几项重点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/reference.html">参考材料</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../List/index.html">论文阅读清单</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../List/basis.html">神经网络基础(basis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/attention.html">注意力部分(attention)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/batch_normalization.html">批量&amp;正则化(batch&amp;normalization)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/classification.html">图像分类(CLAS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/convolutional.html">高级卷积网络知识(Convolutional)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/gan.html">AI合成部分(GAN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/nlp.html">自然语言处理(NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/objectdetection.html">目标检测(OBJ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/rnn.html">循环神经网络(RNN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/segementation.html">目标分割(SEG)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/transformer.html">Transformer</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/multimodal.html">多模态(MultiModal Learning)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/llm.html">大语言模型(Large Language Models)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">MultiModal Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">Large Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v3.html">GPT-v3:Language Models are Few-Shot Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="summary.html">summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="R-FCN.html">R-FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FPN.html">FPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FCOS.html">FCOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SSD.html">SSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VarifocalNet.html">论文阅读笔记</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="OneNet.html">OneNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SparseInst.html">SparseInst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Edge-YOLO.html">Edge-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MS-DAYOLO.html">MS-DAYOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SM-NAS.html">SM-NAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TSD.html">TSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EfficientDet.html">EfficientDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv1.html">PP-YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOv2.html">PP-YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOE.html">PP-YOLOE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOF.html">YOLOF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOP.html">YOLOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dy-yolov7.html">DY-yolov7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Gold-YOLO.html">Gold-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ViT-YOLO.html">ViT-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Detr.html">DETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RT-DETR.html">RT-DETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MS-DAYOLO.html">MS-DAYOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OneNet.html">OneNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sparse%20R-CNN.html">Sparse R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SparseInst.html">SparseInst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RTMDet.html">RTMDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv10.html">YOLOv10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/detection/leaderboard.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/detection/leaderboard.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Notes/detection/leaderboard.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <ul class="simple">
+<li><p>YOLOv3</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>APval</p></th>
+<th class="head"><p>APtest</p></th>
+<th class="head"><p>AP50</p></th>
+<th class="head"><p>SpeedGPU</p></th>
+<th class="head"><p>FPSGPU</p></th>
+<th class="head"><p></p></th>
+<th class="head"><p>params</p></th>
+<th class="head"><p>FLOPS</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov3/releases">YOLOv3</a></p></td>
+<td><p>43.3</p></td>
+<td><p>43.3</p></td>
+<td><p>63</p></td>
+<td><p>4.8ms</p></td>
+<td><p>208</p></td>
+<td><p></p></td>
+<td><p>61.9M</p></td>
+<td><p>156.4B</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov3/releases">YOLOv3-SPP</a></p></td>
+<td><p>44.3</p></td>
+<td><p>44.3</p></td>
+<td><p>64.6</p></td>
+<td><p>4.9ms</p></td>
+<td><p>204</p></td>
+<td><p></p></td>
+<td><p>63.0M</p></td>
+<td><p>157.0B</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov3/releases">YOLOv3-tiny</a></p></td>
+<td><p>17.6</p></td>
+<td><p>34.9</p></td>
+<td><p>34.9</p></td>
+<td><p>1.7ms</p></td>
+<td><p>588</p></td>
+<td><p></p></td>
+<td><p>8.9M</p></td>
+<td><p>13.3B</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>YOLOv5</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>size (pixels)</p></th>
+<th class="head"><p>mAPval 50-95</p></th>
+<th class="head"><p>mAPval 50</p></th>
+<th class="head"><p>Speed CPU b1 (ms)</p></th>
+<th class="head"><p>Speed V100 b1 (ms)</p></th>
+<th class="head"><p>Speed V100 b32 (ms)</p></th>
+<th class="head"><p>params (M)</p></th>
+<th class="head"><p>FLOPs &#64;640 (B)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n.pt">YOLOv5n</a></p></td>
+<td><p>640</p></td>
+<td><p>28</p></td>
+<td><p>45.7</p></td>
+<td><p>45</p></td>
+<td><p>6.3</p></td>
+<td><p>0.6</p></td>
+<td><p>1.9</p></td>
+<td><p>4.5</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5s.pt">YOLOv5s</a></p></td>
+<td><p>640</p></td>
+<td><p>37.4</p></td>
+<td><p>56.8</p></td>
+<td><p>98</p></td>
+<td><p>6.4</p></td>
+<td><p>0.9</p></td>
+<td><p>7.2</p></td>
+<td><p>16.5</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5m.pt">YOLOv5m</a></p></td>
+<td><p>640</p></td>
+<td><p>45.4</p></td>
+<td><p>64.1</p></td>
+<td><p>224</p></td>
+<td><p>8.2</p></td>
+<td><p>1.7</p></td>
+<td><p>21.2</p></td>
+<td><p>49</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5l.pt">YOLOv5l</a></p></td>
+<td><p>640</p></td>
+<td><p>49</p></td>
+<td><p>67.3</p></td>
+<td><p>430</p></td>
+<td><p>10.1</p></td>
+<td><p>2.7</p></td>
+<td><p>46.5</p></td>
+<td><p>109.1</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5x.pt">YOLOv5x</a></p></td>
+<td><p>640</p></td>
+<td><p>50.7</p></td>
+<td><p>68.9</p></td>
+<td><p>766</p></td>
+<td><p>12.1</p></td>
+<td><p>4.8</p></td>
+<td><p>86.7</p></td>
+<td><p>205.7</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n6.pt">YOLOv5n6</a></p></td>
+<td><p>1280</p></td>
+<td><p>36</p></td>
+<td><p>54.4</p></td>
+<td><p>153</p></td>
+<td><p>8.1</p></td>
+<td><p>2.1</p></td>
+<td><p>3.2</p></td>
+<td><p>4.6</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5s6.pt">YOLOv5s6</a></p></td>
+<td><p>1280</p></td>
+<td><p>44.8</p></td>
+<td><p>63.7</p></td>
+<td><p>385</p></td>
+<td><p>8.2</p></td>
+<td><p>3.6</p></td>
+<td><p>12.6</p></td>
+<td><p>16.8</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5m6.pt">YOLOv5m6</a></p></td>
+<td><p>1280</p></td>
+<td><p>51.3</p></td>
+<td><p>69.3</p></td>
+<td><p>887</p></td>
+<td><p>11.1</p></td>
+<td><p>6.8</p></td>
+<td><p>35.7</p></td>
+<td><p>50</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5l6.pt">YOLOv5l6</a></p></td>
+<td><p>1280</p></td>
+<td><p>53.7</p></td>
+<td><p>71.3</p></td>
+<td><p>1784</p></td>
+<td><p>15.8</p></td>
+<td><p>10.5</p></td>
+<td><p>76.8</p></td>
+<td><p>111.4</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5x6.pt">YOLOv5x6</a> + <a class="reference external" href="https://docs.ultralytics.com/yolov5/tutorials/test_time_augmentation">TTA</a></p></td>
+<td><p>1280 1536</p></td>
+<td><p>55.0 55.8</p></td>
+<td><p>72.7 72.7</p></td>
+<td><p>3136 -</p></td>
+<td><p>26.2 -</p></td>
+<td><p>19.4 -</p></td>
+<td><p>140.7 -</p></td>
+<td><p>209.8 -</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>YOLOv8</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>size (pixels)</p></th>
+<th class="head"><p>mAPval 50-95</p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p>Speed CPU ONNX (ms)</p></th>
+<th class="head"><p>Speed A100 TensorRT (ms)</p></th>
+<th class="head"><p>params (M)</p></th>
+<th class="head"><p>FLOPs (B)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8n.pt">YOLOv8n</a></p></td>
+<td><p>640</p></td>
+<td><p>37.3</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>80.4</p></td>
+<td><p>0.99</p></td>
+<td><p>3.2</p></td>
+<td><p>8.7</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8s.pt">YOLOv8s</a></p></td>
+<td><p>640</p></td>
+<td><p>44.9</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>128.4</p></td>
+<td><p>1.2</p></td>
+<td><p>11.2</p></td>
+<td><p>28.6</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8m.pt">YOLOv8m</a></p></td>
+<td><p>640</p></td>
+<td><p>50.2</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>234.7</p></td>
+<td><p>1.83</p></td>
+<td><p>25.9</p></td>
+<td><p>78.9</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8l.pt">YOLOv8l</a></p></td>
+<td><p>640</p></td>
+<td><p>52.9</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>375.2</p></td>
+<td><p>2.39</p></td>
+<td><p>43.7</p></td>
+<td><p>165.2</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/ultralytics/assets/releases/download/v8.2.0/yolov8x.pt">YOLOv8x</a></p></td>
+<td><p>640</p></td>
+<td><p>53.9</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>479.1</p></td>
+<td><p>3.53</p></td>
+<td><p>68.2</p></td>
+<td><p>257.8</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>YOLOv6</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>mAPval 0.5:0.95</p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p>SpeedT4 trt fp16 b1 (fps)</p></th>
+<th class="head"><p>SpeedT4 trt fp16 b32 (fps)</p></th>
+<th class="head"><p>Params (M)</p></th>
+<th class="head"><p>FLOPs (G)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/meituan/YOLOv6/releases/download/0.4.0/yolov6n.pt">YOLOv6-N</a></p></td>
+<td><p>640</p></td>
+<td><p>37.5</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>779</p></td>
+<td><p>1187</p></td>
+<td><p>4.7</p></td>
+<td><p>11.4</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/meituan/YOLOv6/releases/download/0.4.0/yolov6s.pt">YOLOv6-S</a></p></td>
+<td><p>640</p></td>
+<td><p>45</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>339</p></td>
+<td><p>484</p></td>
+<td><p>18.5</p></td>
+<td><p>45.3</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/meituan/YOLOv6/releases/download/0.4.0/yolov6m.pt">YOLOv6-M</a></p></td>
+<td><p>640</p></td>
+<td><p>50</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>175</p></td>
+<td><p>226</p></td>
+<td><p>34.9</p></td>
+<td><p>85.8</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/meituan/YOLOv6/releases/download/0.4.0/yolov6l.pt">YOLOv6-L</a></p></td>
+<td><p>640</p></td>
+<td><p>52.8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>98</p></td>
+<td><p>116</p></td>
+<td><p>59.6</p></td>
+<td><p>150.7</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/meituan/YOLOv6/releases/download/0.4.0/yolov6n6.pt">YOLOv6-N6</a></p></td>
+<td><p>1280</p></td>
+<td><p>44.9</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>228</p></td>
+<td><p>281</p></td>
+<td><p>10.4</p></td>
+<td><p>49.8</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/meituan/YOLOv6/releases/download/0.4.0/yolov6s6.pt">YOLOv6-S6</a></p></td>
+<td><p>1280</p></td>
+<td><p>50.3</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>98</p></td>
+<td><p>108</p></td>
+<td><p>41.4</p></td>
+<td><p>198</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/meituan/YOLOv6/releases/download/0.4.0/yolov6m6.pt">YOLOv6-M6</a></p></td>
+<td><p>1280</p></td>
+<td><p>55.2</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>47</p></td>
+<td><p>55</p></td>
+<td><p>79.6</p></td>
+<td><p>379.5</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/meituan/YOLOv6/releases/download/0.4.0/yolov6l6.pt">YOLOv6-L6</a></p></td>
+<td><p>1280</p></td>
+<td><p>57.2</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>26</p></td>
+<td><p>29</p></td>
+<td><p>140.4</p></td>
+<td><p>673.4</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>YOLOv7</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Test Size</p></th>
+<th class="head"><p>APtest</p></th>
+<th class="head"><p>AP50test</p></th>
+<th class="head"><p>AP75test</p></th>
+<th class="head"><p>batch 1 fps</p></th>
+<th class="head"><p>batch 32  average time</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7.pt">YOLOv7</a></p></td>
+<td><p>640</p></td>
+<td><p>51.40%</p></td>
+<td><p>69.70%</p></td>
+<td><p>55.90%</p></td>
+<td><p>161 fps</p></td>
+<td><p>2.8 ms</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7x.pt">YOLOv7-X</a></p></td>
+<td><p>640</p></td>
+<td><p>53.10%</p></td>
+<td><p>71.20%</p></td>
+<td><p>57.80%</p></td>
+<td><p>114 fps</p></td>
+<td><p>4.3 ms</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-w6.pt">YOLOv7-W6</a></p></td>
+<td><p>1280</p></td>
+<td><p>54.90%</p></td>
+<td><p>72.60%</p></td>
+<td><p>60.10%</p></td>
+<td><p>84 fps</p></td>
+<td><p>7.6 ms</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6.pt">YOLOv7-E6</a></p></td>
+<td><p>1280</p></td>
+<td><p>56.00%</p></td>
+<td><p>73.50%</p></td>
+<td><p>61.20%</p></td>
+<td><p>56 fps</p></td>
+<td><p>12.3 ms</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-d6.pt">YOLOv7-D6</a></p></td>
+<td><p>1280</p></td>
+<td><p>56.60%</p></td>
+<td><p>74.00%</p></td>
+<td><p>61.80%</p></td>
+<td><p>44 fps</p></td>
+<td><p>15.0 ms</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt">YOLOv7-E6E</a></p></td>
+<td><p>1280</p></td>
+<td><p>56.80%</p></td>
+<td><p>74.40%</p></td>
+<td><p>62.10%</p></td>
+<td><p>36 fps</p></td>
+<td><p>18.7 ms</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>YOLOv9</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Test Size</p></th>
+<th class="head"><p>APval</p></th>
+<th class="head"><p>AP50val</p></th>
+<th class="head"><p>AP75val</p></th>
+<th class="head"><p>Param.</p></th>
+<th class="head"><p>FLOPs</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-t-converted.pt">YOLOv9-T</a></p></td>
+<td><p>640</p></td>
+<td><p>38.30%</p></td>
+<td><p>53.10%</p></td>
+<td><p>41.30%</p></td>
+<td><p>2.0M</p></td>
+<td><p>7.7G</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-s-converted.pt">YOLOv9-S</a></p></td>
+<td><p>640</p></td>
+<td><p>46.80%</p></td>
+<td><p>63.40%</p></td>
+<td><p>50.70%</p></td>
+<td><p>7.1M</p></td>
+<td><p>26.4G</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-m-converted.pt">YOLOv9-M</a></p></td>
+<td><p>640</p></td>
+<td><p>51.40%</p></td>
+<td><p>68.10%</p></td>
+<td><p>56.10%</p></td>
+<td><p>20.0M</p></td>
+<td><p>76.3G</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-c-converted.pt">YOLOv9-C</a></p></td>
+<td><p>640</p></td>
+<td><p>53.00%</p></td>
+<td><p>70.20%</p></td>
+<td><p>57.80%</p></td>
+<td><p>25.3M</p></td>
+<td><p>102.1G</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/WongKinYiu/yolov9/releases/download/v0.1/yolov9-e-converted.pt">YOLOv9-E</a></p></td>
+<td><p>640</p></td>
+<td><p>55.60%</p></td>
+<td><p>72.80%</p></td>
+<td><p>60.60%</p></td>
+<td><p>57.3M</p></td>
+<td><p>189.0G</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>YOLOv10</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Test Size</p></th>
+<th class="head"><p>APval</p></th>
+<th class="head"><p></p></th>
+<th class="head"><p></p></th>
+<th class="head"><p>#Params</p></th>
+<th class="head"><p>FLOPs</p></th>
+<th class="head"><p>Latency</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://huggingface.co/jameslahm/yolov10n">YOLOv10-N</a></p></td>
+<td><p>640</p></td>
+<td><p>38.50%</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>2.3M</p></td>
+<td><p>6.7G</p></td>
+<td><p>1.84ms</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://huggingface.co/jameslahm/yolov10s">YOLOv10-S</a></p></td>
+<td><p>640</p></td>
+<td><p>46.30%</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>7.2M</p></td>
+<td><p>21.6G</p></td>
+<td><p>2.49ms</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://huggingface.co/jameslahm/yolov10m">YOLOv10-M</a></p></td>
+<td><p>640</p></td>
+<td><p>51.10%</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>15.4M</p></td>
+<td><p>59.1G</p></td>
+<td><p>4.74ms</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://huggingface.co/jameslahm/yolov10b">YOLOv10-B</a></p></td>
+<td><p>640</p></td>
+<td><p>52.50%</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>19.1M</p></td>
+<td><p>92.0G</p></td>
+<td><p>5.74ms</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://huggingface.co/jameslahm/yolov10l">YOLOv10-L</a></p></td>
+<td><p>640</p></td>
+<td><p>53.20%</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>24.4M</p></td>
+<td><p>120.3G</p></td>
+<td><p>7.28ms</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://huggingface.co/jameslahm/yolov10x">YOLOv10-X</a></p></td>
+<td><p>640</p></td>
+<td><p>54.40%</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>29.5M</p></td>
+<td><p>160.4G</p></td>
+<td><p>10.70ms</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>PP-YOLO</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>GPU number</p></th>
+<th class="head"><p>images/GPU</p></th>
+<th class="head"><p>backbone</p></th>
+<th class="head"><p>input shape</p></th>
+<th class="head"><p>Box  APval</p></th>
+<th class="head"><p>Box  APtest</p></th>
+<th class="head"><p>V100  FP32(FPS)</p></th>
+<th class="head"><p>V100  TensorRT FP16(FPS)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PP-YOLO</p></td>
+<td><p>8</p></td>
+<td><p>24</p></td>
+<td><p>ResNet50vd</p></td>
+<td><p>608</p></td>
+<td><p>44.8</p></td>
+<td><p>45.2</p></td>
+<td><p>72.9</p></td>
+<td><p>155.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>PP-YOLO</p></td>
+<td><p>8</p></td>
+<td><p>24</p></td>
+<td><p>ResNet50vd</p></td>
+<td><p>512</p></td>
+<td><p>43.9</p></td>
+<td><p>44.4</p></td>
+<td><p>89.9</p></td>
+<td><p>188.4</p></td>
+</tr>
+<tr class="row-even"><td><p>PP-YOLO</p></td>
+<td><p>8</p></td>
+<td><p>24</p></td>
+<td><p>ResNet50vd</p></td>
+<td><p>416</p></td>
+<td><p>42.1</p></td>
+<td><p>42.5</p></td>
+<td><p>109.1</p></td>
+<td><p>215.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>PP-YOLO</p></td>
+<td><p>8</p></td>
+<td><p>24</p></td>
+<td><p>ResNet50vd</p></td>
+<td><p>320</p></td>
+<td><p>38.9</p></td>
+<td><p>39.3</p></td>
+<td><p>132.2</p></td>
+<td><p>242.2</p></td>
+</tr>
+<tr class="row-even"><td><p>PP-YOLO_2x</p></td>
+<td><p>8</p></td>
+<td><p>24</p></td>
+<td><p>ResNet50vd</p></td>
+<td><p>608</p></td>
+<td><p>45.3</p></td>
+<td><p>45.9</p></td>
+<td><p>72.9</p></td>
+<td><p>155.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>PP-YOLO_2x</p></td>
+<td><p>8</p></td>
+<td><p>24</p></td>
+<td><p>ResNet50vd</p></td>
+<td><p>512</p></td>
+<td><p>44.4</p></td>
+<td><p>45</p></td>
+<td><p>89.9</p></td>
+<td><p>188.4</p></td>
+</tr>
+<tr class="row-even"><td><p>PP-YOLO_2x</p></td>
+<td><p>8</p></td>
+<td><p>24</p></td>
+<td><p>ResNet50vd</p></td>
+<td><p>416</p></td>
+<td><p>42.7</p></td>
+<td><p>43.2</p></td>
+<td><p>109.1</p></td>
+<td><p>215.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>PP-YOLO_2x</p></td>
+<td><p>8</p></td>
+<td><p>24</p></td>
+<td><p>ResNet50vd</p></td>
+<td><p>320</p></td>
+<td><p>39.5</p></td>
+<td><p>40.1</p></td>
+<td><p>132.2</p></td>
+<td><p>242.2</p></td>
+</tr>
+<tr class="row-even"><td><p>PP-YOLO</p></td>
+<td><p>4</p></td>
+<td><p>32</p></td>
+<td><p>ResNet18vd</p></td>
+<td><p>512</p></td>
+<td><p>29.2</p></td>
+<td><p>29.5</p></td>
+<td><p>357.1</p></td>
+<td><p>657.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>PP-YOLO</p></td>
+<td><p>4</p></td>
+<td><p>32</p></td>
+<td><p>ResNet18vd</p></td>
+<td><p>416</p></td>
+<td><p>28.6</p></td>
+<td><p>28.9</p></td>
+<td><p>409.8</p></td>
+<td><p>719.4</p></td>
+</tr>
+<tr class="row-even"><td><p>PP-YOLO</p></td>
+<td><p>4</p></td>
+<td><p>32</p></td>
+<td><p>ResNet18vd</p></td>
+<td><p>320</p></td>
+<td><p>26.2</p></td>
+<td><p>26.4</p></td>
+<td><p>480.7</p></td>
+<td><p>763.4</p></td>
+</tr>
+<tr class="row-odd"><td><p>PP-YOLOv2</p></td>
+<td><p>8</p></td>
+<td><p>12</p></td>
+<td><p>ResNet50vd</p></td>
+<td><p>640</p></td>
+<td><p>49.1</p></td>
+<td><p>49.5</p></td>
+<td><p>68.9</p></td>
+<td><p>106.5</p></td>
+</tr>
+<tr class="row-even"><td><p>PP-YOLOv2</p></td>
+<td><p>8</p></td>
+<td><p>12</p></td>
+<td><p>ResNet101vd</p></td>
+<td><p>640</p></td>
+<td><p>49.7</p></td>
+<td><p>50.3</p></td>
+<td><p>49.5</p></td>
+<td><p>87</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>PP-YOLOE</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Epoch</p></th>
+<th class="head"><p>GPU number</p></th>
+<th class="head"><p>images/GPU</p></th>
+<th class="head"><p>backbone</p></th>
+<th class="head"><p>input shape</p></th>
+<th class="head"><p>Box APval 0.5:0.95</p></th>
+<th class="head"><p>Box APtest 0.5:0.95</p></th>
+<th class="head"><p>Params(M)</p></th>
+<th class="head"><p>FLOPs(G)</p></th>
+<th class="head"><p>V100 FP32(FPS)</p></th>
+<th class="head"><p>V100 TensorRT FP16(FPS)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PP-YOLOE+_s</p></td>
+<td><p>80</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>cspresnet-s</p></td>
+<td><p>640</p></td>
+<td><p>43.7</p></td>
+<td><p>43.9</p></td>
+<td><p>7.93</p></td>
+<td><p>17.36</p></td>
+<td><p>208.3</p></td>
+<td><p>333.3</p></td>
+</tr>
+<tr class="row-odd"><td><p>PP-YOLOE+_m</p></td>
+<td><p>80</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>cspresnet-m</p></td>
+<td><p>640</p></td>
+<td><p>49.8</p></td>
+<td><p>50</p></td>
+<td><p>23.43</p></td>
+<td><p>49.91</p></td>
+<td><p>123.4</p></td>
+<td><p>208.3</p></td>
+</tr>
+<tr class="row-even"><td><p>PP-YOLOE+_l</p></td>
+<td><p>80</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>cspresnet-l</p></td>
+<td><p>640</p></td>
+<td><p>52.9</p></td>
+<td><p>53.3</p></td>
+<td><p>52.2</p></td>
+<td><p>110.07</p></td>
+<td><p>78.1</p></td>
+<td><p>149.2</p></td>
+</tr>
+<tr class="row-odd"><td><p>PP-YOLOE+_x</p></td>
+<td><p>80</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>cspresnet-x</p></td>
+<td><p>640</p></td>
+<td><p>54.7</p></td>
+<td><p>54.9</p></td>
+<td><p>98.42</p></td>
+<td><p>206.59</p></td>
+<td><p>45</p></td>
+<td><p>95.2</p></td>
+</tr>
+</tbody>
+</table>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="summary.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">summary</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="RCNN.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">RCNN</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By isLinXu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022, isLinXu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

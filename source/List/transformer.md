@@ -13,10 +13,10 @@
 |      | Pre-Trained Image Processing Transformer                     |       |                            |        |      |      |
 |      | Synthesizer: Rethinking Self-Attention in *Transformer* Models |       | Synthesizer                |        |      |      |
 |      | LeViT: a Vision *Transformer* in ConvNet's Clothing for Faster Inference |       | LeViT                      |        |      |      |
-|      |                                                              |       |                            |        |      |      |
-|      |                                                              |       |                            |        |      |      |
-|      |                                                              |       |                            |        |      |      |
-|      |                                                              |       |                            |        |      |      |
+|      | EfficientFormer: Vision Transformers at MobileNet Speed      |       | EfficientFormer            |        |      |      |
+|      | X-Transformer: A Green Self-attention Based Machine Translation Model |       | X-Transformer              |        |      |      |
+|      | Mix-ViT: Mixing attentive vision *transformer* for ultra-fine-grained visual categorization |       | Mix-ViT                    |        |      |      |
+|      | METER: a mobile vision transformer architecture for monocular depth estimation |       | METER                      |        |      |      |
 |      |                                                              |       |                            |        |      |      |
 |      |                                                              |       |                            |        |      |      |
 |      |                                                              |       |                            |        |      |      |

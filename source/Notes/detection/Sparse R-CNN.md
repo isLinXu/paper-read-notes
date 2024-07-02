@@ -50,7 +50,7 @@
    - 进一步优化Sparse R-CNN的性能，探索在不同数据集和场景中的应用。
    - 研究如何将Sparse R-CNN与其他先进的检测技术结合，以提高检测精度和效率。
 
-### 回答问题
+回答问题
 
 1. **这篇论文做了什么工作，它的动机是什么？**
    论文提出了Sparse R-CNN，一种纯稀疏的对象检测方法，动机是重新思考对象检测中密集先验的常规做法，并探索下一代对象检测器。
@@ -87,7 +87,7 @@
 
 ---
 
-fig1
+<img width="1180" alt="sparse-rcnn-fig1" src="https://github.com/isLinXu/issues/assets/59380685/0300e3a9-463c-4909-bcb5-48d013d0003c">
 
 这个图表展示了三种不同的目标检测管道的对比：Dense（密集型）、Dense-to-Sparse（密集到稀疏型）和Sparse（稀疏型）。具体来说，图表对比了RetinaNet、Faster R-CNN和Sparse R-CNN三种模型的结构和处理流程。以下是对图表结构的分析和总结：
 
@@ -149,6 +149,7 @@ fig1
 
 
 ---
+<img width="612" alt="sparse-rcnn-fig2" src="https://github.com/isLinXu/issues/assets/59380685/c9fc21de-9d58-44b1-9e24-537fc3c15395">
 
 这个图表展示了四种目标检测模型（RetinaNet、Faster R-CNN、DETR和Sparse R-CNN）在COCO val2017数据集上的收敛曲线。图表显示了这些模型在不同训练周期（epochs）下的COCO平均精度（AP）。以下是对图表结构的分析和总结：
 
@@ -218,6 +219,7 @@ fig1
 
 
 ---
+<img width="607" alt="sparse-rcnn-fig3" src="https://github.com/isLinXu/issues/assets/59380685/f4f57f19-2b4b-4b44-b5f9-de2860f0fad3">
 
 这个图表展示了Sparse R-CNN管道的概述，详细描述了其处理流程和结构。以下是对图表结构的分析和总结：
 
@@ -275,7 +277,8 @@ Sparse R-CNN管道通过引入可学习的候选框和候选特征，简化了�
 
 ---
 
-fig4
+<img width="1169" alt="sparse-rcnn-fig4" src="https://github.com/isLinXu/issues/assets/59380685/cbc13bf1-4bde-40ca-bbc0-7cd0bb1902a2">
+
 
 这个图表展示了在迭代架构中每个阶段的预测框的可视化，包括学习到的候选框。图表通过四个子图展示了从初始候选框到第六阶段的预测框的变化。以下是对图表结构的分析和总结：
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Neural Network &#8212; 论文阅读笔记</title>
+    <title>Swin Transformer &#8212; 论文阅读笔记</title>
   
   
   
@@ -42,7 +42,7 @@
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/neural-network/README';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/transformer/SwinTransformer';</script>
     <link rel="icon" href="../../_static/panda.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -106,8 +106,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -378,7 +376,7 @@
       
       
       
-      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/neural-network/README.md" target="_blank"
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/transformer/SwinTransformer.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -395,7 +393,7 @@
       
       
       
-      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/neural-network/README.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/transformer/SwinTransformer.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -425,7 +423,7 @@
       
       
       
-      <li><a href="../../_sources/Notes/neural-network/README.md" target="_blank"
+      <li><a href="../../_sources/Notes/transformer/SwinTransformer.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -509,7 +507,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Neural Network</h1>
+    <h1>Swin Transformer</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -519,7 +517,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">神经网络基础</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
 </ul>
             </nav>
         </div>
@@ -531,64 +529,123 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="neural-network">
-<h1>Neural Network<a class="headerlink" href="#neural-network" title="Link to this heading">#</a></h1>
+  <section id="swin-transformer">
+<h1>Swin Transformer<a class="headerlink" href="#swin-transformer" title="Link to this heading">#</a></h1>
+<p><strong>标题：</strong> Swin Transformer: Hierarchical Vision Transformer using Shifted Windows</p>
+<p><strong>作者：</strong> Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, Baining Guo，来自 Microsoft Research Asia。</p>
+<p><strong>摘要：</strong></p>
+<ul class="simple">
+<li><p>提出了一种新的 Transformer 架构，称为 Swin Transformer，作为计算机视觉的通用骨干网络。</p></li>
+<li><p>针对视觉领域特有的挑战，如视觉实体尺度变化大和图像像素分辨率高，提出了一种分层 Transformer，通过移动窗口计算表示，提高了效率。</p></li>
+<li><p>Swin Transformer 在多个视觉任务上表现出色，包括图像分类、目标检测和语义分割，并在 COCO 和 ADE20K 数据集上取得了新的最佳性能。</p></li>
+</ul>
+<p><strong>1. 工作内容与动机：</strong></p>
+<ul class="simple">
+<li><p>动机：现有的 Transformer 模型在计算机视觉领域的表现不如在 NLP 领域，需要解决视觉领域特有的挑战。</p></li>
+<li><p>工作：提出了 Swin Transformer，一种适用于计算机视觉任务的分层 Transformer 架构。</p></li>
+</ul>
+<p><strong>2. 试图解决的问题：</strong></p>
+<ul class="simple">
+<li><p>解决的问题是 Transformer 在计算机视觉领域应用时的效率和性能问题。</p></li>
+</ul>
+<p><strong>3. 是否是一个新的问题？</strong></p>
+<ul class="simple">
+<li><p>是一个新的问题，因为 Swin Transformer 提供了一种新的视角和解决方案来克服视觉任务中 Transformer 的局限性。</p></li>
+</ul>
+<p><strong>4. 科学假设：</strong></p>
+<ul class="simple">
+<li><p>假设通过引入移动窗口和分层结构，Transformer 能够更有效地处理视觉数据，并且在多种视觉任务中取得更好的性能。</p></li>
+</ul>
+<p><strong>5. 相关研究：</strong></p>
+<ul class="simple">
+<li><p>相关研究包括 CNN 和 Transformer 在图像分类、目标检测和语义分割等任务上的应用。</p></li>
+<li><p>归类：主要归类于计算机视觉和深度学习模型架构创新。</p></li>
+<li><p>值得关注的研究员：论文作者团队，以及在 CV 和 NLP 领域内对 Transformer 有贡献的研究者。</p></li>
+</ul>
+<p><strong>6. 解决方案的关键：</strong></p>
+<ul class="simple">
+<li><p>关键是提出了一种新的移动窗口机制，通过在连续层之间移动窗口划分，实现了跨窗口的连接，同时保持了计算的线性复杂度。</p></li>
+</ul>
+<p><strong>7. 实验设计：</strong></p>
+<ul class="simple">
+<li><p>实验设计包括在 ImageNet-1K、COCO 和 ADE20K 数据集上进行图像分类、目标检测和语义分割任务的评估。</p></li>
+</ul>
+<p><strong>8. 定量评估的数据集与代码开源情况：</strong></p>
+<ul class="simple">
+<li><p>使用了 ImageNet-1K、COCO 和 ADE20K 数据集进行评估。</p></li>
+<li><p>代码已在 GitHub 上开源：https://github.com/microsoft/Swin-Transformer。</p></li>
+</ul>
+<p><strong>9. 实验结果与科学假设的支持：</strong></p>
+<ul class="simple">
+<li><p>实验结果表明 Swin Transformer 在多个视觉任务上取得了优异的性能，支持了提出的科学假设。</p></li>
+</ul>
+<p><strong>10. 论文贡献：</strong></p>
+<ul class="simple">
+<li><p>提出了一种新的 Transformer 架构，适用于计算机视觉任务，并且在多个基准测试中取得了新的最佳性能。</p></li>
+</ul>
+<p><strong>11. 下一步工作：</strong></p>
+<ul class="simple">
+<li><p>未来的工作可以探索 Swin Transformer 在其他视觉任务上的应用，如视频理解、3D 视觉等，以及进一步优化模型结构和训练策略。</p></li>
+</ul>
 <section id="id1">
-<h2>神经网络基础<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Num</p></th>
-<th class="head"><p>Title</p></th>
-<th class="head"><p>Field</p></th>
-<th class="head"><p>Desc</p></th>
-<th class="head"><p>Author</p></th>
-<th class="head"><p>Time</p></th>
-<th class="head"><p>read</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>1</p></td>
-<td><p>ADAM: A METHOD FOR STOCHASTIC OPTIMIZATION</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>2015</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>2</p></td>
-<td><p>Wide &amp; Deep Learning for Recommender Systems</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>2016</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>3</p></td>
-<td><p>Targeted Dropout</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
+<h2>回答问题<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>这篇论文做了什么工作，它的动机是什么？</strong></p>
+<ul class="simple">
+<li><p>论文提出了一种新的 Transformer 架构，Swin Transformer，用于计算机视觉任务。动机是解决现有 Transformer 模型在视觉任务中的效率和性能问题。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇论文试图解决什么问题？</strong></p>
+<ul class="simple">
+<li><p>试图解决 Transformer 在计算机视觉领域应用时面临的挑战，如尺度变化和高分辨率像素的处理。</p></li>
+</ul>
+</li>
+<li><p><strong>这是否是一个新的问题？</strong></p>
+<ul class="simple">
+<li><p>是一个新的问题，提出了一种新的解决方案来克服现有模型的局限性。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇文章要验证一个什么科学假设？</strong></p>
+<ul class="simple">
+<li><p>验证通过引入移动窗口和分层结构，Transformer 能够更有效地处理视觉数据，并在多种视觉任务中取得更好的性能。</p></li>
+</ul>
+</li>
+<li><p><strong>有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</strong></p>
+<ul class="simple">
+<li><p>相关研究包括 CNN 和 Transformer 在图像分类、目标检测和语义分割等任务的应用。归类于计算机视觉和深度学习模型架构创新。值得关注的研究员包括论文作者团队和在 CV 和 NLP 领域内对 Transformer 有贡献的研究者。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中提到的解决方案之关键是什么？</strong></p>
+<ul class="simple">
+<li><p>解决方案的关键是引入了移动窗口机制和分层结构，提高了模型的效率和性能。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中的实验是如何设计的？</strong></p>
+<ul class="simple">
+<li><p>实验设计包括在 ImageNet-1K、COCO 和 ADE20K 数据集上进行图像分类、目标检测和语义分割任务的评估。</p></li>
+</ul>
+</li>
+<li><p><strong>用于定量评估的数据集上什么？代码有没有开源？</strong></p>
+<ul class="simple">
+<li><p>使用了 ImageNet-1K、COCO 和 ADE20K 数据集。代码已在 GitHub 上开源。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></p>
+<ul class="simple">
+<li><p>实验结果表明 Swin Transformer 在多个视觉任务上取得了优异的性能，很好地支持了科学假设。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇论文到底有什么贡献？</strong></p>
+<ul class="simple">
+<li><p>提出了一种新的 Transformer 架构，适用于计算机视觉任务，并在多个基准测试中取得了新的最佳性能。</p></li>
+</ul>
+</li>
+<li><p><strong>下一步呢？有什么工作可以继续深入？</strong></p>
+<ul class="simple">
+<li><p>未来的工作可以探索 Swin Transformer 在其他视觉任务上的应用，并进一步优化模型结构和训练策略。</p></li>
+</ul>
+</li>
+</ol>
 </section>
 </section>
 
@@ -619,7 +676,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">神经网络基础</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
 </ul>
   </nav></div>
 

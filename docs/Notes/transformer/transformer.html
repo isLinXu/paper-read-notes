@@ -1,0 +1,1150 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Attention Is All You Need &#8212; 论文阅读笔记</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css?v=7f9a90b1" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=40d2fe7a"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/transformer/transformer';</script>
+    <link rel="icon" href="../../_static/panda.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="论文阅读笔记 - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="论文阅读笔记 - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Method/index.html">论文阅读指南</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/efficent_read_paper.html">高效阅读方法及流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/how_to_read_paper.html">如何阅读论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/paper_10_question.html">论文速读十问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/read_important_tips.html">读论文与口头报告的几项重点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../Method/reference.html">参考材料</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../List/index.html">论文阅读清单</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../List/basis.html">神经网络基础(basis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/attention.html">注意力部分(attention)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/batch_normalization.html">批量&amp;正则化(batch&amp;normalization)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/classification.html">图像分类(CLAS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/convolutional.html">高级卷积网络知识(Convolutional)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/gan.html">AI合成部分(GAN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/nlp.html">自然语言处理(NLP)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/objectdetection.html">目标检测(OBJ)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/rnn.html">循环神经网络(RNN)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/segementation.html">图像分割(SEG)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/transformer.html">Transformer</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/multimodal.html">多模态(MultiModal Learning)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../List/llm.html">大语言模型(Large Language Models)</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">MultiModal Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">Large Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v3.html">GPT-v3:Language Models are Few-Shot Learners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../detection/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../detection/summary.html">summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/RCNN.html">RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Fast%20R-CNN.html">Fast R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Faster%20R-CNN.html">Faster R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/R-FCN.html">R-FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/FPN.html">FPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/FCOS.html">FCOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/SSD.html">SSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/VarifocalNet.html">论文阅读笔记</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../detection/OneNet.html">OneNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Cascade-RCNN.html">Cascade-RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/SparseInst.html">SparseInst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOv1.html">YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOv2.html">YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOv3.html">YOLOv3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Edge-YOLO.html">Edge-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/MS-DAYOLO.html">MS-DAYOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/ASFF.html">ASFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/ATSS.html">ATSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/SABL.html">SABL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/SM-NAS.html">SM-NAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/TSD.html">TSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/RDSNet.html">RDSNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/CenterMask.html">CenterMask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/EfficientDet.html">EfficientDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOX.html">YOLOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOv6.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/PP-YOLOv1.html">PP-YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/PP-YOLOv2.html">PP-YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/PP-YOLOE.html">PP-YOLOE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOF.html">YOLOF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOP.html">YOLOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOR.html">YOLOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOS.html">YOLOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Dy-yolov7.html">DY-yolov7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Gold-YOLO.html">Gold-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOv6_v3.0.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/ViT-YOLO.html">ViT-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Detr.html">DETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/RT-DETR.html">RT-DETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOv9.html">YOLOv9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/MS-DAYOLO.html">MS-DAYOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/OneNet.html">OneNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/Sparse%20R-CNN.html">Sparse R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/SparseInst.html">SparseInst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/OWL-ViT.html">OWL-ViT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/OWLv2.html">OWLv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/RTMDet.html">RTMDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLO-World.html">YOLO-World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/YOLOv10.html">YOLOv10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../detection/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../detection/yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/transformer/transformer.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/transformer/transformer.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Notes/transformer/transformer.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Attention Is All You Need</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">输入输出流程</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="attention-is-all-you-need">
+<h1>Attention Is All You Need<a class="headerlink" href="#attention-is-all-you-need" title="Link to this heading">#</a></h1>
+<p><strong>标题：</strong> Attention Is All You Need</p>
+<p><strong>作者：</strong> Ashish Vaswani 等，来自 Google Brain 和 Google Research，以及 University of Toronto。</p>
+<p><strong>摘要：</strong></p>
+<ul class="simple">
+<li><p>提出了一种新的神经网络架构，称为 Transformer，完全基于注意力机制，不使用循环和卷积神经网络。</p></li>
+<li><p>在两个机器翻译任务上进行了实验，证明 Transformer 模型在质量上更优，并且训练时间更短。</p></li>
+<li><p>在 WMT 2014 英德和英法翻译任务上取得了当时的最佳结果。</p></li>
+</ul>
+<p><strong>1. 工作内容与动机：</strong></p>
+<ul class="simple">
+<li><p>动机：现有的序列转换模型基于复杂的循环或卷积神经网络，包含编码器和解码器，并通过注意力机制连接编码器和解码器。这些模型存在训练时间长和难以并行化的问题。</p></li>
+<li><p>工作：提出 Transformer 模型，完全基于注意力机制，以解决上述问题，并提高模型的并行化能力和训练效率。</p></li>
+</ul>
+<p><strong>2. 试图解决的问题：</strong></p>
+<ul class="simple">
+<li><p>解决的问题是现有序列转换模型在训练效率和并行化方面的局限性。</p></li>
+</ul>
+<p><strong>3. 是否是新问题：</strong></p>
+<ul class="simple">
+<li><p>不完全是新问题，但提出的解决方案是创新的，因为它完全摒弃了传统的循环和卷积结构。</p></li>
+</ul>
+<p><strong>4. 科学假设：</strong></p>
+<ul class="simple">
+<li><p>假设 Transformer 模型能够通过注意力机制有效地捕捉序列数据中的依赖关系，并且在翻译任务中达到或超过现有模型的性能。</p></li>
+</ul>
+<p><strong>5. 相关研究：</strong></p>
+<ul class="simple">
+<li><p>相关研究包括循环神经网络（RNN）、长短期记忆网络（LSTM）、门控循环单元（GRU）以及各种注意力机制的研究。</p></li>
+<li><p>归类：主要归类于序列建模、机器翻译和自然语言处理领域。</p></li>
+<li><p>值得关注的研究员：论文作者团队中的成员，以及在这些领域有显著贡献的其他研究者。</p></li>
+</ul>
+<p><strong>6. 解决方案的关键：</strong></p>
+<ul class="simple">
+<li><p>关键是引入了多头注意力机制（Multi-Head Attention），允许模型同时关注序列的不同部分。</p></li>
+<li><p>引入了位置编码（Positional Encoding），使得模型能够理解序列中单词的顺序。</p></li>
+</ul>
+<p><strong>7. 实验设计：</strong></p>
+<ul class="simple">
+<li><p>实验设计包括在 WMT 2014 英德和英法翻译任务上的训练和评估。</p></li>
+<li><p>使用了标准的机器翻译数据集，并采用了适当的批处理和优化器设置。</p></li>
+</ul>
+<p><strong>8. 定量评估的数据集与代码开源情况：</strong></p>
+<ul class="simple">
+<li><p>数据集：WMT 2014 英德和英法翻译任务的标准数据集。</p></li>
+<li><p>代码开源：论文中提到代码可在 https://github.com/tensorflow/tensor2tensor 上找到。</p></li>
+</ul>
+<p><strong>9. 实验结果与科学假设的支持：</strong></p>
+<ul class="simple">
+<li><p>实验结果表明 Transformer 模型在翻译质量上优于现有的最佳模型，支持了提出的科学假设。</p></li>
+</ul>
+<p><strong>10. 论文贡献：</strong></p>
+<ul class="simple">
+<li><p>提出了一种新的神经网络架构，完全基于注意力机制。</p></li>
+<li><p>在机器翻译任务上取得了当时的最佳结果。</p></li>
+<li><p>证明了 Transformer 模型在训练效率和并行化方面的优势。</p></li>
+</ul>
+<p><strong>11. 下一步工作：</strong></p>
+<ul class="simple">
+<li><p>将 Transformer 模型应用于其他任务，如图像、音频和视频处理。</p></li>
+<li><p>探索局部、受限的注意力机制，以高效处理大型输入和输出。</p></li>
+<li><p>研究如何使生成过程更加非序列化。</p></li>
+</ul>
+<p>回答问题</p>
+<ol class="arabic simple">
+<li><p><strong>这篇论文做了什么工作，它的动机是什么？</strong></p>
+<ul class="simple">
+<li><p>论文提出了 Transformer 模型，动机是解决现有序列转换模型在训练效率和并行化方面的局限性。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇论文试图解决什么问题？</strong></p>
+<ul class="simple">
+<li><p>试图解决现有序列转换模型在训练效率和并行化方面的不足。</p></li>
+</ul>
+</li>
+<li><p><strong>这是否是一个新的问题？</strong></p>
+<ul class="simple">
+<li><p>不完全是新问题，但提出的解决方案是创新的。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇文章要验证一个什么科学假设？</strong></p>
+<ul class="simple">
+<li><p>验证 Transformer 模型能够通过注意力机制有效地捕捉序列数据中的依赖关系，并在翻译任务中达到或超过现有模型的性能。</p></li>
+</ul>
+</li>
+<li><p><strong>有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</strong></p>
+<ul class="simple">
+<li><p>相关研究包括 RNN、LSTM、GRU 以及各种注意力机制的研究。归类于序列建模、机器翻译和自然语言处理领域。值得关注的研究员包括论文作者团队成员和其他在这些领域有显著贡献的研究者。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中提到的解决方案之关键是什么？</strong></p>
+<ul class="simple">
+<li><p>解决方案的关键是引入了多头注意力机制和位置编码。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中的实验是如何设计的？</strong></p>
+<ul class="simple">
+<li><p>实验设计包括在 WMT 2014 英德和英法翻译任务上的训练和评估，使用标准的机器翻译数据集和适当的批处理及优化器设置。</p></li>
+</ul>
+</li>
+<li><p><strong>用于定量评估的数据集上什么？代码有没有开源？</strong></p>
+<ul class="simple">
+<li><p>使用了 WMT 2014 英德和英法翻译任务的标准数据集。代码已在 GitHub 上开源。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></p>
+<ul class="simple">
+<li><p>是的，实验结果表明 Transformer 模型在翻译质量上优于现有的最佳模型，很好地支持了科学假设。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇论文到底有什么贡献？</strong></p>
+<ul class="simple">
+<li><p>提出了一种新的神经网络架构，证明了其在机器翻译任务上的有效性，并展示了在训练效率和并行化方面的优势。</p></li>
+</ul>
+</li>
+<li><p><strong>下一步呢？有什么工作可以继续深入？</strong></p>
+<ul class="simple">
+<li><p>将 Transformer 模型应用于其他任务，探索局部、受限的注意力机制，以及研究如何使生成过程更加非序列化。</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+<p>这个图表展示了Transformer模型的架构，详细描述了其编码器（Encoder）和解码器（Decoder）的结构。以下是对图表结构的分析和总结：</p>
+<p>图表结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>整体架构</strong>：</p>
+<ul class="simple">
+<li><p>Transformer模型由编码器和解码器两部分组成，分别位于图表的左半部分和右半部分。</p></li>
+</ul>
+</li>
+<li><p><strong>编码器（Encoder）</strong>：</p>
+<ul class="simple">
+<li><p><strong>输入嵌入（Input Embedding）</strong>：输入数据首先通过嵌入层转换为嵌入向量。</p></li>
+<li><p><strong>位置编码（Positional Encoding）</strong>：嵌入向量加上位置编码，以保留序列信息。</p></li>
+<li><p><strong>多头自注意力机制（Multi-Head Attention）</strong>：输入嵌入经过多头自注意力机制，捕捉序列中不同位置之间的依赖关系。</p></li>
+<li><p><strong>加和归一化（Add &amp; Norm）</strong>：注意力机制的输出与输入相加，并进行归一化。</p></li>
+<li><p><strong>前馈神经网络（Feed Forward）</strong>：归一化后的输出通过前馈神经网络进行进一步处理。</p></li>
+<li><p><strong>加和归一化（Add &amp; Norm）</strong>：前馈神经网络的输出与输入相加，并进行归一化。</p></li>
+<li><p><strong>重复N次（Nx）</strong>：上述过程重复N次，形成堆叠的编码器层。</p></li>
+</ul>
+</li>
+<li><p><strong>解码器（Decoder）</strong>：</p>
+<ul class="simple">
+<li><p><strong>输出嵌入（Output Embedding）</strong>：目标输出数据首先通过嵌入层转换为嵌入向量。</p></li>
+<li><p><strong>位置编码（Positional Encoding）</strong>：嵌入向量加上位置编码，以保留序列信息。</p></li>
+<li><p><strong>掩码多头自注意力机制（Masked Multi-Head Attention）</strong>：目标输出嵌入经过掩码多头自注意力机制，防止模型在预测下一个词时看到未来的信息。</p></li>
+<li><p><strong>加和归一化（Add &amp; Norm）</strong>：注意力机制的输出与输入相加，并进行归一化。</p></li>
+<li><p><strong>多头注意力机制（Multi-Head Attention）</strong>：编码器的输出与解码器的输入通过多头注意力机制进行交互，捕捉编码器和解码器之间的依赖关系。</p></li>
+<li><p><strong>加和归一化（Add &amp; Norm）</strong>：注意力机制的输出与输入相加，并进行归一化。</p></li>
+<li><p><strong>前馈神经网络（Feed Forward）</strong>：归一化后的输出通过前馈神经网络进行进一步处理。</p></li>
+<li><p><strong>加和归一化（Add &amp; Norm）</strong>：前馈神经网络的输出与输入相加，并进行归一化。</p></li>
+<li><p><strong>重复N次（Nx）</strong>：上述过程重复N次，形成堆叠的解码器层。</p></li>
+<li><p><strong>线性层（Linear）和Softmax</strong>：解码器的最终输出通过线性层和Softmax层，生成输出概率分布。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>图表展示了Transformer模型的详细架构，具体总结如下：</p>
+<ol class="arabic simple">
+<li><p><strong>编码器（Encoder）</strong>：</p>
+<ul class="simple">
+<li><p>编码器由多层堆叠的自注意力机制和前馈神经网络组成。</p></li>
+<li><p>输入数据通过嵌入层和位置编码进行预处理。</p></li>
+<li><p>多头自注意力机制捕捉序列中不同位置之间的依赖关系。</p></li>
+<li><p>前馈神经网络对注意力机制的输出进行进一步处理。</p></li>
+<li><p>加和归一化操作在每个子层后进行，确保模型的稳定性。</p></li>
+</ul>
+</li>
+<li><p><strong>解码器（Decoder）</strong>：</p>
+<ul class="simple">
+<li><p>解码器由多层堆叠的掩码自注意力机制、多头注意力机制和前馈神经网络组成。</p></li>
+<li><p>目标输出数据通过嵌入层和位置编码进行预处理。</p></li>
+<li><p>掩码多头自注意力机制防止模型在预测下一个词时看到未来的信息。</p></li>
+<li><p>多头注意力机制捕捉编码器和解码器之间的依赖关系。</p></li>
+<li><p>前馈神经网络对注意力机制的输出进行进一步处理。</p></li>
+<li><p>加和归一化操作在每个子层后进行，确保模型的稳定性。</p></li>
+<li><p>最终输出通过线性层和Softmax层生成输出概率分布。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<p>Transformer模型通过编码器和解码器的堆叠结构，实现了高效的序列到序列转换。其主要特点和优势包括：</p>
+<ol class="arabic simple">
+<li><p><strong>多头自注意力机制</strong>：</p>
+<ul class="simple">
+<li><p>多头自注意力机制能够捕捉序列中不同位置之间的依赖关系，提高模型的表达能力。</p></li>
+</ul>
+</li>
+<li><p><strong>位置编码</strong>：</p>
+<ul class="simple">
+<li><p>位置编码保留了序列信息，使得模型能够处理序列数据。</p></li>
+</ul>
+</li>
+<li><p><strong>加和归一化</strong>：</p>
+<ul class="simple">
+<li><p>加和归一化操作在每个子层后进行，确保模型的稳定性和训练的有效性。</p></li>
+</ul>
+</li>
+<li><p><strong>堆叠结构</strong>：</p>
+<ul class="simple">
+<li><p>编码器和解码器的堆叠结构使得模型能够处理复杂的序列到序列转换任务。</p></li>
+</ul>
+</li>
+</ol>
+<p>总体而言，Transformer模型通过其独特的架构设计，实现了高效的序列到序列转换，广泛应用于自然语言处理等领域。</p>
+<p>Transformer模型是一种用于序列到序列任务（如机器翻译、文本生成等）的深度学习模型。它通过编码器-解码器架构和自注意力机制实现高效的序列处理。以下是Transformer模型的输入输出流程及其工作机制的详细描述：</p>
+<section id="id1">
+<h2>输入输出流程<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>输入阶段</strong>：</p>
+<ul class="simple">
+<li><p><strong>输入嵌入（Input Embedding）</strong>：输入序列（如句子中的单词）首先通过嵌入层转换为嵌入向量。这些嵌入向量是固定维度的表示，捕捉了输入序列的语义信息。</p></li>
+<li><p><strong>位置编码（Positional Encoding）</strong>：由于Transformer模型没有内置的序列顺序信息，位置编码被加到嵌入向量中，以保留序列的位置信息。</p></li>
+</ul>
+</li>
+<li><p><strong>编码器阶段（Encoder）</strong>：</p>
+<ul class="simple">
+<li><p><strong>多头自注意力机制（Multi-Head Self-Attention）</strong>：输入嵌入经过多头自注意力机制，捕捉序列中不同位置之间的依赖关系。多头注意力机制通过多个注意力头并行处理，增强了模型的表达能力。</p></li>
+<li><p><strong>加和归一化（Add &amp; Norm）</strong>：注意力机制的输出与输入相加，并进行归一化，确保模型的稳定性。</p></li>
+<li><p><strong>前馈神经网络（Feed Forward Network）</strong>：归一化后的输出通过前馈神经网络进行进一步处理。</p></li>
+<li><p><strong>加和归一化（Add &amp; Norm）</strong>：前馈神经网络的输出与输入相加，并进行归一化。</p></li>
+<li><p><strong>重复N次（Nx）</strong>：上述过程重复N次，形成堆叠的编码器层。编码器的输出是对输入序列的高维表示。</p></li>
+</ul>
+</li>
+<li><p><strong>解码器阶段（Decoder）</strong>：</p>
+<ul class="simple">
+<li><p><strong>输出嵌入（Output Embedding）</strong>：目标输出序列（如翻译后的句子）通过嵌入层转换为嵌入向量。</p></li>
+<li><p><strong>位置编码（Positional Encoding）</strong>：嵌入向量加上位置编码，以保留序列信息。</p></li>
+<li><p><strong>掩码多头自注意力机制（Masked Multi-Head Self-Attention）</strong>：目标输出嵌入经过掩码多头自注意力机制，防止模型在预测下一个词时看到未来的信息。</p></li>
+<li><p><strong>加和归一化（Add &amp; Norm）</strong>：注意力机制的输出与输入相加，并进行归一化。</p></li>
+<li><p><strong>多头注意力机制（Multi-Head Attention）</strong>：编码器的输出与解码器的输入通过多头注意力机制进行交互，捕捉编码器和解码器之间的依赖关系。</p></li>
+<li><p><strong>加和归一化（Add &amp; Norm）</strong>：注意力机制的输出与输入相加，并进行归一化。</p></li>
+<li><p><strong>前馈神经网络（Feed Forward Network）</strong>：归一化后的输出通过前馈神经网络进行进一步处理。</p></li>
+<li><p><strong>加和归一化（Add &amp; Norm）</strong>：前馈神经网络的输出与输入相加，并进行归一化。</p></li>
+<li><p><strong>重复N次（Nx）</strong>：上述过程重复N次，形成堆叠的解码器层。</p></li>
+</ul>
+</li>
+<li><p><strong>输出阶段</strong>：</p>
+<ul class="simple">
+<li><p><strong>线性层（Linear）</strong>：解码器的最终输出通过线性层，转换为词汇表大小的向量。</p></li>
+<li><p><strong>Softmax层</strong>：线性层的输出通过Softmax层，生成每个词的概率分布。概率最高的词作为模型的预测输出。</p></li>
+</ul>
+</li>
+</ol>
+<p>工作机制</p>
+<ol class="arabic simple">
+<li><p><strong>自注意力机制（Self-Attention Mechanism）</strong>：</p>
+<ul class="simple">
+<li><p>自注意力机制是Transformer模型的核心。它通过计算输入序列中每个位置与其他位置的相关性，捕捉序列中不同位置之间的依赖关系。</p></li>
+<li><p>自注意力机制的计算包括三个步骤：计算查询（Query）、键（Key）和值（Value），然后通过点积计算注意力权重，最后加权求和得到输出。</p></li>
+</ul>
+</li>
+<li><p><strong>多头注意力机制（Multi-Head Attention Mechanism）</strong>：</p>
+<ul class="simple">
+<li><p>多头注意力机制通过多个注意力头并行处理，增强了模型的表达能力。每个注意力头独立计算自注意力，然后将所有头的输出拼接在一起，通过线性变换得到最终输出。</p></li>
+</ul>
+</li>
+<li><p><strong>位置编码（Positional Encoding）</strong>：</p>
+<ul class="simple">
+<li><p>位置编码用于保留序列的位置信息。它通过正弦和余弦函数生成，添加到输入嵌入中，使得模型能够区分序列中不同位置的元素。</p></li>
+</ul>
+</li>
+<li><p><strong>加和归一化（Add &amp; Norm）</strong>：</p>
+<ul class="simple">
+<li><p>加和归一化操作在每个子层后进行，确保模型的稳定性和训练的有效性。它包括残差连接（将子层的输入与输出相加）和层归一化（对加和结果进行归一化）。</p></li>
+</ul>
+</li>
+<li><p><strong>前馈神经网络（Feed Forward Network）</strong>：</p>
+<ul class="simple">
+<li><p>前馈神经网络对注意力机制的输出进行进一步处理。它由两个线性变换和一个激活函数组成，增强了模型的非线性表达能力。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>Transformer模型通过编码器和解码器的堆叠结构和自注意力机制，实现了高效的序列到序列转换。其主要特点和优势包括：</p>
+<ol class="arabic simple">
+<li><p><strong>多头自注意力机制</strong>：捕捉序列中不同位置之间的依赖关系，提高模型的表达能力。</p></li>
+<li><p><strong>位置编码</strong>：保留序列信息，使得模型能够处理序列数据。</p></li>
+<li><p><strong>加和归一化</strong>：确保模型的稳定性和训练的有效性。</p></li>
+<li><p><strong>堆叠结构</strong>：编码器和解码器的堆叠结构使得模型能够处理复杂的序列到序列转换任务。</p></li>
+</ol>
+<p>总体而言，Transformer模型通过其独特的架构设计，实现了高效的序列到序列转换，广泛应用于自然语言处理等领域。</p>
+<hr class="docutils" />
+<p>注意力机制（Attention Mechanism）是深度学习中一种强大的技术，特别是在处理序列数据（如自然语言处理、机器翻译等）时。它的主要优势和作用如下：</p>
+<ul class="simple">
+<li><p>优势</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>捕捉长距离依赖关系</strong>：</p>
+<ul class="simple">
+<li><p>传统的序列模型（如RNN和LSTM）在处理长序列时，容易出现梯度消失或梯度爆炸问题，导致难以捕捉长距离的依赖关系。注意力机制通过直接计算序列中任意两个位置之间的相关性，能够有效捕捉长距离依赖关系。</p></li>
+</ul>
+</li>
+<li><p><strong>并行计算</strong>：</p>
+<ul class="simple">
+<li><p>传统的序列模型通常需要逐步处理序列数据，难以并行化。注意力机制则可以并行计算序列中所有位置之间的相关性，大大提高了计算效率。</p></li>
+</ul>
+</li>
+<li><p><strong>动态权重分配</strong>：</p>
+<ul class="simple">
+<li><p>注意力机制根据输入数据的内容动态分配权重，使得模型能够更灵活地关注重要的信息。这种动态权重分配的能力使得模型在处理不同任务时具有更好的适应性。</p></li>
+</ul>
+</li>
+<li><p><strong>增强模型的解释性</strong>：</p>
+<ul class="simple">
+<li><p>注意力机制通过显式计算注意力权重，使得模型的决策过程更加透明。我们可以通过可视化注意力权重，了解模型在处理输入数据时关注了哪些部分，从而增强模型的解释性。</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>作用</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>提高模型性能</strong>：</p>
+<ul class="simple">
+<li><p>注意力机制通过捕捉长距离依赖关系和动态分配权重，显著提高了模型在序列到序列任务中的性能，如机器翻译、文本生成、语音识别等。</p></li>
+</ul>
+</li>
+<li><p><strong>增强模型的表达能力</strong>：</p>
+<ul class="simple">
+<li><p>注意力机制通过多头注意力（Multi-Head Attention）并行处理多个注意力头，增强了模型的表达能力，使得模型能够捕捉更丰富的特征。</p></li>
+</ul>
+</li>
+<li><p><strong>提高训练效率</strong>：</p>
+<ul class="simple">
+<li><p>注意力机制的并行计算能力大大提高了模型的训练效率，使得模型能够在较短时间内处理大规模数据。</p></li>
+</ul>
+</li>
+</ol>
+<ul class="simple">
+<li><p>工作机制</p></li>
+</ul>
+<p>注意力机制的核心思想是通过计算输入序列中每个位置与其他位置的相关性，动态分配权重，从而生成加权求和的输出。以下是注意力机制的详细工作流程：</p>
+<ol class="arabic simple">
+<li><p><strong>计算查询（Query）、键（Key）和值（Value）</strong>：</p>
+<ul class="simple">
+<li><p>对于输入序列中的每个位置，首先通过线性变换生成查询向量（Query）、键向量（Key）和值向量（Value）。这些向量用于计算注意力权重和加权求和。</p></li>
+</ul>
+</li>
+<li><p><strong>计算注意力权重</strong>：</p>
+<ul class="simple">
+<li><p>通过点积计算查询向量和键向量之间的相似度，得到注意力权重。具体公式如下：
+$${Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+$$
+其中，$(Q)$ 是查询向量，$(K)$ 是键向量，$(V)$ 是值向量，$(d_k)$ 是键向量的维度。点积结果通过softmax函数归一化，得到注意力权重。</p></li>
+</ul>
+</li>
+<li><p><strong>加权求和</strong>：</p>
+<ul class="simple">
+<li><p>使用注意力权重对值向量进行加权求和，得到最终的输出。加权求和的结果是输入序列中每个位置的加权表示，捕捉了序列中不同位置之间的依赖关系。</p></li>
+</ul>
+</li>
+<li><p><strong>多头注意力机制（Multi-Head Attention）</strong>：</p>
+<ul class="simple">
+<li><p>多头注意力机制通过多个注意力头并行处理，增强了模型的表达能力。每个注意力头独立计算注意力，然后将所有头的输出拼接在一起，通过线性变换得到最终输出。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>注意力机制通过捕捉长距离依赖关系、并行计算、动态权重分配和增强模型的解释性，显著提高了序列到序列任务中的模型性能和训练效率。其核心工作机制包括计算查询、键和值向量，计算注意力权重，加权求和，以及多头注意力机制的并行处理。注意力机制的引入，使得Transformer模型在自然语言处理等领域取得了显著的成功。</p>
+<hr class="docutils" />
+<p>图表展示了两种注意力机制的结构：<strong>缩放点积注意力（Scaled Dot-Product Attention）</strong> 和<strong>多头注意力（Multi-Head Attention）</strong>。
+以下是对这两种机制的详细分析和总结：</p>
+<p>缩放点积注意力（Scaled Dot-Product Attention）</p>
+<p>结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>输入</strong>：</p>
+<ul class="simple">
+<li><p>查询向量（Query, Q）</p></li>
+<li><p>键向量（Key, K）</p></li>
+<li><p>值向量（Value, V）</p></li>
+</ul>
+</li>
+<li><p><strong>计算步骤</strong>：</p>
+<ul class="simple">
+<li><p><strong>点积计算（MatMul）</strong>：计算查询向量和键向量的点积，得到注意力分数矩阵。</p></li>
+<li><p><strong>缩放（Scale）</strong>：将点积结果除以键向量的维度的平方根（(\sqrt{d_k})），以防止点积结果过大。</p></li>
+<li><p><strong>掩码（Mask, 可选）</strong>：在某些情况下（如解码器中的自注意力），需要对未来的词进行掩码处理，防止模型看到未来的信息。</p></li>
+<li><p><strong>Softmax</strong>：对缩放后的结果应用Softmax函数，得到注意力权重。</p></li>
+<li><p><strong>加权求和（MatMul）</strong>：使用注意力权重对值向量进行加权求和，得到最终的注意力输出。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>缩放点积注意力通过计算查询向量和键向量的点积，得到注意力权重，并使用这些权重对值向量进行加权求和。缩放操作和Softmax函数确保了注意力权重的稳定性和归一化。</p>
+<p>多头注意力（Multi-Head Attention）</p>
+<p>结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>输入</strong>：</p>
+<ul class="simple">
+<li><p>查询向量（Query, Q）</p></li>
+<li><p>键向量（Key, K）</p></li>
+<li><p>值向量（Value, V）</p></li>
+</ul>
+</li>
+<li><p><strong>计算步骤</strong>：</p>
+<ul class="simple">
+<li><p><strong>线性变换（Linear）</strong>：对输入的查询、键和值向量分别进行线性变换，生成多个头的查询、键和值向量。</p></li>
+<li><p><strong>并行计算多个缩放点积注意力</strong>：每个头独立计算缩放点积注意力，得到多个注意力输出。</p></li>
+<li><p><strong>拼接（Concat）</strong>：将所有头的注意力输出拼接在一起。</p></li>
+<li><p><strong>线性变换（Linear）</strong>：对拼接后的结果进行线性变换，得到最终的多头注意力输出。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>多头注意力通过并行计算多个缩放点积注意力，增强了模型的表达能力。每个头独立计算注意力，捕捉不同的特征和依赖关系。最终的拼接和线性变换步骤将多个头的输出整合在一起，形成更丰富的表示。</p>
+<p>综合总结</p>
+<ul class="simple">
+<li><p><strong>缩放点积注意力</strong>：通过计算查询和键的点积，得到注意力权重，并使用这些权重对值向量进行加权求和。缩放和Softmax操作确保了权重的稳定性和归一化。</p></li>
+<li><p><strong>多头注意力</strong>：通过并行计算多个缩放点积注意力，增强了模型的表达能力。每个头独立计算注意力，捕捉不同的特征和依赖关系，最终通过拼接和线性变换整合多个头的输出。</p></li>
+</ul>
+<p>这两种注意力机制是Transformer模型的核心组件，显著提高了模型在序列到序列任务中的性能和训练效率。</p>
+<hr class="docutils" />
+<p>这个图表展示了注意力机制在处理长距离依赖关系时的可视化效果，特别是在编码器自注意力（self-attention）中的表现。以下是对图表结构的详细分析和总结：</p>
+<p>图表结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>输入序列</strong>：</p>
+<ul class="simple">
+<li><p>图表的左侧和底部显示了输入序列的单词，例如 “It is in this context that a majority of government representatives passed the resolution in 2009.”。</p></li>
+</ul>
+</li>
+<li><p><strong>注意力权重</strong>：</p>
+<ul class="simple">
+<li><p>图表中不同颜色的线条表示不同注意力头（attention heads）的注意力权重。</p></li>
+<li><p>每条线从一个单词指向另一个单词，表示该注意力头在计算当前单词的表示时，关注了哪些其他单词。</p></li>
+</ul>
+</li>
+<li><p><strong>颜色编码</strong>：</p>
+<ul class="simple">
+<li><p>不同颜色的线条表示不同的注意力头。每个注意力头独立计算注意力权重，捕捉不同的特征和依赖关系。</p></li>
+</ul>
+</li>
+<li><p><strong>示例单词</strong>：</p>
+<ul class="simple">
+<li><p>图表特别展示了单词 “making” 的注意力权重。可以看到，多个注意力头关注了与 “making” 相关的其他单词，如 “more difficult”。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ol class="arabic simple">
+<li><p><strong>长距离依赖关系</strong>：</p>
+<ul class="simple">
+<li><p>图表展示了注意力机制在处理长距离依赖关系时的效果。注意力头能够关注到序列中远离当前单词的位置，从而捕捉到长距离的依赖关系。例如，单词 “making” 与 “more difficult” 之间的依赖关系被多个注意力头捕捉到。</p></li>
+</ul>
+</li>
+<li><p><strong>多头注意力的优势</strong>：</p>
+<ul class="simple">
+<li><p>不同颜色的线条表示不同的注意力头，说明多头注意力机制能够并行处理多个注意力头，每个头独立关注不同的特征和依赖关系。这增强了模型的表达能力，使得模型能够捕捉到更丰富的特征。</p></li>
+</ul>
+</li>
+<li><p><strong>自注意力机制</strong>：</p>
+<ul class="simple">
+<li><p>图表展示的是编码器中的自注意力机制，即每个单词在计算自身表示时，能够关注到输入序列中的其他单词。这种机制使得模型能够灵活地捕捉到序列中不同位置之间的依赖关系。</p></li>
+</ul>
+</li>
+<li><p><strong>可视化的解释性</strong>：</p>
+<ul class="simple">
+<li><p>注意力机制的可视化增强了模型的解释性。通过可视化注意力权重，我们可以直观地看到模型在处理输入数据时关注了哪些部分，从而更好地理解模型的决策过程。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<p>这个图表通过可视化注意力权重，展示了注意力机制在处理长距离依赖关系时的效果。多头注意力机制通过并行处理多个注意力头，增强了模型的表达能力和捕捉特征的能力。自注意力机制使得模型能够灵活地关注输入序列中的不同位置，捕捉到序列中不同位置之间的依赖关系。注意力机制的可视化增强了模型的解释性，使得我们能够更好地理解模型的决策过程。</p>
+<hr class="docutils" />
+<p>这个图表展示了注意力机制在处理代词指代（anaphora resolution）时的可视化效果，特别是在编码器自注意力（self-attention）中的表现。图表分为两个部分，分别展示了第5层和第6层的注意力头的注意力权重。以下是对图表结构的详细分析和总结：</p>
+<p>图表结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>输入序列</strong>：</p>
+<ul class="simple">
+<li><p>图表的左侧和底部显示了输入序列的单词，例如 “The law is never perfect but its application should be just.”。</p></li>
+</ul>
+</li>
+<li><p><strong>注意力权重</strong>：</p>
+<ul class="simple">
+<li><p>图表中不同颜色的线条表示不同注意力头（attention heads）的注意力权重。</p></li>
+<li><p>每条线从一个单词指向另一个单词，表示该注意力头在计算当前单词的表示时，关注了哪些其他单词。</p></li>
+</ul>
+</li>
+<li><p><strong>颜色编码</strong>：</p>
+<ul class="simple">
+<li><p>不同颜色的线条表示不同的注意力头。每个注意力头独立计算注意力权重，捕捉不同的特征和依赖关系。</p></li>
+</ul>
+</li>
+<li><p><strong>示例单词</strong>：</p>
+<ul class="simple">
+<li><p>图表特别展示了单词 “its” 的注意力权重。可以看到，多个注意力头关注了与 “its” 相关的其他单词，如 “The law”。</p></li>
+</ul>
+</li>
+</ol>
+<p>上半部分：第5层的注意力头</p>
+<ul class="simple">
+<li><p><strong>全局注意力</strong>：</p>
+<ul>
+<li><p>上半部分展示了第5层的一个注意力头的全局注意力权重。可以看到，这个注意力头在处理每个单词时，关注了输入序列中的多个单词。</p></li>
+<li><p>特别是，单词 “its” 的注意力权重集中在 “The law” 上，表明这个注意力头在处理代词指代时，能够正确地将 “its” 与 “The law” 关联起来。</p></li>
+</ul>
+</li>
+</ul>
+<p>下半部分：第5层和第6层的注意力头</p>
+<ul class="simple">
+<li><p><strong>局部注意力</strong>：</p>
+<ul>
+<li><p>下半部分展示了第5层和第6层的两个注意力头在处理单词 “its” 时的注意力权重。</p></li>
+<li><p>可以看到，这两个注意力头在处理 “its” 时，都集中关注了 “The law”，表明这两个注意力头在处理代词指代时，能够正确地将 “its” 与 “The law” 关联起来。</p></li>
+</ul>
+</li>
+</ul>
+<p>总结</p>
+<ol class="arabic simple">
+<li><p><strong>代词指代</strong>：</p>
+<ul class="simple">
+<li><p>图表展示了注意力机制在处理代词指代时的效果。注意力头能够正确地将代词 “its” 与其指代的名词 “The law” 关联起来，表明注意力机制在处理代词指代任务中具有较强的能力。</p></li>
+</ul>
+</li>
+<li><p><strong>多头注意力的优势</strong>：</p>
+<ul class="simple">
+<li><p>不同颜色的线条表示不同的注意力头，说明多头注意力机制能够并行处理多个注意力头，每个头独立关注不同的特征和依赖关系。这增强了模型的表达能力，使得模型能够捕捉到更丰富的特征。</p></li>
+</ul>
+</li>
+<li><p><strong>自注意力机制</strong>：</p>
+<ul class="simple">
+<li><p>图表展示的是编码器中的自注意力机制，即每个单词在计算自身表示时，能够关注到输入序列中的其他单词。这种机制使得模型能够灵活地捕捉到序列中不同位置之间的依赖关系。</p></li>
+</ul>
+</li>
+<li><p><strong>可视化的解释性</strong>：</p>
+<ul class="simple">
+<li><p>注意力机制的可视化增强了模型的解释性。通过可视化注意力权重，我们可以直观地看到模型在处理输入数据时关注了哪些部分，从而更好地理解模型的决策过程。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<p>这个图表通过可视化注意力权重，展示了注意力机制在处理代词指代任务时的效果。多头注意力机制通过并行处理多个注意力头，增强了模型的表达能力和捕捉特征的能力。自注意力机制使得模型能够灵活地关注输入序列中的不同位置，捕捉到序列中不同位置之间的依赖关系。注意力机制的可视化增强了模型的解释性，使得我们能够更好地理解模型的决策过程。</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">输入输出流程</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By isLinXu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022, isLinXu.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

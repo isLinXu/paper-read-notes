@@ -179,7 +179,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../List/objectdetection.html">目标检测(OBJ)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../List/rnn.html">循环神经网络(RNN)</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../../List/segementation.html">目标分割(SEG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/segementation.html">图像分割(SEG)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../List/transformer.html">Transformer</a></li>
 
@@ -533,9 +533,9 @@ document.write(`
                   
   <section id="sparse-r-cnn">
 <h1>Sparse R-CNN<a class="headerlink" href="#sparse-r-cnn" title="Link to this heading">#</a></h1>
-<p>**标题：**Sparse R-CNN: End-to-End Object Detection with Learnable Proposals</p>
-<p>**作者：**Peize Sun, Rufeng Zhang, Yi Jiang, Tao Kong, Chenfeng Xu, Wei Zhan, Masayoshi Tomizuka, Lei Li, Zehuan Yuan, Changhu Wang, Ping Luo</p>
-<p>**机构：**The University of Hong Kong, Tongji University, ByteDance AI Lab, University of California, Berkeley</p>
+<p><strong>标题：</strong> Sparse R-CNN: End-to-End Object Detection with Learnable Proposals</p>
+<p><strong>作者：</strong> Peize Sun, Rufeng Zhang, Yi Jiang, Tao Kong, Chenfeng Xu, Wei Zhan, Masayoshi Tomizuka, Lei Li, Zehuan Yuan, Changhu Wang, Ping Luo</p>
+<p><strong>机构：</strong> The University of Hong Kong, Tongji University, ByteDance AI Lab, University of California, Berkeley</p>
 <p><strong>摘要：</strong>
 本文提出了Sparse R-CNN，一种用于图像中对象检测的纯稀疏方法。与依赖密集对象候选的现有工作不同，Sparse R-CNN提供了一组固定数量的N个学习到的对象提议，用于执行分类和定位。这种方法消除了与对象候选设计和多对一标签分配相关的所有工作，并直接输出最终预测，无需非极大值抑制（NMS）后处理步骤。Sparse R-CNN在COCO数据集上展示了与成熟检测器基线相当的准确性、运行时间和训练收敛性能。</p>
 <p><strong>1. 工作内容与动机：</strong></p>
@@ -616,6 +616,341 @@ document.write(`
 下一步工作可以进一步优化Sparse R-CNN的性能，探索在不同数据集和场景中的应用，以及研究如何将Sparse R-CNN与其他先进的检测技术结合，以提高检测精度和效率。</p></li>
 </ol>
 <hr class="docutils" />
+<p>fig1</p>
+<p>这个图表展示了三种不同的目标检测管道的对比：Dense（密集型）、Dense-to-Sparse（密集到稀疏型）和Sparse（稀疏型）。具体来说，图表对比了RetinaNet、Faster R-CNN和Sparse R-CNN三种模型的结构和处理流程。以下是对图表结构的分析和总结：</p>
+<p>图表结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>(a) Dense: RetinaNet</strong>：</p>
+<ul class="simple">
+<li><p><strong>输入</strong>：图像。</p></li>
+<li><p><strong>处理流程</strong>：</p>
+<ul>
+<li><p>在所有图像网格上生成(H \times W \times k)个候选框（anchor boxes）。</p></li>
+<li><p>对每个候选框进行分类和边界框回归，得到类别和边界框预测（class, box）。</p></li>
+</ul>
+</li>
+<li><p><strong>特点</strong>：在所有图像网格上生成大量候选框，计算量大。</p></li>
+</ul>
+</li>
+<li><p><strong>(b) Dense-to-Sparse: Faster R-CNN</strong>：</p>
+<ul class="simple">
+<li><p><strong>输入</strong>：图像。</p></li>
+<li><p><strong>处理流程</strong>：</p>
+<ul>
+<li><p>在所有图像网格上生成(H \times W \times k)个候选框（anchor boxes）。</p></li>
+<li><p>选择一小部分(N)个候选框（N predicted proposals）进行进一步处理。</p></li>
+<li><p>通过池化操作从对应区域提取图像特征。</p></li>
+<li><p>对提取的特征进行分类和边界框回归，得到类别和边界框预测（class, box）。</p></li>
+</ul>
+</li>
+<li><p><strong>特点</strong>：从大量候选框中选择一小部分进行进一步处理，减少计算量。</p></li>
+</ul>
+</li>
+<li><p><strong>(c) Sparse: Sparse R-CNN</strong>：</p>
+<ul class="simple">
+<li><p><strong>输入</strong>：图像。</p></li>
+<li><p><strong>处理流程</strong>：</p>
+<ul>
+<li><p>直接生成一小部分(N)个学习到的候选框（N learned proposals）。</p></li>
+<li><p>对每个候选框进行分类和边界框回归，得到类别和边界框预测（class, box）。</p></li>
+</ul>
+</li>
+<li><p><strong>特点</strong>：直接生成少量候选框，显著减少计算量。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>图表展示了三种不同目标检测管道的对比，具体总结如下：</p>
+<ol class="arabic simple">
+<li><p><strong>Dense: RetinaNet</strong>：</p>
+<ul class="simple">
+<li><p>在所有图像网格上生成大量候选框，计算量大。</p></li>
+<li><p>对每个候选框进行分类和边界框回归，处理流程简单直接。</p></li>
+<li><p>适用于需要高密度候选框的场景，但计算资源消耗较大。</p></li>
+</ul>
+</li>
+<li><p><strong>Dense-to-Sparse: Faster R-CNN</strong>：</p>
+<ul class="simple">
+<li><p>在所有图像网格上生成大量候选框，但只选择一小部分进行进一步处理。</p></li>
+<li><p>通过池化操作从对应区域提取图像特征，减少计算量。</p></li>
+<li><p>适用于需要从大量候选框中筛选出高质量候选框的场景，计算资源消耗适中。</p></li>
+</ul>
+</li>
+<li><p><strong>Sparse: Sparse R-CNN</strong>：</p>
+<ul class="simple">
+<li><p>直接生成少量学习到的候选框，显著减少计算量。</p></li>
+<li><p>对每个候选框进行分类和边界框回归，处理流程高效。</p></li>
+<li><p>适用于需要高效处理少量高质量候选框的场景，计算资源消耗最小。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<p>图表揭示了三种目标检测管道在候选框生成和处理流程上的差异。</p>
+<ul class="simple">
+<li><p>RetinaNet采用密集型方法，生成大量候选框，计算量大；</p></li>
+<li><p>Faster R-CNN采用密集到稀疏型方法，从大量候选框中筛选出少量高质量候选框，计算量适中；</p></li>
+<li><p>Sparse R-CNN采用稀疏型方法，直接生成少量高质量候选框，计算量最小。</p></li>
+</ul>
+<p>在实际应用中，选择合适的目标检测管道需要根据具体需求和计算资源进行权衡。</p>
+<ul class="simple">
+<li><p>对于需要高密度候选框的场景，可以选择RetinaNet；</p></li>
+<li><p>对于需要从大量候选框中筛选高质量候选框的场景，可以选择Faster R-CNN；</p></li>
+<li><p>对于需要高效处理少量高质量候选框的场景，可以选择Sparse R-CNN。</p></li>
+</ul>
+<hr class="docutils" />
+<p>这个图表展示了四种目标检测模型（RetinaNet、Faster R-CNN、DETR和Sparse R-CNN）在COCO val2017数据集上的收敛曲线。图表显示了这些模型在不同训练周期（epochs）下的COCO平均精度（AP）。以下是对图表结构的分析和总结：</p>
+<p>图表结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>横轴（X轴）</strong>：</p>
+<ul class="simple">
+<li><p>表示训练周期（Training Epochs），从0到150。</p></li>
+</ul>
+</li>
+<li><p><strong>纵轴（Y轴）</strong>：</p>
+<ul class="simple">
+<li><p>表示COCO平均精度（COCO AP），从15到50。</p></li>
+</ul>
+</li>
+<li><p><strong>曲线</strong>：</p>
+<ul class="simple">
+<li><p>四条曲线分别表示不同模型的收敛情况：</p>
+<ul>
+<li><p><strong>绿色</strong>：RetinaNet</p></li>
+<li><p><strong>橙色</strong>：Faster R-CNN</p></li>
+<li><p><strong>黄色</strong>：DETR</p></li>
+<li><p><strong>红色</strong>：Sparse R-CNN</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>标注</strong>：</p>
+<ul class="simple">
+<li><p>图中标注了“3x schedule”和“500 epochs”两个关键点：</p>
+<ul>
+<li><p>“3x schedule”表示在大约36个训练周期时的性能。</p></li>
+<li><p>“500 epochs”表示DETR模型在500个训练周期后的性能。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>图表展示了四种目标检测模型在不同训练周期下的收敛情况，具体总结如下：</p>
+<ol class="arabic simple">
+<li><p><strong>RetinaNet</strong>：</p>
+<ul class="simple">
+<li><p>收敛速度较快，在前20个训练周期内迅速提升COCO AP。</p></li>
+<li><p>在大约36个训练周期时达到稳定状态，COCO AP约为37。</p></li>
+<li><p>随后性能略有波动，但总体保持稳定。</p></li>
+</ul>
+</li>
+<li><p><strong>Faster R-CNN</strong>：</p>
+<ul class="simple">
+<li><p>收敛速度较快，在前20个训练周期内迅速提升COCO AP。</p></li>
+<li><p>在大约36个训练周期时达到稳定状态，COCO AP约为40。</p></li>
+<li><p>随后性能略有波动，但总体保持稳定。</p></li>
+</ul>
+</li>
+<li><p><strong>DETR</strong>：</p>
+<ul class="simple">
+<li><p>收敛速度较慢，在前50个训练周期内逐渐提升COCO AP。</p></li>
+<li><p>在大约100个训练周期时达到稳定状态，COCO AP约为42。</p></li>
+<li><p>在500个训练周期后，COCO AP进一步提升至约45。</p></li>
+</ul>
+</li>
+<li><p><strong>Sparse R-CNN</strong>：</p>
+<ul class="simple">
+<li><p>收敛速度较快，在前20个训练周期内迅速提升COCO AP。</p></li>
+<li><p>在大约36个训练周期时达到稳定状态，COCO AP约为45。</p></li>
+<li><p>随后性能略有波动，但总体保持稳定。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<p>图表揭示了四种目标检测模型在训练过程中的收敛情况和性能表现：</p>
+<ol class="arabic simple">
+<li><p><strong>收敛速度</strong>：</p>
+<ul class="simple">
+<li><p>RetinaNet、Faster R-CNN和Sparse R-CNN的收敛速度较快，在前20个训练周期内迅速提升性能。</p></li>
+<li><p>DETR的收敛速度较慢，需要更多的训练周期才能达到稳定状态。</p></li>
+</ul>
+</li>
+<li><p><strong>最终性能</strong>：</p>
+<ul class="simple">
+<li><p>Sparse R-CNN在36个训练周期时达到最高的COCO AP（约45），表现最优。</p></li>
+<li><p>DETR在500个训练周期后达到较高的COCO AP（约45），但需要更长的训练时间。</p></li>
+<li><p>Faster R-CNN在36个训练周期时达到较高的COCO AP（约40），表现次优。</p></li>
+<li><p>RetinaNet在36个训练周期时达到较低的COCO AP（约37），表现最差。</p></li>
+</ul>
+</li>
+<li><p><strong>训练效率</strong>：</p>
+<ul class="simple">
+<li><p>Sparse R-CNN在较少的训练周期内达到了最高的性能，显示了较高的训练效率。</p></li>
+<li><p>DETR需要更多的训练周期才能达到较高的性能，训练效率较低。</p></li>
+</ul>
+</li>
+</ol>
+<p>总体而言，Sparse R-CNN在训练效率和检测质量方面表现最优，能够在较少的训练周期内达到最高的COCO AP。DETR虽然最终性能较高，但需要更长的训练时间。Faster R-CNN和RetinaNet的收敛速度较快，但最终性能不如Sparse R-CNN。选择合适的目标检测模型需要根据具体需求和计算资源进行权衡。</p>
+<hr class="docutils" />
+<p>这个图表展示了Sparse R-CNN管道的概述，详细描述了其处理流程和结构。以下是对图表结构的分析和总结：</p>
+<p>图表结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>输入</strong>：</p>
+<ul class="simple">
+<li><p><strong>图像</strong>：输入图像通过特征提取网络（backbone）提取特征图（feature map）。</p></li>
+<li><p><strong>候选框（Proposal Boxes）</strong>：一组候选框，表示为(N \times 4)的矩阵，其中N是候选框的数量，4表示每个候选框的四个坐标参数。</p></li>
+<li><p><strong>候选特征（Proposal Features）</strong>：一组候选特征，表示为(N \times d)的矩阵，其中N是候选框的数量，d是特征维度。这些特征是可学习的参数。</p></li>
+</ul>
+</li>
+<li><p><strong>处理流程</strong>：</p>
+<ul class="simple">
+<li><p><strong>特征提取</strong>：输入图像通过特征提取网络提取特征图。</p></li>
+<li><p><strong>动态头（Dynamic Head k）</strong>：每个候选框和对应的候选特征被输入到其专属的动态头中。动态头生成目标特征。</p></li>
+<li><p><strong>分类和回归（Cls, Reg）</strong>：目标特征被用于生成分类（Cls）和回归（Reg）结果，分别表示目标的类别和边界框位置。</p></li>
+</ul>
+</li>
+<li><p><strong>输出</strong>：</p>
+<ul class="simple">
+<li><p><strong>分类结果（Cls）</strong>：目标的类别。</p></li>
+<li><p><strong>回归结果（Reg）</strong>：目标的边界框位置。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>图表展示了Sparse R-CNN管道的处理流程和结构，具体总结如下：</p>
+<ol class="arabic simple">
+<li><p><strong>输入</strong>：</p>
+<ul class="simple">
+<li><p>输入包括图像、一组候选框和一组候选特征。</p></li>
+<li><p>候选框和候选特征是可学习的参数，能够在训练过程中进行优化。</p></li>
+</ul>
+</li>
+<li><p><strong>特征提取</strong>：</p>
+<ul class="simple">
+<li><p>输入图像通过特征提取网络提取特征图，为后续处理提供基础特征。</p></li>
+</ul>
+</li>
+<li><p><strong>动态头处理</strong>：</p>
+<ul class="simple">
+<li><p>每个候选框和对应的候选特征被输入到其专属的动态头中。</p></li>
+<li><p>动态头生成目标特征，用于后续的分类和回归。</p></li>
+</ul>
+</li>
+<li><p><strong>分类和回归</strong>：</p>
+<ul class="simple">
+<li><p>目标特征被用于生成分类和回归结果。</p></li>
+<li><p>分类结果表示目标的类别，回归结果表示目标的边界框位置。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<p>Sparse R-CNN管道通过引入可学习的候选框和候选特征，简化了目标检测的处理流程。其主要特点和优势包括：</p>
+<ol class="arabic simple">
+<li><p><strong>可学习的候选框和特征</strong>：</p>
+<ul class="simple">
+<li><p>候选框和候选特征是可学习的参数，能够在训练过程中进行优化，提高检测精度。</p></li>
+</ul>
+</li>
+<li><p><strong>动态头处理</strong>：</p>
+<ul class="simple">
+<li><p>每个候选框和对应的候选特征被输入到其专属的动态头中，生成目标特征。</p></li>
+<li><p>动态头的设计使得模型能够更好地适应不同的目标和场景，提高检测性能。</p></li>
+</ul>
+</li>
+<li><p><strong>高效的分类和回归</strong>：</p>
+<ul class="simple">
+<li><p>目标特征被用于生成分类和回归结果，简化了处理流程，提高了检测效率。</p></li>
+</ul>
+</li>
+</ol>
+<p>总体而言，Sparse R-CNN通过引入可学习的候选框和候选特征，以及动态头的设计，实现了高效的目标检测。其处理流程简洁明了，能够在保证检测精度的同时，提高检测效率。</p>
+<hr class="docutils" />
+<p>fig4</p>
+<p>这个图表展示了在迭代架构中每个阶段的预测框的可视化，包括学习到的候选框。图表通过四个子图展示了从初始候选框到第六阶段的预测框的变化。以下是对图表结构的分析和总结：</p>
+<p>图表结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>子图</strong>：</p>
+<ul class="simple">
+<li><p>图表分为四个子图，每个子图展示了不同阶段的预测框：</p>
+<ul>
+<li><p><strong>(a) Learned proposal boxes</strong>：学习到的候选框。</p></li>
+<li><p><strong>(b) Stage1 boxes</strong>：第一阶段的预测框。</p></li>
+<li><p><strong>(c) Stage3 boxes</strong>：第三阶段的预测框。</p></li>
+<li><p><strong>(d) Stage6 boxes</strong>：第六阶段的预测框。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>颜色编码</strong>：</p>
+<ul class="simple">
+<li><p><strong>白色框</strong>：表示学习到的候选框。</p></li>
+<li><p><strong>其他颜色的框</strong>：表示在后续阶段中预测的框。</p></li>
+<li><p><strong>相同颜色的框</strong>：表示来自同一候选框的预测框。</p></li>
+</ul>
+</li>
+<li><p><strong>图像内容</strong>：</p>
+<ul class="simple">
+<li><p>每个子图包含两行图像，每行展示了不同场景下的目标检测结果。</p></li>
+<li><p>第一行图像展示了一个滑雪者的检测过程。</p></li>
+<li><p>第二行图像展示了一个街道场景的检测过程。</p></li>
+</ul>
+</li>
+<li><p><strong>预测框的变化</strong>：</p>
+<ul class="simple">
+<li><p>随着阶段的推进，预测框逐渐变得更加精确，重复的框被移除。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<p>图表展示了在迭代架构中每个阶段的预测框的变化，具体总结如下：</p>
+<ol class="arabic simple">
+<li><p><strong>初始候选框（Learned proposal boxes）</strong>：</p>
+<ul class="simple">
+<li><p>初始候选框是随机分布在图像上的，覆盖了整个图像。</p></li>
+<li><p>这些候选框是可学习的参数，能够在训练过程中进行优化。</p></li>
+</ul>
+</li>
+<li><p><strong>第一阶段预测框（Stage1 boxes）</strong>：</p>
+<ul class="simple">
+<li><p>在第一阶段，预测框开始集中在目标区域，但仍然存在较多的重复框。</p></li>
+<li><p>预测框的分类得分较低，精度有待提高。</p></li>
+</ul>
+</li>
+<li><p><strong>第三阶段预测框（Stage3 boxes）</strong>：</p>
+<ul class="simple">
+<li><p>在第三阶段，预测框变得更加精确，重复框减少。</p></li>
+<li><p>预测框的分类得分有所提高，目标区域的覆盖更加准确。</p></li>
+</ul>
+</li>
+<li><p><strong>第六阶段预测框（Stage6 boxes）</strong>：</p>
+<ul class="simple">
+<li><p>在第六阶段，预测框进一步精确，重复框基本被移除。</p></li>
+<li><p>预测框的分类得分较高，目标区域的覆盖非常准确。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<p>图表揭示了在迭代架构中，随着阶段的推进，预测框逐渐变得更加精确，重复的框被移除。具体结论如下：</p>
+<ol class="arabic simple">
+<li><p><strong>初始候选框的随机分布</strong>：</p>
+<ul class="simple">
+<li><p>初始候选框是随机分布在图像上的，覆盖了整个图像，为后续的迭代提供了基础。</p></li>
+</ul>
+</li>
+<li><p><strong>迭代优化</strong>：</p>
+<ul class="simple">
+<li><p>随着迭代阶段的推进，预测框逐渐集中在目标区域，精度不断提高。</p></li>
+<li><p>重复的框逐渐被移除，预测框的分类得分逐渐提高。</p></li>
+</ul>
+</li>
+<li><p><strong>高效的目标检测</strong>：</p>
+<ul class="simple">
+<li><p>通过多阶段的迭代优化，Sparse R-CNN能够实现高效的目标检测。</p></li>
+<li><p>最终阶段的预测框精度高，重复框少，能够准确覆盖目标区域。</p></li>
+</ul>
+</li>
+</ol>
+<p>总体而言，图表展示了Sparse R-CNN在迭代架构中的预测框优化过程。通过多阶段的迭代优化，模型能够逐渐提高预测框的精度，移除重复框，实现高效的目标检测。这种迭代优化方法使得Sparse R-CNN在目标检测任务中表现出色。</p>
 </section>
 </section>
 

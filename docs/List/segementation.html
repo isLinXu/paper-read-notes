@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>目标分割(SEG) &#8212; 论文阅读笔记</title>
+    <title>图像分割(SEG) &#8212; 论文阅读笔记</title>
   
   
   
@@ -30,8 +30,8 @@
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css?v=7f9a90b1" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -179,7 +179,7 @@
 <li class="toctree-l2"><a class="reference internal" href="objectdetection.html">目标检测(OBJ)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rnn.html">循环神经网络(RNN)</a></li>
 
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">目标分割(SEG)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">图像分割(SEG)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="transformer.html">Transformer</a></li>
 
@@ -189,22 +189,12 @@
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../Notes/index.html">论文阅读笔记</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/mm-l/index.html">MultiModal Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
-
-
-
-
-
-
-
-
-
 <li class="toctree-l3"><a class="reference internal" href="../Notes/mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
-
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/llm/index.html">Large Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Notes/llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
@@ -212,12 +202,109 @@
 <li class="toctree-l3"><a class="reference internal" href="../Notes/llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
 </ul>
 </li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Notes/detection/index.html">Object Detection</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/summary.html">summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/RCNN.html">RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Fast%20R-CNN.html">Fast R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Faster%20R-CNN.html">Faster R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/R-FCN.html">R-FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/FPN.html">FPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/FCOS.html">FCOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/SSD.html">SSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/VarifocalNet.html">论文阅读笔记</a></li>
+
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/OneNet.html">OneNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Mask%20R-CNN.html">Mask R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Cascade-RCNN.html">Cascade-RCNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/SparseInst.html">SparseInst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv1.html">YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv2.html">YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv3.html">YOLOv3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Edge-YOLO.html">Edge-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/MS-DAYOLO.html">MS-DAYOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/ASFF.html">ASFF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/ATSS.html">ATSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/SABL.html">SABL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/SM-NAS.html">SM-NAS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/TSD.html">TSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/RDSNet.html">RDSNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/CenterMask.html">CenterMask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/EfficientDet.html">EfficientDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Simple%20Multi-dataset%20Detection.html">Simple Multi-dataset Detection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOX.html">YOLOX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv6.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/PP-YOLOv1.html">PP-YOLOv1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/PP-YOLOv2.html">PP-YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/PP-YOLOE.html">PP-YOLOE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOF.html">YOLOF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOP.html">YOLOP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOR.html">YOLOR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOS.html">YOLOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Dy-yolov7.html">DY-yolov7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Gold-YOLO.html">Gold-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv6_v3.0.html">YOLOv6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/ViT-YOLO.html">ViT-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Detr.html">DETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/RT-DETR.html">RT-DETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv9.html">YOLOv9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/MS-DAYOLO.html">MS-DAYOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/OneNet.html">OneNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/Sparse%20R-CNN.html">Sparse R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/SparseInst.html">SparseInst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/OWL-ViT.html">OWL-ViT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/OWLv2.html">OWLv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/RTMDet.html">RTMDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLO-World.html">YOLO-World</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/YOLOv10.html">YOLOv10</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../Notes/detection/yolo%E7%BB%BC%E8%BF%B0.html"><strong>YOLO的全面综述：从YOLOv1到YOLOv8及未来</strong></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Read/index.html">论文阅读记录</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Summary/index.html">论文阅读总结</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="simple">
 </ul>
 </li>
 </ul>
@@ -422,7 +509,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>目标分割(SEG)</h1>
+    <h1>图像分割(SEG)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -432,7 +519,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">目标分割(SEG)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">图像分割(SEG)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 </ul>
 
@@ -447,7 +534,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section id="seg">
-<h1>目标分割(SEG)<a class="headerlink" href="#seg" title="Link to this heading">#</a></h1>
+<h1>图像分割(SEG)<a class="headerlink" href="#seg" title="Link to this heading">#</a></h1>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Num</p></th>
@@ -462,7 +549,7 @@ document.write(`
 <tbody>
 <tr class="row-even"><td><p>7</p></td>
 <td><p>Fully Convolutional Networks for Semantic Segmentation</p></td>
-<td><p>目标分割</p></td>
+<td><p>图像分割</p></td>
 <td><p>FCN</p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -470,7 +557,7 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p>8</p></td>
 <td><p>U-Net：Convolutional Networks for Biomedical</p></td>
-<td><p>目标分割</p></td>
+<td><p>图像分割</p></td>
 <td><p>U-Net</p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -478,7 +565,7 @@ document.write(`
 </tr>
 <tr class="row-even"><td><p>9</p></td>
 <td><p>Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs</p></td>
-<td><p>目标分割</p></td>
+<td><p>图像分割</p></td>
 <td><p>Deeplabv1</p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -486,7 +573,7 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p>10</p></td>
 <td><p>Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs</p></td>
-<td><p>目标分割</p></td>
+<td><p>图像分割</p></td>
 <td><p>Deeplabv2</p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -494,7 +581,7 @@ document.write(`
 </tr>
 <tr class="row-even"><td><p>11</p></td>
 <td><p>Rethinking Atrous Convolution for Semantic Image Segmentation</p></td>
-<td><p>目标分割</p></td>
+<td><p>图像分割</p></td>
 <td><p>Deeplabv3</p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -502,7 +589,7 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p>12</p></td>
 <td><p>Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation</p></td>
-<td><p>目标分割</p></td>
+<td><p>图像分割</p></td>
 <td><p>Deeplabv3+</p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -510,7 +597,7 @@ document.write(`
 </tr>
 <tr class="row-even"><td><p>13</p></td>
 <td><p>Mask R-CNN</p></td>
-<td><p>目标分割</p></td>
+<td><p>图像分割</p></td>
 <td><p>Mask R-CNN</p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -518,7 +605,7 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p>14</p></td>
 <td><p>Feature Pyramid Networks for Object Detection</p></td>
-<td><p>目标分割</p></td>
+<td><p>图像分割</p></td>
 <td><p>FPN</p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -526,7 +613,7 @@ document.write(`
 </tr>
 <tr class="row-even"><td><p>15</p></td>
 <td><p>Focal Loss for Dense Object Detection</p></td>
-<td><p>目标分割</p></td>
+<td><p>图像分割</p></td>
 <td><p>RetinaNet</p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -534,16 +621,64 @@ document.write(`
 </tr>
 <tr class="row-odd"><td><p></p></td>
 <td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
+<td><p>图像分割</p></td>
+<td><p>MEInst</p></td>
 <td><p></p></td>
 <td><p></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p></p></td>
 <td><p></p></td>
+<td><p>图像分割</p></td>
+<td><p>CenterMask</p></td>
 <td><p></p></td>
 <td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>图像分割</p></td>
+<td><p>CondInst</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>图像分割</p></td>
+<td><p>SOLO</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>图像分割</p></td>
+<td><p>SOLOv2</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>图像分割</p></td>
+<td><p>PolarMask</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p></p></td>
+<td><p>图像分割</p></td>
+<td><p>YOLACT</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p></p></td>
+<td><p>图像分割</p></td>
+<td><p>YOLACT++</p></td>
 <td><p></p></td>
 <td><p></p></td>
 <td><p></p></td>
@@ -617,7 +752,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">目标分割(SEG)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">图像分割(SEG)</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
 </ul>
 

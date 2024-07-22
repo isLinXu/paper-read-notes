@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Neural Network &#8212; 论文阅读笔记</title>
+    <title>ViT &#8212; 论文阅读笔记</title>
   
   
   
@@ -42,7 +42,7 @@
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
     <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/neural-network/README';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Notes/transformer/ViT';</script>
     <link rel="icon" href="../../_static/panda.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -106,8 +106,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -378,7 +376,7 @@
       
       
       
-      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/neural-network/README.md" target="_blank"
+      <li><a href="https://github.com/isLinXu/paper-read-notes/edit/main/Notes/transformer/ViT.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -395,7 +393,7 @@
       
       
       
-      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/neural-network/README.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/isLinXu/paper-read-notes/issues/new?title=Issue%20on%20page%20%2FNotes/transformer/ViT.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -425,7 +423,7 @@
       
       
       
-      <li><a href="../../_sources/Notes/neural-network/README.md" target="_blank"
+      <li><a href="../../_sources/Notes/transformer/ViT.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -509,7 +507,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Neural Network</h1>
+    <h1>ViT</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -519,7 +517,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">神经网络基础</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
 </ul>
             </nav>
         </div>
@@ -531,64 +529,125 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="neural-network">
-<h1>Neural Network<a class="headerlink" href="#neural-network" title="Link to this heading">#</a></h1>
+  <section id="vit">
+<h1>ViT<a class="headerlink" href="#vit" title="Link to this heading">#</a></h1>
+<p><strong>标题：</strong> An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale</p>
+<p><strong>作者：</strong> Alexey Dosovitskiy, Lucas Beyer, 等，来自 Google Research。</p>
+<p><strong>摘要：</strong></p>
+<ul class="simple">
+<li><p>论文提出了一种新的图像识别方法，使用纯 Transformer 架构直接应用于图像分类任务。</p></li>
+<li><p>研究表明，在大规模数据集上预训练后，Vision Transformer (ViT) 可以在多个图像识别基准测试中取得与最先进的卷积神经网络 (CNN) 相当或更好的结果，同时在训练时需要的计算资源更少。</p></li>
+</ul>
+<p><strong>1. 工作内容与动机：</strong></p>
+<ul class="simple">
+<li><p>动机：Transformer 架构在自然语言处理 (NLP) 领域取得了巨大成功，但在计算机视觉领域的应用受到限制。传统上，注意力机制被用来辅助卷积网络或替代卷积网络的某些部分。本文的动机是探索纯 Transformer 在图像识别任务中的潜力。</p></li>
+</ul>
+<p><strong>2. 试图解决的问题：</strong></p>
+<ul class="simple">
+<li><p>解决的问题是 Transformer 在计算机视觉任务中应用的局限性，尤其是在大规模图像识别任务中。</p></li>
+</ul>
+<p><strong>3. 是否是新问题：</strong></p>
+<ul class="simple">
+<li><p>不完全是新问题，但在图像识别任务中使用纯 Transformer 是一种新的尝试。</p></li>
+</ul>
+<p><strong>4. 科学假设：</strong></p>
+<ul class="simple">
+<li><p>假设纯 Transformer 架构可以直接应用于图像数据，并在大规模数据集上通过预训练达到与 CNN 相媲美的性能。</p></li>
+</ul>
+<p><strong>5. 相关研究：</strong></p>
+<ul class="simple">
+<li><p>相关研究包括在 NLP 中成功的 Transformer 模型，以及在计算机视觉中尝试结合 CNN 和自注意力机制的研究。</p></li>
+<li><p>归类：主要归类于图像识别和模型架构创新。</p></li>
+<li><p>值得关注的研究员：论文作者团队，以及在 NLP 和 CV 领域内对 Transformer 有贡献的研究者。</p></li>
+</ul>
+<p><strong>6. 解决方案的关键：</strong></p>
+<ul class="simple">
+<li><p>关键是将图像分割成固定大小的 patches，并将这些 patches 作为序列输入到 Transformer 模型中。此外，大规模数据集上的预训练也是成功的关键因素。</p></li>
+</ul>
+<p><strong>7. 实验设计：</strong></p>
+<ul class="simple">
+<li><p>实验设计包括在不同规模的数据集（如 ImageNet, ImageNet-21k, JFT-300M）上预训练 ViT，并在多个基准测试（如 ImageNet, CIFAR-100, VTAB 等）上评估其性能。</p></li>
+</ul>
+<p><strong>8. 定量评估的数据集与代码开源情况：</strong></p>
+<ul class="simple">
+<li><p>使用了 ImageNet、CIFAR-100、VTAB 等多个图像识别基准数据集。</p></li>
+<li><p>代码已在 GitHub 上开源：https://github.com/google-research/vision_transformer。</p></li>
+</ul>
+<p><strong>9. 实验结果与科学假设的支持：</strong></p>
+<ul class="simple">
+<li><p>实验结果表明，经过大规模预训练的 ViT 在多个图像识别任务上取得了优异的性能，支持了科学假设。</p></li>
+</ul>
+<p><strong>10. 论文贡献：</strong></p>
+<ul class="simple">
+<li><p>提出了一种新的图像识别方法，证明了纯 Transformer 架构在图像识别任务中的有效性。</p></li>
+<li><p>展示了在大规模数据集上预训练的重要性，并提供了一种相对于传统 CNN 更加节省计算资源的训练方法。</p></li>
+</ul>
+<p><strong>11. 下一步工作：</strong></p>
+<ul class="simple">
+<li><p>将 ViT 应用于其他计算机视觉任务，如目标检测和分割。</p></li>
+<li><p>探索自监督学习方法，以进一步提高模型的性能和泛化能力。</p></li>
+<li><p>继续扩展模型规模，以实现更高的性能。</p></li>
+</ul>
 <section id="id1">
-<h2>神经网络基础<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Num</p></th>
-<th class="head"><p>Title</p></th>
-<th class="head"><p>Field</p></th>
-<th class="head"><p>Desc</p></th>
-<th class="head"><p>Author</p></th>
-<th class="head"><p>Time</p></th>
-<th class="head"><p>read</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>1</p></td>
-<td><p>ADAM: A METHOD FOR STOCHASTIC OPTIMIZATION</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>2015</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p>2</p></td>
-<td><p>Wide &amp; Deep Learning for Recommender Systems</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p>2016</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p>3</p></td>
-<td><p>Targeted Dropout</p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-<td><p></p></td>
-</tr>
-</tbody>
-</table>
+<h2>回答问题<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>这篇论文做了什么工作，它的动机是什么？</strong></p>
+<ul class="simple">
+<li><p>论文提出了一种新的图像识别方法，使用纯 Transformer 架构直接应用于图像分类任务。动机是探索 Transformer 在计算机视觉领域的潜力，并减少对 CNN 的依赖。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇论文试图解决什么问题？</strong></p>
+<ul class="simple">
+<li><p>试图解决 Transformer 在计算机视觉任务中应用的局限性，尤其是在大规模图像识别任务中。</p></li>
+</ul>
+</li>
+<li><p><strong>这是否是一个新的问题？</strong></p>
+<ul class="simple">
+<li><p>不完全是新问题，但在图像识别任务中使用纯 Transformer 是一种新的尝试。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇文章要验证一个什么科学假设？</strong></p>
+<ul class="simple">
+<li><p>验证纯 Transformer 架构可以直接应用于图像数据，并在大规模数据集上通过预训练达到与 CNN 相媲美的性能。</p></li>
+</ul>
+</li>
+<li><p><strong>有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</strong></p>
+<ul class="simple">
+<li><p>相关研究包括在 NLP 中成功的 Transformer 模型，以及在计算机视觉中尝试结合 CNN 和自注意力机制的研究。归类于图像识别和模型架构创新。值得关注的研究员包括论文作者团队和在 NLP 和 CV 领域内对 Transformer 有贡献的研究者。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中提到的解决方案之关键是什么？</strong></p>
+<ul class="simple">
+<li><p>解决方案的关键是将图像分割成固定大小的 patches 作为序列输入到 Transformer 模型中，并在大规模数据集上进行预训练。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中的实验是如何设计的？</strong></p>
+<ul class="simple">
+<li><p>实验设计包括在不同规模的数据集上预训练 ViT，并在多个基准测试上评估其性能。</p></li>
+</ul>
+</li>
+<li><p><strong>用于定量评估的数据集上什么？代码有没有开源？</strong></p>
+<ul class="simple">
+<li><p>使用了 ImageNet、CIFAR-100、VTAB 等多个图像识别基准数据集。代码已在 GitHub 上开源。</p></li>
+</ul>
+</li>
+<li><p><strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></p>
+<ul class="simple">
+<li><p>是的，实验结果表明经过大规模预训练的 ViT 在多个图像识别任务上取得了优异的性能，支持了科学假设。</p></li>
+</ul>
+</li>
+<li><p><strong>这篇论文到底有什么贡献？</strong></p>
+<ul class="simple">
+<li><p>提出了一种新的图像识别方法，证明了纯 Transformer 架构在图像识别任务中的有效性，并展示了在大规模数据集上预训练的重要性。</p></li>
+</ul>
+</li>
+<li><p><strong>下一步呢？有什么工作可以继续深入？</strong></p>
+<ul class="simple">
+<li><p>将 ViT 应用于其他计算机视觉任务，探索自监督学习方法，以及继续扩展模型规模以实现更高的性能。</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
 </section>
 </section>
 
@@ -619,7 +678,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">神经网络基础</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
 </ul>
   </nav></div>
 

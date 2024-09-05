@@ -89,6 +89,7 @@
 
 ---
 
+<img width="774" alt="transformer-fig1" src="https://github.com/isLinXu/issues/assets/59380685/a4c8c513-a734-4e8c-9491-f6ccfe702598">
 这个图表展示了Transformer模型的架构，详细描述了其编码器（Encoder）和解码器（Decoder）的结构。以下是对图表结构的分析和总结：
 
 图表结构分析
@@ -160,7 +161,7 @@ Transformer模型通过编码器和解码器的堆叠结构，实现了高效的
 
 Transformer模型是一种用于序列到序列任务（如机器翻译、文本生成等）的深度学习模型。它通过编码器-解码器架构和自注意力机制实现高效的序列处理。以下是Transformer模型的输入输出流程及其工作机制的详细描述：
 
-### 输入输出流程
+输入输出流程
 
 1. **输入阶段**：
    - **输入嵌入（Input Embedding）**：输入序列（如句子中的单词）首先通过嵌入层转换为嵌入向量。这些嵌入向量是固定维度的表示，捕捉了输入序列的语义信息。
@@ -271,6 +272,7 @@ Transformer模型通过编码器和解码器的堆叠结构和自注意力机制
 
 
 ---
+<img width="845" alt="transformer-fig2" src="https://github.com/isLinXu/issues/assets/59380685/3c805bba-9bae-4fe9-9ffa-75c8229d7364">
 
 图表展示了两种注意力机制的结构：**缩放点积注意力（Scaled Dot-Product Attention）** 和**多头注意力（Multi-Head Attention）**。
 以下是对这两种机制的详细分析和总结：
@@ -323,6 +325,7 @@ Transformer模型通过编码器和解码器的堆叠结构和自注意力机制
 
 
 ---
+<img width="877" alt="transformer-fig3" src="https://github.com/isLinXu/issues/assets/59380685/7350d3c3-5eb9-4cb0-9ad1-f2fcf65ae314">
 
 这个图表展示了注意力机制在处理长距离依赖关系时的可视化效果，特别是在编码器自注意力（self-attention）中的表现。以下是对图表结构的详细分析和总结：
 
@@ -361,6 +364,7 @@ Transformer模型通过编码器和解码器的堆叠结构和自注意力机制
 
 
 ---
+<img width="742" alt="transformer-fig4" src="https://github.com/isLinXu/issues/assets/59380685/4824ae92-a0fc-4e99-884a-36b161a26517">
 
 这个图表展示了注意力机制在处理代词指代（anaphora resolution）时的可视化效果，特别是在编码器自注意力（self-attention）中的表现。图表分为两个部分，分别展示了第5层和第6层的注意力头的注意力权重。以下是对图表结构的详细分析和总结：
 

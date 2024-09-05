@@ -212,8 +212,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../detection/FCOS.html">FCOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../detection/SSD.html">SSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../detection/Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../detection/VarifocalNet.html">论文阅读笔记</a></li>
-
+<li class="toctree-l3"><a class="reference internal" href="../detection/VarifocalNet.html">VarifocalNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../detection/OneNet.html">OneNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../detection/Mask%20R-CNN.html">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../detection/Cascade-RCNN.html">Cascade-RCNN</a></li>
@@ -494,9 +493,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -512,14 +509,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">输入输出流程</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -652,7 +641,8 @@ document.write(`
 </li>
 </ol>
 <hr class="docutils" />
-<p>这个图表展示了Transformer模型的架构，详细描述了其编码器（Encoder）和解码器（Decoder）的结构。以下是对图表结构的分析和总结：</p>
+<img width="774" alt="transformer-fig1" src="https://github.com/isLinXu/issues/assets/59380685/a4c8c513-a734-4e8c-9491-f6ccfe702598">
+这个图表展示了Transformer模型的架构，详细描述了其编码器（Encoder）和解码器（Decoder）的结构。以下是对图表结构的分析和总结：
 <p>图表结构分析</p>
 <ol class="arabic simple">
 <li><p><strong>整体架构</strong>：</p>
@@ -736,8 +726,7 @@ document.write(`
 </ol>
 <p>总体而言，Transformer模型通过其独特的架构设计，实现了高效的序列到序列转换，广泛应用于自然语言处理等领域。</p>
 <p>Transformer模型是一种用于序列到序列任务（如机器翻译、文本生成等）的深度学习模型。它通过编码器-解码器架构和自注意力机制实现高效的序列处理。以下是Transformer模型的输入输出流程及其工作机制的详细描述：</p>
-<section id="id1">
-<h2>输入输出流程<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>输入输出流程</p>
 <ol class="arabic simple">
 <li><p><strong>输入阶段</strong>：</p>
 <ul class="simple">
@@ -891,6 +880,7 @@ $$
 <p>总结</p>
 <p>注意力机制通过捕捉长距离依赖关系、并行计算、动态权重分配和增强模型的解释性，显著提高了序列到序列任务中的模型性能和训练效率。其核心工作机制包括计算查询、键和值向量，计算注意力权重，加权求和，以及多头注意力机制的并行处理。注意力机制的引入，使得Transformer模型在自然语言处理等领域取得了显著的成功。</p>
 <hr class="docutils" />
+<img width="845" alt="transformer-fig2" src="https://github.com/isLinXu/issues/assets/59380685/3c805bba-9bae-4fe9-9ffa-75c8229d7364">
 <p>图表展示了两种注意力机制的结构：<strong>缩放点积注意力（Scaled Dot-Product Attention）</strong> 和<strong>多头注意力（Multi-Head Attention）</strong>。
 以下是对这两种机制的详细分析和总结：</p>
 <p>缩放点积注意力（Scaled Dot-Product Attention）</p>
@@ -943,6 +933,7 @@ $$
 </ul>
 <p>这两种注意力机制是Transformer模型的核心组件，显著提高了模型在序列到序列任务中的性能和训练效率。</p>
 <hr class="docutils" />
+<img width="877" alt="transformer-fig3" src="https://github.com/isLinXu/issues/assets/59380685/7350d3c3-5eb9-4cb0-9ad1-f2fcf65ae314">
 <p>这个图表展示了注意力机制在处理长距离依赖关系时的可视化效果，特别是在编码器自注意力（self-attention）中的表现。以下是对图表结构的详细分析和总结：</p>
 <p>图表结构分析</p>
 <ol class="arabic simple">
@@ -994,6 +985,7 @@ $$
 <p>结论</p>
 <p>这个图表通过可视化注意力权重，展示了注意力机制在处理长距离依赖关系时的效果。多头注意力机制通过并行处理多个注意力头，增强了模型的表达能力和捕捉特征的能力。自注意力机制使得模型能够灵活地关注输入序列中的不同位置，捕捉到序列中不同位置之间的依赖关系。注意力机制的可视化增强了模型的解释性，使得我们能够更好地理解模型的决策过程。</p>
 <hr class="docutils" />
+<img width="742" alt="transformer-fig4" src="https://github.com/isLinXu/issues/assets/59380685/4824ae92-a0fc-4e99-884a-36b161a26517">
 <p>这个图表展示了注意力机制在处理代词指代（anaphora resolution）时的可视化效果，特别是在编码器自注意力（self-attention）中的表现。图表分为两个部分，分别展示了第5层和第6层的注意力头的注意力权重。以下是对图表结构的详细分析和总结：</p>
 <p>图表结构分析</p>
 <ol class="arabic simple">
@@ -1063,7 +1055,6 @@ $$
 <p>结论</p>
 <p>这个图表通过可视化注意力权重，展示了注意力机制在处理代词指代任务时的效果。多头注意力机制通过并行处理多个注意力头，增强了模型的表达能力和捕捉特征的能力。自注意力机制使得模型能够灵活地关注输入序列中的不同位置，捕捉到序列中不同位置之间的依赖关系。注意力机制的可视化增强了模型的解释性，使得我们能够更好地理解模型的决策过程。</p>
 </section>
-</section>
 
 
                 </article>
@@ -1083,20 +1074,7 @@ $$
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">输入输出流程</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

@@ -214,8 +214,7 @@
 <li class="toctree-l3"><a class="reference internal" href="FCOS.html">FCOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SSD.html">SSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="VarifocalNet.html">论文阅读笔记</a></li>
-
+<li class="toctree-l3"><a class="reference internal" href="VarifocalNet.html">VarifocalNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="OneNet.html">OneNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
@@ -496,9 +495,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -514,14 +511,6 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -589,8 +578,7 @@ document.write(`
 <li><p>进一步优化Sparse R-CNN的性能，探索在不同数据集和场景中的应用。</p></li>
 <li><p>研究如何将Sparse R-CNN与其他先进的检测技术结合，以提高检测精度和效率。</p></li>
 </ul>
-<section id="id1">
-<h2>回答问题<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>回答问题</p>
 <ol class="arabic simple">
 <li><p><strong>这篇论文做了什么工作，它的动机是什么？</strong>
 论文提出了Sparse R-CNN，一种纯稀疏的对象检测方法，动机是重新思考对象检测中密集先验的常规做法，并探索下一代对象检测器。</p></li>
@@ -616,7 +604,7 @@ document.write(`
 下一步工作可以进一步优化Sparse R-CNN的性能，探索在不同数据集和场景中的应用，以及研究如何将Sparse R-CNN与其他先进的检测技术结合，以提高检测精度和效率。</p></li>
 </ol>
 <hr class="docutils" />
-<p>fig1</p>
+<img width="1180" alt="sparse-rcnn-fig1" src="https://github.com/isLinXu/issues/assets/59380685/0300e3a9-463c-4909-bcb5-48d013d0003c">
 <p>这个图表展示了三种不同的目标检测管道的对比：Dense（密集型）、Dense-to-Sparse（密集到稀疏型）和Sparse（稀疏型）。具体来说，图表对比了RetinaNet、Faster R-CNN和Sparse R-CNN三种模型的结构和处理流程。以下是对图表结构的分析和总结：</p>
 <p>图表结构分析</p>
 <ol class="arabic simple">
@@ -698,6 +686,7 @@ document.write(`
 <li><p>对于需要高效处理少量高质量候选框的场景，可以选择Sparse R-CNN。</p></li>
 </ul>
 <hr class="docutils" />
+<img width="612" alt="sparse-rcnn-fig2" src="https://github.com/isLinXu/issues/assets/59380685/c9fc21de-9d58-44b1-9e24-537fc3c15395">
 <p>这个图表展示了四种目标检测模型（RetinaNet、Faster R-CNN、DETR和Sparse R-CNN）在COCO val2017数据集上的收敛曲线。图表显示了这些模型在不同训练周期（epochs）下的COCO平均精度（AP）。以下是对图表结构的分析和总结：</p>
 <p>图表结构分析</p>
 <ol class="arabic simple">
@@ -792,6 +781,7 @@ document.write(`
 </ol>
 <p>总体而言，Sparse R-CNN在训练效率和检测质量方面表现最优，能够在较少的训练周期内达到最高的COCO AP。DETR虽然最终性能较高，但需要更长的训练时间。Faster R-CNN和RetinaNet的收敛速度较快，但最终性能不如Sparse R-CNN。选择合适的目标检测模型需要根据具体需求和计算资源进行权衡。</p>
 <hr class="docutils" />
+<img width="607" alt="sparse-rcnn-fig3" src="https://github.com/isLinXu/issues/assets/59380685/f4f57f19-2b4b-4b44-b5f9-de2860f0fad3">
 <p>这个图表展示了Sparse R-CNN管道的概述，详细描述了其处理流程和结构。以下是对图表结构的分析和总结：</p>
 <p>图表结构分析</p>
 <ol class="arabic simple">
@@ -865,7 +855,7 @@ document.write(`
 </ol>
 <p>总体而言，Sparse R-CNN通过引入可学习的候选框和候选特征，以及动态头的设计，实现了高效的目标检测。其处理流程简洁明了，能够在保证检测精度的同时，提高检测效率。</p>
 <hr class="docutils" />
-<p>fig4</p>
+<img width="1169" alt="sparse-rcnn-fig4" src="https://github.com/isLinXu/issues/assets/59380685/cbc13bf1-4bde-40ca-bbc0-7cd0bb1902a2">
 <p>这个图表展示了在迭代架构中每个阶段的预测框的可视化，包括学习到的候选框。图表通过四个子图展示了从初始候选框到第六阶段的预测框的变化。以下是对图表结构的分析和总结：</p>
 <p>图表结构分析</p>
 <ol class="arabic simple">
@@ -952,7 +942,6 @@ document.write(`
 </ol>
 <p>总体而言，图表展示了Sparse R-CNN在迭代架构中的预测框优化过程。通过多阶段的迭代优化，模型能够逐渐提高预测框的精度，移除重复框，实现高效的目标检测。这种迭代优化方法使得Sparse R-CNN在目标检测任务中表现出色。</p>
 </section>
-</section>
 
 
                 </article>
@@ -990,20 +979,7 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">回答问题</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

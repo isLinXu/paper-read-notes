@@ -47,7 +47,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="YOLOX" href="YOLOX.html" />
-    <link rel="prev" title="Scaled-YOLOv4" href="Scaled-YOLOv4.html" />
+    <link rel="prev" title="EfficientDet" href="EfficientDet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -179,7 +179,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../List/objectdetection.html">目标检测(OBJ)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../List/rnn.html">循环神经网络(RNN)</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../../List/segementation.html">目标分割(SEG)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../List/segementation.html">图像分割(SEG)</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../../List/transformer.html">Transformer</a></li>
 
@@ -189,12 +189,12 @@
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">论文阅读笔记</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">多模态(MultiModal Machine Learning)</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../mm-l/index.html">MultiModal Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v1.html">BLIP: Bootstrapping Language-Image Pre-training</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mm-l/blip-v2.html">BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">大语言模型(Large Language Models)</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../llm/index.html">Large Language Models</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../llm/opt.html">OPT: OPT : Open Pre-trained Transformer Language Models</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v1.html">GPT-v1:Improving Language Understanding by Generative Pre-Training</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v2.html">GPT-v2:Language Models are Unsupervised Multitask Learners</a></li>
@@ -202,23 +202,32 @@
 <li class="toctree-l3"><a class="reference internal" href="../llm/gpt-v4.html">GPT-v4:GPT-4 Technical Report</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="survey_all.html">survey_all</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Object Detection</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="summary.html">summary</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RCNN.html">RCNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Fast%20R-CNN.html">Fast R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Faster%20R-CNN.html">Faster R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FCN.html">FCN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="R-FCN.html">R-FCN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="FPN.html">FPN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FCOS.html">FCOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SSD.html">SSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="VarifocalNet.html">VarifocalNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OneNet.html">OneNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Mask%20R-CNN.html">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Cascade-RCNN.html">Cascade-RCNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RetinaNet.html">RetinaNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SparseInst.html">SparseInst</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv1.html">YOLOv1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv2.html">YOLOv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv3.html">YOLOv3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv4.html">YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Edge-YOLO.html">Edge-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MS-DAYOLO.html">MS-DAYOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ASFF.html">ASFF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="ATSS.html">ATSS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="SABL.html">SABL</a></li>
@@ -226,27 +235,40 @@
 <li class="toctree-l3"><a class="reference internal" href="TSD.html">TSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RDSNet.html">RDSNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="CenterMask.html">CenterMask</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Scaled-YOLOv4.html">Scaled-YOLOv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="EfficientDet.html">EfficientDet</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Simple Multi-dataset Detection</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOX.html">YOLOX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv6.html">YOLOv6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PP-YOLOv1.html">PP-YOLOv1</a></li>
 <li class="toctree-l3"><a class="reference internal" href="PP-YOLOv2.html">PP-YOLOv2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="PP-YOLOE.html">PP-YOLOE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOF.html">YOLOF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOP.html">YOLOP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOR.html">YOLOR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOS.html">YOLOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv7.html">YOLOv7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dy-yolov7.html">DY-yolov7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Gold-YOLO.html">Gold-YOLO</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv6_v3.0.html">YOLOv6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="DAMO-YOLO.html">DAMO-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ViT-YOLO.html">ViT-YOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLO-MS.html">YOLO-MS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Detr.html">DETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RT-DETR.html">RT-DETR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLOv9.html">YOLOv9</a></li>
-<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="FemtoDet.html">FemtoDet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MS-DAYOLO.html">MS-DAYOLO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="OneNet.html">OneNet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sparse%20R-CNN.html">Sparse R-CNN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SparseInst.html">SparseInst</a></li>
 <li class="toctree-l3"><a class="reference internal" href="OWL-ViT.html">OWL-ViT</a></li>
 <li class="toctree-l3"><a class="reference internal" href="OWLv2.html">OWLv2</a></li>
 <li class="toctree-l3"><a class="reference internal" href="RTMDet.html">RTMDet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="YOLO-World.html">YOLO-World</a></li>
-<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC: YOLO-based Open-Class Incremental Object Detection with Novel Class Discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOOC.html">YOLOOC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="MDETR.html">MDETR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="YOLOv10.html">YOLOv10</a></li>
 <li class="toctree-l3"><a class="reference internal" href="%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E7%BB%BC%E8%BF%B020%E5%B9%B4.html"><strong>目标检测二十年：一项综述</strong></a></li>
 
 
@@ -544,6 +566,7 @@ document.write(`
 <li><p>考虑标签层次结构，将COCO中的人物和OpenImages中的男孩等标签作为相关类别处理。</p></li>
 <li><p>将统一检测器扩展到更大的模型和更广泛的应用场景中。</p></li>
 </ul>
+<hr class="docutils" />
 </section>
 
 
@@ -558,12 +581,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Scaled-YOLOv4.html"
+       href="EfficientDet.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Scaled-YOLOv4</p>
+        <p class="prev-next-title">EfficientDet</p>
       </div>
     </a>
     <a class="right-next"

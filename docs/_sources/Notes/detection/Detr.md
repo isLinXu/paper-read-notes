@@ -87,8 +87,6 @@
 ---
 
 <img width="959" alt="detr-fig1" src="https://github.com/isLinXu/issues/assets/59380685/34e91c32-6193-494d-bf47-228e9adb3a48">
-
-
 这个图表展示了DETR（Detection Transformer）模型的结构和工作流程。以下是对图表结构的分析和总结：
 
 图表结构分析

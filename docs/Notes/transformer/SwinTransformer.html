@@ -212,8 +212,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../detection/FCOS.html">FCOS</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../detection/SSD.html">SSD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../detection/Mobilenet-SSDv2.html">Mobilenet-SSDv2</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../detection/VarifocalNet.html">论文阅读笔记</a></li>
-
+<li class="toctree-l3"><a class="reference internal" href="../detection/VarifocalNet.html">VarifocalNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../detection/OneNet.html">OneNet</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../detection/Mask%20R-CNN.html">Mask R-CNN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../detection/Cascade-RCNN.html">Cascade-RCNN</a></li>
@@ -646,6 +645,324 @@ document.write(`
 </ul>
 </li>
 </ol>
+<hr class="docutils" />
+<img width="551" alt="swin-fig1" src="https://github.com/isLinXu/issues/assets/59380685/6f797f27-2c90-4c6d-9c5b-232ed7b0d7c1">
+<p>这个图表展示了Swin Transformer和ViT（Vision Transformer）在图像分类、分割和检测任务中的特征图构建方式的对比。以下是对图表结构的详细分析和总结：</p>
+<p>图表结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>子图</strong>：</p>
+<ul class="simple">
+<li><p>图表包含两个子图，每个子图表示一种模型的特征图构建方式：</p>
+<ul>
+<li><p><strong>左侧子图 (a)</strong>：Swin Transformer的特征图构建方式。</p></li>
+<li><p><strong>右侧子图 (b)</strong>：ViT的特征图构建方式。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>特征图层次</strong>：</p>
+<ul class="simple">
+<li><p>每个子图中展示了不同层次的特征图：</p>
+<ul>
+<li><p><strong>Swin Transformer</strong>：特征图从低分辨率到高分辨率逐层构建，特征图的分辨率逐层减小（16x、8x、4x）。</p></li>
+<li><p><strong>ViT</strong>：特征图保持单一分辨率（16x），没有层次结构。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>特征图表示</strong>：</p>
+<ul class="simple">
+<li><p><strong>灰色区域</strong>：表示图像块（image patches）。</p></li>
+<li><p><strong>红色网格</strong>：表示局部窗口（local windows）或特征图的分割方式。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ol class="arabic simple">
+<li><p><strong>Swin Transformer</strong>：</p>
+<ul class="simple">
+<li><p><strong>层次化特征图</strong>：通过在更深的层次中合并图像块（灰色区域）来构建层次化的特征图。</p></li>
+<li><p><strong>局部自注意力</strong>：在每个局部窗口（红色网格）内计算自注意力，从而使计算复杂度相对于输入图像大小呈线性增长。</p></li>
+<li><p><strong>通用骨干网络</strong>：由于其层次化特征图和局部自注意力计算方式，Swin Transformer可以作为图像分类和密集识别任务的通用骨干网络。</p></li>
+</ul>
+</li>
+<li><p><strong>ViT</strong>：</p>
+<ul class="simple">
+<li><p><strong>单一分辨率特征图</strong>：生成单一低分辨率的特征图（16x），没有层次结构。</p></li>
+<li><p><strong>全局自注意力</strong>：在整个图像上计算自注意力，从而使计算复杂度相对于输入图像大小呈二次方增长。</p></li>
+<li><p><strong>计算复杂度高</strong>：由于全局自注意力的计算方式，ViT在处理高分辨率图像时计算复杂度较高。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<p>从图表中可以看出，Swin Transformer和ViT在特征图构建方式和计算复杂度上的主要区别：</p>
+<ol class="arabic simple">
+<li><p><strong>特征图构建方式</strong>：</p>
+<ul class="simple">
+<li><p><strong>Swin Transformer</strong>：采用层次化特征图构建方式，通过合并图像块逐层构建特征图，适用于多种视觉任务。</p></li>
+<li><p><strong>ViT</strong>：生成单一分辨率的特征图，没有层次结构，主要用于图像分类任务。</p></li>
+</ul>
+</li>
+<li><p><strong>计算复杂度</strong>：</p>
+<ul class="simple">
+<li><p><strong>Swin Transformer</strong>：在局部窗口内计算自注意力，计算复杂度相对于输入图像大小呈线性增长，适合处理高分辨率图像。</p></li>
+<li><p><strong>ViT</strong>：在整个图像上计算自注意力，计算复杂度相对于输入图像大小呈二次方增长，处理高分辨率图像时计算复杂度较高。</p></li>
+</ul>
+</li>
+<li><p><strong>应用场景</strong>：</p>
+<ul class="simple">
+<li><p><strong>Swin Transformer</strong>：由于其层次化特征图和局部自注意力计算方式，可以作为图像分类、分割和检测等任务的通用骨干网络。</p></li>
+<li><p><strong>ViT</strong>：由于其全局自注意力计算方式，主要适用于图像分类任务，在处理高分辨率图像时计算复杂度较高。</p></li>
+</ul>
+</li>
+</ol>
+<p>总体来看，Swin Transformer在特征图构建方式和计算复杂度上具有显著优势，适用于更广泛的视觉任务。</p>
+<hr class="docutils" />
+<img width="503" alt="swin-fig2" src="https://github.com/isLinXu/issues/assets/59380685/e761fa1e-38a4-45c4-8c06-615fe937a6ae">
+<p>这个图表展示了Swin Transformer架构中“shifted window”方法的示意图，说明了在不同层次中如何通过窗口偏移来计算自注意力。以下是对图表结构的详细分析和总结：</p>
+<p>图表结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>子图</strong>：</p>
+<ul class="simple">
+<li><p>图表包含两个子图，每个子图表示一个层次的窗口划分和自注意力计算方式：</p>
+<ul>
+<li><p><strong>左侧子图 (Layer l)</strong>：表示第l层的窗口划分方式。</p></li>
+<li><p><strong>右侧子图 (Layer l+1)</strong>：表示第l+1层的窗口划分方式。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>窗口划分</strong>：</p>
+<ul class="simple">
+<li><p><strong>Layer l</strong>：</p>
+<ul>
+<li><p>图像被划分为多个不重叠的局部窗口（红色边框）。</p></li>
+<li><p>每个局部窗口内计算自注意力。</p></li>
+</ul>
+</li>
+<li><p><strong>Layer l+1</strong>：</p>
+<ul>
+<li><p>窗口划分方式发生偏移（shifted），形成新的局部窗口。</p></li>
+<li><p>新的局部窗口跨越了第l层窗口的边界，从而在不同窗口之间建立连接。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>图例</strong>：</p>
+<ul class="simple">
+<li><p><strong>红色边框</strong>：表示局部窗口，用于计算自注意力。</p></li>
+<li><p><strong>灰色区域</strong>：表示图像块（patch）。</p></li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ol class="arabic simple">
+<li><p><strong>Layer l（第l层）</strong>：</p>
+<ul class="simple">
+<li><p>图像被划分为多个不重叠的局部窗口。</p></li>
+<li><p>自注意力计算仅在每个局部窗口内进行，窗口之间没有直接连接。</p></li>
+</ul>
+</li>
+<li><p><strong>Layer l+1（第l+1层）</strong>：</p>
+<ul class="simple">
+<li><p>窗口划分方式发生偏移，形成新的局部窗口。</p></li>
+<li><p>新的局部窗口跨越了第l层窗口的边界，从而在不同窗口之间建立连接。</p></li>
+<li><p>自注意力计算在新的局部窗口内进行，提供了跨窗口的连接。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<p>从图表中可以看出，Swin Transformer通过“shifted window”方法在不同层次中实现了局部窗口内和跨窗口的自注意力计算：</p>
+<ol class="arabic simple">
+<li><p><strong>局部自注意力</strong>：</p>
+<ul class="simple">
+<li><p>在每个层次中，图像被划分为多个局部窗口，自注意力计算仅在每个局部窗口内进行。</p></li>
+<li><p>这种方式使得计算复杂度相对于输入图像大小呈线性增长，适合处理高分辨率图像。</p></li>
+</ul>
+</li>
+<li><p><strong>窗口偏移</strong>：</p>
+<ul class="simple">
+<li><p>在相邻层次之间，窗口划分方式发生偏移，形成新的局部窗口。</p></li>
+<li><p>新的局部窗口跨越了前一层窗口的边界，从而在不同窗口之间建立连接。</p></li>
+<li><p>这种方式提供了跨窗口的连接，使得特征图在不同层次之间能够更好地融合信息。</p></li>
+</ul>
+</li>
+<li><p><strong>计算效率</strong>：</p>
+<ul class="simple">
+<li><p>通过局部自注意力和窗口偏移的方法，Swin Transformer在保持计算效率的同时，能够在不同层次之间有效地融合信息。</p></li>
+<li><p>这种方法不仅适用于图像分类任务，还适用于图像分割和检测等密集识别任务。</p></li>
+</ul>
+</li>
+</ol>
+<p>总体来看，Swin Transformer通过“shifted window”方法在不同层次中实现了高效的自注意力计算和信息融合，具有显著的计算效率和适用性。</p>
+<hr class="docutils" />
+<img width="1052" alt="swin-fig3" src="https://github.com/isLinXu/issues/assets/59380685/ed7fda74-572e-420d-811e-0b14e7bb2499">
+<p>这个图表展示了Swin Transformer（Swin-T）的架构以及两个连续的Swin Transformer块的详细结构。以下是对图表结构的详细分析和总结：</p>
+<p>图表结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>子图</strong>：</p>
+<ul class="simple">
+<li><p>图表包含两个子图：</p>
+<ul>
+<li><p><strong>左侧子图 (a)</strong>：Swin Transformer的整体架构。</p></li>
+<li><p><strong>右侧子图 (b)</strong>：两个连续的Swin Transformer块的详细结构。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>左侧子图 (a) - Swin Transformer的整体架构</strong>：</p>
+<ul class="simple">
+<li><p><strong>输入图像</strong>：尺寸为 (H \times W \times 3)。</p></li>
+<li><p><strong>Stage 1</strong>：</p>
+<ul>
+<li><p>图像被划分为非重叠的图像块（patch），每个图像块的尺寸为 (4 \times 4)。</p></li>
+<li><p>图像块通过线性嵌入层，输出尺寸为 (\frac{H}{4} \times \frac{W}{4} \times 48)。</p></li>
+<li><p>包含两个Swin Transformer块。</p></li>
+</ul>
+</li>
+<li><p><strong>Stage 2</strong>：</p>
+<ul>
+<li><p>通过Patch Merging层，尺寸变为 (\frac{H}{8} \times \frac{W}{8} \times 96)。</p></li>
+<li><p>包含两个Swin Transformer块。</p></li>
+</ul>
+</li>
+<li><p><strong>Stage 3</strong>：</p>
+<ul>
+<li><p>通过Patch Merging层，尺寸变为 (\frac{H}{16} \times \frac{W}{16} \times 192)。</p></li>
+<li><p>包含六个Swin Transformer块。</p></li>
+</ul>
+</li>
+<li><p><strong>Stage 4</strong>：</p>
+<ul>
+<li><p>通过Patch Merging层，尺寸变为 (\frac{H}{32} \times \frac{W}{32} \times 384)。</p></li>
+<li><p>包含两个Swin Transformer块。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>右侧子图 (b) - 两个连续的Swin Transformer块</strong>：</p>
+<ul class="simple">
+<li><p><strong>第一个Swin Transformer块</strong>：</p>
+<ul>
+<li><p><strong>W-MSA</strong>（Window-based Multi-Head Self Attention）：基于窗口的多头自注意力模块。</p></li>
+<li><p><strong>MLP</strong>（Multi-Layer Perceptron）：多层感知机。</p></li>
+<li><p><strong>LN</strong>（Layer Normalization）：层归一化。</p></li>
+</ul>
+</li>
+<li><p><strong>第二个Swin Transformer块</strong>：</p>
+<ul>
+<li><p><strong>SW-MSA</strong>（Shifted Window-based Multi-Head Self Attention）：基于偏移窗口的多头自注意力模块。</p></li>
+<li><p><strong>MLP</strong>（Multi-Layer Perceptron）：多层感知机。</p></li>
+<li><p><strong>LN</strong>（Layer Normalization）：层归一化。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ol class="arabic simple">
+<li><p><strong>Swin Transformer整体架构</strong>：</p>
+<ul class="simple">
+<li><p>Swin Transformer通过将输入图像划分为非重叠的图像块，并逐层进行特征提取和尺寸缩减。</p></li>
+<li><p>整体架构分为四个阶段，每个阶段通过Patch Merging层进行尺寸缩减，并包含多个Swin Transformer块。</p></li>
+</ul>
+</li>
+<li><p><strong>Swin Transformer块的详细结构</strong>：</p>
+<ul class="simple">
+<li><p>每个Swin Transformer块包含两个主要模块：基于窗口的多头自注意力模块（W-MSA或SW-MSA）和多层感知机（MLP）。</p></li>
+<li><p>第一个Swin Transformer块使用W-MSA，第二个Swin Transformer块使用SW-MSA，通过偏移窗口的方式在不同窗口之间建立连接。</p></li>
+<li><p>每个模块后面都跟有层归一化（LN）以稳定训练过程。</p></li>
+</ul>
+</li>
+<li><p><strong>计算效率和信息融合</strong>：</p>
+<ul class="simple">
+<li><p>Swin Transformer通过局部窗口内的自注意力计算（W-MSA）和跨窗口的自注意力计算（SW-MSA）实现高效的特征提取和信息融合。</p></li>
+<li><p>这种架构设计使得Swin Transformer在保持计算效率的同时，能够在不同层次之间有效地融合信息，适用于图像分类、分割和检测等任务。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<p>Swin Transformer通过分阶段的特征提取和尺寸缩减，以及基于窗口和偏移窗口的多头自注意力模块，实现了高效的计算和信息融合。其架构设计使其在处理高分辨率图像时具有显著的计算效率和适用性，适用于多种视觉任务。</p>
+<hr class="docutils" />
+<img width="506" alt="swin-fig4" src="https://github.com/isLinXu/issues/assets/59380685/2cfb11be-dae3-4087-8ffd-1f40dca568d9">
+<p>这个图表展示了在Swin Transformer中使用shifted window划分进行自注意力计算的高效批处理方法。以下是对图表结构的详细分析和总结：</p>
+<p>图表结构分析</p>
+<ol class="arabic simple">
+<li><p><strong>子图</strong>：</p>
+<ul class="simple">
+<li><p>图表包含四个主要步骤，每个步骤用一个子图表示：</p>
+<ul>
+<li><p><strong>Window Partition</strong>：窗口划分。</p></li>
+<li><p><strong>Cyclic Shift</strong>：循环移位。</p></li>
+<li><p><strong>Masked MSA</strong>：掩码多头自注意力计算。</p></li>
+<li><p><strong>Reverse Cyclic Shift</strong>：反向循环移位。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>步骤解析</strong>：</p>
+<ul class="simple">
+<li><p><strong>Window Partition（窗口划分）</strong>：</p>
+<ul>
+<li><p>输入图像被划分为多个不重叠的局部窗口（红色边框）。</p></li>
+</ul>
+</li>
+<li><p><strong>Cyclic Shift（循环移位）</strong>：</p>
+<ul>
+<li><p>对窗口进行循环移位，使得窗口的位置发生变化。</p></li>
+<li><p>图中用不同颜色（A、B、C）表示不同的窗口区域。</p></li>
+</ul>
+</li>
+<li><p><strong>Masked MSA（掩码多头自注意力计算）</strong>：</p>
+<ul>
+<li><p>在循环移位后的窗口内进行掩码多头自注意力计算（masked MSA）。</p></li>
+<li><p>掩码用于确保自注意力计算仅在局部窗口内进行。</p></li>
+</ul>
+</li>
+<li><p><strong>Reverse Cyclic Shift（反向循环移位）</strong>：</p>
+<ul>
+<li><p>对窗口进行反向循环移位，将窗口恢复到原始位置。</p></li>
+<li><p>通过这种方式，跨窗口的连接得以实现。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>总结</p>
+<ol class="arabic simple">
+<li><p><strong>窗口划分</strong>：</p>
+<ul class="simple">
+<li><p>输入图像首先被划分为多个不重叠的局部窗口，每个窗口内进行自注意力计算。</p></li>
+</ul>
+</li>
+<li><p><strong>循环移位</strong>：</p>
+<ul class="simple">
+<li><p>对窗口进行循环移位，使得窗口的位置发生变化。</p></li>
+<li><p>这种移位方式确保了在不同窗口之间建立连接。</p></li>
+</ul>
+</li>
+<li><p><strong>掩码多头自注意力计算</strong>：</p>
+<ul class="simple">
+<li><p>在循环移位后的窗口内进行掩码多头自注意力计算。</p></li>
+<li><p>掩码用于确保自注意力计算仅在局部窗口内进行，从而保持计算效率。</p></li>
+</ul>
+</li>
+<li><p><strong>反向循环移位</strong>：</p>
+<ul class="simple">
+<li><p>对窗口进行反向循环移位，将窗口恢复到原始位置。</p></li>
+<li><p>通过这种方式，跨窗口的连接得以实现，确保了信息在不同窗口之间的有效融合。</p></li>
+</ul>
+</li>
+</ol>
+<p>结论</p>
+<p>从图表中可以看出，Swin Transformer通过以下步骤实现了高效的自注意力计算和信息融合：</p>
+<ol class="arabic simple">
+<li><p><strong>窗口划分</strong>：将输入图像划分为多个不重叠的局部窗口，每个窗口内进行自注意力计算。</p></li>
+<li><p><strong>循环移位</strong>：对窗口进行循环移位，使得窗口的位置发生变化，从而在不同窗口之间建立连接。</p></li>
+<li><p><strong>掩码多头自注意力计算</strong>：在循环移位后的窗口内进行掩码多头自注意力计算，确保计算仅在局部窗口内进行。</p></li>
+<li><p><strong>反向循环移位</strong>：对窗口进行反向循环移位，将窗口恢复到原始位置，确保信息在不同窗口之间的有效融合。</p></li>
+</ol>
+<p>这种方法不仅保持了计算效率，还通过跨窗口的连接实现了信息的有效融合，使得Swin Transformer在处理高分辨率图像时具有显著的计算效率和适用性。</p>
 </section>
 </section>
 

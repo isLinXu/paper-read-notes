@@ -56,3 +56,34 @@
 | 2023-03 | PaLM-E               | Google             | [PaLM-E: An Embodied Multimodal Language Model](https://palm-e.github.io/) |             |
 | 2023-03 | GPT 4                | OpenAI             | [GPT-4 Technical Report](https://openai.com/research/gpt-4)  |             |
 
+## Foundation Models
+
+|Title|Venue|Date|Code|Demo|
+|---|---|---|---|---|
+|[**Pixtral-12B**](https://mistral.ai/news/pixtral-12b/)|Mistral|2024-09-17|-|-|
+|![Star](https://img.shields.io/github/stars/salesforce/LAVIS.svg?style=social&label=Star) [**xGen-MM (BLIP-3): A Family of Open Large Multimodal Models**](https://arxiv.org/pdf/2408.08872)|arXiv|2024-08-16|[Github](https://github.com/salesforce/LAVIS/tree/xgen-mm)|-|
+|[**The Llama 3 Herd of Models**](https://arxiv.org/pdf/2407.21783)|arXiv|2024-07-31|-|-|
+|[**Chameleon: Mixed-Modal Early-Fusion Foundation Models**](https://arxiv.org/pdf/2405.09818)|arXiv|2024-05-16|-|-|
+|[**Hello GPT-4o**](https://openai.com/index/hello-gpt-4o/)|OpenAI|2024-05-13|-|-|
+|[**The Claude 3 Model Family: Opus, Sonnet, Haiku**](https://www-cdn.anthropic.com/de8ba9b01c9ab7cbabf5c33b80b7bbc618857627/Model_Card_Claude_3.pdf)|Anthropic|2024-03-04|-|-|
+|[**Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context**](https://storage.googleapis.com/deepmind-media/gemini/gemini_v1_5_report.pdf)|Google|2024-02-15|-|-|
+|[**Gemini: A Family of Highly Capable Multimodal Models**](https://storage.googleapis.com/deepmind-media/gemini/gemini_1_report.pdf)|Google|2023-12-06|-|-|
+|[**Fuyu-8B: A Multimodal Architecture for AI Agents**](https://www.adept.ai/blog/fuyu-8b)|blog|2023-10-17|[Huggingface](https://huggingface.co/adept/fuyu-8b)|[Demo](https://huggingface.co/adept/fuyu-8b)|
+|![Star](https://img.shields.io/github/stars/mshukor/UnIVAL.svg?style=social&label=Star) [**Unified Model for Image, Video, Audio and Language Tasks**](https://arxiv.org/pdf/2307.16184.pdf)|arXiv|2023-07-30|[Github](https://github.com/mshukor/UnIVAL)|[Demo](https://huggingface.co/spaces/mshukor/UnIVAL)|
+|[**PaLI-3 Vision Language Models: Smaller, Faster, Stronger**](https://arxiv.org/pdf/2310.09199.pdf)|arXiv|2023-10-13|-|-|
+|[**GPT-4V(ision) System Card**](https://cdn.openai.com/papers/GPTV_System_Card.pdf)|OpenAI|2023-09-25|-|-|
+|![Star](https://img.shields.io/github/stars/jy0205/LaVIT.svg?style=social&label=Star) [**Unified Language-Vision Pretraining in LLM with Dynamic Discrete Visual Tokenization**](https://arxiv.org/pdf/2309.04669.pdf)|arXiv|2023-09-09|[Github](https://github.com/jy0205/LaVIT)|-|
+|[**Multimodal Foundation Models: From Specialists to General-Purpose Assistants**](https://browse.arxiv.org/pdf/2309.10020.pdf)|arXiv|2023-09-18|-|-|
+|![Star](https://img.shields.io/github/stars/yiren-jian/BLIText.svg?style=social&label=Star) [**Bootstrapping Vision-Language Learning with Decoupled Language Pre-training**](https://arxiv.org/pdf/2307.07063.pdf)|NeurIPS|2023-07-13|[Github](https://github.com/yiren-jian/BLIText)|-|
+|![Star](https://img.shields.io/github/stars/baaivision/Emu.svg?style=social&label=Star) [**Generative Pretraining in Multimodality**](https://arxiv.org/pdf/2307.05222.pdf)|arXiv|2023-07-11|[Github](https://github.com/baaivision/Emu)|[Demo](http://218.91.113.230:9002/)|
+|![Star](https://img.shields.io/github/stars/microsoft/unilm.svg?style=social&label=Star) [**Kosmos-2: Grounding Multimodal Large Language Models to the World**](https://arxiv.org/pdf/2306.14824.pdf)|arXiv|2023-06-26|[Github](https://github.com/microsoft/unilm/tree/master/kosmos-2)|[Demo](https://aka.ms/kosmos-2-demo)|
+|![Star](https://img.shields.io/github/stars/VPGTrans/VPGTrans.svg?style=social&label=Star) [**Transfer Visual Prompt Generator across LLMs**](https://arxiv.org/pdf/2305.01278.pdf)|arXiv|2023-05-02|[Github](https://github.com/VPGTrans/VPGTrans)|[Demo](https://3fc7715dbc44234a7f.gradio.live/)|
+|[**GPT-4 Technical Report**](https://arxiv.org/pdf/2303.08774.pdf)|arXiv|2023-03-15|-|-|
+|[**PaLM-E: An Embodied Multimodal Language Model**](https://arxiv.org/pdf/2303.03378.pdf)|arXiv|2023-03-06|-|[Demo](https://palm-e.github.io/#demo)|
+|![Star](https://img.shields.io/github/stars/NVlabs/prismer.svg?style=social&label=Star) [**Prismer: A Vision-Language Model with An Ensemble of Experts**](https://arxiv.org/pdf/2303.02506.pdf)|arXiv|2023-03-04|[Github](https://github.com/NVlabs/prismer)|[Demo](https://huggingface.co/spaces/lorenmt/prismer)|
+|![Star](https://img.shields.io/github/stars/microsoft/unilm.svg?style=social&label=Star) [**Language Is Not All You Need: Aligning Perception with Language Models**](https://arxiv.org/pdf/2302.14045.pdf)|arXiv|2023-02-27|[Github](https://github.com/microsoft/unilm)|-|
+|![Star](https://img.shields.io/github/stars/salesforce/LAVIS.svg?style=social&label=Star) [**BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models**](https://arxiv.org/pdf/2301.12597.pdf)|arXiv|2023-01-30|[Github](https://github.com/salesforce/LAVIS/tree/main/projects/blip2)|[Demo](https://colab.research.google.com/github/salesforce/LAVIS/blob/main/examples/blip2_instructed_generation.ipynb)|
+|![Star](https://img.shields.io/github/stars/vimalabs/VIMA.svg?style=social&label=Star) [**VIMA: General Robot Manipulation with Multimodal Prompts**](https://arxiv.org/pdf/2210.03094.pdf)|ICML|2022-10-06|[Github](https://github.com/vimalabs/VIMA)|Local Demo|
+|![Star](https://img.shields.io/github/stars/MineDojo/MineDojo.svg?style=social&label=Star) [**MineDojo: Building Open-Ended Embodied Agents with Internet-Scale Knowledge**](https://arxiv.org/pdf/2206.08853.pdf)|NeurIPS|2022-06-17|[Github](https://github.com/MineDojo/MineDojo)|-|
+|![Star](https://img.shields.io/github/stars/shizhediao/DaVinci.svg?style=social&label=Star) [**Write and Paint: Generative Vision-Language Models are Unified Modal Learners**](https://arxiv.org/pdf/2206.07699.pdf)|ICLR|2022-06-15|[Github](https://github.com/shizhediao/DaVinci)|-|
+|![Star](https://img.shields.io/github/stars/microsoft/unilm.svg?style=social&label=Star) [**Language Models are General-Purpose Interfaces**](https://arxiv.org/pdf/2206.06336.pdf)|arXiv|2022-06-13|[Github](https://github.com/microsoft/unilm)|-|
